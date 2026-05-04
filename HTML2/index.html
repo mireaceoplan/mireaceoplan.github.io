@@ -2526,8 +2526,9 @@ function closeQuizModal(e){
   const iframe = document.getElementById('quiz-modal-iframe');
   modal.classList.remove('show');
 
-  // ─ 스크롤 위치 복원
+  // ─ 스크롤 위치 복원 (깜빡임 없이)
   const savedScroll = parseInt(document.body.dataset.savedScroll || '0', 10);
+  // ① body 스타일 일괄 해제
   document.body.style.position = '';
   document.body.style.top = '';
   document.body.style.left = '';
@@ -2535,8 +2536,16 @@ function closeQuizModal(e){
   document.body.style.width = '';
   document.body.style.overflow = '';
   delete document.body.dataset.savedScroll;
-  // 스타일 복원 후 스크롤 위치 즉시 복원 (애니메이션 없이)
+  // ② 즉시 원래 스크롤 위치로 이동 (브라우저가 paint하기 전에)
+  // smooth 잠시 차단 → 점프 방지 → 복원
+  const htmlEl = document.documentElement;
+  const prevScrollBehavior = htmlEl.style.scrollBehavior;
+  htmlEl.style.scrollBehavior = 'auto';
   window.scrollTo(0, savedScroll);
+  // 다음 프레임에 scrollBehavior 복원
+  requestAnimationFrame(() => {
+    htmlEl.style.scrollBehavior = prevScrollBehavior;
+  });
 
   // postMessage 리스너 정리 (메모리 누수 방지)
   if (iframe._cleanupMsg) { iframe._cleanupMsg(); iframe._cleanupMsg = null; }
