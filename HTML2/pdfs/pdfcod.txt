@@ -1,0 +1,11 @@
+□ Drive 폴더 ID
+    1B1w1yc2J1V5gkHpylD7LXqyi9woXTBuN
+
+□ PDF 파일 ID
+    107ZTghkB-_gsON6aA68bGt4xfF1gGLVn
+
+□ Sheets ID
+    1BJTaRjHy6Ur6X1j8ed1JYad94quxT5dRaAWCy9ThmuU
+
+□ Apps Scrips URL
+    https://script.google.com/macros/s/AKfycbwi_Qyxz532kIc8MmamHSXmEZWL0K1UD_7X7m4IaAQuxTJ36PSOklPyUnmJQSHwMtVs/exec

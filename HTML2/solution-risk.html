@@ -1,0 +1,1585 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>경영 리스크 관리 — 미래CEO플랜</title>
+<!-- ═══ Open Graph (카카오톡·페이스북·슬랙 미리보기) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="미래CEO플랜">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="경영 리스크 관리 | 미래CEO플랜">
+<meta property="og:description" content="정관 정비·명의신탁 정리·경영권 방어. 대표님의 회사를 지키는 가장 확실한 방법.">
+<meta property="og:url" content="https://ceoplan.netlify.app/solution-risk.html">
+<meta property="og:image" content="https://ceoplan.netlify.app/og-solution-risk.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="경영 리스크 관리 | 미래CEO플랜">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="경영 리스크 관리 | 미래CEO플랜">
+<meta name="twitter:description" content="정관 정비·명의신탁 정리·경영권 방어. 대표님의 회사를 지키는 가장 확실한 방법.">
+<meta name="twitter:image" content="https://ceoplan.netlify.app/og-solution-risk.png">
+
+<!-- SEO description (이미 있으면 중복되지만 해롭지 않음) -->
+<meta name="description" content="정관 정비·명의신탁 정리·경영권 방어. 대표님의 회사를 지키는 가장 확실한 방법.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root {
+  --blue:#3182F6; --blue-d:#1B64DA; --blue-l:#EFF6FF; --blue-mid:#BFDBFF;
+  --blue-soft:#EEF5FF;
+  --navy:#0D1120; --navy2:#131829;
+  --text:#191F28; --mid:#4A5462; --muted:#8B95A1;
+  --bg:#F7F9FC; --white:#FFFFFF; --border:#E5E8EF; --border-l:#F0F3F8;
+  --red:#F04452; --green:#10B981; --gold:#FFD56A;
+  --max:1100px; --pad:40px;
+
+  /* ═══ 타이포그래피 토큰 시스템 (미래CEO플랜 표준) ═══
+     이 토큰은 모든 페이지 공통. 변경 금지. 신규 크기 필요 시 토큰 추가 방식으로. */
+  --fs-display-1: 60px; /* HERO 메인 (데스크톱) */
+  --fs-display-2: 40px; /* 대형 H2 / 모바일 HERO */
+  --fs-h2:        36px; /* 섹션 헤딩 */
+  --fs-h2-sm:     26px; /* 섹션 헤딩 (모바일) */
+  --fs-quote:     28px; /* 인용문 / 대형 숫자 */
+  --fs-stat:      48px; /* 임팩트 숫자 (pain-stat-num) */
+  --fs-stat-lg:   56px; /* 초대형 숫자 (metric-num) */
+  --fs-title-lg:  20px; /* 서브 헤딩 (hero-sub, ba-head) */
+  --fs-body-xl:   18px; /* 스토리텔링 본문 (story-p 등 장문 강조) */
+  --fs-title:     17px; /* 카드 제목·프로세스 */
+  --fs-title-sm:  16px; /* sol-name, faq-q */
+  --fs-body-lg:   16px; /* 본문 강조 */
+  --fs-body:      15px; /* 표준 본문·설명문 ⭐ */
+  --fs-body-sm:   14px; /* 보조 텍스트·메타 */
+  --fs-caption:   12px; /* eyebrow·라벨·푸터 */
+  --fs-caption-sm:11px; /* 최소 캡션 */
+  --fs-micro:     10px; /* 초소 라벨 (최소 허용) */
+}
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,sans-serif; background:#fff; color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+button,a { font-family:inherit; cursor:pointer; border:none; background:none; text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+.w { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+.w-narrow { max-width:760px; margin:0 auto; padding:0 var(--pad); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.6)} }
+@keyframes slowZoom { from{transform:scale(1.08)} to{transform:scale(1)} }
+
+.rev { opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.rev.on { opacity:1; transform:translateY(0); }
+.rev-d1{transition-delay:.1s}.rev-d2{transition-delay:.2s}.rev-d3{transition-delay:.3s}
+.rev-d4{transition-delay:.4s}.rev-d5{transition-delay:.5s}.rev-d6{transition-delay:.6s}
+
+/* GNB — 메인 페이지와 동일한 2단 구조 */
+.gnb {
+  position: fixed; top:0; left:0; right:0; z-index:600;
+  background: transparent;
+  border-bottom: 1px solid transparent;
+  transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.gnb.scrolled {
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(16px);
+  border-color: var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
+}
+.gnb-inner {
+  max-width: var(--max); margin:0 auto; padding:0 var(--pad);
+  display:flex; flex-direction:column;
+  transition: flex-direction .3s;
+}
+
+/* ── scrolled: 1단으로 압축 ── */
+.gnb.scrolled .gnb-inner {
+  flex-direction: row;
+  align-items: center;
+  height: 64px;
+}
+.gnb.scrolled .gnb-row-top {
+  height: auto;
+  flex-shrink: 0;
+  margin-right: 28px;
+}
+.gnb.scrolled .gnb-row-bottom {
+  height: auto;
+  flex: 1;
+}
+.gnb.scrolled .gnb-label { display: none; }
+.gnb.scrolled .gnb-t { height: 64px; }
+
+/* ── 1단: 로고 라인 ── */
+.gnb-row-top {
+  display:flex; align-items:center;
+  height:52px;
+}
+.gnb-logo {
+  font-size:21px; font-weight:800; letter-spacing:-.4px;
+  cursor:pointer; flex-shrink:0;
+  color:#fff; transition:color .3s;
+  text-decoration:none;
+}
+.gnb-logo em { color:rgba(255,255,255,.8); font-style:normal; }
+.gnb.scrolled .gnb-logo { color:var(--text); }
+.gnb.scrolled .gnb-logo em { color:var(--blue); }
+
+/* ── 2단: 카테고리 + CTA 라인 ── */
+.gnb-row-bottom {
+  display:flex; align-items:center; gap:8px;
+  height:56px;
+}
+.gnb-label {
+  font-size:15.5px; font-weight:700;
+  color:rgba(255,255,255,.65);
+  margin-right:6px; flex-shrink:0;
+  transition:color .3s;
+}
+.gnb.scrolled .gnb-label { color:var(--muted); }
+
+.gnb-targets { display:flex; gap:2px; margin-right:auto; }
+
+/* 카테고리 탭 */
+.gnb-t {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:16px; font-weight:600;
+  color:rgba(255,255,255,.75);
+  padding:0 14px; height:56px;
+  border-bottom: 2px solid transparent;
+  transition:all .2s; white-space:nowrap;
+  background:none; cursor:pointer; text-decoration:none;
+}
+.gnb-t:hover { color:#fff; }
+.gnb-t.active { color:#fff; }
+
+/* 타겟별 언더라인 컬러 */
+.gnb-t[data-target="corp"].active  { border-bottom-color: #60A5FA; }
+.gnb-t[data-target="small"].active { border-bottom-color: #38BDF8; }
+.gnb-t[data-target="seller"].active{ border-bottom-color: #A5B4FC; }
+
+/* 스크롤 후 */
+.gnb.scrolled .gnb-t { color:var(--mid); }
+.gnb.scrolled .gnb-t:hover { color:var(--text); }
+.gnb.scrolled .gnb-t.active { color:var(--text); }
+.gnb.scrolled .gnb-t[data-target="corp"].active  { border-bottom-color: #3182F6; }
+.gnb.scrolled .gnb-t[data-target="small"].active { border-bottom-color: #0284C7; }
+.gnb.scrolled .gnb-t[data-target="seller"].active{ border-bottom-color: #6366F1; }
+
+.gnb-t-text { font-size:16px; font-weight:600; }
+
+/* CTA 버튼 */
+.gnb-btn {
+  background:#fff; color:var(--text);
+  border: none;
+  padding:11px 22px; border-radius:999px;
+  font-size:16px; font-weight:700;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:all .18s; flex-shrink:0;
+  letter-spacing:-.01em;
+  box-shadow: 0 2px 8px rgba(0,0,0,.08);
+  cursor:pointer;
+}
+.gnb-btn:hover {
+  transform:translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.14);
+}
+.gnb.scrolled .gnb-btn {
+  background:var(--blue); color:#fff;
+  box-shadow: 0 2px 8px rgba(49,130,246,.25);
+}
+.gnb.scrolled .gnb-btn:hover {
+  background:var(--blue-d);
+  box-shadow: 0 6px 16px rgba(49,130,246,.35);
+}
+.gnb-btn-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:var(--blue);
+  animation:pulse 1.8s infinite;
+}
+.gnb.scrolled .gnb-btn-dot { background:rgba(255,255,255,.85); }
+
+/* HERO */
+.hero { position:relative; min-height:85vh; display:flex; align-items:center; justify-content:center; overflow:hidden; color:#fff; padding-top:90px; padding-bottom:80px; }
+.hero-bg {
+  position:absolute; inset:0; z-index:0;
+  background:url('hero-risk.png') center center / cover no-repeat;
+  animation:slowZoom 20s ease-out forwards;
+}
+.hero-overlay {
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg,
+    rgba(10,22,40,.55) 0%,
+    rgba(10,22,40,.25) 35%,
+    rgba(10,22,40,.35) 65%,
+    rgba(10,22,40,.75) 100%);
+}
+.hero-inner { position:relative; z-index:2; max-width:var(--max); width:100%; margin:0 auto; padding:0 var(--pad); text-align:left; }
+.hero-tag { display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,.12); border:1px solid rgba(255,255,255,.2); backdrop-filter:blur(12px); padding:8px 18px; border-radius:100px; font-size:var(--fs-body-sm); font-weight:700; color:#fff; margin-bottom:32px; letter-spacing:-.01em; animation:fadeUp .7s ease both; }
+.hero-tag-dot { width:6px; height:6px; border-radius:50%; background:var(--red); animation:pulse 1.8s infinite; }
+.hero-title { font-size:48px; font-weight:700; line-height:1.25; letter-spacing:-.035em; word-break:keep-all; margin-top:30px; margin-bottom:32px; animation:fadeUp .8s ease .15s both; max-width:820px; color:#fff; }
+.hero-title em { color:#fff; font-style:normal; font-weight:900; }
+.hero-sub { font-size:22px; line-height:1.6; letter-spacing:-.015em; color:rgba(255,255,255,.82); word-break:keep-all; max-width:620px; margin:0 0 48px; animation:fadeUp .8s ease .3s both; }
+.hero-cta-row { display:flex; gap:14px; justify-content:flex-start; flex-wrap:wrap; animation:fadeUp .8s ease .45s both; }
+.btn { display:inline-flex; align-items:center; gap:10px; font-size:var(--fs-title-sm); font-weight:700; padding:18px 36px; border-radius:100px; transition:all .2s; letter-spacing:-.01em; }
+.btn-primary { background:var(--blue); color:#fff; box-shadow:0 8px 28px rgba(49,130,246,.45); }
+.btn-primary:hover { background:var(--blue-d); transform:translateY(-2px); box-shadow:0 12px 36px rgba(49,130,246,.55); }
+.btn-ghost { background:rgba(255,255,255,.12); color:#fff; border:1.5px solid rgba(255,255,255,.3); backdrop-filter:blur(8px); }
+.btn-ghost:hover { background:rgba(255,255,255,.22); border-color:#fff; }
+.hero-stats { display:flex; gap:56px; justify-content:flex-start; margin-top:80px; padding-top:36px; border-top:1px solid rgba(255,255,255,.15); animation:fadeUp .8s ease .6s both; max-width:620px; }
+.hero-stat-item { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.hero-stat-num { font-size:var(--fs-quote); font-weight:800; color:#fff; letter-spacing:-.04em; line-height:1; margin-bottom:6px; display:inline-flex; align-items:baseline; gap:3px; }
+.hero-stat-num em { font-size:var(--fs-title-lg); font-style:normal; color:rgba(255,255,255,.7); font-weight:700; letter-spacing:-.02em; }
+.hero-stat-lbl { font-size:var(--fs-caption); color:rgba(255,255,255,.6); letter-spacing:.02em; font-weight:600; }
+
+/* HERO 하단 부드러운 ∨ 화살표 (스크롤 유도) */
+.hero-arrow {
+  position:absolute; bottom:40px; left:50%; transform:translateX(-50%);
+  z-index:3; width:56px; height:56px;
+  display:flex; align-items:center; justify-content:center;
+  color:rgba(255,255,255,.85);
+  background:none; border:none; cursor:pointer;
+  transition:color .2s, transform .2s;
+  animation:heroBob 2s ease-in-out infinite, fadeIn 1.2s ease 1s both;
+}
+.hero-arrow:hover { color:#fff; }
+.hero-arrow svg { width:40px; height:20px; display:block; filter: drop-shadow(0 2px 8px rgba(0,0,0,.4)); }
+@keyframes heroBob {
+  0%, 100% { transform:translateX(-50%) translateY(0); }
+  50%      { transform:translateX(-50%) translateY(-10px); }
+}
+
+/* STORY */
+.story-sec { padding:140px 0; background:#fff; }
+.story-eye { display:block; text-align:center; font-size:var(--fs-caption); font-weight:700; color:var(--blue); letter-spacing:.15em; text-transform:uppercase; margin-bottom:24px; }
+.story-h { font-size:var(--fs-h2); font-weight:800; line-height:1.3; letter-spacing:-.04em; text-align:center; margin-bottom:36px; word-break:keep-all; }
+.story-h em { color:var(--blue); font-style:normal; background:linear-gradient(180deg, transparent 65%, var(--blue-l) 65%); padding:0 4px; }
+.story-p { font-size:var(--fs-body-xl); line-height:1.85; color:var(--mid); text-align:center; word-break:keep-all; letter-spacing:-.015em; }
+.story-p strong { color:var(--text); font-weight:700; }
+.story-p + .story-p { margin-top:24px; }
+
+/* SECTION COMMON */
+.sec-head { text-align:center; margin-bottom:64px; }
+.sec-eye { display:inline-block; background:var(--blue); color:#fff; font-size:var(--fs-caption); font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:16px; letter-spacing:.01em; }
+.sec-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; margin-bottom:16px; word-break:keep-all; }
+.sec-h2 em { color:var(--red); font-style:normal; }
+.sec-sub { font-size:var(--fs-title); color:var(--mid); line-height:1.6; letter-spacing:-.01em; word-break:keep-all; }
+
+/* PAIN */
+.pain-sec {
+  padding:140px 0 100px;
+  background:
+    linear-gradient(180deg, transparent 0%, transparent 85%, var(--blue-soft) 100%),
+    var(--bg);
+}
+.pain-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-bottom:64px; }
+.pain-stat-card { background:#fff; border-radius:20px; padding:36px 28px; text-align:center; border:1.5px solid var(--border); transition:all .2s; }
+.pain-stat-card:hover { border-color:var(--blue); transform:translateY(-4px); box-shadow:0 12px 32px rgba(49,130,246,.12); }
+.pain-stat-num { font-size:var(--fs-stat); font-weight:800; color:var(--blue); letter-spacing:-.05em; line-height:1; margin-bottom:12px; }
+.pain-stat-lbl { font-size:var(--fs-body); color:var(--text); font-weight:600; line-height:1.5; word-break:keep-all; }
+.pain-stat-cap { font-size:var(--fs-caption); color:var(--muted); margin-top:8px; letter-spacing:-.01em; }
+.pain-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; max-width:880px; margin:0 auto; align-items:stretch; }
+.pain-item { background:#fff; border:1.5px solid var(--border); border-radius:14px; padding:22px 24px; display:flex; align-items:center; gap:14px; transition:all .2s; min-height:78px; cursor:pointer; user-select:none; }
+.pain-item:hover { border-color:var(--blue); box-shadow:0 4px 16px rgba(49,130,246,.1); background:var(--blue-l); }
+.pain-item.checked { background:var(--blue-l); border-color:var(--blue); border-width:2px; box-shadow:0 6px 20px rgba(49,130,246,.15); }
+.pain-item.checked .pain-text { color:var(--blue-d); }
+.pain-check { width:28px; height:28px; border-radius:8px; background:var(--blue-l); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:var(--fs-body); font-weight:800; flex-shrink:0; transition:all .25s; }
+.pain-item.checked .pain-check { background:var(--blue); color:#fff; transform:scale(1.08); }
+.pain-item.checked .pain-check::before { content:'✓'; }
+.pain-item.checked .pain-check-mark { display:none; }
+.pain-text { font-size:var(--fs-body-lg); font-weight:600; color:var(--text); line-height:1.55; letter-spacing:-.015em; word-break:keep-all; transition:color .2s; }
+.pain-cta { text-align:center; margin-top:48px; }
+.pain-cta-msg { display:inline-block; font-size:var(--fs-title-sm); font-weight:700; background:var(--text); color:#fff; padding:14px 28px; border-radius:100px; letter-spacing:-.015em; transition:all .35s; }
+.pain-cta-msg strong { color:var(--gold); }
+.pain-cta-msg.level-warn { background:var(--blue-d); }
+.pain-cta-msg.level-urgent { background:var(--red); animation:subtlePulse 2s ease-in-out infinite; }
+.pain-counter { display:inline-flex; align-items:center; gap:8px; background:#fff; color:var(--mid); padding:10px 20px; border-radius:100px; border:1.5px solid var(--border); font-size:var(--fs-caption); font-weight:700; letter-spacing:-.01em; transition:all .25s; line-height:1; }
+.pain-counter.active { border-color:var(--blue); color:var(--blue); background:var(--blue-l); }
+.pain-counter-num { display:inline-flex; align-items:baseline; gap:3px; font-size:var(--fs-body-lg); color:var(--text); font-weight:800; letter-spacing:-.02em; transition:color .2s; }
+.pain-counter.active .pain-counter-num { color:var(--blue); }
+.pain-counter-num .sep { font-size:var(--fs-body-sm); color:var(--muted); font-weight:600; margin:0 1px; }
+.pain-counter-num .total { font-size:var(--fs-body-sm); color:var(--muted); font-weight:600; }
+
+/* 자가 진단 모듈 헤더 */
+.pain-diag { text-align:center; margin-top:72px; margin-bottom:32px; }
+.pain-diag-title { font-size:var(--fs-quote); font-weight:800; line-height:1.25; letter-spacing:-.035em; color:var(--text); margin-bottom:10px; word-break:keep-all; }
+.pain-diag-title em { color:var(--blue); font-style:normal; }
+.pain-diag-sub { font-size:var(--fs-body); color:var(--mid); line-height:1.6; letter-spacing:-.01em; word-break:keep-all; }
+@keyframes subtlePulse { 0%,100% { box-shadow:0 0 0 0 rgba(240,68,82,.5); } 50% { box-shadow:0 0 0 12px rgba(240,68,82,0); } }
+
+/* QUOTE */
+.quote-sec { padding:160px 0; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); color:#fff; position:relative; overflow:hidden; }
+.quote-sec::before { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(49,130,246,.18) 0%, transparent 60%); pointer-events:none; }
+.quote-mark { font-size:88px; line-height:1; color:rgba(255,213,106,.35); font-family:Georgia,serif; text-align:center; margin-bottom:-20px; }
+.quote-text { font-size:var(--fs-quote); font-weight:700; line-height:1.5; letter-spacing:-.035em; text-align:center; word-break:keep-all; max-width:880px; margin:0 auto; position:relative; z-index:2; }
+.quote-text em { color:var(--gold); font-style:normal; font-weight:800; }
+.quote-author { text-align:center; margin-top:36px; font-size:var(--fs-body); color:rgba(255,255,255,.6); letter-spacing:.02em; position:relative; z-index:2; }
+.quote-author strong { color:#fff; font-weight:700; }
+
+/* SOLUTIONS */
+.sol-sec { padding:140px 0; background:#fff; }
+.sol-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.sol-card { background:#fff; border:1.5px solid var(--border); border-radius:20px; padding:32px 24px; display:flex; flex-direction:column; gap:12px; transition:all .25s; position:relative; overflow:hidden; }
+.sol-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg, var(--blue-l) 0%, transparent 60%); opacity:0; transition:opacity .25s; z-index:0; }
+.sol-card:hover { border-color:var(--blue); transform:translateY(-6px); box-shadow:0 16px 40px rgba(49,130,246,.15); }
+.sol-card:hover::before { opacity:1; }
+.sol-card.featured { background:linear-gradient(135deg, var(--blue) 0%, var(--blue-d) 100%); border-color:var(--blue); color:#fff; }
+.sol-card.featured::before { display:none; }
+.sol-card.featured .sol-name { color:#fff; }
+.sol-card.featured .sol-desc { color:rgba(255,255,255,.85); }
+.sol-card > * { position:relative; z-index:1; }
+.sol-ico-wrap { width:60px; height:60px; display:flex; align-items:center; justify-content:center; background:var(--blue-l); border-radius:16px; margin-bottom:8px; }
+.sol-card.featured .sol-ico-wrap { background:rgba(255,255,255,.2); }
+.sol-ico-wrap img { width:36px; height:36px; object-fit:contain; }
+.sol-card.featured .sol-ico-wrap img { filter:brightness(0) invert(1); }
+.sol-name { font-size:var(--fs-title-sm); font-weight:800; letter-spacing:-.025em; color:var(--text); line-height:1.35; word-break:keep-all; }
+.sol-desc { font-size:var(--fs-body); color:var(--mid); line-height:1.6; letter-spacing:-.01em; word-break:keep-all; }
+.sol-bdg { position:absolute; top:16px; right:16px; background:var(--red); color:#fff; font-size:var(--fs-micro); font-weight:800; padding:4px 10px; border-radius:100px; letter-spacing:.05em; z-index:2; }
+
+/* PROCESS */
+.process-sec { padding:140px 0; background:var(--bg); }
+.process-list { display:flex; flex-direction:column; max-width:760px; margin:0 auto; position:relative; }
+.process-list::before { content:''; position:absolute; left:26px; top:32px; bottom:32px; width:2px; background:var(--border); }
+.process-item { position:relative; display:flex; gap:24px; padding:18px 0; align-items:flex-start; }
+.process-num { width:54px; height:54px; border-radius:50%; background:#fff; border:2.5px solid var(--blue); color:var(--blue); display:flex; align-items:center; justify-content:center; font-size:var(--fs-title); font-weight:800; flex-shrink:0; letter-spacing:-.02em; z-index:2; position:relative; transition:all .2s; }
+.process-item:hover .process-num { background:var(--blue); color:#fff; transform:scale(1.08); box-shadow:0 8px 24px rgba(49,130,246,.3); }
+.process-body { flex:1; background:#fff; border-radius:16px; padding:22px 26px; border:1.5px solid var(--border); transition:all .2s; }
+.process-item:hover .process-body { border-color:var(--blue); }
+.process-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.025em; margin-bottom:6px; line-height:1.3; }
+.process-desc { font-size:var(--fs-body); color:var(--mid); line-height:1.65; letter-spacing:-.01em; word-break:keep-all; }
+.process-tag { display:inline-block; margin-top:10px; background:var(--blue-l); color:var(--blue); font-size:var(--fs-caption-sm); font-weight:700; padding:4px 10px; border-radius:6px; letter-spacing:-.005em; }
+
+/* EXPERTS */
+.expert-sec { padding:140px 0; background:#fff; }
+.expert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; max-width:920px; margin:0 auto; }
+.expert-card { background:var(--bg); border:1.5px solid var(--border); border-radius:18px; padding:32px 24px; text-align:center; transition:all .25s; }
+.expert-card:hover { background:#fff; border-color:var(--blue); transform:translateY(-4px); box-shadow:0 12px 32px rgba(49,130,246,.1); }
+.expert-ico-wrap { width:72px; height:72px; margin:0 auto 16px; display:flex; align-items:center; justify-content:center; background:#fff; border-radius:20px; border:1.5px solid var(--border); }
+.expert-card:hover .expert-ico-wrap { background:var(--blue-l); border-color:var(--blue-l); }
+.expert-ico-wrap img { width:44px; height:44px; object-fit:contain; }
+.expert-name { font-size:var(--fs-body-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; margin-bottom:6px; line-height:1.35; word-break:keep-all; }
+.expert-desc { font-size:var(--fs-body-sm); color:var(--mid); line-height:1.5; letter-spacing:-.01em; }
+
+/* CASES */
+.case-sec { padding:100px 0 140px; background:var(--blue-soft); position:relative; }
+.case-sec::before {
+  content:'';
+  position:absolute;
+  top:0; left:50%; transform:translateX(-50%);
+  width:min(60%, 720px); height:1px;
+  background:linear-gradient(90deg, transparent 0%, rgba(49,130,246,.25) 50%, transparent 100%);
+}
+.case-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+.case-card { background:#fff; border-radius:24px; padding:36px 32px; border:1.5px solid var(--border); display:flex; flex-direction:column; gap:18px; transition:all .25s; position:relative; overflow:hidden; }
+.case-card:hover { transform:translateY(-6px); box-shadow:0 20px 48px rgba(0,0,0,.08); border-color:var(--blue); }
+.case-num { position:absolute; top:28px; right:32px; font-size:36px; font-weight:800; color:var(--blue-l); letter-spacing:-.05em; line-height:1; }
+.case-tag { display:inline-flex; align-items:center; background:var(--blue-l); color:var(--blue); font-size:var(--fs-caption-sm); font-weight:700; padding:5px 12px; border-radius:100px; width:fit-content; letter-spacing:-.01em; }
+.case-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.025em; line-height:1.4; word-break:keep-all; padding-right:36px; }
+.case-quote { font-size:var(--fs-body); color:var(--mid); line-height:1.7; letter-spacing:-.01em; word-break:keep-all; flex:1; padding-left:16px; border-left:3px solid var(--blue-l); display:flex; align-items:center; min-height:120px; }
+.case-meta { display:flex; gap:12px; align-items:center; padding-top:16px; border-top:1px solid var(--border-l); font-size:var(--fs-caption); color:var(--muted); letter-spacing:-.01em; }
+.case-meta strong { color:var(--text); font-weight:700; }
+
+/* BEFORE & AFTER — 비포/애프터 대비 섹션 (토스 톤) */
+.ba-sec { padding:140px 0; background:var(--blue-soft); }
+.ba-wrap { display:grid; grid-template-columns:1fr auto 1fr; gap:32px; align-items:stretch; max-width:960px; margin:0 auto; }
+.ba-col { padding:44px 36px; border-radius:24px; display:flex; flex-direction:column; gap:20px; transition:all .25s; }
+.ba-col.before { background:#fff; border:1px solid var(--border); }
+.ba-col.after { background:#fff; border:1.5px solid var(--blue); box-shadow:0 12px 40px rgba(49,130,246,.12); }
+.ba-label { font-size:var(--fs-caption-sm); font-weight:800; letter-spacing:.15em; text-transform:uppercase; margin-bottom:4px; }
+.ba-col.before .ba-label { color:var(--muted); }
+.ba-col.after .ba-label { color:var(--blue); }
+.ba-head { font-size:var(--fs-title-lg); font-weight:800; letter-spacing:-.03em; line-height:1.35; color:var(--text); word-break:keep-all; padding-bottom:18px; border-bottom:1px solid var(--border-l); margin-bottom:4px; }
+.ba-col.before .ba-head { color:var(--mid); }
+.ba-item { display:flex; align-items:flex-start; gap:12px; font-size:var(--fs-body); line-height:1.55; letter-spacing:-.015em; word-break:keep-all; }
+.ba-col.before .ba-item { color:var(--mid); }
+.ba-col.after .ba-item { color:var(--text); font-weight:600; }
+.ba-mark { flex-shrink:0; width:22px; height:22px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center; font-size:var(--fs-caption-sm); font-weight:800; margin-top:1px; }
+.ba-col.before .ba-mark { background:#D0D4DA; color:#6B7684; }
+.ba-col.after .ba-mark { background:var(--blue); color:#fff; }
+.ba-arrow { display:flex; align-items:center; justify-content:center; width:48px; }
+.ba-arrow-inner { width:48px; height:48px; border-radius:50%; background:var(--blue); color:#fff; display:inline-flex; align-items:center; justify-content:center; font-size:var(--fs-title); font-weight:700; box-shadow:0 8px 24px rgba(49,130,246,.3); }
+
+/* 솔루션 카드 넘버링 (토스 톤 — 얇은 라인 워터마크) */
+.sol-num {
+  position:absolute; top:20px; left:24px;
+  font-size:var(--fs-body-sm); font-weight:700;
+  color:var(--muted); letter-spacing:.04em;
+  font-feature-settings: "tnum";
+  opacity:.5; transition:all .25s;
+  z-index:2;
+}
+.sol-card:hover .sol-num { opacity:.9; color:var(--blue); }
+.sol-card.featured .sol-num { color:rgba(255,255,255,.7); opacity:.8; }
+.sol-card.featured:hover .sol-num { opacity:1; color:#fff; }
+/* 넘버 추가로 아이콘 아래로 내리기 */
+.sol-card .sol-ico-wrap { margin-top:14px; }
+
+/* METRICS */
+.metrics-sec { padding:140px 0; background:linear-gradient(135deg, #1A1F35 0%, var(--navy) 100%); color:#fff; position:relative; overflow:hidden; }
+.metrics-sec::before { content:''; position:absolute; top:-50%; right:-20%; width:700px; height:700px; border-radius:50%; background:radial-gradient(circle, rgba(49,130,246,.15) 0%, transparent 60%); pointer-events:none; }
+.metrics-sec .sec-h2 { color:#fff; }
+.metrics-sec .sec-sub { color:rgba(255,255,255,.65); }
+.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; position:relative; z-index:2; }
+.metric-card { text-align:center; padding:32px 16px; }
+.metric-num { font-size:var(--fs-stat-lg); font-weight:800; letter-spacing:-.05em; line-height:1; background:linear-gradient(180deg, #fff 0%, rgba(255,255,255,.7) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin-bottom:12px; }
+.metric-num em { font-size:24px; font-style:normal; color:rgba(255,255,255,.5); -webkit-text-fill-color:rgba(255,255,255,.5); margin-left:4px; }
+.metric-lbl { font-size:var(--fs-body-sm); color:rgba(255,255,255,.65); letter-spacing:.02em; font-weight:600; line-height:1.5; }
+
+/* FAQ */
+.faq-sec { padding:140px 0; background:#fff; }
+.faq-list { max-width:760px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item { background:var(--bg); border:1.5px solid var(--border); border-radius:16px; overflow:hidden; transition:all .15s; }
+.faq-item.open { border-color:var(--blue); background:#fff; box-shadow:0 8px 24px rgba(49,130,246,.08); }
+.faq-q { padding:22px 28px; display:flex; justify-content:space-between; align-items:center; gap:16px; cursor:pointer; user-select:none; font-size:var(--fs-title-sm); font-weight:700; letter-spacing:-.02em; color:var(--text); }
+.faq-q-arr { width:28px; height:28px; border-radius:50%; background:#fff; color:var(--mid); display:flex; align-items:center; justify-content:center; font-size:var(--fs-caption); flex-shrink:0; transition:all .25s; border:1.5px solid var(--border); }
+.faq-item.open .faq-q-arr { background:var(--blue); color:#fff; border-color:var(--blue); transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .35s ease; padding:0 28px; font-size:var(--fs-body); color:var(--mid); line-height:1.75; letter-spacing:-.01em; word-break:keep-all; }
+.faq-item.open .faq-a { max-height:500px; padding:0 28px 24px; }
+.faq-a strong { color:var(--text); font-weight:700; }
+
+/* CTA */
+.cta-sec { padding:140px 0; background:linear-gradient(180deg, var(--blue-l) 0%, #fff 100%); border-top:1px solid var(--border); }
+.cta-inner { max-width:680px; margin:0 auto; }
+.cta-head { text-align:center; margin-bottom:48px; }
+.cta-eye { display:inline-block; background:var(--blue); color:#fff; font-size:var(--fs-caption); font-weight:700; padding:6px 16px; border-radius:100px; margin-bottom:16px; letter-spacing:.02em; }
+.cta-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.04em; line-height:1.25; margin-bottom:14px; word-break:keep-all; }
+.cta-h2 em { color:var(--blue); font-style:normal; }
+.cta-sub { font-size:var(--fs-title-sm); color:var(--mid); line-height:1.6; word-break:keep-all; }
+.cta-form { background:#fff; border-radius:28px; padding:48px 44px; box-shadow:0 20px 60px rgba(49,130,246,.15); display:flex; flex-direction:column; gap:20px; border:1px solid rgba(49,130,246,.1); }
+.form-row { display:flex; flex-direction:column; gap:8px; }
+.form-row.two { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.form-label { font-size:var(--fs-caption); font-weight:700; color:var(--text); letter-spacing:-.01em; }
+.form-label .req { color:var(--red); }
+.form-input,.form-select,.form-textarea { width:100%; padding:16px 18px; border:1.5px solid var(--border); border-radius:14px; font-size:var(--fs-body); font-family:inherit; color:var(--text); background:var(--bg); transition:all .15s; letter-spacing:-.01em; }
+.form-input:focus,.form-select:focus,.form-textarea:focus { outline:none; border-color:var(--blue); background:#fff; box-shadow:0 0 0 4px rgba(49,130,246,.12); }
+.form-textarea { resize:vertical; min-height:88px; line-height:1.55; }
+.form-agree { display:flex; align-items:flex-start; gap:10px; font-size:var(--fs-caption); color:var(--mid); line-height:1.55; letter-spacing:-.01em; cursor:pointer; }
+.form-agree input { margin-top:3px; flex-shrink:0; accent-color:var(--blue); }
+.form-agree a { color:var(--blue); text-decoration:underline; }
+.form-submit { background:var(--blue); color:#fff; padding:20px; border-radius:16px; font-size:var(--fs-title); font-weight:800; letter-spacing:-.02em; transition:all .2s; box-shadow:0 8px 28px rgba(49,130,246,.35); display:flex; align-items:center; justify-content:center; gap:8px; }
+.form-submit:hover { background:var(--blue-d); transform:translateY(-2px); box-shadow:0 12px 36px rgba(49,130,246,.45); }
+.cta-trust { display:flex; gap:32px; justify-content:center; margin-top:36px; flex-wrap:wrap; }
+.cta-trust-item { display:inline-flex; align-items:center; gap:10px; font-size:var(--fs-body); color:var(--text); font-weight:600; letter-spacing:-.01em; }
+.cta-trust-ico {
+  width:22px; height:22px; border-radius:50%;
+  background:#D1FAE5; color:var(--green);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-size:var(--fs-caption-sm); font-weight:800; flex-shrink:0;
+}
+
+/* STICKY 위젯이 뜨는 넓은 화면: 본문 좌측 shift */
+@media (min-width: 1281px) {
+  .hero { /* HERO는 풀폭 유지 */ }
+  .story-sec .w-narrow,
+  .pain-sec .w,
+  .quote-sec .w-narrow,
+  .sol-sec .w,
+  .process-sec .w,
+  .expert-sec .w,
+  .case-sec .w,
+  .metrics-sec .w,
+  .faq-sec .w,
+  .cta-sec .w {
+    margin-left: max(var(--pad), calc(50% - 720px));
+    margin-right: 380px;
+    max-width: none;
+  }
+}
+@media (min-width: 1600px) {
+  .story-sec .w-narrow,
+  .pain-sec .w,
+  .quote-sec .w-narrow,
+  .sol-sec .w,
+  .process-sec .w,
+  .expert-sec .w,
+  .case-sec .w,
+  .metrics-sec .w,
+  .faq-sec .w,
+  .cta-sec .w {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max);
+  }
+  .stick-consult { right: calc(50% - 700px); }
+}
+
+/* STICKY 상담 위젯 (B옵션) */
+.stick-consult {
+  position: fixed;
+  top: 96px; right: 32px;
+  z-index: 450;
+  width: 320px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.1);
+  opacity: 0; transform: translateY(20px); pointer-events: none;
+  transition: opacity .3s ease, transform .3s ease;
+  overflow: hidden;
+}
+.stick-consult.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.stick-consult.highlight {
+  animation: formHighlight 2s ease-out;
+  box-shadow: 0 20px 60px rgba(49,130,246,.35);
+}
+@keyframes formHighlight {
+  0%   { transform: translateY(0) scale(1);    box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+  15%  { transform: translateY(0) scale(1.03); box-shadow: 0 0 0 6px rgba(49,130,246,.25), 0 20px 60px rgba(49,130,246,.4); }
+  40%  { transform: translateY(0) scale(1);    box-shadow: 0 0 0 0 rgba(49,130,246,0),    0 20px 60px rgba(49,130,246,.3); }
+  70%  { transform: translateY(0) scale(1.015);box-shadow: 0 0 0 4px rgba(49,130,246,.15),0 16px 50px rgba(49,130,246,.25); }
+  100% { transform: translateY(0) scale(1);    box-shadow: 0 12px 40px rgba(0,0,0,.1); }
+}
+
+/* 하단 폼 하이라이트 (모바일용) */
+.cta-form.highlight {
+  animation: cardHighlight 2s ease-out;
+}
+@keyframes cardHighlight {
+  0%   { box-shadow: 0 20px 60px rgba(0,0,0,.08); }
+  15%  { box-shadow: 0 0 0 6px rgba(49,130,246,.2), 0 24px 70px rgba(49,130,246,.3); transform: scale(1.01); }
+  70%  { box-shadow: 0 0 0 3px rgba(49,130,246,.1), 0 22px 65px rgba(49,130,246,.2); transform: scale(1.005); }
+  100% { box-shadow: 0 20px 60px rgba(0,0,0,.08); transform: scale(1); }
+}
+.stick-consult-head {
+  background: linear-gradient(135deg, var(--blue) 0%, var(--blue-d) 100%);
+  color: #fff; padding: 20px 22px 18px;
+}
+.stick-consult-eye {
+  font-size: var(--fs-caption-sm); font-weight: 700;
+  letter-spacing: .15em; opacity: .75;
+  margin-bottom: 6px;
+}
+.stick-consult-title {
+  font-size: var(--fs-title); font-weight: 800;
+  letter-spacing: -.02em; line-height: 1.35;
+  display: flex; align-items: center; gap: 8px;
+}
+.stick-consult-title-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: #FFD56A;
+  animation: pulse 1.8s infinite;
+}
+.stick-consult-body {
+  padding: 18px 22px 20px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.stick-field { display: flex; flex-direction: column; gap: 4px; }
+.stick-field label {
+  font-size: var(--fs-caption-sm); font-weight: 700; color: var(--mid);
+  letter-spacing: -.01em;
+}
+.stick-field label .req { color: var(--red); }
+.stick-field input,
+.stick-field select {
+  width: 100%; padding: 10px 14px;
+  border: 1.5px solid var(--border); border-radius: 10px;
+  font-size: var(--fs-body-sm); font-family: inherit;
+  background: var(--bg); color: var(--text);
+  transition: all .15s; letter-spacing: -.01em;
+}
+.stick-field input:focus,
+.stick-field select:focus {
+  outline: none; border-color: var(--blue); background: #fff;
+  box-shadow: 0 0 0 3px rgba(49,130,246,.12);
+}
+.stick-submit {
+  width: 100%; background: var(--blue); color: #fff;
+  padding: 14px; border-radius: 12px;
+  font-size: var(--fs-body); font-weight: 800; letter-spacing: -.01em;
+  transition: all .18s; margin-top: 4px;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+  box-shadow: 0 6px 20px rgba(49,130,246,.3);
+}
+.stick-submit:hover { background: var(--blue-d); transform: translateY(-1px); box-shadow: 0 10px 28px rgba(49,130,246,.4); }
+.stick-trust {
+  margin-top: 8px; padding-top: 14px;
+  border-top: 1px solid var(--border-l);
+  display: flex; flex-direction: column; gap: 6px;
+}
+.stick-trust-row {
+  display: flex; align-items: center; gap: 6px;
+  font-size: var(--fs-caption-sm); color: var(--mid); font-weight: 600;
+  letter-spacing: -.01em;
+}
+.stick-trust-row .chk {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: var(--green); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 9px; font-weight: 800; flex-shrink: 0;
+}
+.stick-phone {
+  text-align: center; margin-top: 10px;
+  font-size: var(--fs-caption-sm); color: var(--muted);
+}
+.stick-phone strong {
+  display: block; font-size: var(--fs-body-lg); color: var(--text);
+  font-weight: 800; letter-spacing: -.01em; margin-top: 2px;
+}
+
+/* 모바일 하단 고정 바 */
+.mobile-cta {
+  display: none;
+  position: fixed; bottom: 0; left: 0; right: 0;
+  z-index: 500;
+  background: #fff;
+  border-top: 1px solid var(--border);
+  box-shadow: 0 -8px 24px rgba(0,0,0,.08);
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  opacity: 0; transform: translateY(100%); pointer-events: none;
+  transition: all .3s ease;
+}
+.mobile-cta.show { opacity: 1; transform: translateY(0); pointer-events: auto; }
+.mobile-cta-btn {
+  width: 100%; background: var(--blue); color: #fff;
+  padding: 15px; border-radius: 12px;
+  font-size: var(--fs-body); font-weight: 800; letter-spacing: -.01em;
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  box-shadow: 0 4px 16px rgba(49,130,246,.3);
+}
+.mobile-cta-dot { width: 7px; height: 7px; border-radius: 50%; background: #FFD56A; animation: pulse 1.8s infinite; }
+
+/* FOOTER */
+footer { background:#E8EBF0; color:#4A5462; padding:56px 0 40px; font-size:var(--fs-caption); line-height:1.8; }
+.footer-row { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+.footer-logo { font-size:var(--fs-title); font-weight:800; color:#0D1120; }
+.footer-logo em { color:var(--blue); font-style:normal; }
+.footer-back { font-size:var(--fs-caption); color:#4A5462; display:inline-flex; align-items:center; gap:6px; transition:color .15s; }
+.footer-back:hover { color:#0D1120; }
+.footer-copy { margin-top:28px; padding-top:24px; border-top:1px solid #DCE0E5; font-size:var(--fs-micro); color:#8B95A1; line-height:1.7; }
+/* ═══ 법적 고지 영역 (개인정보보호법 가이드라인 준수) ═══ */
+.footer-legal {
+  margin-top:28px;
+  padding:14px 0;
+  border-top:1px solid #DCE0E5;
+  border-bottom:1px solid #DCE0E5;
+  display:flex;
+  align-items:center;
+  gap:48px;
+  flex-wrap:wrap;
+}
+.footer-legal-links {
+  display:flex; gap:12px; align-items:center;
+  flex-shrink:0;
+  font-size:13px;
+}
+.footer-legal-links a {
+  color:#4A5462;
+  font-weight:500;
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-legal-links a.emphasize {
+  color:#0D1120;
+  font-weight:600;
+}
+.footer-legal-links a:hover {
+  color:#0D1120; text-decoration:underline;
+}
+.footer-legal-sep {
+  color:#B0B8C1;
+  font-size:11px;
+}
+.footer-legal-notice {
+  font-size:12px;
+  color:#6B7684;
+  line-height:1.5;
+  word-break:keep-all;
+}
+@media (max-width: 768px) {
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+}
+.footer-company-info {
+  margin-top:14px;
+  font-size:12px;
+  color:#8B95A1;
+  line-height:1.7;
+}
+
+
+/* TOAST */
+.toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(14px); z-index:1100; background:var(--text); color:#fff; padding:14px 28px; border-radius:100px; font-size:var(--fs-body-sm); font-weight:600; opacity:0; white-space:nowrap; transition:all .28s; pointer-events:none; box-shadow:0 8px 32px rgba(0,0,0,.25); }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width:1280px) {
+  .stick-consult { display: none; }
+  .mobile-cta { display: block; }
+}
+@media (max-width:960px) {
+  :root { --pad:20px; }
+  /* 모바일: 2단 GNB → 1단 압축, 메뉴 숨김 (메인과 동일) */
+  .gnb-targets, .gnb-label { display:none; }
+  .gnb-inner { flex-direction:row; align-items:center; justify-content:space-between; height:60px; }
+  .gnb-row-top { height:auto; flex:0 0 auto; }
+  .gnb-row-bottom { height:auto; flex:1; justify-content:flex-end; gap:0; }
+  .hero { padding-top:90px; }
+  .hero-title { font-size:32px; margin-top:20px; }
+  .hero-sub { font-size:16px; }
+  .story-sec,.pain-sec,.quote-sec,.sol-sec,.process-sec,.expert-sec,.case-sec,.metrics-sec,.faq-sec,.cta-sec,.ba-sec { padding:90px 0; }
+  .story-h,.sec-h2,.cta-h2 { font-size:26px; }
+  .story-p { font-size:16px; }
+  .quote-text { font-size:22px; }
+  .pain-stats,.sol-grid { grid-template-columns:repeat(2,1fr); }
+  .pain-grid,.expert-grid,.case-grid { grid-template-columns:1fr; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); gap:16px; }
+  .metric-num { font-size:40px; }
+  .gnb-back { display:none; }
+  .ba-wrap { grid-template-columns:1fr; gap:16px; max-width:480px; }
+  .ba-arrow { transform:rotate(90deg); width:auto; height:48px; }
+  .ba-col { padding:32px 24px; }
+  .ba-head { font-size:17px; }
+}
+@media (max-width:640px) {
+  .hero { min-height:90vh; padding-bottom:60px; padding-top:80px; }
+  .gnb-inner { padding:0 16px; height:56px; }
+  .gnb-logo { font-size:19px; }
+  .gnb-btn { padding:9px 16px; font-size:15px; }
+  .hero-title { font-size:28px; margin-top:20px; }
+  .hero-sub { font-size:12px; }
+  .hero-arrow { bottom:24px; width:44px; height:44px; }
+  .hero-arrow svg { width:32px; height:16px; }
+  .btn { font-size:15px; padding:14px 24px; }
+  .story-h,.sec-h2,.cta-h2 { font-size:24px; }
+  .story-p { font-size:15px; }
+  .quote-text { font-size:20px; }
+  .quote-mark { font-size:64px; }
+  .pain-stats,.sol-grid { grid-template-columns:1fr; }
+  .metrics-grid { grid-template-columns:1fr; }
+  .form-row.two { grid-template-columns:1fr; }
+  .cta-form { padding:32px 24px; }
+}
+/* ═══ 동의 체크박스 (개인정보처리방침 연결) ═══ */
+.consent-block { margin-top:8px; padding-top:16px; border-top:1px dashed #E5E8EB; display:flex; flex-direction:column; gap:10px; }
+.consent-row { display:flex; align-items:flex-start; gap:8px; cursor:pointer; font-size:13px; line-height:1.55; color:#4E5968; user-select:none; }
+.consent-row input[type="checkbox"] { flex-shrink:0; margin-top:3px; width:15px; height:15px; cursor:pointer; accent-color:#3182F6; }
+.consent-row b { font-weight:700; color:#1A1F27; margin-right:3px; }
+.consent-row b.optional { color:#8B95A1; }
+.consent-row a { color:#3182F6; text-decoration:underline; margin-left:6px; font-size:12.5px; font-weight:500; }
+.consent-row a:hover { color:#1B64DA; }
+.consent-block.compact { padding-top:12px; gap:7px; }
+.consent-block.compact .consent-row { font-size:11.5px; line-height:1.45; }
+.consent-block.compact .consent-row input[type="checkbox"] { width:13px; height:13px; margin-top:2px; }
+.consent-block.compact .consent-row a { font-size:11px; margin-left:4px; }
+.consent-note { margin-top:4px; padding:10px 12px; background:#F7F9FC; border-radius:8px; font-size:12px; line-height:1.55; color:#4E5968; display:flex; gap:6px; align-items:flex-start; }
+.consent-note-ico { flex-shrink:0; font-size:13px; line-height:1.4; }
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <!-- 1단: 로고 -->
+    <div class="gnb-row-top">
+      <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    </div>
+    <!-- 2단: 카테고리 + CTA -->
+    <div class="gnb-row-bottom">
+      <span class="gnb-label">나는</span>
+      <nav class="gnb-targets">
+        <a class="gnb-t active" data-target="corp" href="index.html#corp">
+          <span class="gnb-t-text">법인 대표입니다</span>
+        </a>
+        <a class="gnb-t" data-target="small" href="index.html#small">
+          <span class="gnb-t-text">소상공인입니다</span>
+        </a>
+        <a class="gnb-t" data-target="seller" href="index.html#seller">
+          <span class="gnb-t-text">셀러·벤더입니다</span>
+        </a>
+      </nav>
+      <a class="gnb-btn" href="quiz-master.html">
+        <span class="gnb-btn-dot"></span>1분 경영 스코어
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <h1 class="hero-title">
+      대표님이 일궈온 기업의 내일은<br>
+      <em>오늘보다 더 안전해야 합니다</em>
+    </h1>
+    <p class="hero-sub">
+      명의신탁, 가지급금, 임원 유고, 경영권 분쟁.<br>
+      알고 계시면서 미뤄둔 숙제, 전문가 그룹이 끝내드립니다.
+    </p>
+    <div class="hero-cta-row">
+      <button class="btn btn-primary" onclick="scrollToForm()">무료 경영 리스크 진단 →</button>
+    </div>
+  </div>
+  <button class="hero-arrow" onclick="document.getElementById('story').scrollIntoView({behavior:'smooth', block:'start'})" aria-label="스토리로 이동">
+    <svg viewBox="0 0 32 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 3 16 14 29 3"/></svg>
+  </button>
+</section>
+
+<!-- 2. STORY -->
+<section class="story-sec" id="story">
+  <div class="w-narrow">
+    <span class="story-eye rev">OUR STORY</span>
+    <h2 class="story-h rev rev-d1">이상했습니다.<br>정말 <em>이상했어요.</em></h2>
+    <p class="story-p rev rev-d2">
+      30년, 40년 회사를 키워온 대표님들.<br>
+      만나 뵈면 하나같이 이렇게 말씀하십니다.
+    </p>
+    <p class="story-p rev rev-d3">
+      <strong>"세금은 세무사한테 맡겼고,<br>
+      법무는 변호사가 봐주고 있지."</strong>
+    </p>
+    <p class="story-p rev rev-d4">
+      그런데 회사 안을 들여다보면.<br><br>
+      설립 때 친척 명의로 넣어둔 주식은 그대로 있고,<br>
+      가지급금은 매년 쌓여만 가고,<br>
+      대표님이 자리를 비우시면 회사가 어떻게 될지<br>
+      <strong>정해진 게 아무것도 없습니다.</strong>
+    </p>
+    <p class="story-p rev rev-d5">
+      그들을 탓할 일이 아닙니다.<br><br>
+      <strong>세무사는 세무에, 변호사는 법무에,<br>
+      각자 자신의 악기를 완벽히 다루고 있었습니다.<br>
+      다만, <em>오케스트라의 지휘자</em>가 없었던 겁니다.</strong>
+    </p>
+    <p class="story-p rev rev-d6">
+      그래서 미래CEO플랜이 만들었습니다.<br>
+      세무·법무·노무·재무·M&A를<br>
+      <em>한 테이블에서</em> 종합적으로 진단하는 컨설팅을요.
+    </p>
+  </div>
+</section>
+
+<!-- 3. PAIN -->
+<section class="pain-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">BY THE NUMBERS</div>
+      <h2 class="sec-h2">혼자 고민하지 마세요.<br><em style="color:var(--blue);">전문가가 옆에 있습니다.</em></h2>
+      <p class="sec-sub">2,215명의 전속 자문 전문가가 전국 103개 사업단에서 대기 중입니다</p>
+    </div>
+
+    <div class="pain-stats">
+      <div class="pain-stat-card rev">
+        <div class="pain-stat-num">2,215<em style="font-size:28px; color:var(--mid);">명</em></div>
+        <div class="pain-stat-lbl">전속 자문 전문가</div>
+        <div class="pain-stat-cap">전국 기업을 직접 응대</div>
+      </div>
+      <div class="pain-stat-card rev rev-d1">
+        <div class="pain-stat-num">103<em style="font-size:28px; color:var(--mid);">개</em></div>
+        <div class="pain-stat-lbl">전국 사업단</div>
+        <div class="pain-stat-cap">대표님 가까운 곳에서 상담</div>
+      </div>
+      <div class="pain-stat-card rev rev-d2">
+        <div class="pain-stat-num">7<em style="font-size:28px; color:var(--mid);">대 분야</em></div>
+        <div class="pain-stat-lbl">전문가 네트워크</div>
+        <div class="pain-stat-cap">세무·법무·노무·부동산·M&A 등</div>
+      </div>
+    </div>
+
+    <!-- 자가 진단 모듈 헤더 -->
+    <div class="pain-diag rev">
+      <h3 class="pain-diag-title">30초 자가 진단<br><em>몇 가지나 해당되시나요?</em></h3>
+      <p class="pain-diag-sub">대표님께 해당되는 항목을 클릭해서 체크해 보세요</p>
+    </div>
+
+    <div class="pain-grid rev rev-d3">
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">설립할 때 친척·지인 이름으로 넣어둔 주식,<br>그대로 있으시죠?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">통장에 쌓인 가지급금,<br>매년 늘어나기만 하고 있으신가요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">대표님이 갑자기 자리를 비우시면,<br>회사는 어떻게 될까요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">임원 퇴직금·보상 규정, 정관에 제대로 들어가 있나요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">경영권을 지킬 안전장치(우선주·차등의결권) 있으신가요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">정관, 이사회 의사록. 마지막으로 언제 점검하셨어요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">우리 회사 가치, 정확히 얼마짜리인지 아시나요?</div></div>
+      <div class="pain-item" onclick="togglePain(this)"><div class="pain-check"><span class="pain-check-mark">!</span></div><div class="pain-text">자녀에게 회사 넘기실 계획, 구체적으로 세우셨나요?</div></div>
+    </div>
+
+    <div class="pain-cta rev rev-d4">
+      <div class="pain-counter" id="pain-counter" style="margin-bottom:16px;">
+        선택하신 리스크
+        <span class="pain-counter-num"><strong id="pain-count">0</strong><span class="sep">/</span><span class="total">8</span></span>
+      </div>
+      <div class="pain-cta-msg" id="pain-cta-msg">체크하며 대표님의 리스크를 진단해보세요</div>
+    </div>
+  </div>
+</section>
+
+<!-- 3.5 CEO플랜 연계 배너 -->
+<section style="padding:64px 0; background:linear-gradient(135deg, #F0F6FF 0%, #fff 100%); border-top:1px solid #E5E8EF;">
+  <div class="w" style="max-width:900px; margin:0 auto; text-align:center; padding:0 20px;">
+    <div style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:#3182F6; color:#fff; border-radius:999px; font-size:12px; font-weight:600; margin-bottom:18px; letter-spacing:-.01em;">
+      <span>✦</span> 함께 설계하면 시너지
+    </div>
+    <h3 style="font-size:32px; font-weight:800; color:#191F28; letter-spacing:-.02em; line-height:1.3; margin-bottom:14px;">
+      정관 정비는 <em style="color:#3182F6; font-style:normal;">CEO플랜의 전제</em>입니다
+    </h3>
+    <p style="font-size:16px; color:#4A5462; line-height:1.7; max-width:640px; margin:0 auto 26px; word-break:keep-all;">
+      임원 퇴직금·유족보상금 규정이 정관에 명시되어야, 법인 자금을 합법적으로 대표님께 이전하는 <strong style="color:#191F28;">CEO 자산 증식 전략</strong>이 실행됩니다. 리스크 관리가 먼저, 자산 이전이 그 다음입니다.
+    </p>
+    <a href="./solution-wealth.html" style="display:inline-flex; align-items:center; gap:6px; padding:14px 26px; background:#fff; border:1.5px solid #3182F6; border-radius:12px; color:#3182F6; font-weight:700; font-size:15px; text-decoration:none;">
+      CEO 자산 증식 전략 보기 <span style="font-size:16px;">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- 4. CASES (이동: PAIN 뒤) -->
+<section class="case-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">EXAMPLE CASE</div>
+      <h2 class="sec-h2">혼자만 그러신 게<br><em style="color:var(--blue);">아닙니다</em></h2>
+      <p class="sec-sub">같은 고민으로 저희를 찾아오신 대표님들이, 이렇게 풀어내셨습니다</p>
+    </div>
+
+    <div class="case-grid">
+      <div class="case-card rev">
+        <div class="case-num">01</div>
+        <div class="case-tag">제조업 · 매출 80억대 CEO</div>
+        <div class="case-title">"친척 이름으로 넣어둔 주식,<br>30년째 그대로예요"</div>
+        <div class="case-quote">설립 때 맡겨둔 명의신탁 주식,<br>방치하면 승계·세무조사 시점에 큰 리스크로 돌아옵니다. 정관 정비와 함께<br>한 번에 정리해 드립니다.</div>
+        <div class="case-meta">
+          <span>💡 <strong>명의신탁 정리 솔루션</strong></span>
+        </div>
+      </div>
+      <div class="case-card rev rev-d1">
+        <div class="case-num">02</div>
+        <div class="case-tag">유통업 · 매출 120억대 CEO</div>
+        <div class="case-title">"가지급금이 얼마나 쌓였는지,<br>세무사도 모른다네요"</div>
+        <div class="case-quote">가지급금·가수금이 쌓이면 세무 리스크는 물론 법인 신용까지 흔들립니다.<br>정관 정비와 재무구조 개선을 한 번에 풀어드립니다.</div>
+        <div class="case-meta">
+          <span>💡 <strong>재무구조 분석 솔루션</strong></span>
+        </div>
+      </div>
+      <div class="case-card rev rev-d2">
+        <div class="case-num">03</div>
+        <div class="case-tag">서비스업 · 매출 45억대 CEO</div>
+        <div class="case-title">"자녀에게 물려주긴 해야 하는데,<br>어디서부터 손대야 할지…"</div>
+        <div class="case-quote">가업승계는 10년 전부터 준비해야 한다고 합니다. 세제 개편 요건을 대표님 상황에 맞게 활용해, 단계별 로드맵으로 풀어드립니다.</div>
+        <div class="case-meta">
+          <span>💡 <strong>가업승계 전략 솔루션</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. QUOTE -->
+<section class="quote-sec">
+  <div class="w-narrow">
+    <div class="quote-mark rev">"</div>
+    <p class="quote-text rev rev-d1">
+      회사가 30년 버틴 건 대표님의 <em>능력</em>이었습니다.<br>
+      30년 더 가게 하는 건 <em>시스템</em>입니다.
+    </p>
+  </div>
+</section>
+
+<!-- 5. SOLUTIONS -->
+<section class="sol-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">8대 차별화 솔루션</div>
+      <h2 class="sec-h2">하나만 풀어드리는 게 아니라,<br><em style="color:var(--blue);">전부 풀어드립니다</em></h2>
+      <p class="sec-sub">경영 리스크부터 가업승계, M&A까지 — CEO가 마주할 모든 숙제를 한 번에</p>
+    </div>
+
+    <div class="sol-grid">
+      <div class="sol-card rev">
+        <div class="sol-num">01</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service1.svg" alt=""></div>
+        <div class="sol-name">경정청구·세금 환급</div>
+        <div class="sol-desc">5년 동안 더 내신 세금, 돌려받으실 수 있습니다</div>
+      </div>
+      <div class="sol-card rev rev-d1">
+        <div class="sol-num">02</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service2.svg" alt=""></div>
+        <div class="sol-name">투자수익률 이익금 환원</div>
+        <div class="sol-desc">법인 자금과 개인 자산, 효율적으로 분산하는 법</div>
+      </div>
+      <div class="sol-card rev rev-d2">
+        <div class="sol-num">03</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service3.svg" alt=""></div>
+        <div class="sol-name">경영효율화 핵심 전략</div>
+        <div class="sol-desc">인증·R&D·특허까지 활용한 효율화 설계</div>
+      </div>
+      <div class="sol-card featured rev rev-d3">
+        <div class="sol-num">04</div>
+        <div class="sol-bdg">CORE</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service4.svg" alt=""></div>
+        <div class="sol-name">경영 리스크 관리</div>
+        <div class="sol-desc">명의신탁·가지급금·임원 유고, 한 번에 정리</div>
+      </div>
+      <div class="sol-card rev">
+        <div class="sol-num">05</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service5.svg" alt=""></div>
+        <div class="sol-name">재무구조 분석</div>
+        <div class="sol-desc">정관부터 재무제표까지 전면 리뉴얼</div>
+      </div>
+      <div class="sol-card rev rev-d1">
+        <div class="sol-num">06</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service6.svg" alt=""></div>
+        <div class="sol-name">가업승계 전략</div>
+        <div class="sol-desc">자녀에게 안전하게 넘기는 10년 로드맵</div>
+      </div>
+      <div class="sol-card rev rev-d2">
+        <div class="sol-num">07</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service7.svg" alt=""></div>
+        <div class="sol-name">중소기업 M&A</div>
+        <div class="sol-desc">인수·매각으로 새 성장 동력을 확보하는 법</div>
+      </div>
+      <div class="sol-card rev rev-d3">
+        <div class="sol-num">08</div>
+        <div class="sol-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service8.svg" alt=""></div>
+        <div class="sol-name">사내근로복지기금</div>
+        <div class="sol-desc">직원 복지로 회사 리스크를 줄이는 방법</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. PROCESS -->
+<section class="process-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">CONSULTING PROCESS</div>
+      <h2 class="sec-h2">신청 한 번으로<br><em style="color:var(--blue);">7단계가 끝까지 따라갑니다</em></h2>
+      <p class="sec-sub">혼자 여기저기 알아보실 필요 없습니다. 처음부터 끝까지 담당자가 붙습니다.</p>
+    </div>
+
+    <div class="process-list">
+      <div class="process-item rev">
+        <div class="process-num">1</div>
+        <div class="process-body">
+          <div class="process-title">상담 신청</div>
+          <div class="process-desc">먼저, 미래CEO플랜 전문 상담사가 대표님 상황을 간단히 확인합니다. (약 10분, 무료)</div>
+          <span class="process-tag">미래CEO플랜 직접 응대</span>
+        </div>
+      </div>
+      <div class="process-item rev"><div class="process-num">2</div><div class="process-body"><div class="process-title">재무보좌관 지정</div><div class="process-desc">대표님 회사에 딱 맞는 전문가가 매칭됩니다. 자동 추천이 아닌, 사람이 직접 골라드립니다.</div></div></div>
+      <div class="process-item rev"><div class="process-num">3</div><div class="process-body"><div class="process-title">기업 검진</div><div class="process-desc">재무·세무·법무·인사. 네 방향에서 회사를 정밀하게 들여다봅니다.</div></div></div>
+      <div class="process-item rev"><div class="process-num">4</div><div class="process-body"><div class="process-title">솔루션 제안</div><div class="process-desc">진단 결과를 바탕으로, 대표님 회사에만 맞는 솔루션이 설계됩니다.</div></div></div>
+      <div class="process-item rev"><div class="process-num">5</div><div class="process-body"><div class="process-title">전문가 팀 구성</div><div class="process-desc">세무사·노무사·감정평가사가 한 팀으로 대표님을 응대하며, 필요 시 전문 법률 플랫폼을 안내해드립니다.</div></div></div>
+      <div class="process-item rev"><div class="process-num">6</div><div class="process-body"><div class="process-title">솔루션 실행</div><div class="process-desc">계획대로 실행됩니다. 대표님은 진행 상황만 보고받으시면 됩니다.</div></div></div>
+      <div class="process-item rev">
+        <div class="process-num">7</div>
+        <div class="process-body">
+          <div class="process-title">사후 관리</div>
+          <div class="process-desc">한 번 끝나도 끝이 아닙니다. 법령이 바뀌면 먼저 알려드리고, 매년 점검해 드립니다.</div>
+          <span class="process-tag">평생 사후 관리</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7-1. BEFORE & AFTER -->
+<section class="ba-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">BEFORE &amp; AFTER</div>
+      <h2 class="sec-h2">진단 전과 후,<br><em style="color:var(--blue);">이렇게 달라집니다</em></h2>
+      <p class="sec-sub">미루고만 있던 대표님 회사의 숙제, 한 번에 해결되는 모습입니다</p>
+    </div>
+
+    <div class="ba-wrap">
+      <div class="ba-col before rev">
+        <div class="ba-label">BEFORE</div>
+        <div class="ba-head">진단 전,<br>방치된 대표님의 회사</div>
+        <div class="ba-item"><span class="ba-mark">✕</span><span>30년째 정리 못 한 명의신탁 주식</span></div>
+        <div class="ba-item"><span class="ba-mark">✕</span><span>매년 쌓여만 가는 가지급금</span></div>
+        <div class="ba-item"><span class="ba-mark">✕</span><span>대표 유고 시 대비책 전무</span></div>
+        <div class="ba-item"><span class="ba-mark">✕</span><span>자녀 승계 막막, 10년째 고민만</span></div>
+      </div>
+      <div class="ba-arrow rev rev-d1">
+        <div class="ba-arrow-inner">→</div>
+      </div>
+      <div class="ba-col after rev rev-d2">
+        <div class="ba-label">AFTER</div>
+        <div class="ba-head">진단 후,<br>시스템이 갖춰진 회사</div>
+        <div class="ba-item"><span class="ba-mark">✓</span><span>주식 정리 + 정관 정비 완료</span></div>
+        <div class="ba-item"><span class="ba-mark">✓</span><span>재무구조 개선, 리스크 0 상태</span></div>
+        <div class="ba-item"><span class="ba-mark">✓</span><span>경영권 방어 체계 구축</span></div>
+        <div class="ba-item"><span class="ba-mark">✓</span><span>단계별 10년 승계 로드맵 확보</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. EXPERTS -->
+<section class="expert-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">EXPERT NETWORK</div>
+      <h2 class="sec-h2">각 분야 최고의 전문가들이,<br><em style="color:var(--blue);">한 테이블에 모입니다</em></h2>
+      <p class="sec-sub">세무는 세무사가, 법무는 변호사가. 하지만 문제는 팀이 함께 풉니다.</p>
+    </div>
+
+    <div class="expert-grid">
+      <div class="expert-card rev">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution1.svg" alt=""></div>
+        <div class="expert-name">세무</div>
+        <div class="expert-desc">이익금 관리·법인 EXIT<br>가업승계·법인전환 컨설팅</div>
+      </div>
+      <div class="expert-card rev rev-d1">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution2.svg" alt=""></div>
+        <div class="expert-name">법률 플랫폼 연계</div>
+        <div class="expert-desc">로톡 등 전문 법률 플랫폼<br>연결 및 이용 안내</div>
+      </div>
+      <div class="expert-card rev rev-d2">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution3.svg" alt=""></div>
+        <div class="expert-name">노무</div>
+        <div class="expert-desc">급여 아웃소싱·4대 보험<br>인사 제도 운영 자문</div>
+      </div>
+      <div class="expert-card rev rev-d3">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution5.svg" alt=""></div>
+        <div class="expert-name">부동산</div>
+        <div class="expert-desc">매입·매각·개발 자문<br>부동산 법인 전환 서비스</div>
+      </div>
+      <div class="expert-card rev rev-d4">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution4.svg" alt=""></div>
+        <div class="expert-name">M&A</div>
+        <div class="expert-desc">중소·벤처기업 M&A 자문<br>타당성 평가 및 협상 지원</div>
+      </div>
+      <div class="expert-card rev rev-d5">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_service1.svg" alt=""></div>
+        <div class="expert-name">경정청구</div>
+        <div class="expert-desc">5년간 더 낸 세금 환급<br>최대 10년간 이월공제 활용</div>
+      </div>
+      <div class="expert-card rev rev-d6">
+        <div class="expert-ico-wrap"><img src="https://www.hanwhapeoplelife.co.kr/business/sales/corporation/img/ico_solution6.svg" alt=""></div>
+        <div class="expert-name">감정평가</div>
+        <div class="expert-desc">기업가치 평가·무형자산 평가<br>상속·증여 감정평가</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. METRICS -->
+<section class="metrics-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye" style="background:rgba(255,255,255,.15);">BY THE NUMBERS</div>
+      <h2 class="sec-h2">숫자로 보는 신뢰</h2>
+      <p class="sec-sub">미래CEO플랜이 보유한 컨설팅 인프라</p>
+    </div>
+
+    <div class="metrics-grid">
+      <div class="metric-card rev"><div class="metric-num" data-count="2215"><span class="count-val">0</span><em>명</em></div><div class="metric-lbl">전속 자문 전문가</div></div>
+      <div class="metric-card rev rev-d1"><div class="metric-num" data-count="103"><span class="count-val">0</span><em>개</em></div><div class="metric-lbl">전국 사업단</div></div>
+      <div class="metric-card rev rev-d2"><div class="metric-num" data-count="7"><span class="count-val">0</span><em>대 분야</em></div><div class="metric-lbl">전문가 네트워크</div></div>
+      <div class="metric-card rev rev-d3"><div class="metric-num" data-count="100" data-suffix="%"><span class="count-val">0</span></div><div class="metric-lbl">비밀유지 (NDA)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="faq-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">FAQ</div>
+      <h2 class="sec-h2">많이들 <em style="color:var(--blue);">이런 걸</em> 물어보십니다</h2>
+    </div>
+
+    <div class="faq-list rev rev-d1">
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>상담료 정말 무료인가요?</span><span class="faq-q-arr">▼</span></div>
+        <div class="faq-a">네, 1차 진단 상담은 <strong>100% 무료</strong>입니다. 대표님 회사 상황을 파악하고 어떤 솔루션이 필요한지 안내드리는 단계예요. 실제 컨설팅 실행 단계부터는 솔루션 종류와 범위에 따라 비용이 책정되며, 상담 시 상세히 안내드립니다. 진단받고 결정하셔도 늦지 않습니다.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>상담 시간이 얼마나 걸리나요?</span><span class="faq-q-arr">▼</span></div>
+        <div class="faq-a">1차 진단은 <strong>30분~1시간</strong>이면 충분합니다. 전화 또는 화상으로 편하신 시간에 진행되고요. 대표님 일정에 맞춰 조율해 드립니다. 이후 정식 컨설팅은 회사 규모와 솔루션 범위에 따라 일정이 잡힙니다.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>회사 정보가 밖으로 새지는 않나요?</span><span class="faq-q-arr">▼</span></div>
+        <div class="faq-a">절대 그런 일 없습니다. 상담 신청 단계부터 <strong>비밀유지서약(NDA)</strong>이 자동 적용되고요. 모든 상담 기록은 내부 보안 시스템에서만 관리됩니다. 대표님 동의 없이 어떤 정보도 외부에 공유되지 않아요. 전문가 전원이 비밀유지 의무를 집니다.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>한 번 진단받으면 끝인가요?</span><span class="faq-q-arr">▼</span></div>
+        <div class="faq-a">절대 아닙니다. 솔루션 실행 후에도 <strong>지속적인 사후 관리</strong>가 기본입니다. 정기적인 리스크 점검은 물론, 법령·세제가 바뀌면 먼저 알려드리고 솔루션을 업데이트해 드립니다. 한 번 진단으로 끝나는 게 아니라, 평생 동반자라고 생각해 주세요.</div>
+      </div>
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-q"><span>서울이 아닌데도 상담 가능한가요?</span><span class="faq-q-arr">▼</span></div>
+        <div class="faq-a">네, <strong>전국 어디든 가능</strong>합니다. 초기 상담은 전화·화상으로 진행되고, 이후 정식 미팅 단계에서는 대표님 계신 지역과 가까운 사업단의 재무보좌관이 직접 찾아뵙거나 화상 미팅으로 진행됩니다. 전국 103개 사업단이 대표님 가까이에 있습니다.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CTA -->
+<section class="cta-sec" id="final-cta">
+  <div class="w">
+    <div class="cta-inner">
+      <div class="cta-head rev">
+        <div class="cta-eye">FREE CONSULTATION</div>
+        <h2 class="cta-h2">지금 신청하시면,<br><em>1영업일 안에</em> 연락드립니다</h2>
+        <p class="cta-sub">대표님이 망설이는 지금 이 순간에도, 리스크는 커지고 있습니다.<br>30년 쌓인 숙제, 한 통의 전화로 시작됩니다.</p>
+      </div>
+
+      <form class="cta-form rev rev-d1" onsubmit="submitForm(event)">
+        <div class="form-row">
+          <label class="form-label">회사명 <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="(주)미래CEO" required>
+        </div>
+        <div class="form-row two">
+          <div class="form-row">
+            <label class="form-label">담당자 성함 <span class="req">*</span></label>
+            <input type="text" class="form-input" placeholder="홍길동" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">연락처 <span class="req">*</span></label>
+            <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+          </div>
+        </div>
+        <div class="form-row two">
+          <div class="form-row">
+            <label class="form-label">이메일 <span class="req">*</span></label>
+            <input type="email" class="form-input" placeholder="email@company.com" required>
+          </div>
+          <div class="form-row">
+            <label class="form-label">매출 규모 <span class="req">*</span></label>
+            <select class="form-select" required>
+              <option value="">선택해 주세요</option>
+              <option>10억 미만</option>
+              <option>10억 ~ 50억</option>
+              <option>50억 ~ 100억</option>
+              <option>100억 ~ 300억</option>
+              <option>300억 이상</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <label class="form-label">관심 분야 <span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="">주요 관심 분야를 선택해 주세요</option>
+            <option>경영 리스크 종합 진단</option>
+            <option>명의신탁·가지급금 정리</option>
+            <option>가업승계 전략</option>
+            <option>정관 정비·재무구조 개선</option>
+            <option>임원 보상·퇴직금 설계</option>
+            <option>중소기업 M&A</option>
+            <option>기타 (메모에 작성)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">간단한 문의 사항 (선택)</label>
+          <textarea class="form-textarea" placeholder="현재 상황이나 궁금하신 점을 자유롭게 작성해주세요"></textarea>
+        </div>
+        <div class="consent-block">
+          <label class="consent-row">
+            <input type="checkbox" required>
+            <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 목적 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+          </label>
+          <label class="consent-row">
+            <input type="checkbox">
+            <span><b class="optional">[선택]</b>마케팅 정보 수신 동의<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+          </label>
+          <div class="consent-note">
+            <span class="consent-note-ico">💡</span>
+            <span>협력 파트너 연결이 필요한 경우, 1차 상담 시 구체적 파트너 정보를 안내드린 후 별도 동의를 받습니다.</span>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">무료 상담 신청하기 →</button>
+      </form>
+
+      <div class="cta-trust">
+        <div class="cta-trust-item"><span class="cta-trust-ico">✓</span> 상담 내용 100% 비밀 유지</div>
+        <div class="cta-trust-item"><span class="cta-trust-ico">✓</span> 초기 상담 완전 무료</div>
+        <div class="cta-trust-item"><span class="cta-trust-ico">✓</span> 1영업일 안에 연락</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY 상담 위젯 (데스크톱 1280px+) -->
+<aside class="stick-consult" id="stick-consult">
+  <div class="stick-consult-head">
+    <div class="stick-consult-eye">FREE CONSULTATION</div>
+    <div class="stick-consult-title">
+      <span class="stick-consult-title-dot"></span>30초 만에 신청하세요
+    </div>
+  </div>
+  <form class="stick-consult-body" onsubmit="submitStickForm(event)">
+    <div class="stick-field">
+      <label>회사명 <span class="req">*</span></label>
+      <input type="text" placeholder="(주)미래CEO" required>
+    </div>
+    <div class="stick-field">
+      <label>담당자 성함 <span class="req">*</span></label>
+      <input type="text" placeholder="홍길동" required>
+    </div>
+    <div class="stick-field">
+      <label>연락처 <span class="req">*</span></label>
+      <input type="tel" placeholder="010-0000-0000" required>
+    </div>
+    <div class="stick-field">
+      <label>이메일 <span class="req">*</span></label>
+      <input type="email" placeholder="email@company.com" required>
+    </div>
+    <div class="stick-field">
+      <label>매출 규모 <span class="req">*</span></label>
+      <select required>
+        <option value="">선택해 주세요</option>
+        <option>10억 미만</option>
+        <option>10억 ~ 50억</option>
+        <option>50억 ~ 100억</option>
+        <option>100억 ~ 300억</option>
+        <option>300억 이상</option>
+      </select>
+    </div>
+    <div class="stick-field">
+      <label>가장 급한 고민</label>
+      <select>
+        <option value="">선택해 주세요</option>
+        <option>경영 리스크 종합 진단</option>
+        <option>명의신탁·가지급금 정리</option>
+        <option>가업승계 전략</option>
+        <option>정관 정비·재무구조 개선</option>
+        <option>임원 보상·퇴직금 설계</option>
+        <option>중소기업 M&A</option>
+      </select>
+    </div>
+    <div class="consent-block compact">
+      <label class="consent-row">
+        <input type="checkbox" required>
+        <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+      <label class="consent-row">
+        <input type="checkbox">
+        <span><b class="optional">[선택]</b>마케팅 수신<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+    </div>
+    <button type="submit" class="stick-submit">무료 상담 받아보기 →</button>
+    <div class="stick-trust">
+      <div class="stick-trust-row"><span class="chk">✓</span> 상담 내용 100% 비밀 유지</div>
+      <div class="stick-trust-row"><span class="chk">✓</span> 초기 상담 완전 무료</div>
+      <div class="stick-trust-row"><span class="chk">✓</span> 1영업일 안에 연락드립니다</div>
+    </div>
+    <div class="stick-phone">
+      전화 상담도 가능합니다
+      <strong>📞 0000-0000</strong>
+    </div>
+  </form>
+</aside>
+
+<!-- 모바일 하단 바 (1280px 이하) -->
+<div class="mobile-cta" id="mobile-cta">
+  <button class="mobile-cta-btn" onclick="scrollToForm()">
+    <span class="mobile-cta-dot"></span>30초 만에 무료 상담 신청하기 →
+  </button>
+</div>
+
+<footer>
+  <div class="w">
+    <div class="footer-row">
+      <div class="footer-logo">미래<em>CEO</em>플랜</div>
+      <a class="footer-back" href="index.html#corp">← 전체 솔루션 보러가기</a>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      ㈜프로그레스미디어 · 대표 구동엽 · 사업자등록번호 113-86-27124<br>
+      TEL 02-6261-5102 | FAX 02-6261-5104 | esoyeon@my-progress.co.kr<br>
+      © 2026 프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const stickConsult = document.getElementById('stick-consult');
+const mobileCta = document.getElementById('mobile-cta');
+const finalCta = document.getElementById('final-cta');
+
+// 최종 CTA 섹션이 뷰포트에 들어왔는지 감지
+let finalCtaVisible = false;
+const finalIo = new IntersectionObserver((entries) => {
+  entries.forEach(e => { finalCtaVisible = e.isIntersecting; updateStickState(); });
+}, { threshold: 0.15 });
+finalIo.observe(finalCta);
+
+function updateStickState() {
+  const s = window.scrollY;
+  const show = s > 600 && !finalCtaVisible;
+  stickConsult.classList.toggle('show', show);
+  mobileCta.classList.toggle('show', show);
+}
+
+window.addEventListener('scroll', () => {
+  const s = window.scrollY;
+  document.getElementById('gnb').classList.toggle('scrolled', s > 60);
+  updateStickState();
+});
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add('on');
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+function toggleFaq(el) { el.classList.toggle('open'); }
+
+function showToast(m) {
+  const t = document.getElementById('toast');
+  t.textContent = m; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+
+function scrollToForm() {
+  const isDesktop = window.innerWidth >= 1280;
+
+  // 공통: 부드러운 스크롤 헬퍼
+  const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+  function smoothScrollTo(endY, duration, onComplete) {
+    const startY = window.scrollY;
+    const startTime = performance.now();
+    function step(now) {
+      const progress = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY + (endY - startY) * easeInOutCubic(progress));
+      if (progress < 1) requestAnimationFrame(step);
+      else if (onComplete) onComplete();
+    }
+    requestAnimationFrame(step);
+  }
+
+  function highlightStick() {
+    const stickForm = document.getElementById('stick-consult');
+    if (!stickForm) return;
+    stickForm.classList.add('highlight');
+    const firstInput = stickForm.querySelector('input, select');
+    if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 600);
+    setTimeout(() => stickForm.classList.remove('highlight'), 2200);
+  }
+
+  if (isDesktop) {
+    // 데스크톱: sticky 폼이 scroll>600일 때만 보이는 점 고려
+    // 현재 스크롤이 600 미만(HERO 영역)이면, 700px까지 부드럽게 내려가며 폼 등장 유도 후 하이라이트
+    // 이미 600 이상이면 스크롤 없이 바로 하이라이트
+    if (window.scrollY < 600) {
+      smoothScrollTo(720, 800, () => {
+        // 스크롤 완료 후 살짝 딜레이(폼 fade-in 완료 대기)
+        setTimeout(highlightStick, 200);
+      });
+    } else {
+      highlightStick();
+    }
+    return;
+  }
+
+  // 모바일/태블릿: 하단 폼까지 부드러운 스크롤 후 하이라이트 + 포커스
+  const target = document.getElementById('final-cta') || finalCta;
+  if (!target) return;
+
+  const endY = target.getBoundingClientRect().top + window.scrollY - 20;
+  smoothScrollTo(endY, 1000, () => {
+    const form = target.querySelector('.cta-form');
+    if (form) {
+      form.classList.add('highlight');
+      setTimeout(() => form.classList.remove('highlight'), 2200);
+    }
+    const firstInput = target.querySelector('input, select');
+    if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 300);
+  });
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  showToast('상담 신청이 접수되었습니다. 1영업일 내 연락드립니다.');
+  e.target.reset();
+}
+
+function submitStickForm(e) {
+  e.preventDefault();
+  showToast('상담 신청이 접수되었습니다. 1영업일 내 연락드립니다.');
+  e.target.reset();
+}
+
+/* ═══ 숫자 카운팅 애니메이션 ═══ */
+function animateCount(el, target, duration = 2000, suffix = '') {
+  const startTime = performance.now();
+  // easeOutExpo 이징 — 처음 빠르게, 끝에 부드럽게 (토스 스타일)
+  const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+  function tick(now) {
+    const elapsed = now - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = easeOutExpo(progress);
+    const current = Math.floor(target * eased);
+    // 천 단위 콤마 포맷 (2,215 형태)
+    el.textContent = current.toLocaleString('ko-KR') + suffix;
+    if (progress < 1) {
+      requestAnimationFrame(tick);
+    } else {
+      // 최종값 정확히 세팅
+      el.textContent = target.toLocaleString('ko-KR') + suffix;
+    }
+  }
+  requestAnimationFrame(tick);
+}
+
+/* METRICS 섹션 뷰포트 진입 시 1회만 카운팅 실행 */
+const metricsSection = document.querySelector('.metrics-sec');
+if (metricsSection) {
+  let metricsAnimated = false;
+  const metricsIo = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !metricsAnimated) {
+        metricsAnimated = true;
+        document.querySelectorAll('.metric-num[data-count]').forEach(numEl => {
+          const target = parseInt(numEl.dataset.count, 10);
+          const suffix = numEl.dataset.suffix || '';
+          const numSpan = numEl.querySelector('.count-val');
+          if (numSpan && !isNaN(target)) {
+            // duration: 숫자 크기에 따라 차등
+            const duration = target > 1000 ? 2000 : target > 100 ? 1500 : 1000;
+            animateCount(numSpan, target, duration, suffix);
+          }
+        });
+      }
+    });
+  }, { threshold: 0.4 });
+  metricsIo.observe(metricsSection);
+}
+
+/* ═══ PAIN 체크리스트 진단 인터랙션 ═══ */
+function togglePain(el) {
+  el.classList.toggle('checked');
+  updatePainState();
+}
+function updatePainState() {
+  const total = document.querySelectorAll('.pain-item').length;
+  const checked = document.querySelectorAll('.pain-item.checked').length;
+  const counterBot = document.getElementById('pain-counter');
+  const countBot = document.getElementById('pain-count');
+  const msgEl = document.getElementById('pain-cta-msg');
+  if (!counterBot || !countBot || !msgEl) return;
+
+  // 카운터 상태 동기화
+  countBot.textContent = checked;
+  counterBot.classList.toggle('active', checked > 0);
+
+  // 메시지 레벨 결정
+  msgEl.classList.remove('level-warn', 'level-urgent');
+  if (checked === 0) {
+    msgEl.innerHTML = '체크하며 대표님의 리스크를 진단해보세요';
+  } else if (checked <= 2) {
+    msgEl.innerHTML = '<strong>' + checked + '가지 해당</strong>되신다면, 한 번쯤 점검이 필요합니다';
+    msgEl.classList.add('level-warn');
+  } else {
+    msgEl.innerHTML = '⚠️ <strong>' + checked + '가지 해당</strong>되신다면, 지금 바로 상담이 필요합니다';
+    msgEl.classList.add('level-urgent');
+  }
+}
+</script>
+
+</body>
+</html>

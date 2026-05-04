@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+  // iframe 안이면 즉시 html에 클래스 추가 (배경 투명 처리)
+  if (window.parent && window.parent !== window) {
+    document.documentElement.classList.add('in-iframe');
+  }
+  // 솔루션 페이지로 이동 (iframe 안이면 부모 창 이동)
+  function goToSolution(url) {
+    if (window.parent && window.parent !== window) {
+      try {
+        window.parent.location.href = url;
+      } catch (e) {
+        window.location.href = url;
+      }
+    } else {
+      window.location.href = url;
+    }
+  }
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>인적 리스크 점수 | 미래CEO플랜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+* { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif !important; }
+</style>
+<style>
+:root{
+  --ac:#f43f5e; --ac-dark:#be123c; --ac-light:#fff1f2;
+  --bg:#F2F4F8; --surface:#fff; --text:#111827; --text-sub:#6B7280;
+  --border:#E5E7EB; --dark:#0F172A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family: 'Pretendard', sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  /* iframe 내부일 때 — 모달 카드 배경이 그대로 보이도록 투명 처리 */
+  html.in-iframe, html.in-iframe body { background: transparent; }
+
+.page{display:none;} .page.active{display:block;}
+.wrap{max-width:580px;margin:0 auto;padding:32px 20px 80px;}
+.top-nav{display:flex;align-items:center;justify-content:flex-end;margin-bottom:28px;}
+.btn-back{display:flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-back:hover{border-color:var(--text-sub);color:var(--text);}
+.quiz-cat{font-size:11px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;}
+.progress-wrap{margin-bottom:28px;}
+.progress-info{display:flex;justify-content:space-between;margin-bottom:8px;}
+.progress-label{font-size:12px;color:var(--text-sub);font-weight:500;}
+.progress-pct{font-size:12px;color:var(--ac);font-weight:700;}
+.progress-bar{height:3px;background:var(--border);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--ac);border-radius:100px;transition:width .35s ease;}
+.q-card{background:var(--surface);border-radius:18px;padding:36px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px;animation:fadeUp .35s ease both;}
+.q-step{font-size:11px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.q-text{font-family:'Pretendard',sans-serif;font-size:clamp(17px,3vw,21px);font-weight:600;color:var(--dark);line-height:1.5;margin-bottom:8px;letter-spacing:-.01em;}
+.q-hint{font-size:12px;color:var(--text-sub);line-height:1.6;margin-bottom:24px;}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.options.single{grid-template-columns:1fr;}
+.opt{display:flex;align-items:flex-start;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;text-align:left;line-height:1.45;}
+.opt:hover,.opt.selected{border-color:var(--ac);background:var(--ac-light);color:var(--ac-dark);}
+.opt-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.opt.selected .opt-dot{border-color:var(--ac);background:var(--ac);}
+.opt.selected .opt-dot::after{content:'';width:5px;height:5px;background:#fff;border-radius:50%;}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;}
+.btn-prev{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--text-sub);font-size:13px;font-weight:500;cursor:pointer;padding:8px 0;transition:color .2s;}
+.btn-prev:hover{color:var(--text);} .btn-prev:disabled{opacity:.3;cursor:default;}
+.btn-result{display:none;align-items:center;gap:8px;background:var(--ac);color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(244,63,94,.3);}
+.btn-result.show{display:flex;} .btn-result:hover{background:var(--ac-dark);transform:translateY(-1px);}
+.result-card{border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);animation:fadeUp .5s ease both;}
+.result-header{background:linear-gradient(135deg,#4c0519 0%,#7f1d1d 100%);padding:36px;position:relative;overflow:hidden;}
+.result-header::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(244,63,94,.25) 0%,transparent 70%);border-radius:50%;}
+.result-cat-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:20px;letter-spacing:.06em;text-transform:uppercase;}
+.score-display{display:flex;align-items:flex-end;gap:10px;margin-bottom:16px;}
+.score-num{font-family:'Pretendard',sans-serif;font-size:72px;font-weight:900;color:#fff;line-height:1;}
+.score-denom{font-size:22px;font-weight:600;color:rgba(255,255,255,.45);padding-bottom:10px;}
+.score-bar-wrap{margin-bottom:20px;}
+.score-bar-bg{height:6px;background:rgba(255,255,255,.15);border-radius:100px;overflow:hidden;}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,#fb7185,#fda4af);border-radius:100px;transition:width 1s ease;}
+.result-type{font-family:'Pretendard',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4;}
+.result-sub{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;}
+.result-body{background:var(--surface);padding:32px 36px;}
+.axes-title{font-size:11px;font-weight:700;color:var(--text-sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+.axis-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.axis-row:last-child{border-bottom:none;}
+.axis-label{font-size:13px;color:var(--text-sub);width:120px;flex-shrink:0;}
+.axis-bar-wrap{flex:1;height:5px;background:var(--border);border-radius:100px;overflow:hidden;}
+.axis-bar-fill{height:100%;border-radius:100px;transition:width .8s ease;}
+.axis-score-txt{font-size:12px;font-weight:700;width:28px;text-align:right;flex-shrink:0;}
+.axis-high .axis-bar-fill{background:#10b981;} .axis-mid .axis-bar-fill{background:#f59e0b;} .axis-low .axis-bar-fill{background:#f43f5e;}
+.axis-high .axis-score-txt{color:#10b981;} .axis-mid .axis-score-txt{color:#f59e0b;} .axis-low .axis-score-txt{color:#f43f5e;}
+.insight-box{background:var(--ac-light);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;}
+.insight-label{font-size:10px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.insight-text{font-size:15px;font-weight:600;color:var(--dark);line-height:1.5;}
+.result-desc{font-size:14px;color:var(--text-sub);line-height:1.75;margin-bottom:28px;}
+.btn-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--ac);color:#fff;font-size:15px;font-weight:600;padding:17px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(244,63,94,.3);margin-bottom:12px;}
+.btn-cta:hover{background:var(--ac-dark);transform:translateY(-2px);}
+.btn-retry{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:none;border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:500;padding:12px;border-radius:12px;cursor:pointer;transition:all .2s;}
+.btn-retry:hover{border-color:var(--text-sub);color:var(--text);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:480px){.q-card{padding:24px 20px;}.options{grid-template-columns:1fr;}.result-body{padding:24px;}.result-header{padding:28px 24px;}}
+</style>
+</head>
+<body>
+
+<div id="quizPage" class="page active">
+  <div class="wrap">
+    <div class="top-nav">
+      <span class="quiz-cat">인적 리스크 진단</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label" id="progLabel"></span>
+        <span class="progress-pct" id="progPct"></span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-step" id="qStep"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-hint" id="qHint"></div>
+      <div class="options" id="qOpts"></div>
+    </div>
+    <div class="bottom-nav">
+      <button class="btn-prev" id="btnPrev" onclick="prevQ()" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        이전
+      </button>
+      <button class="btn-result" id="btnResult" onclick="showResult()">
+        결과 보기
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="resultPage" class="page">
+  <div class="wrap">
+    <div style="margin-bottom:20px;">
+      <button class="btn-back" onclick="restartQuiz()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        다시 진단하기
+      </button>
+    </div>
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-cat-badge">인적 리스크 진단</div>
+        <div class="score-display">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-denom">/ 100점</div>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
+        </div>
+        <div class="result-type" id="resultType"></div>
+        <div class="result-sub" id="resultSub"></div>
+      </div>
+      <div class="result-body">
+        <div class="axes-title">5가지 항목별 리스크 현황</div>
+        <div id="axesWrap"></div>
+        <div class="insight-box">
+          <div class="insight-label">핵심 인사이트</div>
+          <div class="insight-text" id="insightText"></div>
+        </div>
+        <p class="result-desc" id="resultDesc"></p>
+        <button class="btn-cta" onclick="goToSolution('index.html')">
+          법률서비스 솔루션 보러가기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-retry" onclick="restartQuiz()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          처음부터 다시하기
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    step:'Q1', axis:'NDA 체결 여부',
+    text:'핵심 직원과 비밀유지계약(NDA)을 체결했나요?',
+    hint:'핵심 기술·고객 데이터를 다루는 직원은 입사 시 NDA 체결이 필수입니다. 미체결 시 퇴사 후 유출에 대한 법적 대응이 어렵습니다.',
+    singleCol:true,
+    options:[
+      {text:'전혀 없다', score:1},
+      {text:'일부 직원만 체결됐다', score:1},
+      {text:'대부분 체결했지만 내용이 부실하다', score:2},
+      {text:'전 직원 NDA + 경업금지 조항까지 있다', score:4},
+    ]
+  },
+  {
+    step:'Q2', axis:'업무 문서화',
+    text:'핵심 직원의 업무가 문서화(매뉴얼·인수인계서)되어 있나요?',
+    hint:'업무가 특정인에게 집중된 상태에서 갑자기 퇴사하면 회사에 심각한 공백이 생깁니다.',
+    singleCol:true,
+    options:[
+      {text:'전혀 없다', score:1},
+      {text:'일부만 있다', score:1},
+      {text:'주요 업무는 문서화되어 있다', score:3},
+      {text:'전 직원 업무 매뉴얼이 완비됐다', score:4},
+    ]
+  },
+  {
+    step:'Q3', axis:'고객 DB 보안',
+    text:'고객 DB·거래처 정보가 개인 PC나 개인 메일에 저장되어 있나요?',
+    hint:'퇴사자가 고객 데이터를 들고 나가는 것은 가장 흔한 영업비밀 침해 유형입니다.',
+    options:[
+      {text:'개인 PC·메일에 저장된 경우가 많다', score:1},
+      {text:'일부 개인 기기에 있다', score:1},
+      {text:'회사 서버에만 저장한다', score:3},
+      {text:'접근 권한 관리까지 되어있다', score:4},
+    ]
+  },
+  {
+    step:'Q4', axis:'경업금지 조항',
+    text:'근로계약서에 퇴직 후 경업금지(동종업계 취업제한) 조항이 있나요?',
+    hint:'경업금지 조항은 합리적인 기간(1~2년)과 범위를 명시해야 법적 효력이 인정됩니다.',
+    singleCol:true,
+    options:[
+      {text:'없다', score:1},
+      {text:'있지만 내용이 모호하다', score:1},
+      {text:'기간·범위가 명시되어 있다', score:3},
+      {text:'법적으로 검토된 조항이 있다', score:4},
+    ]
+  },
+  {
+    step:'Q5', axis:'대체 인력 대응',
+    text:'핵심 직원이 갑자기 퇴사하면 대체 인력 확보까지 얼마나 걸릴까요?',
+    hint:'핵심 직원 의존도가 높을수록 사업 연속성 리스크가 커집니다. 사전 대비가 필요합니다.',
+    options:[
+      {text:'6개월 이상', score:1},
+      {text:'3~6개월', score:1},
+      {text:'1~3개월', score:3},
+      {text:'즉시 가능한 체계가 있다', score:4},
+    ]
+  }
+];
+
+const axisMax=[4,4,4,4,4];
+let currentIdx=0;
+let answers=new Array(QUESTIONS.length).fill(null);
+
+function render(){
+  const q=QUESTIONS[currentIdx];
+  const total=QUESTIONS.length;
+  const pct=Math.round((currentIdx/total)*100);
+  document.getElementById('progLabel').textContent=`질문 ${currentIdx+1} / ${total}`;
+  document.getElementById('progPct').textContent=`${pct}%`;
+  document.getElementById('progFill').style.width=`${pct}%`;
+  document.getElementById('qStep').textContent=q.step;
+  document.getElementById('qText').textContent=q.text;
+  document.getElementById('qHint').textContent=q.hint;
+  const optsEl=document.getElementById('qOpts');
+  optsEl.className='options'+(q.singleCol?' single':'');
+  optsEl.innerHTML='';
+  const saved=answers[currentIdx];
+  q.options.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt'+(saved?.optIdx===i?' selected':'');
+    btn.innerHTML=`<span class="opt-dot"></span>${opt.text}`;
+    btn.onclick=()=>selectOpt(i,opt.score);
+    optsEl.appendChild(btn);
+  });
+  document.getElementById('btnPrev').disabled=(currentIdx===0);
+  const isLast=currentIdx===QUESTIONS.length-1;
+  document.getElementById('btnResult').className='btn-result'+(isLast&&saved!==null?' show':'');
+}
+
+function selectOpt(optIdx,score){
+  answers[currentIdx]={optIdx,score};
+  if(currentIdx===QUESTIONS.length-1){render();}
+  else{currentIdx++;render();}
+}
+function prevQ(){if(currentIdx>0){currentIdx--;render();}}
+
+function showResult(){
+  const maxRaw=axisMax.reduce((a,b)=>a+b,0);
+  const rawScore=answers.reduce((s,a)=>s+(a?.score||0),0);
+  const score=Math.round((rawScore/maxRaw)*100);
+  const axisScores=answers.map((a,i)=>({
+    label:QUESTIONS[i].axis,raw:a?.score||0,max:axisMax[i],
+    pct:Math.round(((a?.score||0)/axisMax[i])*100)
+  }));
+  let type,sub,insight,desc;
+  if(score>=75){
+    type='인적 리스크 관리가 잘 된 대표님';
+    sub='체계적인 보안 장치가 갖춰져 있습니다. 정기 점검만 유지하세요.';
+    insight='현재 리스크 관리 수준이 우수합니다. NDA와 경업금지 조항의 법적 유효성을 주기적으로 검토하세요.';
+    desc='영업비밀과 핵심 인력 리스크에 대한 대비가 잘 갖춰져 있습니다. 계약서 내용이 최신 법령에 부합하는지 1~2년마다 법률 전문가와 검토하는 것을 권장합니다.';
+  }else if(score>=45){
+    type='일부 리스크가 노출된 대표님';
+    sub='인식은 있지만 실행 체계가 부족합니다.';
+    insight='NDA 미체결 직원이 있거나 고객 DB 보안이 미흡하다면 즉시 보완하세요.';
+    desc='전반적인 방향은 잡혀 있으나 세부 실행에 빈틈이 있습니다. 특히 고객 DB 접근 권한 관리와 업무 문서화를 우선적으로 정비하면 퇴사 리스크를 크게 줄일 수 있습니다.';
+  }else{
+    type='인적 리스크가 높은 대표님';
+    sub='지금 당장 계약서와 보안 체계를 점검해야 합니다.';
+    insight='핵심 직원이 오늘 퇴사한다면 회사에 심각한 피해가 발생할 수 있습니다.';
+    desc='영업비밀 보호 장치가 거의 없는 상태입니다. NDA 체결, 고객 DB 보안 설정, 업무 매뉴얼 작성, 경업금지 조항 추가를 즉시 시작해야 합니다. 법률 전문가의 도움을 받아 빠르게 정비하세요.';
+  }
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('scoreBar').style.width='0%';
+  setTimeout(()=>{document.getElementById('scoreBar').style.width=`${score}%`;},100);
+  document.getElementById('resultType').textContent=type;
+  document.getElementById('resultSub').textContent=sub;
+  document.getElementById('insightText').textContent=insight;
+  document.getElementById('resultDesc').textContent=desc;
+  const axesWrap=document.getElementById('axesWrap');
+  axesWrap.innerHTML='';
+  axisScores.forEach(ax=>{
+    const cls=ax.pct>=70?'axis-high':ax.pct>=35?'axis-mid':'axis-low';
+    const label=ax.pct>=70?'양호':ax.pct>=35?'보통':'미흡';
+    axesWrap.innerHTML+=`<div class="axis-row ${cls}"><span class="axis-label">${ax.label}</span><div class="axis-bar-wrap"><div class="axis-bar-fill" style="width:${ax.pct}%"></div></div><span class="axis-score-txt">${label}</span></div>`;
+  });
+  document.getElementById('quizPage').classList.remove('active');
+  document.getElementById('resultPage').classList.add('active');
+  window.scrollTo(0,0);
+}
+function restartQuiz(){
+  currentIdx=0;answers=new Array(QUESTIONS.length).fill(null);
+  document.getElementById('resultPage').classList.remove('active');
+  document.getElementById('quizPage').classList.add('active');
+  render();window.scrollTo(0,0);
+}
+render();
+</script>
+</body>
+</html>

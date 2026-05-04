@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+  // iframe 안이면 즉시 html에 클래스 추가 (배경 투명 처리)
+  if (window.parent && window.parent !== window) {
+    document.documentElement.classList.add('in-iframe');
+  }
+  // 솔루션 페이지로 이동
+  // - iframe 내부에서는 절대 자기 URL을 바꾸지 않음 (모달이 통째로 로드되는 사고 방지)
+  // - 부모창에 postMessage로 위임 → 부모창이 모달 닫기 + 스크롤/이동 결정
+  function goToSolution(url) {
+    if (!url) return;
+    const inFrame = window.parent && window.parent !== window;
+
+    if (!inFrame) {
+      // iframe 아닌 직접 접속 — 단순 이동
+      window.location.href = url;
+      return;
+    }
+
+    try {
+      window.parent.postMessage({ type: 'quiz-master-navigate', url: url }, '*');
+    } catch (e) {
+      // 메시지 실패해도 iframe URL은 절대 건드리지 않음 (사용자가 닫기 버튼으로 빠져나가도록)
+    }
+  }
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1분 경영 스코어 — 종합 경영 점수 진단 | 미래CEO플랜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+* { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif !important; box-sizing: border-box; }
+*{margin:0;padding:0;}
+
+:root{
+  --blue:#3182F6; --blue-d:#1B64DA; --blue-v:#5B9BFF; --blue-l:#EAF3FF;
+  --bg:#F2F4F8; --surface:#fff; --text:#191F28; --text-sub:#6B7684; --muted:#8B95A1;
+  --border:#E5E8EB; --border-l:#EEF1F4; --warn:#F59E0B; --good:#10B981; --bad:#F43F5E;
+}
+body{
+  background:var(--bg);
+  color:var(--text);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px 16px;
+}
+html.in-iframe, html.in-iframe body { background: transparent; }
+html.in-iframe body { padding:32px 20px; }
+
+.page{display:none;width:100%;max-width:600px;}
+.page.active{display:block;}
+.wrap{width:100%;}
+
+/* ========= 인트로 ========= */
+/* ========= 인트로 (miraeceo-quiz 톤 통일) ========= */
+.intro-wrap{
+  width:100%;
+  text-align:center;
+  animation:fadeUp .6s ease both;
+}
+.intro-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:var(--blue-l);
+  color:var(--blue);
+  font-size:12px;
+  font-weight:600;
+  padding:6px 14px;
+  border-radius:100px;
+  margin-bottom:28px;
+  letter-spacing:.02em;
+}
+.intro-badge::before{
+  content:'';
+  width:6px; height:6px;
+  background:var(--blue);
+  border-radius:50%;
+}
+.intro-h1{
+  font-size:clamp(26px, 5vw, 36px);
+  font-weight:700;
+  line-height:1.35;
+  color:var(--text);
+  margin-bottom:16px;
+  letter-spacing:-.02em;
+  word-break:keep-all;
+}
+.intro-h1 em{font-style:normal;color:var(--blue);}
+.intro-sub{
+  font-size:15px;
+  color:var(--text-sub);
+  line-height:1.7;
+  margin-bottom:40px;
+  word-break:keep-all;
+}
+.intro-meta{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  max-width:380px;
+  margin:0 auto 44px;
+  gap:0;
+}
+.intro-meta-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  position:relative;
+}
+.intro-meta-item:not(:last-child)::after{
+  content:'';
+  position:absolute;
+  right:0;
+  top:14%;
+  bottom:14%;
+  width:1px;
+  background:var(--border);
+}
+.intro-meta-num{
+  font-size:26px;
+  font-weight:700;
+  color:var(--blue);
+  letter-spacing:-.02em;
+  line-height:1;
+}
+.intro-meta-label{
+  font-size:13px;
+  color:var(--muted);
+  letter-spacing:-.01em;
+  font-weight:500;
+}
+.btn-start{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--blue);
+  color:#fff;
+  font-size:15px;
+  font-weight:600;
+  padding:16px 40px;
+  border-radius:100px;
+  border:none;
+  cursor:pointer;
+  transition:all .2s;
+  box-shadow:0 4px 16px rgba(49,130,246,.3);
+}
+.btn-start:hover{
+  background:var(--blue-d);
+  transform:translateY(-2px);
+  box-shadow:0 8px 24px rgba(49,130,246,.35);
+}
+.btn-start svg{transition:transform .2s;}
+.btn-start:hover svg{transform:translateX(3px);}
+
+/* ========= 진행 ========= */
+.top-nav{display:flex;align-items:center;justify-content:flex-end;margin-bottom:28px;}
+.btn-back{display:flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-back:hover{border-color:var(--text-sub);color:var(--text);}
+.quiz-cat{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;}
+
+.progress-wrap{margin-bottom:28px;}
+.progress-info{display:flex;justify-content:space-between;margin-bottom:8px;}
+.progress-label{font-size:12px;color:var(--text-sub);font-weight:500;}
+.progress-pct{font-size:12px;color:var(--blue);font-weight:700;}
+.progress-bar{height:3px;background:var(--border);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--blue);border-radius:100px;transition:width .35s ease;}
+
+/* ========= 질문 카드 ========= */
+.q-card{background:#fff;border-radius:18px;padding:36px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px;animation:fadeUp .35s ease both;}
+.q-step{font-size:11px;font-weight:700;color:var(--blue);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.q-text{font-size:clamp(17px,3vw,21px);font-weight:600;color:var(--text);line-height:1.5;margin-bottom:8px;letter-spacing:-.01em;word-break:keep-all;}
+.q-hint{font-size:12px;color:var(--text-sub);line-height:1.6;margin-bottom:24px;word-break:keep-all;}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.options.single{grid-template-columns:1fr;}
+.opt{display:flex;align-items:flex-start;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;text-align:left;line-height:1.45;font-family:inherit;}
+.opt:hover,.opt.selected{border-color:var(--blue);background:var(--blue-l);color:var(--blue-d);}
+.opt-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.opt.selected .opt-dot{border-color:var(--blue);background:var(--blue);}
+.opt.selected .opt-dot::after{content:'';width:5px;height:5px;background:#fff;border-radius:50%;}
+
+/* ========= 하단 nav ========= */
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;}
+.btn-prev{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--text-sub);font-size:13px;font-weight:500;cursor:pointer;padding:8px 0;transition:color .2s;font-family:inherit;}
+.btn-prev:hover{color:var(--text);} .btn-prev:disabled{opacity:.3;cursor:default;}
+.btn-result{display:none;align-items:center;gap:8px;background:var(--blue);color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(49,130,246,.3);font-family:inherit;}
+.btn-result.show{display:flex;} .btn-result:hover{background:var(--blue-d);transform:translateY(-1px);}
+
+/* ========= 결과 (대시보드) ========= */
+.result-back{margin-bottom:16px;}
+.dash{background:#F8FAFC;border-radius:16px;box-shadow:0 16px 48px rgba(15,30,60,.10);border:1px solid #DCE0E5;overflow:hidden;}
+.dash-nav{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#EBEEF2;border-bottom:1px solid #DCE0E5;}
+.dash-dot{width:10px;height:10px;border-radius:50%;}
+.dash-dot.r{background:#F47272;} .dash-dot.y{background:#F4C172;} .dash-dot.g{background:#72D69B;}
+.dash-url{margin-left:12px;font-size:11px;color:var(--muted);font-family:monospace;letter-spacing:-.01em;}
+.dash-body{padding:24px 22px;}
+.dash-bdg{display:inline-flex;font-size:11px;font-weight:700;padding:4px 10px;background:var(--blue-l);color:var(--blue);border-radius:6px;letter-spacing:-.01em;margin-bottom:10px;}
+.dash-tit{font-size:20px;font-weight:800;color:var(--text);letter-spacing:-.02em;margin-bottom:18px;padding-bottom:14px;border-bottom:1px solid var(--border-l);line-height:1.35;}
+
+/* 섹션 라벨 공통 — 좌측 종합점수 / 우측 영역별점수 / 솔루션 박스 라벨 위계 일치 */
+.dash-section-label{font-size:11px;color:var(--text-sub);font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+
+.dash-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:28px;align-items:start;}
+@media(max-width:540px){.dash-grid{grid-template-columns:1fr;gap:20px;}}
+
+/* 좌: 종합 점수 + 추천 */
+.dash-score{margin-bottom:16px;}
+.dash-score-num{font-size:64px;font-weight:800;color:var(--blue);letter-spacing:-.04em;line-height:1;}
+.dash-score-suffix{font-size:20px;color:var(--muted);font-weight:600;margin-left:8px;letter-spacing:-.01em;}
+.dash-score-bar{width:100%;height:8px;background:var(--border-l);border-radius:100px;overflow:hidden;margin-top:12px;}
+.dash-score-fill{height:100%;background:linear-gradient(90deg,var(--blue),var(--blue-v));border-radius:100px;transition:width 1s cubic-bezier(.4,0,.2,1);}
+
+/* 위험 영역 카운트 — 좌측 영역에 정보 한 줄 추가하여 우측과 시각 균형 */
+.dash-status{display:flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;font-weight:600;color:var(--text-sub);letter-spacing:-.01em;}
+.dash-status-dot{width:6px;height:6px;border-radius:50%;background:var(--muted);}
+.dash-status.bad{color:var(--bad);}
+.dash-status.bad .dash-status-dot{background:var(--bad);}
+.dash-status.warn{color:var(--warn);}
+.dash-status.warn .dash-status-dot{background:var(--warn);}
+.dash-status.good{color:var(--blue);}
+.dash-status.good .dash-status-dot{background:var(--blue);}
+
+/* 먼저 필요한 솔루션 — 가로 풀너비 */
+.dash-recos{background:var(--blue-l);border-radius:12px;padding:16px;margin-top:22px;}
+.dash-recos #recosWrap{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+@media(max-width:540px){.dash-recos #recosWrap{grid-template-columns:1fr;}}
+.dash-reco{display:flex;align-items:center;justify-content:space-between;font-size:13px;font-weight:700;color:var(--text);padding:10px 14px;background:#fff;border-radius:8px;cursor:pointer;transition:all .15s;border:1px solid transparent;}
+.dash-reco:hover{border-color:var(--blue);transform:translateX(2px);}
+.dash-reco.disabled{cursor:default;opacity:.7;}
+.dash-reco.disabled:hover{transform:none;border-color:transparent;}
+.dash-reco-name{display:flex;align-items:center;gap:6px;}
+.dash-reco-arrow{font-size:13px;color:var(--blue);font-weight:800;}
+.dash-reco-soon{font-size:10px;font-weight:700;color:var(--muted);background:#F2F4F8;padding:2px 6px;border-radius:4px;}
+
+/* 우: 영역별 점수 */
+.dash-area{display:grid;grid-template-columns:80px 1fr 50px;align-items:center;gap:10px;margin-bottom:9px;}
+.dash-area:last-child{margin-bottom:0;}
+.pa-name{font-size:14px;font-weight:600;color:var(--text);letter-spacing:-.02em;word-break:keep-all;}
+.pa-name.warn{color:var(--warn);}
+.pa-bar{display:block;height:8px;background:var(--border-l);border-radius:100px;overflow:hidden;}
+.pa-fill{display:block;height:100%;background:var(--blue);border-radius:100px;transition:width .8s cubic-bezier(.4,0,.2,1);}
+.pa-fill.warn{background:var(--warn);}
+.pa-fill.bad{background:var(--bad);}
+.pa-num{font-size:14px;font-weight:800;color:var(--text);text-align:right;letter-spacing:-.02em;}
+.pa-num.warn{color:var(--warn);}
+.pa-num.bad{color:var(--bad);}
+
+/* 인사이트/CTA */
+.insight-box{background:#fff;border:1px solid var(--border);border-radius:12px;padding:20px 22px;margin-top:18px;}
+.insight-label{font-size:13px;font-weight:700;color:var(--blue);letter-spacing:-.01em;margin-bottom:12px;}
+/* 인사이트 3단 구조 */
+.insight-status{font-size:14px;font-weight:600;color:var(--text-sub);line-height:1.55;letter-spacing:-.01em;margin-bottom:10px;word-break:keep-all;}
+.insight-risk{font-size:15px;font-weight:700;color:var(--text);line-height:1.7;letter-spacing:-.01em;margin-bottom:14px;word-break:keep-all;padding-left:12px;border-left:3px solid var(--blue);}
+.insight-action{font-size:14px;font-weight:600;color:var(--blue);line-height:1.55;letter-spacing:-.01em;word-break:keep-all;}
+/* 구버전 호환 (남아있을 경우 대비) */
+.insight-text{font-size:16px;font-weight:600;color:var(--text);line-height:1.65;letter-spacing:-.01em;word-break:keep-all;}
+.bottom-cta{margin-top:18px;display:grid;gap:10px;}
+.btn-primary-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--blue);color:#fff;font-size:14px;font-weight:700;padding:16px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(49,130,246,.3);}
+.btn-primary-cta:hover{background:var(--blue-d);transform:translateY(-2px);}
+.btn-retry{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:none;border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:600;padding:13px;border-radius:12px;cursor:pointer;transition:all .2s;}
+.btn-retry:hover{border-color:var(--text-sub);color:var(--text);}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+@media(max-width:480px){
+  .wrap{padding:24px 16px 64px;}
+  .intro-h1{font-size:24px;}
+  .intro-meta{max-width:320px;margin-bottom:36px;}
+  .intro-meta-num{font-size:24px;}
+  .intro-meta-label{font-size:12px;}
+  .q-card{padding:24px 20px;}
+  .q-text{font-size:16px;}
+  .dash-body{padding:20px 18px;}
+  .dash-area{grid-template-columns:70px 1fr 44px;gap:8px;}
+  .pa-name{font-size:12px;}
+  .dash-score-num{font-size:48px;}
+  .dash-score-suffix{font-size:16px;margin-left:6px;}
+}
+</style>
+</head>
+<body>
+
+<!-- ========== 인트로 페이지 ========== -->
+<div id="introPage" class="page active">
+  <div class="intro-wrap">
+    <div class="intro-badge">1분 경영 스코어</div>
+    <h1 class="intro-h1">대표님 회사,<br><em>경영 점수 몇 점</em>일까요?</h1>
+    <p class="intro-sub">5가지 영역을 1분 안에 점수로 확인하고,<br>가장 약한 곳부터 다지세요.</p>
+
+    <div class="intro-meta">
+      <div class="intro-meta-item">
+        <span class="intro-meta-num">10</span>
+        <span class="intro-meta-label">문항</span>
+      </div>
+      <div class="intro-meta-item">
+        <span class="intro-meta-num">1분</span>
+        <span class="intro-meta-label">소요시간</span>
+      </div>
+      <div class="intro-meta-item">
+        <span class="intro-meta-num">5</span>
+        <span class="intro-meta-label">진단 영역</span>
+      </div>
+    </div>
+
+    <button class="btn-start" onclick="startQuiz()">
+      진단 시작하기
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ========== 질문 페이지 ========== -->
+<div id="quizPage" class="page">
+  <div class="wrap">
+    <div class="top-nav">
+      <span class="quiz-cat">종합 경영 진단</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label" id="progLabel"></span>
+        <span class="progress-pct" id="progPct"></span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-step" id="qStep"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-hint" id="qHint"></div>
+      <div class="options" id="qOpts"></div>
+    </div>
+    <div class="bottom-nav">
+      <button class="btn-prev" id="btnPrev" onclick="prevQ()" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        이전
+      </button>
+      <button class="btn-result" id="btnResult" onclick="showResult()">
+        결과 보기
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ========== 결과 페이지 ========== -->
+<div id="resultPage" class="page">
+  <div class="wrap">
+    <div class="result-back">
+      <button class="btn-back" onclick="restartQuiz()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        다시 진단하기
+      </button>
+    </div>
+
+    <div class="dash">
+      <div class="dash-nav">
+        <div class="dash-dot r"></div>
+        <div class="dash-dot y"></div>
+        <div class="dash-dot g"></div>
+        <div class="dash-url">ceoplan.kr/dashboard</div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-bdg">진단 완료</div>
+        <div class="dash-tit">대표님 회사 종합 진단 결과</div>
+
+        <div class="dash-grid">
+          <!-- 좌: 종합 점수 + 위험 카운트 -->
+          <div>
+            <div class="dash-score">
+              <div class="dash-section-label">종합 경영 점수</div>
+              <div class="dash-score-num"><span id="totalNum">0</span><span class="dash-score-suffix">/ 100</span></div>
+              <div class="dash-score-bar"><div class="dash-score-fill" id="totalBar" style="width:0%"></div></div>
+              <div class="dash-status" id="dashStatus">
+                <span class="dash-status-dot"></span>
+                <span id="dashStatusText">진단 완료</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 우: 영역별 점수 -->
+          <div>
+            <div class="dash-section-label">영역별 점수</div>
+            <div id="areasWrap"></div>
+          </div>
+        </div>
+
+        <!-- 먼저 필요한 솔루션 — 가로 풀너비로 좌우 정렬 어긋남 해소 + 다음 행동 강조 -->
+        <div class="dash-recos">
+          <div class="dash-section-label">먼저 필요한 솔루션</div>
+          <div id="recosWrap"></div>
+        </div>
+
+        <div class="insight-box">
+          <div class="insight-label">핵심 인사이트</div>
+          <div class="insight-status" id="insightStatus"></div>
+          <div class="insight-risk" id="insightRisk"></div>
+          <div class="insight-action" id="insightAction"></div>
+        </div>
+
+        <div class="bottom-cta">
+          <button class="btn-primary-cta" id="btnPrimaryCta" onclick="goToPrimary()">
+            <span id="primaryCtaLabel">전체 솔루션 보러가기</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </button>
+          <button class="btn-retry" onclick="restartQuiz()">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            처음부터 다시하기
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========== 영역 정의 ========== */
+const AREAS = {
+  mrisk:      { name: '경영 리스크', solution: 'solution-risk.html',        soluLabel: '경영 리스크 관리 솔루션 보기' },
+  succession: { name: '승계 준비',   solution: 'solution-inheritance.html', soluLabel: '상속·증여 솔루션 보기' },
+  hrisk:      { name: '인적 리스크', solution: null,                        soluLabel: '인적 리스크 진단(준비 중)' },
+  asset:      { name: '자산 균형',   solution: 'solution-wealth.html',      soluLabel: '자산증식 솔루션 보기' },
+  fund:       { name: '지원금',      solution: 'index.html#sol-section',   soluLabel: '지원금 진단 둘러보기' }
+};
+
+/* ========== 10개 질문 (영역당 2문항) ========== */
+const QUESTIONS = [
+  // ───── 경영 리스크 (정관·명의신탁·경영권) ─────
+  { area: 'mrisk',
+    text: '회사 정관에 임원 퇴직금·유족보상금 규정이 명시돼 있나요?',
+    hint: '정관에 규정이 없으면 퇴직금 비용 처리 한도가 크게 줄어들고, 세무조사 리스크가 발생할 수 있습니다.',
+    options: [
+      { text: '두 항목 모두 정비돼 있다', score: 4 },
+      { text: '하나만 있거나 오래 전 정관 그대로다', score: 2 },
+      { text: '아예 없다', score: 1 },
+      { text: '정관 내용을 잘 모르겠다', score: 1 }
+    ]
+  },
+  { area: 'mrisk',
+    text: '명의신탁(차명) 주식이나 가지급금이 정리되지 않은 상태인가요?',
+    hint: '명의신탁은 증여세·과징금 리스크의 시한폭탄, 가지급금은 인정이자·세무조사의 단골 항목입니다.',
+    options: [
+      { text: '둘 다 없다 / 모두 정리 완료', score: 4 },
+      { text: '하나는 정리됐지만 다른 하나가 남아있다', score: 2 },
+      { text: '둘 다 있는 채로 방치되고 있다', score: 1 },
+      { text: '있는지 잘 모르겠다', score: 1 }
+    ]
+  },
+
+  // ───── 승계 준비 ─────
+  { area: 'succession',
+    text: '가업승계 또는 후계자 준비를 시작하셨나요?',
+    hint: '가업상속공제·증여세 특례 혜택은 10년의 사전 설계가 필요합니다. 시작 시점이 빠를수록 절세 폭이 큽니다.',
+    options: [
+      { text: '체계적인 로드맵으로 진행 중', score: 4 },
+      { text: '가족과 상의는 했지만 실행은 미정', score: 2 },
+      { text: '필요성은 알지만 손도 못 댔다', score: 1 },
+      { text: '아직 생각해본 적 없다', score: 1 }
+    ]
+  },
+  { area: 'succession',
+    text: '비상장주식 가치 평가를 받아본 적이 있나요?',
+    hint: '주식 가치를 모르면 증여·상속 세금 규모도 알 수 없습니다. 가치가 낮을 때 미리 이전하는 것이 핵심.',
+    options: [
+      { text: '최근 1~2년 내 정식 평가받았다', score: 4 },
+      { text: '오래전에 한 번 받아봤다', score: 2 },
+      { text: '대략 알지만 정식 평가는 없다', score: 2 },
+      { text: '평가받아본 적 없다', score: 1 }
+    ]
+  },
+
+  // ───── 인적 리스크 (보안 컨셉 - 오피스키퍼 유도) ─────
+  { area: 'hrisk',
+    text: '핵심 직원이 퇴사할 때 거래처·노하우 유출에 대한 대비책이 있나요?',
+    hint: '직원 한 명의 퇴사가 거래처 셋을 잃는 일이 됩니다. 보안 시스템과 사전 통제가 필요합니다.',
+    options: [
+      { text: '보안 솔루션 + 비밀유지 서약 모두 운영', score: 4 },
+      { text: '서약은 받지만 보안 시스템은 없다', score: 2 },
+      { text: '구두 약속 정도가 전부다', score: 1 },
+      { text: '아무런 대비가 없다', score: 1 }
+    ]
+  },
+  { area: 'hrisk',
+    text: '회사 내부 자료의 접근 통제·반출 로그 관리가 되고 있나요?',
+    hint: '누가 어떤 파일을 보고 어디로 보냈는지 모르면, 유출이 일어나도 증거가 없습니다.',
+    options: [
+      { text: '문서 보안 시스템으로 통제·로그 모두 관리', score: 4 },
+      { text: '권한 분리 정도만 운영', score: 2 },
+      { text: '도입 검토 중이지만 미실행', score: 2 },
+      { text: '전혀 통제가 없다', score: 1 }
+    ]
+  },
+
+  // ───── 자산 균형 (법인 vs 개인) ─────
+  { area: 'asset',
+    text: '법인 통장에 장기간 쌓여있는 잉여 자금이 있나요?',
+    hint: '법인에 쌓아두기만 하면 법인세에 더해 향후 배당·상속 시 추가 세금이 발생합니다.',
+    options: [
+      { text: '적정 운영자금만 유지하고 있다', score: 4 },
+      { text: '약간 쌓여있지만 활용 계획 있다', score: 3 },
+      { text: '꽤 쌓여있는데 어떻게 빼야 할지 모른다', score: 1 },
+      { text: '오랫동안 많이 쌓여있다', score: 1 }
+    ]
+  },
+  { area: 'asset',
+    text: '법인 자산을 개인으로 합법적으로 이전하는 전략이 있나요?',
+    hint: '대표 급여·배당·퇴직금·자기주식 매입 등 다양한 경로의 조합이 핵심입니다.',
+    options: [
+      { text: '전문가와 함께 다년 설계 중', score: 4 },
+      { text: '일부 알고 있지만 실행은 부분적', score: 2 },
+      { text: '관심 있어 검토 중', score: 2 },
+      { text: '전혀 모르거나 손대지 못함', score: 1 }
+    ]
+  },
+
+  // ───── 지원금 (정책자금·정부지원) ─────
+  { area: 'fund',
+    text: '최근 1년 안에 정부 지원금이나 정책자금을 받아본 적 있나요?',
+    hint: '연 매출 규모와 무관하게 신청 가능한 지원사업이 매년 수백 건 운영됩니다.',
+    options: [
+      { text: '3건 이상 수혜 / 정기적으로 활용', score: 4 },
+      { text: '1~2건 받아봤다', score: 3 },
+      { text: '신청은 했지만 받지 못했다', score: 2 },
+      { text: '한 번도 받아본 적 없다', score: 1 }
+    ]
+  },
+  { area: 'fund',
+    text: '우리 회사가 신청 가능한 지원사업을 정기적으로 모니터링하고 있나요?',
+    hint: '공고 시점을 놓치면 1년을 기다려야 합니다. 체계적인 모니터링이 절세보다 큰 효과를 낼 수 있습니다.',
+    options: [
+      { text: '내부 또는 외부 전문가가 정기 모니터링', score: 4 },
+      { text: '가끔 검색하거나 세무사에 의존', score: 2 },
+      { text: '들어오는 공지만 본다', score: 1 },
+      { text: '아예 알아보지 않는다', score: 1 }
+    ]
+  }
+];
+
+const TOTAL = QUESTIONS.length;
+let curIdx = 0;
+const answers = new Array(TOTAL).fill(null);
+let primarySolutionUrl = 'index.html#sol-section';
+
+/* ========== 페이지 전환 ========== */
+function notifyParentHeight(){
+  if (!(window.parent && window.parent !== window)) return;
+  // 다중 시점에서 측정해 부모에게 보냄 — 폰트/이미지 로딩, 애니메이션 후의 정확한 값 확보
+  const send = () => {
+    const h = Math.max(
+      document.documentElement.scrollHeight,
+      document.body.scrollHeight,
+      document.documentElement.offsetHeight,
+      document.body.offsetHeight
+    );
+    try {
+      window.parent.postMessage({ type: 'quiz-master-resize', height: h }, '*');
+    } catch(e){}
+  };
+  send();
+  requestAnimationFrame(() => requestAnimationFrame(send));
+  setTimeout(send, 80);
+  setTimeout(send, 250);
+}
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (window.parent && window.parent !== window) {
+    try { window.parent.scrollTo(0, 0); } catch(e){}
+  }
+  window.scrollTo(0, 0);
+  notifyParentHeight();
+}
+
+function startQuiz(){
+  if (typeof autoNextTimer !== 'undefined' && autoNextTimer !== null) {
+    clearTimeout(autoNextTimer); autoNextTimer = null;
+  }
+  curIdx = 0;
+  showPage('quizPage');
+  renderQ();
+}
+
+function restartQuiz(){
+  if (typeof autoNextTimer !== 'undefined' && autoNextTimer !== null) {
+    clearTimeout(autoNextTimer); autoNextTimer = null;
+  }
+  curIdx = 0;
+  for (let i = 0; i < TOTAL; i++) answers[i] = null;
+  showPage('introPage');
+}
+
+/* 자동 진행 setTimeout 핸들 — race condition 방지용 */
+let autoNextTimer = null;
+
+/* ========== 질문 렌더링 ========== */
+function renderQ(){
+  // 안전 가드: 인덱스가 범위를 벗어나면 즉시 종료
+  if (curIdx < 0 || curIdx >= TOTAL) return;
+  const q = QUESTIONS[curIdx];
+  if (!q) return;
+
+  const pct = Math.round(((curIdx) / TOTAL) * 100);
+  document.getElementById('progLabel').textContent = `질문 ${curIdx + 1} / ${TOTAL}`;
+  document.getElementById('progPct').textContent = `${pct}%`;
+  document.getElementById('progFill').style.width = `${pct}%`;
+
+  document.getElementById('qStep').textContent = `Q${curIdx + 1}`;
+  document.getElementById('qText').textContent = q.text;
+  document.getElementById('qHint').textContent = q.hint;
+
+  const wrap = document.getElementById('qOpts');
+  // quiz-master는 옵션이 길어 모두 single 1열
+  wrap.className = 'options single';
+  wrap.innerHTML = '';
+  q.options.forEach((o, i) => {
+    const b = document.createElement('button');
+    b.className = 'opt' + (answers[curIdx] === i ? ' selected' : '');
+    b.innerHTML = `<span class="opt-dot"></span>${o.text}`;
+    b.onclick = () => selectOpt(i);
+    wrap.appendChild(b);
+  });
+
+  document.getElementById('btnPrev').disabled = curIdx === 0;
+  const isLast = curIdx === TOTAL - 1;
+  const saved = answers[curIdx] !== null;
+  document.getElementById('btnResult').className = 'btn-result' + (isLast && saved ? ' show' : '');
+}
+
+function selectOpt(i){
+  // 안전 가드: 잘못된 인덱스에서 호출되면 무시
+  if (curIdx < 0 || curIdx >= TOTAL) return;
+
+  answers[curIdx] = i;
+  renderQ();
+
+  // 기존에 예약된 자동 진행 타이머가 있으면 취소 (race condition 방지)
+  // — 사용자가 답변을 빠르게 변경한 경우, 누적된 setTimeout이 curIdx를 잘못 증가시키는 버그 차단
+  if (autoNextTimer !== null) {
+    clearTimeout(autoNextTimer);
+    autoNextTimer = null;
+  }
+
+  // 마지막 문항(Q10)이 아닌 경우에만 자동 진행
+  // 마지막 문항은 사용자가 [결과 보기] 버튼을 직접 눌러야 진입
+  if (curIdx < TOTAL - 1) {
+    autoNextTimer = setTimeout(() => {
+      autoNextTimer = null;
+      // 콜백 실행 시점에도 한 번 더 안전 체크 (페이지 전환 등으로 상태 변했을 수 있음)
+      if (curIdx < TOTAL - 1) {
+        curIdx++;
+        renderQ();
+      }
+    }, 220);
+  }
+}
+
+function prevQ(){
+  // 자동 진행 타이머도 취소 (이전 버튼이 자동 다음과 충돌 안 하게)
+  if (autoNextTimer !== null) {
+    clearTimeout(autoNextTimer);
+    autoNextTimer = null;
+  }
+  if (curIdx > 0) { curIdx--; renderQ(); }
+}
+
+/* ========== 결과 계산 ========== */
+function calcResult(){
+  // 영역별 점수: 영역당 2문항 × 4점 = 8점 만점 → 100점 환산
+  const areaScore = {};
+  Object.keys(AREAS).forEach(a => areaScore[a] = { sum: 0, count: 0 });
+
+  QUESTIONS.forEach((q, i) => {
+    const score = q.options[answers[i]].score;
+    areaScore[q.area].sum += score;
+    areaScore[q.area].count += 1;
+  });
+
+  const areas = Object.keys(AREAS).map(key => {
+    const max = areaScore[key].count * 4;
+    const pct = max > 0 ? Math.round((areaScore[key].sum / max) * 100) : 0;
+    return { key, name: AREAS[key].name, score: pct };
+  });
+
+  const total = Math.round(areas.reduce((s, a) => s + a.score, 0) / areas.length);
+  return { total, areas };
+}
+
+function showResult(){
+  // 안전 가드: 모든 답이 채워지지 않았으면 결과 계산 중단
+  // — 혹시라도 누락된 답으로 인해 calcResult에서 에러 나는 것 방지
+  for (let i = 0; i < TOTAL; i++) {
+    if (answers[i] === null || answers[i] === undefined) {
+      // 답이 빈 첫 문항으로 이동
+      if (autoNextTimer !== null) { clearTimeout(autoNextTimer); autoNextTimer = null; }
+      curIdx = i;
+      renderQ();
+      return;
+    }
+  }
+
+  // 자동 진행 타이머가 남아있으면 취소
+  if (autoNextTimer !== null) { clearTimeout(autoNextTimer); autoNextTimer = null; }
+
+  const { total, areas } = calcResult();
+
+  // 종합 점수 애니메이션
+  const numEl = document.getElementById('totalNum');
+  const barEl = document.getElementById('totalBar');
+  let cur = 0;
+  const step = Math.max(1, Math.ceil(total / 30));
+  const tick = setInterval(() => {
+    cur = Math.min(cur + step, total);
+    numEl.textContent = cur;
+    if (cur >= total) clearInterval(tick);
+  }, 25);
+  setTimeout(() => { barEl.style.width = `${total}%`; }, 100);
+
+  // 영역별 점수
+  const wrap = document.getElementById('areasWrap');
+  wrap.innerHTML = '';
+  areas.forEach(a => {
+    const tone = a.score < 50 ? 'bad' : (a.score < 70 ? 'warn' : '');
+    const div = document.createElement('div');
+    div.className = 'dash-area';
+    div.innerHTML = `
+      <span class="pa-name ${tone}">${a.name}</span>
+      <span class="pa-bar"><span class="pa-fill ${tone}" style="width:0%"></span></span>
+      <span class="pa-num ${tone}">${a.score}${a.score < 50 ? ' ⚠' : ''}</span>
+    `;
+    wrap.appendChild(div);
+    setTimeout(() => {
+      div.querySelector('.pa-fill').style.width = `${a.score}%`;
+    }, 200);
+  });
+
+  // 추천 솔루션 (점수 낮은 순 2개)
+  const sorted = [...areas].sort((a, b) => a.score - b.score);
+  const top2 = sorted.slice(0, 2);
+  const recos = document.getElementById('recosWrap');
+  recos.innerHTML = '';
+  top2.forEach(a => {
+    const cfg = AREAS[a.key];
+    const hasSol = !!cfg.solution;
+    const div = document.createElement('div');
+    div.className = 'dash-reco' + (hasSol ? '' : ' disabled');
+    if (hasSol) div.onclick = () => goToSolution(cfg.solution);
+    div.innerHTML = `
+      <span class="dash-reco-name">→ ${a.name}</span>
+      ${hasSol
+        ? '<span class="dash-reco-arrow">›</span>'
+        : '<span class="dash-reco-soon">준비 중</span>'}
+    `;
+    recos.appendChild(div);
+  });
+
+  // 메인 CTA 분기
+  // - 종합 60점 미만 = 다수 영역 정비 필요 → [전체 솔루션] 섹션으로 직결
+  // - 그 외 = 가장 약한 영역의 솔루션 페이지
+  let primaryLabel;
+  if (total < 60) {
+    primarySolutionUrl = 'index.html#sol-section';
+    primaryLabel = '전체 솔루션 둘러보기';
+  } else {
+    const primaryArea = sorted[0];
+    const primaryCfg = AREAS[primaryArea.key];
+    primarySolutionUrl = primaryCfg.solution || 'index.html#sol-section';
+    primaryLabel = primaryCfg.solution
+      ? primaryCfg.soluLabel
+      : '전체 솔루션 둘러보기';
+  }
+  document.getElementById('primaryCtaLabel').textContent = primaryLabel;
+
+  // 좌측 종합 점수 영역에 위험 영역 카운트 한 줄 추가 — 객관 정보로 점수 해석 도움
+  const dangerCount = areas.filter(a => a.score < 50).length;
+  const warnCount   = areas.filter(a => a.score >= 50 && a.score < 70).length;
+  const statusEl    = document.getElementById('dashStatus');
+  const statusTxtEl = document.getElementById('dashStatusText');
+  let statusTone, statusText;
+  if (dangerCount > 0) {
+    statusTone = 'bad';
+    statusText = `위험 영역 ${dangerCount}개 / ${areas.length}`;
+  } else if (warnCount > 0) {
+    statusTone = 'warn';
+    statusText = `보완 필요 ${warnCount}개 / ${areas.length}`;
+  } else {
+    statusTone = 'good';
+    statusText = `모든 영역 안정`;
+  }
+  statusEl.className = 'dash-status ' + statusTone;
+  statusTxtEl.textContent = statusText;
+
+  // 인사이트 — 3단 구조 (현재상태 / 핵심위험 / 권고)
+  // - 점수 데이터 나열 대신 실제 비즈니스 위험으로 신뢰성 확보
+  // - 영역별 임팩트 메시지로 사용자가 "왜 이 추천인지" 명확히 인지
+  const lowest = sorted[0];
+  const second = sorted[1];
+
+  // 한글 조사 자동 처리 — 받침 유무에 따라 "이/가", "은/는", "와/과" 선택
+  const hasJongsung = (str) => {
+    const lastChar = str.charCodeAt(str.length - 1);
+    if (lastChar < 0xAC00 || lastChar > 0xD7A3) return false; // 한글 음절 아님
+    return (lastChar - 0xAC00) % 28 !== 0;
+  };
+  const josa = (str, withBatchim, withoutBatchim) =>
+    str + (hasJongsung(str) ? withBatchim : withoutBatchim);
+
+  // 영역별 핵심 위험 메시지 + 권고 액션 — 컨설팅 리포트 톤
+  const AREA_INSIGHTS = {
+    succession: {
+      risk:   '준비 없이 맞이하는 승계는 최대 50%의 상속·증여세 부담으로 평생 일군 회사의 존속 자체를 위협할 수 있습니다.',
+      action: '대표님께 맞춰진 승계 준비와 상속세 절감 방법을 확인하실 것을 권장합니다.'
+    },
+    mrisk: {
+      risk:   '정관 한 줄, 명의신탁 한 건이 경영권 분쟁과 수십억 원의 세금 추징으로 이어진 사례가 매년 늘고 있습니다.',
+      action: '대표님 회사의 정관·명의신탁·경영권 방어 전략을 확인하실 것을 권장합니다.'
+    },
+    hrisk: {
+      risk:   '핵심 인력 한 명의 이탈이 수년간 쌓아온 기술과 고객 데이터를 통째로 가져가는 위험이 됩니다.',
+      action: '대표님 회사에 맞는 NDA·핵심인력 잔류 설계를 확인하실 것을 권장합니다.'
+    },
+    asset: {
+      risk:   '법인과 개인 자산이 뒤섞이면 가지급금·세무조사 리스크로 불필요한 세금과 불이익을 떠안게 됩니다.',
+      action: '대표님 회사의 법인-개인 자산 분리 전략을 확인하실 것을 권장합니다.'
+    },
+    fund: {
+      risk:   '매년 수천만~수억 원 규모의 정부지원금과 세액공제가 신청 부재로 사라지고 있습니다.',
+      action: '대표님 회사가 받을 수 있는 지원금과 세액공제 혜택을 확인하실 것을 권장합니다.'
+    }
+  };
+
+  const lowestInsight = AREA_INSIGHTS[lowest.key];
+
+  // 1단: 현재 상태 — 점수 구간 + 영역 개수 기반
+  let statusMsg;
+  if (total < 40) {
+    statusMsg = `종합 ${total}점, 즉시 정비가 필요한 단계입니다.`;
+  } else if (total < 60) {
+    statusMsg = (dangerCount >= 2)
+      ? `종합 ${total}점, 다수 영역에서 보완이 필요한 단계입니다.`
+      : `종합 ${total}점, ${josa(lowest.name, '에', '에')} 보완이 필요한 단계입니다.`;
+  } else if (total < 80) {
+    statusMsg = (lowest.score < 50)
+      ? `종합 ${total}점, 평균은 양호하나 ${josa(lowest.name, '이', '가')} 균형을 깨고 있습니다.`
+      : `종합 ${total}점, 전반적으로 안정적인 단계입니다.`;
+  } else {
+    statusMsg = `종합 ${total}점, 전 영역이 매우 안정적인 단계입니다.`;
+  }
+
+  // 2단: 핵심 위험 — 가장 약한 영역의 비즈니스 임팩트
+  // 우수 구간(80↑)은 위험 톤 약화 — "유지가 핵심" 톤으로
+  let riskMsg = lowestInsight.risk;
+  if (total >= 80) {
+    riskMsg = `현재 수준을 유지하지 못하면, ${riskMsg}`;
+  }
+
+  // 3단: 권고 액션 — 영역별 액션 (점수 구간에 따라 톤 강조)
+  let actionMsg = lowestInsight.action;
+  if (total < 40) {
+    actionMsg = `지금 즉시, ${actionMsg}`;
+  } else if (total >= 80) {
+    actionMsg = `정기 점검 차원에서 ${actionMsg}`;
+  }
+
+  document.getElementById('insightStatus').textContent = statusMsg;
+  document.getElementById('insightRisk').textContent = riskMsg;
+  document.getElementById('insightAction').textContent = actionMsg;
+
+  showPage('resultPage');
+}
+
+function goToPrimary(){
+  goToSolution(primarySolutionUrl);
+}
+
+/* 첫 로드 시점에도 부모에게 높이 통지 (인트로 페이지 기준) */
+window.addEventListener('load', notifyParentHeight);
+document.addEventListener('DOMContentLoaded', notifyParentHeight);
+</script>
+
+</body>
+</html>
