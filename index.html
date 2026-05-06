@@ -2464,6 +2464,20 @@ function showToast(m){
 function openQuizModal(src){
   const modal  = document.getElementById('quiz-modal');
   const iframe = document.getElementById('quiz-modal-iframe');
+  
+  // [v6 백업] 외부 hash 진입 첫 호출 시 prod-section으로 강제 스크롤 보장
+  // (handleQuizHashOnLoad의 스크롤이 실패해도 여기서 한 번 더 시도)
+  if (!window._quizFirstOpenDone) {
+    window._quizFirstOpenDone = true;
+    if (window.location.hash && window.location.hash.startsWith('#quiz-')) {
+      const _section = document.getElementById('prod-section');
+      if (_section) {
+        const _targetY = _section.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo(0, _targetY);
+      }
+    }
+  }
+  
   // 디폴트 height (측정 실패 시 폴백)
   iframe.style.height = '720px';
   iframe.src = src;
