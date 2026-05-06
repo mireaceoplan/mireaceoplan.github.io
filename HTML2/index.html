@@ -2340,6 +2340,34 @@ footer .w { max-width:1500px; }
 /* 상세 페이지에서 "법인 대표입니다/소상공인입니다/셀러·벤더입니다" 클릭 시 */
 /* 해당 탭이 활성화된 상태로 메인 페이지가 열리도록 처리 */
 /* 지원 해시: #corp, #small, #seller, #sol-corp, #sol-small, #sol-seller */
+
+// ============= 퀴즈 모달 Hash 라우팅 (외부 진입용) =============
+// URL의 #quiz-master, #quiz-mrisk 등으로 해당 퀴즈 모달 자동 열림
+// 메일·외부 광고에서 직접 특정 퀴즈로 진입 가능
+(function handleQuizHashOnLoad() {
+  const validQuizzes = ['master', 'mrisk', 'succession', 'risk', 'asset', 'fund'];
+  const hash = (window.location.hash || '').replace('#', '');
+  
+  if (!hash.startsWith('quiz-')) return;
+  const quizName = hash.replace('quiz-', '');
+  if (!validQuizzes.includes(quizName)) return;
+  
+  function applyQuizHash() {
+    if (typeof openQuizModal === 'function') {
+      openQuizModal(`quiz-${quizName}.html`);
+    } else {
+      // openQuizModal이 아직 정의 안 됐으면 잠시 대기 후 재시도
+      setTimeout(applyQuizHash, 100);
+    }
+  }
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyQuizHash);
+  } else {
+    applyQuizHash();
+  }
+})();
+
 (function handleGnbHashOnLoad() {
   const validTargets = ['corp', 'small', 'seller'];
   let hash = (window.location.hash || '').replace('#', '');
