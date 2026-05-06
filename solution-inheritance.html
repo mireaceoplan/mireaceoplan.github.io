@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>상속·증여 — 미래CEO플랜</title>
+<!-- ═══ Open Graph (카카오톡·페이스북·슬랙 미리보기) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="미래CEO플랜">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="상속·승계 플랜 | 미래CEO플랜">
+<meta property="og:description" content="10년의 골든타임으로 세금을 아낍니다. 세무조사 리스크 제로의 상속·승계 플랜.">
+<meta property="og:url" content="https://ceoplan.netlify.app/solution-inheritance.html">
+<meta property="og:image" content="https://ceoplan.netlify.app/og-solution-inheritance.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="상속·승계 플랜 | 미래CEO플랜">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="상속·승계 플랜 | 미래CEO플랜">
+<meta name="twitter:description" content="10년의 골든타임으로 세금을 아낍니다. 세무조사 리스크 제로의 상속·승계 플랜.">
+<meta name="twitter:image" content="https://ceoplan.netlify.app/og-solution-inheritance.png">
+
+<!-- SEO description (이미 있으면 중복되지만 해롭지 않음) -->
+<meta name="description" content="10년의 골든타임으로 세금을 아낍니다. 세무조사 리스크 제로의 상속·승계 플랜.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root {
+  --blue:#3182F6; --blue-d:#1B64DA; --blue-l:#EFF6FF; --blue-soft:#EEF5FF;
+  --navy:#0D1120; --navy2:#131829;
+  --text:#191F28; --mid:#4A5462; --muted:#8B95A1;
+  --bg:#F7F9FC; --white:#FFFFFF; --border:#E5E8EF; --border-l:#F0F3F8;
+  --red:#F04452;
+  --gray-soft:#F4F6FA;
+  --gray-card:#F7F8FA;
+  --gray-hover:#EEF0F5;
+  --green:#10B981; --green-d:#059669; --green-l:#D1FAE5;
+  --gold:#C9A961; --gold-l:#FEF9E7;
+  --max:1100px; --pad:40px;
+  --fs-display-1: 60px; --fs-display-2: 40px;
+  --fs-h2: 36px; --fs-h2-sm: 26px;
+  --fs-quote: 28px; --fs-stat: 48px; --fs-stat-lg: 56px;
+  --fs-title-lg: 20px; --fs-body-xl: 18px;
+  --fs-title: 17px; --fs-title-sm: 16px;
+  --fs-body-lg: 16px; --fs-body: 15px; --fs-body-sm: 14px;
+  --fs-caption: 12px; --fs-caption-sm: 11px; --fs-micro: 10px;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,sans-serif; background:#fff; color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+button,a { font-family:inherit; cursor:pointer; border:none; background:none; text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+.w { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+.w-narrow { max-width:760px; margin:0 auto; padding:0 var(--pad); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.6)} }
+
+.rev { opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.rev.on { opacity:1; transform:translateY(0); }
+.rev-d1{transition-delay:.1s}.rev-d2{transition-delay:.2s}.rev-d3{transition-delay:.3s}
+
+/* GNB */
+.gnb { position:fixed; top:0; left:0; right:0; z-index:600; background:rgba(255,255,255,.97); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); box-shadow:0 2px 16px rgba(0,0,0,.04); }
+.gnb-inner { max-width:var(--max); margin:0 auto; padding:0 var(--pad); display:flex; flex-direction:column; }
+.gnb.scrolled .gnb-inner { flex-direction:row; align-items:center; height:64px; }
+.gnb.scrolled .gnb-row-top { height:auto; flex-shrink:0; margin-right:28px; }
+.gnb.scrolled .gnb-row-bottom { height:auto; flex:1; }
+.gnb.scrolled .gnb-label { display:none; }
+.gnb.scrolled .gnb-t { height:64px; }
+.gnb-row-top { display:flex; align-items:center; height:52px; }
+.gnb-logo { font-size:21px; font-weight:800; letter-spacing:-.4px; cursor:pointer; flex-shrink:0; color:var(--text); text-decoration:none; }
+.gnb-logo em { color:var(--blue); font-style:normal; }
+.gnb-row-bottom { display:flex; align-items:center; gap:8px; height:56px; }
+.gnb-label { font-size:15.5px; font-weight:700; color:var(--muted); margin-right:6px; flex-shrink:0; }
+.gnb-targets { display:flex; gap:2px; margin-right:auto; }
+.gnb-t { display:inline-flex; align-items:center; gap:7px; font-size:16px; font-weight:600; color:var(--mid); padding:0 14px; height:56px; border-bottom:2px solid transparent; transition:all .2s; white-space:nowrap; background:none; cursor:pointer; text-decoration:none; }
+.gnb-t:hover { color:var(--text); }
+.gnb-t.active { color:var(--text); }
+.gnb-t[data-target="corp"].active { border-bottom-color:#3182F6; }
+.gnb-btn { background:var(--blue); color:#fff; padding:11px 22px; border-radius:999px; font-size:16px; font-weight:700; display:inline-flex; align-items:center; gap:8px; transition:all .18s; flex-shrink:0; letter-spacing:-.01em; box-shadow:0 2px 8px rgba(49,130,246,.25); cursor:pointer; }
+.gnb-btn:hover { background:var(--blue-d); transform:translateY(-1px); box-shadow:0 6px 16px rgba(49,130,246,.35); }
+.gnb-btn-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.85); animation:pulse 1.8s infinite; }
+
+/* HERO */
+.hero { position:relative; min-height:85vh; display:flex; align-items:center; overflow:hidden; padding:120px var(--pad) 100px; background:#fff; }
+.hero::before { content:''; position:absolute; inset:0; z-index:0; background:radial-gradient(circle at 90% 10%, rgba(49,130,246,.05) 0%, transparent 40%), radial-gradient(circle at 10% 90%, rgba(16,185,129,.04) 0%, transparent 40%); }
+.hero-inner { position:relative; z-index:2; max-width:var(--max); width:100%; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:72px; align-items:center; }
+.hero-copy { animation:fadeUp .8s ease both; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:var(--fs-caption); font-weight:700; color:var(--blue); letter-spacing:.15em; text-transform:uppercase; padding:7px 14px; border-radius:100px; background:var(--blue-soft); margin-bottom:24px; }
+.hero-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--blue); animation:pulse 1.8s infinite; }
+.hero-title { font-size:48px; font-weight:700; line-height:1.2; letter-spacing:-.035em; word-break:keep-all; margin-bottom:32px; color:var(--text); }
+.hero-title em { color:var(--text); font-style:normal; font-weight:900; }
+.hero-sub { font-size:18px; line-height:1.65; letter-spacing:-.015em; color:var(--mid); word-break:keep-all; margin-bottom:48px; }
+.hero-cta-row { display:flex; gap:14px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; gap:10px; font-size:var(--fs-title-sm); font-weight:700; padding:16px 32px; border-radius:100px; transition:all .2s; letter-spacing:-.01em; cursor:pointer; }
+.btn-primary { background:var(--blue); color:#fff; box-shadow:0 8px 28px rgba(49,130,246,.3); }
+.btn-primary:hover { background:var(--blue-d); transform:translateY(-2px); }
+.btn-ghost { background:#fff; color:var(--text); border:1.5px solid var(--border); }
+.btn-ghost:hover { border-color:var(--text); }
+.hero-visual { position:relative; animation:fadeUp .8s ease .2s both; aspect-ratio:4/5; border-radius:24px; overflow:hidden; background:var(--gray-card); box-shadow:0 30px 80px rgba(10,22,40,.12); }
+.hero-visual img { width:100%; height:100%; object-fit:cover; }
+
+/* 핵심 약속 */
+.promise-sec { padding:140px 0; background:#fff; position:relative; }
+.promise-inner { max-width:860px; margin:0 auto; padding:0 var(--pad); text-align:center; }
+.promise-mark { font-size:64px; line-height:1; color:var(--blue); font-family:Georgia, serif; margin-bottom:-20px; opacity:.5; }
+.promise-quote { font-size:var(--fs-quote); font-weight:700; color:var(--text); letter-spacing:-.025em; line-height:1.45; word-break:keep-all; margin-bottom:40px; }
+.promise-quote em { font-style:normal; color:var(--blue); background:linear-gradient(180deg, transparent 65%, var(--blue-soft) 65%); padding:0 4px; }
+.promise-sig { font-size:var(--fs-body); color:var(--muted); font-weight:600; letter-spacing:.02em; }
+.promise-divider { display:block; width:60px; height:2px; background:var(--blue); margin:0 auto 20px; }
+
+/* 센터장 (토스플레이스 톤) */
+.expert-sec { padding:140px 0; background:var(--gray-soft); position:relative; }
+.expert-hero { display:grid; grid-template-columns:minmax(320px, 420px) 1fr; gap:72px; align-items:center; margin-top:40px; }
+.expert-photo-wrap { position:relative; aspect-ratio:3/4; border-radius:24px; overflow:hidden; background:#fff; box-shadow:0 24px 60px rgba(10,22,40,.1); }
+.expert-photo-wrap img { width:100%; height:100%; object-fit:cover; object-position:center top; }
+.expert-content { display:flex; flex-direction:column; gap:28px; }
+.expert-quote-mark { font-size:52px; line-height:.5; color:var(--blue); font-family:Georgia, serif; opacity:.5; }
+.expert-quote { font-size:var(--fs-title-lg); font-weight:600; color:var(--text); line-height:1.6; letter-spacing:-.015em; word-break:keep-all; }
+.expert-quote em { font-style:normal; font-weight:800; background:linear-gradient(180deg, transparent 65%, var(--blue-soft) 65%); padding:0 2px; }
+.expert-signature { display:flex; align-items:center; gap:14px; padding:20px 0; border-top:1px solid var(--border-l); border-bottom:1px solid var(--border-l); }
+.expert-name-ko { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.expert-role { font-size:var(--fs-caption); color:var(--muted); font-weight:600; letter-spacing:.01em; }
+.expert-sig-divider { width:1px; height:32px; background:var(--border); }
+.expert-sig-mark { font-family:Georgia, serif; font-style:italic; font-size:var(--fs-title-lg); color:var(--gold); letter-spacing:.05em; }
+.expert-badges { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; }
+.expert-badge { display:flex; align-items:flex-start; gap:12px; padding:16px 18px; background:#fff; border-radius:14px; border:1px solid var(--border-l); }
+.expert-badge-ico { flex-shrink:0; width:36px; height:36px; border-radius:10px; background:var(--blue-soft); display:flex; align-items:center; justify-content:center; font-size:18px; }
+.expert-badge-text strong { display:block; font-size:var(--fs-body); font-weight:800; color:var(--text); letter-spacing:-.01em; margin-bottom:2px; }
+.expert-badge-text span { font-size:var(--fs-caption); color:var(--mid); line-height:1.4; letter-spacing:-.01em; }
+.expert-records { margin-top:72px; padding:40px 48px; background:#fff; border-radius:24px; border:1px solid var(--border-l); }
+.expert-records-head { display:flex; justify-content:space-between; align-items:baseline; margin-bottom:28px; flex-wrap:wrap; gap:12px; }
+.expert-records-title { font-size:var(--fs-title-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; display:flex; align-items:center; gap:10px; }
+.expert-records-title::before { content:''; width:6px; height:24px; background:var(--blue); border-radius:3px; display:inline-block; }
+.expert-records-count { font-size:var(--fs-caption); color:var(--mid); font-weight:700; letter-spacing:-.01em; }
+.expert-records-count strong { color:var(--blue); }
+.expert-records-list { display:grid; grid-template-columns:repeat(2,1fr); gap:12px; list-style:none; }
+.expert-record-item { display:flex; align-items:flex-start; gap:12px; padding:14px 18px; background:var(--gray-soft); border-radius:12px; font-size:var(--fs-body-sm); color:var(--text); line-height:1.55; letter-spacing:-.01em; word-break:keep-all; transition:all .2s; }
+.expert-record-item:hover { background:#fff; box-shadow:0 4px 12px rgba(0,0,0,.04); transform:translateX(3px); }
+.expert-record-pin { flex-shrink:0; color:var(--blue); font-size:14px; margin-top:2px; }
+.expert-record-period { font-size:var(--fs-caption-sm); color:var(--muted); margin-left:6px; white-space:nowrap; }
+.expert-records-more { margin-top:24px; text-align:center; }
+.expert-records-more-btn { display:inline-flex; align-items:center; gap:8px; padding:12px 24px; border-radius:100px; background:#fff; border:1.5px solid var(--border); font-size:var(--fs-body-sm); font-weight:700; color:var(--text); letter-spacing:-.01em; transition:all .2s; }
+.expert-records-more-btn:hover { border-color:var(--blue); color:var(--blue); transform:translateY(-1px); box-shadow:0 6px 20px rgba(49,130,246,.12); }
+
+/* 이런 분은 */
+.need-sec { padding:140px 0; background:#fff; position:relative; }
+.sec-head { text-align:center; margin-bottom:64px; }
+.sec-eye { display:inline-block; font-size:var(--fs-caption); font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--blue); margin-bottom:16px; padding:6px 16px; border-radius:100px; background:var(--blue-soft); }
+.sec-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:20px; word-break:keep-all; }
+.sec-h2 em { color:var(--blue); font-style:normal; }
+.sec-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; word-break:keep-all; max-width:680px; margin:0 auto; }
+.need-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; max-width:900px; margin:0 auto; }
+.need-item { display:flex; align-items:flex-start; gap:14px; padding:20px 24px; background:var(--gray-soft); border-radius:16px; transition:all .2s; word-break:keep-all; }
+.need-item:hover { background:#fff; transform:translateX(4px); box-shadow:0 8px 24px rgba(49,130,246,.08); }
+.need-check { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--green-l); color:var(--green-d); font-weight:800; display:flex; align-items:center; justify-content:center; font-size:14px; }
+.need-text { font-size:var(--fs-body-lg); color:var(--text); line-height:1.55; letter-spacing:-.01em; padding-top:2px; }
+
+/* 3대 솔루션 */
+.sol3-sec { padding:140px 0; background:var(--gray-soft); }
+.sol3-grid { display:grid; grid-template-columns:1fr; gap:20px; max-width:1000px; margin:0 auto; }
+.sol3-card { background:#fff; border-radius:24px; padding:48px; display:grid; grid-template-columns:1fr minmax(280px, 360px); gap:48px; align-items:center; transition:all .25s; }
+.sol3-card:hover { transform:translateY(-4px); box-shadow:0 20px 48px rgba(10,22,40,.08); }
+.sol3-card.reverse { grid-template-columns:minmax(280px, 360px) 1fr; }
+.sol3-card.reverse .sol3-visual { order:-1; }
+.sol3-num { display:inline-block; font-size:var(--fs-caption); font-weight:800; color:var(--blue); letter-spacing:.1em; margin-bottom:14px; }
+.sol3-title { font-size:22px; font-weight:800; color:var(--text); letter-spacing:-.025em; line-height:1.35; margin-bottom:20px; word-break:keep-all; }
+.sol3-desc { font-size:15px; color:var(--mid); line-height:1.75; letter-spacing:-.01em; word-break:keep-all; margin-bottom:24px; }
+.sol3-points { display:flex; flex-direction:column; gap:10px; }
+.sol3-point { display:flex; align-items:flex-start; gap:10px; font-size:var(--fs-body); color:var(--text); }
+.sol3-point::before { content:'✓'; flex-shrink:0; color:var(--blue); font-weight:800; width:20px; height:20px; border-radius:50%; background:var(--blue-soft); display:inline-flex; align-items:center; justify-content:center; font-size:11px; margin-top:3px; }
+.sol3-visual { aspect-ratio:4/3; border-radius:16px; overflow:hidden; background:var(--gray-card); position:relative; }
+.sol3-visual img { width:100%; height:100%; object-fit:cover; }
+
+/* 성공 사례 */
+.case-sec { padding:140px 0; background:#fff; }
+.case-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:20px; }
+.case-card { background:#fff; border-radius:24px; border:1px solid var(--border-l); overflow:hidden; transition:all .3s; display:flex; flex-direction:column; cursor:pointer; }
+.case-card:hover { transform:translateY(-8px); border-color:var(--blue); box-shadow:0 24px 60px rgba(10,22,40,.1); }
+.case-img-wrap { aspect-ratio:16/10; overflow:hidden; position:relative; background:var(--gray-card); }
+.case-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform .6s ease; }
+.case-card:hover .case-img-wrap img { transform:scale(1.05); }
+.case-tag { position:absolute; top:16px; left:16px; z-index:2; padding:6px 12px; border-radius:100px; background:rgba(255,255,255,.95); backdrop-filter:blur(8px); font-size:var(--fs-caption-sm); font-weight:700; color:var(--text); }
+.case-tag.gold { color:var(--gold); background:var(--gold-l); }
+.case-body { padding:28px; flex:1; display:flex; flex-direction:column; gap:16px; }
+.case-title { font-size:var(--fs-title-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; line-height:1.4; word-break:keep-all; }
+.case-desc { font-size:var(--fs-body); color:var(--mid); line-height:1.65; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.case-meta { display:flex; align-items:center; gap:10px; padding-top:16px; border-top:1px solid var(--border-l); font-size:var(--fs-caption); color:var(--muted); }
+.case-meta strong { color:var(--blue); font-weight:700; }
+
+/* 21건 업무 수행 */
+.works-sec { padding:140px 0; background:var(--gray-soft); }
+.works-head-row { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:48px; flex-wrap:wrap; gap:20px; }
+.works-head-left { max-width:640px; }
+.works-stats { display:flex; gap:24px; flex-shrink:0; }
+.works-stat { background:#fff; border-radius:16px; padding:20px 28px; min-width:120px; text-align:center; border:1px solid var(--border-l); }
+.works-stat-num { font-size:28px; font-weight:800; color:var(--blue); letter-spacing:-.03em; line-height:1; }
+.works-stat-lbl { font-size:var(--fs-caption); color:var(--muted); margin-top:6px; font-weight:600; }
+.works-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:32px; padding:8px; background:#fff; border-radius:16px; border:1px solid var(--border-l); }
+.works-tab { display:inline-flex; align-items:center; gap:8px; padding:10px 18px; border-radius:10px; font-size:var(--fs-body-sm); font-weight:700; color:var(--mid); letter-spacing:-.01em; background:transparent; border:none; cursor:pointer; transition:all .2s; }
+.works-tab:hover { color:var(--text); }
+.works-tab.active { background:var(--blue); color:#fff; }
+.works-tab-count { font-size:11px; padding:2px 8px; border-radius:100px; background:var(--gray-soft); color:var(--mid); font-weight:700; }
+.works-tab.active .works-tab-count { background:rgba(255,255,255,.2); color:#fff; }
+.works-list { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.work-card { background:#fff; border-radius:16px; padding:24px 28px; border:1px solid var(--border-l); transition:all .2s; cursor:pointer; display:flex; flex-direction:column; gap:14px; }
+.work-card:hover { border-color:var(--blue); transform:translateY(-2px); box-shadow:0 10px 28px rgba(49,130,246,.08); }
+.work-card.hidden { display:none; }
+.work-head { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.work-industry { display:inline-flex; align-items:center; gap:6px; padding:5px 12px; border-radius:100px; background:var(--blue-soft); color:var(--blue); font-size:var(--fs-caption-sm); font-weight:700; letter-spacing:-.01em; }
+.work-period { font-size:var(--fs-caption); color:var(--muted); font-weight:600; letter-spacing:-.01em; }
+.work-title { font-size:var(--fs-body-lg); font-weight:700; color:var(--text); letter-spacing:-.015em; line-height:1.5; word-break:keep-all; }
+.work-desc { font-size:var(--fs-body-sm); color:var(--mid); line-height:1.6; letter-spacing:-.01em; word-break:keep-all; display:none; padding-top:8px; border-top:1px solid var(--border-l); }
+.work-card.expanded .work-desc { display:block; }
+.work-expand { display:inline-flex; align-items:center; gap:4px; font-size:var(--fs-caption); font-weight:700; color:var(--blue); margin-top:-4px; letter-spacing:-.01em; }
+.work-expand::after { content:'▾'; font-size:10px; transition:transform .2s; }
+.work-card.expanded .work-expand::after { transform:rotate(180deg); }
+
+/* 대표 메시지 */
+.message-sec { padding:140px 0; background:#fff; position:relative; overflow:hidden; }
+.message-sec::before { content:''; position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse at center, rgba(49,130,246,.03) 0%, transparent 70%); }
+.message-inner { max-width:860px; margin:0 auto; padding:0 var(--pad); text-align:center; position:relative; z-index:1; }
+.message-mark { font-size:64px; line-height:1; color:var(--blue); font-family:Georgia, serif; margin-bottom:-10px; opacity:.4; }
+.message-body { font-size:22px; font-weight:700; color:var(--text); letter-spacing:-.025em; line-height:1.55; word-break:keep-all; margin-bottom:48px; }
+.message-body em { font-style:normal; background:linear-gradient(180deg, transparent 65%, var(--blue-soft) 65%); padding:0 4px; }
+.message-sig { display:inline-flex; flex-direction:column; align-items:center; gap:8px; padding-top:32px; border-top:1px solid var(--border-l); }
+.message-sig-name { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.message-sig-role { font-size:var(--fs-caption); color:var(--muted); font-weight:600; letter-spacing:.02em; }
+
+/* CTA */
+.cta-sec { padding:140px 0; background:var(--gray-soft); }
+.cta-wrap { max-width:720px; margin:0 auto; padding:0 var(--pad); text-align:center; }
+.cta-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:16px; word-break:keep-all; }
+.cta-h2 em { color:var(--blue); font-style:normal; }
+.cta-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; margin-bottom:48px; }
+.cta-form { background:#fff; padding:40px; border-radius:24px; box-shadow:0 12px 36px rgba(10,22,40,.06); text-align:left; border:1px solid var(--border-l); }
+.form-row { display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
+.form-row.two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-label { font-size:var(--fs-caption); font-weight:700; color:var(--mid); letter-spacing:-.01em; }
+.form-label .req { color:var(--red); }
+.form-input, .form-select { width:100%; padding:14px 16px; border:1.5px solid var(--border); border-radius:12px; font-size:var(--fs-body); font-family:inherit; background:var(--gray-soft); color:var(--text); transition:all .15s; letter-spacing:-.01em; }
+.form-input:focus, .form-select:focus { outline:none; border-color:var(--blue); background:#fff; }
+.form-submit { width:100%; background:var(--blue); color:#fff; padding:20px; border-radius:16px; font-size:var(--fs-title); font-weight:800; letter-spacing:-.02em; transition:all .2s; box-shadow:0 8px 28px rgba(49,130,246,.3); display:flex; align-items:center; justify-content:center; gap:8px; margin-top:8px; cursor:pointer; border:none; font-family:inherit; }
+.form-submit:hover { background:var(--blue-d); transform:translateY(-2px); }
+.cta-trust { display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:36px; font-size:var(--fs-body-sm); color:var(--mid); }
+.cta-trust-item { display:inline-flex; align-items:center; gap:8px; }
+.cta-trust-chk { width:22px; height:22px; border-radius:50%; background:var(--green-l); color:var(--green-d); display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; }
+
+/* STICKY 플로팅 폼 */
+.sticky-form { position:fixed; top:140px; right:24px; z-index:500; width:320px; background:#fff; border-radius:20px; box-shadow:0 20px 60px rgba(10,22,40,.12); padding:24px; border:1px solid var(--border-l); transition:opacity .3s, transform .3s; opacity:0; transform:translateX(20px); pointer-events:none; }
+.sticky-form.show { opacity:1; transform:translateX(0); pointer-events:auto; }
+.sticky-form-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; margin-bottom:6px; }
+.sticky-form-sub { font-size:var(--fs-caption); color:var(--mid); margin-bottom:20px; letter-spacing:-.01em; }
+.sticky-form .form-row { margin-bottom:12px; }
+.sticky-form .form-input, .sticky-form .form-select { padding:11px 14px; font-size:var(--fs-body-sm); background:var(--gray-soft); }
+.sticky-form .form-label { font-size:var(--fs-caption-sm); }
+.sticky-form-submit { width:100%; background:var(--blue); color:#fff; padding:14px; border-radius:12px; font-size:var(--fs-body); font-weight:800; letter-spacing:-.01em; transition:all .15s; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:4px; cursor:pointer; border:none; font-family:inherit; }
+.sticky-form-submit:hover { background:var(--blue-d); }
+.sticky-form-trust { margin-top:16px; padding-top:14px; border-top:1px solid var(--border-l); display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.sticky-form-trust-item { display:flex; align-items:center; gap:6px; font-size:var(--fs-caption-sm); color:var(--mid); letter-spacing:-.01em; }
+.sticky-form-trust-chk { color:var(--green-d); font-weight:800; font-size:11px; }
+
+/* FOOTER */
+.footer { background:#E8EBF0; color:#4A5462; padding:56px 0 40px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.footer-logo { font-size:var(--fs-title); font-weight:800; color:#0D1120; }
+.footer-logo em { color:var(--blue); font-style:normal; }
+.footer-back { font-size:var(--fs-caption); color:#4A5462; display:inline-flex; align-items:center; gap:6px; transition:color .15s; }
+.footer-back:hover { color:#0D1120; }
+.footer-copy { margin-top:28px; padding-top:24px; border-top:1px solid #DCE0E5; font-size:var(--fs-micro); color:#8B95A1; line-height:1.7; }
+/* ═══ 법적 고지 영역 (개인정보보호법 가이드라인 준수) ═══ */
+.footer-legal {
+  margin-top:28px;
+  padding:14px 0;
+  border-top:1px solid #DCE0E5;
+  border-bottom:1px solid #DCE0E5;
+  display:flex;
+  align-items:center;
+  gap:48px;
+  flex-wrap:wrap;
+}
+.footer-legal-links {
+  display:flex; gap:12px; align-items:center;
+  flex-shrink:0;
+  font-size:13px;
+}
+.footer-legal-links a {
+  color:#4A5462;
+  font-weight:500;
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-legal-links a.emphasize {
+  color:#0D1120;
+  font-weight:600;
+}
+.footer-legal-links a:hover {
+  color:#0D1120; text-decoration:underline;
+}
+.footer-legal-sep {
+  color:#B0B8C1;
+  font-size:11px;
+}
+.footer-legal-notice {
+  font-size:12px;
+  color:#6B7684;
+  line-height:1.5;
+  word-break:keep-all;
+}
+@media (max-width: 768px) {
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+}
+.footer-company-info {
+  margin-top:14px;
+  font-size:12px;
+  color:#8B95A1;
+  line-height:1.7;
+}
+
+
+/* TOAST */
+.toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(14px); z-index:1100; background:var(--text); color:#fff; padding:14px 28px; border-radius:100px; font-size:var(--fs-body-sm); font-weight:600; opacity:0; white-space:nowrap; transition:all .28s; pointer-events:none; box-shadow:0 8px 32px rgba(0,0,0,.25); }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width:1280px) { .sticky-form { display:none; } }
+@media (max-width:960px) {
+  :root { --pad:20px; }
+  .gnb-targets, .gnb-label { display:none; }
+  .gnb-inner { flex-direction:row; align-items:center; justify-content:space-between; height:60px; }
+  .gnb-row-top { height:auto; flex:0 0 auto; }
+  .gnb-row-bottom { height:auto; flex:1; justify-content:flex-end; gap:0; }
+  .hero { padding:100px var(--pad) 80px; }
+  .hero-inner { grid-template-columns:1fr; gap:40px; }
+  .hero-visual { aspect-ratio:4/3; max-width:480px; margin:0 auto; }
+  .hero-title { font-size:32px; }
+  .hero-sub { font-size:16px; }
+  .promise-sec, .expert-sec, .need-sec, .sol3-sec, .case-sec, .works-sec, .review-sec, .press-sec, .message-sec, .faq-sec, .cta-sec { padding:90px 0; }
+  .promise-quote { font-size:22px; }
+  .sec-h2, .cta-h2 { font-size:26px; }
+  .message-body { font-size:18px; }
+  .expert-hero { grid-template-columns:1fr; gap:40px; }
+  .expert-photo-wrap { max-width:360px; margin:0 auto; aspect-ratio:3/4; }
+  .expert-records { padding:32px 24px; margin-top:56px; }
+  .expert-records-list { grid-template-columns:1fr; }
+  .expert-badges { grid-template-columns:1fr; }
+  .need-grid { grid-template-columns:1fr; }
+  .sol3-card, .sol3-card.reverse { grid-template-columns:1fr; gap:28px; padding:32px 24px; }
+  .sol3-card.reverse .sol3-visual { order:0; }
+  .sol3-title { font-size:20px; }
+  .case-grid { grid-template-columns:1fr; }
+  .works-head-row { flex-direction:column; align-items:stretch; }
+  .works-stats { justify-content:center; }
+  .works-list { grid-template-columns:1fr; }
+  .works-tabs { overflow-x:auto; flex-wrap:nowrap; }
+  .works-tab { flex-shrink:0; }
+  .form-row.two { grid-template-columns:1fr; }
+  .cta-form { padding:28px 22px; }
+  .expert-team-grid { grid-template-columns:1fr; }
+  .review-stats { grid-template-columns:repeat(3,1fr); gap:10px; }
+  .review-stat { padding:22px 12px; }
+  .review-stat-num { font-size:28px; }
+  .review-grid { grid-template-columns:1fr; }
+  .press-grid { grid-template-columns:repeat(2,1fr); }
+  .faq-q { padding:18px 20px; }
+  .faq-q-text { font-size:15px; }
+  .faq-a-inner { padding:16px 20px 20px; font-size:14px; }
+  .case-modal { width:calc(100vw - 24px); max-height:calc(100vh - 40px); border-radius:20px; }
+  .case-modal-header { padding:28px 24px 20px; }
+  .case-modal-title { font-size:20px; }
+  .case-modal-body { padding:24px 24px 32px; }
+  .case-modal-footer { padding:20px 24px; }
+  .case-modal-table { font-size:13px; }
+  .case-modal-table th, .case-modal-table td { padding:10px 12px; }
+}
+@media (max-width:640px) {
+  .hero-title { font-size:28px; }
+  .hero-sub { font-size:15px; }
+  .sec-h2, .cta-h2 { font-size:24px; }
+  .promise-quote { font-size:20px; }
+  .message-body { font-size:18px; }
+  .btn { font-size:15px; padding:14px 24px; }
+  .sol3-card { padding:28px 20px; }
+  .sol3-title { font-size:20px; }
+}
+/* 전문가 팀 (센터장 섹션 내 추가 카드) */
+.expert-team { margin-top:56px; padding-top:48px; border-top:1px solid var(--border); }
+.expert-team-head { text-align:center; margin-bottom:32px; }
+.expert-team-eye { display:inline-block; font-size:var(--fs-caption); font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--blue); margin-bottom:10px; padding:5px 12px; border-radius:100px; background:var(--blue-soft); }
+.expert-team-title { font-size:var(--fs-title-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.expert-team-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:920px; margin:0 auto; }
+.expert-team-card { background:#fff; border-radius:16px; padding:28px; border:1px solid var(--border-l); display:flex; gap:18px; align-items:center; transition:all .2s; }
+.expert-team-card:hover { border-color:var(--blue); transform:translateY(-2px); box-shadow:0 10px 24px rgba(49,130,246,.08); }
+.expert-team-photo { flex-shrink:0; width:72px; height:72px; border-radius:50%; background:var(--gray-soft); overflow:hidden; }
+.expert-team-photo img { width:100%; height:100%; object-fit:cover; }
+.expert-team-info { flex:1; display:flex; flex-direction:column; gap:6px; }
+.expert-team-name { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.expert-team-role { font-size:var(--fs-caption); color:var(--blue); font-weight:700; letter-spacing:-.01em; }
+.expert-team-desc { font-size:var(--fs-body-sm); color:var(--mid); line-height:1.55; letter-spacing:-.01em; margin-top:4px; word-break:keep-all; }
+
+/* 고객 후기 + 만족도 */
+.review-sec { padding:140px 0; background:#fff; }
+.review-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; max-width:760px; margin:0 auto 64px; }
+.review-stat { background:var(--gray-soft); border-radius:20px; padding:32px 24px; text-align:center; }
+.review-stat-num { font-size:40px; font-weight:800; color:var(--blue); letter-spacing:-.03em; line-height:1; margin-bottom:10px; }
+.review-stat-num small { font-size:20px; font-weight:700; color:var(--blue); margin-left:2px; }
+.review-stat-lbl { font-size:var(--fs-caption); color:var(--mid); font-weight:700; letter-spacing:-.01em; }
+.review-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:960px; margin:0 auto; }
+.review-card { background:#fff; border:1px solid var(--border-l); border-radius:20px; padding:32px; display:flex; flex-direction:column; gap:20px; transition:all .2s; }
+.review-card:hover { border-color:var(--blue); transform:translateY(-3px); box-shadow:0 12px 32px rgba(10,22,40,.06); }
+.review-rating { display:flex; gap:2px; color:var(--gold); font-size:14px; letter-spacing:1px; }
+.review-text { font-size:var(--fs-body-lg); color:var(--text); line-height:1.7; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.review-text::before { content:'“'; font-family:Georgia,serif; font-size:32px; line-height:0; color:var(--blue); opacity:.4; margin-right:2px; vertical-align:-8px; }
+.review-meta { display:flex; align-items:center; gap:12px; padding-top:16px; border-top:1px solid var(--border-l); }
+.review-avatar { width:40px; height:40px; border-radius:50%; background:var(--blue-soft); color:var(--blue); display:flex; align-items:center; justify-content:center; font-weight:800; font-size:15px; flex-shrink:0; }
+.review-author { display:flex; flex-direction:column; gap:2px; }
+.review-author-name { font-size:var(--fs-body-sm); font-weight:700; color:var(--text); letter-spacing:-.01em; }
+.review-author-meta { font-size:var(--fs-caption); color:var(--muted); letter-spacing:-.01em; }
+
+/* 언론 속 센터장 */
+.press-sec { padding:140px 0; background:var(--gray-soft); }
+.press-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; max-width:1000px; margin:0 auto; }
+.press-card { background:#fff; border-radius:16px; overflow:hidden; border:1px solid var(--border-l); transition:all .2s; cursor:pointer; display:flex; flex-direction:column; }
+.press-card:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(10,22,40,.08); border-color:var(--blue); }
+.press-thumb { aspect-ratio:16/10; background:var(--gray-card); position:relative; overflow:hidden; }
+.press-thumb img { width:100%; height:100%; object-fit:cover; transition:transform .5s ease; }
+.press-card:hover .press-thumb img { transform:scale(1.05); }
+.press-body { padding:18px 20px 22px; display:flex; flex-direction:column; gap:8px; flex:1; }
+.press-outlet { display:inline-flex; font-size:var(--fs-caption-sm); font-weight:800; color:var(--blue); letter-spacing:.05em; text-transform:uppercase; }
+.press-title { font-size:var(--fs-body-sm); font-weight:700; color:var(--text); line-height:1.5; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.press-date { font-size:var(--fs-caption); color:var(--muted); font-weight:600; margin-top:4px; }
+
+/* FAQ */
+.faq-sec { padding:140px 0; background:#fff; }
+.faq-list { max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item { background:var(--gray-soft); border-radius:16px; overflow:hidden; transition:all .2s; }
+.faq-item.open { background:#fff; border:1px solid var(--blue); box-shadow:0 8px 24px rgba(49,130,246,.08); }
+.faq-q { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:22px 26px; cursor:pointer; }
+.faq-q-text { font-size:var(--fs-body-lg); font-weight:700; color:var(--text); letter-spacing:-.015em; line-height:1.5; word-break:keep-all; flex:1; }
+.faq-q-text::before { content:'Q'; display:inline-block; width:24px; height:24px; border-radius:50%; background:var(--blue); color:#fff; font-size:12px; font-weight:800; text-align:center; line-height:24px; margin-right:10px; vertical-align:1px; }
+.faq-toggle { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:#fff; color:var(--mid); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; transition:all .2s; }
+.faq-item.open .faq-toggle { background:var(--blue); color:#fff; transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.faq-item.open .faq-a { max-height:500px; }
+.faq-a-inner { padding:0 26px 24px; font-size:var(--fs-body); color:var(--mid); line-height:1.75; letter-spacing:-.01em; word-break:keep-all; border-top:1px solid var(--border-l); padding-top:20px; margin-top:4px; }
+.faq-a-inner::before { content:'A'; display:inline-block; width:24px; height:24px; border-radius:50%; background:var(--blue-soft); color:var(--blue); font-size:12px; font-weight:800; text-align:center; line-height:24px; margin-right:10px; vertical-align:1px; }
+.faq-a-inner strong { color:var(--text); font-weight:700; }
+
+/* ═══ 성공 사례 상세 모달 ═══ */
+.case-card { cursor:pointer; }
+.case-modal-backdrop {
+  position:fixed; inset:0; z-index:900;
+  background:rgba(13,17,32,.7); backdrop-filter:blur(4px);
+  opacity:0; pointer-events:none;
+  transition:opacity .25s ease;
+}
+.case-modal-backdrop.show { opacity:1; pointer-events:auto; }
+
+.case-modal {
+  position:fixed; top:50%; left:50%;
+  transform:translate(-50%, -50%) scale(.96);
+  z-index:901;
+  width:min(920px, calc(100vw - 40px));
+  max-height:calc(100vh - 60px);
+  background:#fff; border-radius:24px;
+  box-shadow:0 30px 80px rgba(0,0,0,.3);
+  opacity:0; pointer-events:none;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  display:flex; flex-direction:column;
+  overflow:hidden;
+}
+.case-modal.show { opacity:1; transform:translate(-50%, -50%) scale(1); pointer-events:auto; }
+
+.case-modal-close {
+  position:absolute; top:20px; right:20px; z-index:10;
+  width:40px; height:40px; border-radius:50%;
+  background:rgba(255,255,255,.95);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px; color:var(--text); cursor:pointer;
+  transition:all .15s;
+  box-shadow:0 4px 12px rgba(0,0,0,.1);
+}
+.case-modal-close:hover { background:var(--text); color:#fff; transform:rotate(90deg); }
+
+.case-modal-header {
+  padding:40px 48px 28px;
+  border-bottom:1px solid var(--border-l);
+  background:linear-gradient(180deg, var(--gray-soft) 0%, #fff 100%);
+}
+.case-modal-tag {
+  display:inline-block;
+  font-size:var(--fs-caption-sm); font-weight:700;
+  color:var(--blue); letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 12px; border-radius:100px;
+  background:var(--blue-soft); margin-bottom:14px;
+}
+.case-modal-title {
+  font-size:26px; font-weight:800;
+  color:var(--text); letter-spacing:-.025em; line-height:1.35;
+  word-break:keep-all; margin-bottom:14px;
+}
+.case-modal-subtitle {
+  font-size:var(--fs-body); color:var(--mid);
+  line-height:1.6; letter-spacing:-.01em; word-break:keep-all;
+  font-style:italic;
+}
+
+.case-modal-body {
+  flex:1; overflow-y:auto;
+  padding:36px 48px;
+  scroll-behavior:smooth;
+}
+.case-modal-body::-webkit-scrollbar { width:6px; }
+.case-modal-body::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+.case-modal-body::-webkit-scrollbar-track { background:transparent; }
+
+.case-modal-body h4 {
+  font-size:var(--fs-title); font-weight:800;
+  color:var(--text); letter-spacing:-.02em;
+  margin:32px 0 16px; line-height:1.4;
+  display:flex; align-items:center; gap:10px;
+}
+.case-modal-body h4:first-child { margin-top:0; }
+.case-modal-body h4::before {
+  content:''; width:4px; height:20px;
+  background:var(--blue); border-radius:2px;
+}
+.case-modal-body h5 {
+  font-size:var(--fs-body-lg); font-weight:800;
+  color:var(--text); letter-spacing:-.015em;
+  margin:24px 0 10px; line-height:1.5;
+}
+.case-modal-body p {
+  font-size:var(--fs-body); color:var(--mid);
+  line-height:1.8; letter-spacing:-.01em; word-break:keep-all;
+  margin-bottom:14px;
+}
+.case-modal-body ul, .case-modal-body ol {
+  margin:10px 0 18px; padding-left:22px;
+}
+.case-modal-body li {
+  font-size:var(--fs-body); color:var(--mid);
+  line-height:1.75; letter-spacing:-.01em; word-break:keep-all;
+  margin-bottom:8px;
+}
+.case-modal-body strong { color:var(--text); font-weight:700; }
+.case-modal-body em { color:var(--blue); font-style:normal; font-weight:700; }
+
+.case-modal-box {
+  background:var(--gray-soft);
+  border-radius:16px;
+  padding:24px 28px;
+  margin:18px 0;
+}
+.case-modal-box.highlight {
+  background:var(--blue-soft);
+  border-left:4px solid var(--blue);
+  padding:20px 24px;
+}
+.case-modal-box-title {
+  font-size:var(--fs-caption); font-weight:800;
+  color:var(--blue); letter-spacing:.08em;
+  text-transform:uppercase; margin-bottom:10px;
+}
+
+.case-modal-table {
+  width:100%; border-collapse:collapse;
+  margin:20px 0; font-size:var(--fs-body-sm);
+  border-radius:12px; overflow:hidden;
+  border:1px solid var(--border-l);
+}
+.case-modal-table th, .case-modal-table td {
+  padding:14px 16px; text-align:left;
+  border-bottom:1px solid var(--border-l);
+  letter-spacing:-.01em;
+}
+.case-modal-table th {
+  background:var(--gray-soft);
+  font-weight:800; color:var(--text); font-size:var(--fs-caption);
+}
+.case-modal-table td strong { color:var(--blue); }
+.case-modal-table tr:last-child td { border-bottom:none; }
+
+.case-modal-quote {
+  background:var(--gray-soft);
+  border-radius:16px; padding:24px 28px;
+  margin:20px 0;
+  font-size:var(--fs-body); color:var(--text);
+  line-height:1.75; letter-spacing:-.01em; word-break:keep-all;
+  position:relative;
+}
+.case-modal-quote::before {
+  content:'“'; position:absolute; top:8px; left:16px;
+  font-family:Georgia,serif; font-size:48px; line-height:1;
+  color:var(--blue); opacity:.3;
+}
+.case-modal-quote-inner { padding-left:32px; }
+.case-modal-quote-author {
+  display:block; margin-top:10px;
+  font-size:var(--fs-caption); color:var(--muted); font-weight:700;
+}
+
+.case-modal-footer {
+  padding:24px 48px;
+  border-top:1px solid var(--border-l);
+  background:var(--gray-soft);
+  display:flex; justify-content:space-between; align-items:center;
+  gap:16px; flex-wrap:wrap;
+}
+.case-modal-footer-text {
+  font-size:var(--fs-body-sm); color:var(--mid);
+  letter-spacing:-.01em;
+}
+.case-modal-cta {
+  background:var(--blue); color:#fff;
+  padding:12px 24px; border-radius:100px;
+  font-size:var(--fs-body-sm); font-weight:800;
+  letter-spacing:-.01em; transition:all .15s;
+  display:inline-flex; align-items:center; gap:8px;
+  border:none; font-family:inherit; cursor:pointer;
+}
+.case-modal-cta:hover { background:var(--blue-d); transform:translateY(-1px); }
+
+/* ═══ 동의 체크박스 (개인정보처리방침 연결) ═══ */
+.consent-block { margin-top:8px; padding-top:16px; border-top:1px dashed #E5E8EB; display:flex; flex-direction:column; gap:10px; }
+.consent-row { display:flex; align-items:flex-start; gap:8px; cursor:pointer; font-size:13px; line-height:1.55; color:#4E5968; user-select:none; }
+.consent-row input[type="checkbox"] { flex-shrink:0; margin-top:3px; width:15px; height:15px; cursor:pointer; accent-color:#3182F6; }
+.consent-row b { font-weight:700; color:#1A1F27; margin-right:3px; }
+.consent-row b.optional { color:#8B95A1; }
+.consent-row a { color:#3182F6; text-decoration:underline; margin-left:6px; font-size:12.5px; font-weight:500; }
+.consent-row a:hover { color:#1B64DA; }
+.consent-block.compact { padding-top:12px; gap:7px; }
+.consent-block.compact .consent-row { font-size:11.5px; line-height:1.45; }
+.consent-block.compact .consent-row input[type="checkbox"] { width:13px; height:13px; margin-top:2px; }
+.consent-block.compact .consent-row a { font-size:11px; margin-left:4px; }
+.consent-note { margin-top:4px; padding:10px 12px; background:#F7F9FC; border-radius:8px; font-size:12px; line-height:1.55; color:#4E5968; display:flex; gap:6px; align-items:flex-start; }
+.consent-note-ico { flex-shrink:0; font-size:13px; line-height:1.4; }
+
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb scrolled" id="gnb">
+  <div class="gnb-inner">
+    <div class="gnb-row-top">
+      <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    </div>
+    <div class="gnb-row-bottom">
+      <span class="gnb-label">나는</span>
+      <nav class="gnb-targets">
+        <a class="gnb-t active" data-target="corp" href="index.html#corp"><span>법인 대표입니다</span></a>
+        <a class="gnb-t" data-target="small" href="index.html#small"><span>소상공인입니다</span></a>
+        <a class="gnb-t" data-target="seller" href="index.html#seller"><span>셀러·벤더입니다</span></a>
+      </nav>
+      <a class="gnb-btn" href="index.html#quiz-master">
+        <span class="gnb-btn-dot"></span>1분 경영 스코어
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">상속·증여 플랜</div>
+      <h1 class="hero-title">상속이 발생하기 전에,<br><em>절세는 끝납니다</em></h1>
+      <p class="hero-sub">10년 뒤의 세금까지 오늘 예측합니다.<br>국세청 시뮬레이션 방식으로 설계하는 Golden Time 전략.</p>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary" onclick="scrollToForm()">무료 상속·증여 진단 →</button>
+        <a class="btn btn-ghost" href="#cases">성공 사례 보기</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-3.jpg" alt="상속·증여 전략 설계">
+    </div>
+  </div>
+</section>
+
+<!-- 2. 핵심 약속 -->
+<section class="promise-sec">
+  <div class="promise-inner">
+    <div class="promise-mark rev">“</div>
+    <h2 class="promise-quote rev rev-d1">가장 완벽한 상속세 절세는,<br><em>'상속'이 발생하기 전에 끝납니다</em></h2>
+    <div class="promise-divider rev rev-d2"></div>
+    <p class="promise-sig rev rev-d2">미래CEO플랜 상속증여센터</p>
+  </div>
+</section>
+
+<!-- 3. 센터장 -->
+<section class="expert-sec" id="expert">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">SENIOR CONSULTANT</div>
+      <h2 class="sec-h2">상속증여센터를<br><em>이끄는 사람</em></h2>
+      <p class="sec-sub">20년 업계 경력, 빅4 출신 전문가 그룹을 이끄는 센터장이 직접 설계합니다</p>
+    </div>
+    <div class="expert-hero">
+      <div class="expert-photo-wrap rev">
+        <img src="expert-leejonghun.png" alt="이종헌 센터장 프로필">
+      </div>
+      <div class="expert-content rev rev-d1">
+        <div class="expert-quote-mark">“</div>
+        <p class="expert-quote">저는 항상 고객과 그 가족의 이익을 최우선으로 생각하며 승계 자문을 진행합니다. 단순히 절세만을 목표로 하기보다, 감당할 수 있는 <em>리스크 내에서 가장 안정적이고 지속가능한 구조</em>를 제시하는 것이 저의 철학입니다.</p>
+        <div class="expert-signature">
+          <div>
+            <div class="expert-name-ko">이종헌 · 공인회계사</div>
+            <div class="expert-role">미래CEO플랜 상속증여센터장</div>
+          </div>
+          <div class="expert-sig-divider"></div>
+          <div class="expert-sig-mark">Lee, Jonghun</div>
+        </div>
+        <div class="expert-badges">
+          <div class="expert-badge">
+            <div class="expert-badge-ico">🏅</div>
+            <div class="expert-badge-text"><strong>Big4 출신</strong><span>삼일회계법인 조세본부</span></div>
+          </div>
+          <div class="expert-badge">
+            <div class="expert-badge-ico">📑</div>
+            <div class="expert-badge-text"><strong>조세·부동산세 전문</strong><span>상속·증여·가업승계 특화</span></div>
+          </div>
+          <div class="expert-badge">
+            <div class="expert-badge-ico">📺</div>
+            <div class="expert-badge-text"><strong>언론 검증</strong><span>SBS 머니쇼 외 다수 출연</span></div>
+          </div>
+          <div class="expert-badge">
+            <div class="expert-badge-ico">✍️</div>
+            <div class="expert-badge-text"><strong>자문 실적</strong><span>상속·증여·승계 21건+</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="expert-records rev rev-d2">
+      <div class="expert-records-head">
+        <div class="expert-records-title">주요 업무 수행 실적</div>
+        <div class="expert-records-count">공개 가능 사례 중 <strong>8건</strong> · 전체 21건</div>
+      </div>
+      <ul class="expert-records-list">
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>C사 가업상속공제 상속세 신고 및 납부</strong><span class="expert-record-period"> · 서울지방국세청 조사3국 조사대응 (2022.06~11)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>H사 가업증여특례 증여세 신고</strong><span class="expert-record-period"><br>· 중부지방국세청 조사대응 (2025.07~10)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>부동산업 H사·시행법인 S사 가업승계 및 사업구조 개편 자문</strong><span class="expert-record-period">(2024.12~현재)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>J 의료재단 및 특수관계법인 가업승계·사업구조 개편 자문</strong><span class="expert-record-period"><br>(2024.06~현재)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>복합물류업 J사 가업승계·명의신탁 주식 환원 자문</strong><span class="expert-record-period"><br>(2022.11~2023.04)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>학원업 K사·출판업 P사 가업승계·사업구조 개편 자문</strong><span class="expert-record-period"><br>(2021.10~2024.02)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>가족 법인 구조화 및 설립 자문 · 자녀 승계 전략 수립</strong><span class="expert-record-period"><br>(2022.03~2023.06)</span></div></li>
+        <li class="expert-record-item"><span class="expert-record-pin">📌</span><div><strong>법무법인 B M&A 전문센터 협력 회계사</strong><span class="expert-record-period"><br>· M&A 세무/회계 통합 자문 (2022.12~2023.02)</span></div></li>
+      </ul>
+      <div class="expert-records-more">
+        <a class="expert-records-more-btn" href="#works">전체 21건 실적 보기 →</a>
+      </div>
+    </div>
+
+    <!-- 전문가 팀 (센터장 섹션 내) -->
+    <div class="expert-team rev">
+      <div class="expert-team-head">
+        <div class="expert-team-eye">CONSULTANT TEAM</div>
+        <div class="expert-team-title">센터장과 함께하는 전문가 팀</div>
+      </div>
+      <div class="expert-team-grid">
+        <div class="expert-team-card">
+          <div class="expert-team-photo">
+            <img src="expert-leehyunwoo.png" alt="이현우 회계사">
+          </div>
+          <div class="expert-team-info">
+            <div class="expert-team-name">이현우 · 공인회계사</div>
+            <div class="expert-team-role">시니어 컨설턴트</div>
+            <p class="expert-team-desc">부동산 자산가 및 법인 구조 설계 전문. 증여·양도세 최적화 컨설팅 다수.</p>
+          </div>
+        </div>
+        <div class="expert-team-card">
+          <div class="expert-team-photo">
+            <img src="expert-limyeonhee.png" alt="임연희 회계사">
+          </div>
+          <div class="expert-team-info">
+            <div class="expert-team-name">임연희 · 공인회계사</div>
+            <div class="expert-team-role">시니어 컨설턴트</div>
+            <p class="expert-team-desc">가족법인 설립·지분 재편 전문. 중견기업 승계 구조 설계 및 세무 실사 경험.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 이런 분은 -->
+<section class="need-sec" id="need">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">CHECK YOUR SITUATION</div>
+      <h2 class="sec-h2">이런 분은<br><em>상담이 필요합니다</em></h2>
+      <p class="sec-sub">하나라도 해당되신다면, 지금이 Golden Time의 시작점입니다</p>
+    </div>
+    <div class="need-grid">
+      <div class="need-item rev"><div class="need-check">✓</div><div class="need-text">꼬마빌딩·아파트 등 부동산 자산 비중이 80% 이상이라 상속세 재원 마련이 걱정되시는 분</div></div>
+      <div class="need-item rev rev-d3"><div class="need-check">✓</div><div class="need-text">가지급금·미처분이익잉여금으로 주식 가치가 높아 자녀에게 지분 넘기기 어려우신 분</div></div>
+      <div class="need-item rev rev-d1"><div class="need-check">✓</div><div class="need-text">자녀에게 부동산이나 금융자산을 물려줄 계획이 있으신 분</div></div>
+      <div class="need-item rev rev-d2"><div class="need-check">✓</div><div class="need-text">상속세 부담이 예상되어 사전 절세 전략이 필요하신 분</div></div>
+      <div class="need-item rev rev-d2"><div class="need-check">✓</div><div class="need-text">증여를 여러 차례로 나눌지, 한 번에 진행할지 고민이신 분</div></div>
+      <div class="need-item rev rev-d1"><div class="need-check">✓</div><div class="need-text">가족 전체의 자산 구조 진단 및 시뮬레이션이 필요하신 분</div></div>
+      <div class="need-item rev rev-d3"><div class="need-check">✓</div><div class="need-text">증여 후 관계·부양 문제(‘효도 계약’)에 대비한 안전장치가 필요하신 분</div></div>
+      <div class="need-item rev rev-d3"><div class="need-check">✓</div><div class="need-text">가족 간 분쟁 예방을 위한 세무 자문과 사전 장치가 필요하신 분</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 3대 솔루션 -->
+<section class="sol3-sec" id="solutions">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">OUR SOLUTIONS</div>
+      <h2 class="sec-h2">다른 방식으로<br><em>해결합니다</em></h2>
+      <p class="sec-sub">단순한 절세 계산을 넘어, 사전 설계로 상속세 자체를 최소화하는 3대 솔루션</p>
+    </div>
+    <div class="sol3-grid">
+      <div class="sol3-card rev">
+        <div>
+          <div class="sol3-num">01 · GOLDEN TIME</div>
+          <h3 class="sol3-title">상속세는 사망 시점이 아니라,<br>10년 전부터 준비해야 합니다</h3>
+          <p class="sol3-desc">국세청 시스템과 동일한 방식의 시뮬레이션을 통해, 지금 증여했을 때와 10년 뒤 상속했을 때의 세금 차이를 수치로 보여드립니다.</p>
+          <div class="sol3-points">
+            <div class="sol3-point">10년 합산 배제 기간 활용으로 누진세율 구간 조정</div>
+            <div class="sol3-point">자산 가치 상승분이 자녀에게 귀속되도록 시기 조율</div>
+            <div class="sol3-point">연도별 증여 타이밍 최적화 설계</div>
+          </div>
+        </div>
+        <div class="sol3-visual">
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-1.jpg" alt="Golden Time 사전 증여 전략">
+        </div>
+      </div>
+
+      <div class="sol3-card reverse rev rev-d1">
+        <div>
+          <div class="sol3-num">02 · STRUCTURE DESIGN</div>
+          <h3 class="sol3-title">합병·분할·가족법인을 통합한<br>최적 구조 설계</h3>
+          <p class="sol3-desc">단순히 미리 시작하는 것이 아닌, 복합적인 구조를 설계하고 각 구조별 시뮬레이션을 통해 5년·10년·30년의 현금흐름을 비교 후 최적의 대안을 제시합니다.</p>
+          <div class="sol3-points">
+            <div class="sol3-point">법인 분할·합병을 통한 지배구조 최적화</div>
+            <div class="sol3-point">가족법인 설립 및 지분 이전 설계</div>
+            <div class="sol3-point">비상장주식 가치 설계 및 법인 전환</div>
+          </div>
+        </div>
+        <div class="sol3-visual">
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-2.jpg" alt="최적화된 구조 설계">
+        </div>
+      </div>
+
+      <div class="sol3-card rev rev-d2">
+        <div>
+          <div class="sol3-num">03 · LIQUIDITY</div>
+          <h3 class="sol3-title">막대한 상속세로 핵심 자산을<br>급매하는 일이 없도록</h3>
+          <p class="sol3-desc">유동성 확보를 위해 자녀 법인 세팅, 금융상품 및 연부연납 제도를 활용하여 납세 재원을 체계적으로 마련하도록 해결책을 제시합니다.</p>
+          <div class="sol3-points">
+            <div class="sol3-point">자녀 법인 설립을 통한 현금흐름 분리</div>
+            <div class="sol3-point">연부연납(최대 20년 분납) 활용 설계</div>
+            <div class="sol3-point">금융상품 연계 유동성 확보 전략</div>
+          </div>
+        </div>
+        <div class="sol3-visual">
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-3.jpg" alt="유동성 확보">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5.5 CEO플랜 연계 배너 -->
+<section style="padding:64px 0; background:linear-gradient(135deg, #FFF8EE 0%, #fff 100%); border-top:1px solid #E5E8EF;">
+  <div class="w" style="max-width:900px; margin:0 auto; text-align:center; padding:0 20px;">
+    <div style="display:inline-flex; align-items:center; gap:6px; padding:6px 14px; background:#3182F6; color:#fff; border-radius:999px; font-size:12px; font-weight:600; margin-bottom:18px; letter-spacing:-.01em;">
+      <span>✦</span> CEO플랜과 함께
+    </div>
+    <h3 style="font-size:32px; font-weight:800; color:#191F28; letter-spacing:-.02em; line-height:1.3; margin-bottom:14px;">
+      승계는 <em style="color:#3182F6; font-style:normal;">CEO플랜의 완결 단계</em>입니다
+    </h3>
+    <p style="font-size:16px; color:#4A5462; line-height:1.7; max-width:640px; margin:0 auto 26px; word-break:keep-all;">
+      법인 자산을 대표님께 이전하는 <strong style="color:#191F28;">CEO 자산 증식 전략</strong>까지 마치면, 그 다음은 다음 세대로의 이전입니다. 10년 골든타임을 활용한 승계 설계는 자산이 개인화된 이후가 효과적입니다.
+    </p>
+    <a href="./solution-wealth.html" style="display:inline-flex; align-items:center; gap:6px; padding:14px 26px; background:#fff; border:1.5px solid #3182F6; border-radius:12px; color:#3182F6; font-weight:700; font-size:15px; text-decoration:none;">
+      CEO 자산 증식 전략 보기 <span style="font-size:16px;">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- 6. 대표 성공 사례 -->
+<section class="case-sec" id="cases">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">SUCCESS CASES</div>
+      <h2 class="sec-h2">실제 설계로 끝낸<br><em>대표 성공 사례</em></h2>
+      <p class="sec-sub">숫자로 증명되는 설계 역량<br>※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</p>
+    </div>
+    <div class="case-grid">
+      <div class="case-card rev" data-case="case-1">
+        <div class="case-img-wrap">
+          <div class="case-tag">중견 제조·부동산</div>
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-3.jpg" alt="순환출자 해소 성공 사례">
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">30년 묵은 '순환출자 고리' 해소 + '3세 승계' 재원 마련</h3>
+          <p class="case-desc">자산 규모 5,000억 원대 중견 그룹의 지배구조 재편과 초장기 승계 플랜을 한 번의 설계로 완성한 사례</p>
+          <div class="case-meta"><strong>A사</strong> · 자산 5,000억 원대 · 지배구조 재편</div>
+        </div>
+      </div>
+      <div class="case-card rev rev-d1" data-case="case-2">
+        <div class="case-img-wrap">
+          <div class="case-tag gold">30년 제조기업</div>
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-1.jpg" alt="60억 상속세 0원 해결">
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">현금 없는 60억 상속세, '기업 잉여금'으로 0원 해결</h3>
+          <p class="case-desc">관계사 지분 구조조정과 기업가치 조정을 결합한 Two-Track 솔루션으로 30년 제조기업의 현금 부담을 완전히 해소</p>
+          <div class="case-meta"><strong>60억 상속세 → 0원</strong> · Two-Track 솔루션</div>
+        </div>
+      </div>
+      <div class="case-card rev rev-d2" data-case="case-3">
+        <div class="case-img-wrap">
+          <div class="case-tag gold">100년 기업</div>
+          <img src="https://refinedacc.com/wp-content/uploads/2026/01/Mask-group-2.jpg" alt="180억 상속세 리스크 해결">
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">180억 상속세 리스크를 100년 기업의 자부심으로</h3>
+          <p class="case-desc">수백억 대 중견기업 김 대표, 두 자녀 공평 승계와 현금 부족 문제를 동시에 풀어낸 실제 설계 사례</p>
+          <div class="case-meta"><strong>180억 리스크 해결</strong> · 자녀 공평 승계</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 21건 업무 수행 -->
+<section class="works-sec" id="works">
+  <div class="w">
+    <div class="works-head-row rev">
+      <div class="works-head-left">
+        <div class="sec-eye" style="margin-bottom:16px;">PROJECTS · 21</div>
+        <h2 class="sec-h2" style="margin-bottom:16px;">실제로 수행한<br><em>업종별 업무 실적</em></h2>
+        <p class="sec-sub" style="text-align:left; margin:0;">업종별로 필터해 보세요. 기간·업무 유형까지 투명하게 공개합니다.</p>
+      </div>
+      <div class="works-stats">
+        <div class="works-stat">
+          <div class="works-stat-num">21<span style="font-size:20px;">건</span></div>
+          <div class="works-stat-lbl">총 수행 실적</div>
+        </div>
+        <div class="works-stat">
+          <div class="works-stat-num">7<span style="font-size:20px;">개</span></div>
+          <div class="works-stat-lbl">업종 카테고리</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="works-tabs rev rev-d1" id="worksTabs">
+      <button class="works-tab active" data-filter="manufacturing">제조업 <span class="works-tab-count">5</span></button>
+      <button class="works-tab" data-filter="realestate">부동산·건설 <span class="works-tab-count">3</span></button>
+      <button class="works-tab" data-filter="medical">의료·재단 <span class="works-tab-count">2</span></button>
+      <button class="works-tab" data-filter="wholesale">유통·도매 <span class="works-tab-count">3</span></button>
+      <button class="works-tab" data-filter="service">학원·출판·서비스 <span class="works-tab-count">3</span></button>
+      <button class="works-tab" data-filter="family">가족법인·구조화 <span class="works-tab-count">3</span></button>
+      <button class="works-tab" data-filter="ma">M&A·기타 <span class="works-tab-count">2</span></button>
+    </div>
+
+    <div class="works-list" id="worksList">
+      <div class="work-card" data-category="manufacturing"><div class="work-head"><span class="work-industry">제조업</span><span class="work-period">2022.06~11</span></div><div class="work-title">C사 김○○ 대표 가업상속공제 상속세 신고 및 납부</div><span class="work-expand">자세히 보기</span><div class="work-desc">서울지방국세청 조사3국 가업상속공제 상속세 조사대응 업무 포함. 공제 요건 충족 입증 및 감면 세액 확정까지 전 과정 수행.</div></div>
+      <div class="work-card" data-category="manufacturing"><div class="work-head"><span class="work-industry">제조업</span><span class="work-period">2025.07~10</span></div><div class="work-title">H사 이○○ 대표 가업증여특례 증여세 신고 및 납부</div><span class="work-expand">자세히 보기</span><div class="work-desc">중부지방국세청 조사3국 가업증여특례 증여세 조사대응 업무 포함. 지분 승계 과정의 세무 리스크 사전 차단.</div></div>
+      <div class="work-card" data-category="wholesale"><div class="work-head"><span class="work-industry">유통·도매</span><span class="work-period">2025.07~현재</span></div><div class="work-title">특수관계 도매업 S사 가업승계 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">특수관계법인 간 거래구조 검토와 가업승계 설계를 병행. 세무 리스크를 사전에 점검하고 승계 시나리오 수립.</div></div>
+      <div class="work-card" data-category="realestate"><div class="work-head"><span class="work-industry">부동산·건설</span><span class="work-period">2024.12~현재</span></div><div class="work-title">부동산업 H사 및 특수관계 시행법인 S사 가업승계 및 사업구조 개편 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">부동산업과 시행법인의 복합 구조를 재편하며 승계 플랜 연동. 지분 구조 재설계와 세무 효율화 동시 추진.</div></div>
+      <div class="work-card" data-category="medical"><div class="work-head"><span class="work-industry">의료·재단</span><span class="work-period">2024.06~현재</span></div><div class="work-title">J 의료재단 및 특수관계법인 가업승계 및 사업구조 개편 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">의료재단 특수관계법인의 승계 구조 설계. 법인 간 지분 정리와 사업구조 재편으로 장기 리스크 해소.</div></div>
+      <div class="work-card" data-category="manufacturing"><div class="work-head"><span class="work-industry">제조업</span><span class="work-period">2022.09~2024.04</span></div><div class="work-title">제조업 영위 U사 가업승계 자문 및 증여특례 적용 증여세 신고</div><span class="work-expand">자세히 보기</span><div class="work-desc">약 1.5년간 진행된 제조업 승계 프로젝트. 가업증여특례 요건 구축부터 신고 완료까지 단계별 설계.</div></div>
+      <div class="work-card" data-category="medical"><div class="work-head"><span class="work-industry">의료·재단</span><span class="work-period">2024.01~2024.02</span></div><div class="work-title">S 의료재단 및 특수관계법인 연금강의주기 증여자문 및 사업구조 개편 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">의료재단과 특수관계법인 간 자산 이전 방식 설계. 연금 구조와 증여 시나리오 동시 검토.</div></div>
+      <div class="work-card" data-category="service"><div class="work-head"><span class="work-industry">학원·출판·서비스</span><span class="work-period">2021.10~2024.02</span></div><div class="work-title">학원업 영위 K사 및 출판업 영위 P사 가업승계 및 사업구조 개편 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">2.5년에 걸친 장기 승계 프로젝트. 업종이 다른 두 법인을 통합적으로 설계하여 세무 효율 극대화.</div></div>
+      <div class="work-card" data-category="manufacturing"><div class="work-head"><span class="work-industry">제조업</span><span class="work-period">2021.11~2023.10</span></div><div class="work-title">제조업 영위 J사 가업승계 자문 및 가업상속공제 적용 상속세 신고 및 조사 대응</div><span class="work-expand">자세히 보기</span><div class="work-desc">가업승계 자문, 상속세 신고, 조사 대응까지 전 주기 수행한 대표 사례.</div></div>
+      <div class="work-card" data-category="wholesale"><div class="work-head"><span class="work-industry">유통·도매</span><span class="work-period">2022.11~2023.04</span></div><div class="work-title">복합물류업 J사 가업승계, 명의신탁 주식 환원 자문 및 증여세 신고</div><span class="work-expand">자세히 보기</span><div class="work-desc">명의신탁 주식 문제 해결과 증여세 신고를 결합한 복합 프로젝트.</div></div>
+      <div class="work-card" data-category="service"><div class="work-head"><span class="work-industry">학원·출판·서비스</span><span class="work-period">2022.09~2023.01</span></div><div class="work-title">여객운수업 영위 I사 및 특수관계법인 가업승계 및 사업구조 개편 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">여객운수업 복합 구조의 승계 플랜. 특수관계법인까지 아우르는 통합 설계.</div></div>
+      <div class="work-card" data-category="manufacturing"><div class="work-head"><span class="work-industry">제조업</span><span class="work-period">2021.10~2022.04</span></div><div class="work-title">제조업 영위 D사 가업승계 자문 및 증여특례 적용 증여세 신고</div><span class="work-expand">자세히 보기</span><div class="work-desc">약 6개월의 집중 설계로 증여특례 적용 확정.</div></div>
+      <div class="work-card" data-category="service"><div class="work-head"><span class="work-industry">학원·출판·서비스</span><span class="work-period">2021.08~2021.11</span></div><div class="work-title">연구개발업 영위 T사 가업승계 자문 및 증여특례 적용 증여세 신고</div><span class="work-expand">자세히 보기</span><div class="work-desc">R&D 기업 특성을 반영한 승계 구조 설계.</div></div>
+      <div class="work-card" data-category="wholesale"><div class="work-head"><span class="work-industry">유통·도매</span><span class="work-period">2021.09~2021.10</span></div><div class="work-title">제조유통업 영위 M사 가업승계 자문 및 증여특례 적용 증여세 신고</div><span class="work-expand">자세히 보기</span><div class="work-desc">제조·유통 겸업 법인의 가업증여 특례 적용.</div></div>
+      <div class="work-card" data-category="ma"><div class="work-head"><span class="work-industry">M&A·기타</span><span class="work-period">2023.05~2023.08</span></div><div class="work-title">개인사업자 포괄양수도 방식 법인 전환 동반 취득세 전체 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">개인사업자의 법인 전환 프로세스 전반을 세무·회계 통합 자문.</div></div>
+      <div class="work-card" data-category="family"><div class="work-head"><span class="work-industry">가족법인·구조화</span><span class="work-period">2022.03~2023.06</span></div><div class="work-title">가족 법인 구조화 및 설립 자문, 지분 구조 설계를 통한 자녀 승계 전략 수립</div><span class="work-expand">자세히 보기</span><div class="work-desc">가족법인 설립부터 자녀 승계 시나리오까지 1년 이상의 장기 설계.</div></div>
+      <div class="work-card" data-category="family"><div class="work-head"><span class="work-industry">가족법인·구조화</span><span class="work-period">2023.02~2023.09</span></div><div class="work-title">건강보험료 현실 자문, 지역가입자 직장가입자 전환 및 보수변액 최적화 방안</div><span class="work-expand">자세히 보기</span><div class="work-desc">고액 자산가의 건강보험료 부담 최적화 설계.</div></div>
+      <div class="work-card" data-category="family"><div class="work-head"><span class="work-industry">가족법인·구조화</span><span class="work-period">2020.01~현재</span></div><div class="work-title">구주양도 소득세/증여세 영향 및 특수관계자 거래 세무 리스크 사전 검토 자문 다수</div><span class="work-expand">자세히 보기</span><div class="work-desc">장기 자문 관계로 구주 양도·증여세 리스크를 상시 검토.</div></div>
+      <div class="work-card" data-category="ma"><div class="work-head"><span class="work-industry">M&A·기타</span><span class="work-period">2022.12~2023.02</span></div><div class="work-title">법무법인 B M&A 전문센터 협력 회계사 (M&A 세무/회계 통합 자문)</div><span class="work-expand">자세히 보기</span><div class="work-desc">법무법인 M&A 센터와 협력하여 세무·회계 통합 자문 제공.</div></div>
+      <div class="work-card" data-category="realestate"><div class="work-head"><span class="work-industry">부동산·건설</span><span class="work-period">2023.03~2023.11</span></div><div class="work-title">다주택자 부동산 양도·증여 설계 및 가족 간 분쟁 예방 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">다주택 보유 고객의 양도·증여 최적 시나리오 수립.</div></div>
+      <div class="work-card" data-category="realestate"><div class="work-head"><span class="work-industry">부동산·건설</span><span class="work-period">2022.08~2023.03</span></div><div class="work-title">상업용 부동산 법인 설립 및 자녀 지분 증여 자문</div><span class="work-expand">자세히 보기</span><div class="work-desc">상업용 부동산을 중심으로 법인 설립과 지분 이전 동시 설계.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 고객 후기 + 상담 만족도 -->
+<section class="review-sec" id="reviews">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">CLIENT FEEDBACK</div>
+      <h2 class="sec-h2">상담을 받으신 분들의<br><em>솔직한 평가</em></h2>
+      <p class="sec-sub">1,000건 이상의 상속·증여 상담 경험을 바탕으로 한 실제 고객 피드백입니다</p>
+    </div>
+
+    <!-- 만족도 수치 -->
+    <div class="review-stats rev">
+      <div class="review-stat">
+        <div class="review-stat-num">98<small>%</small></div>
+        <div class="review-stat-lbl">상담 만족도</div>
+      </div>
+      <div class="review-stat">
+        <div class="review-stat-num">93<small>%</small></div>
+        <div class="review-stat-lbl">재상담 의향</div>
+      </div>
+      <div class="review-stat">
+        <div class="review-stat-num">1,000<small>+</small></div>
+        <div class="review-stat-lbl">누적 상담 건수</div>
+      </div>
+    </div>
+
+    <!-- 후기 카드 2건 -->
+    <div class="review-grid">
+      <div class="review-card rev">
+        <div class="review-rating">★★★★★</div>
+        <p class="review-text">시뮬레이션 수치로 보여주시니 가족끼리 이야기하기도 훨씬 수월해졌습니다. 막연했던 부분들이 구체적인 숫자가 되어 명확해졌어요. 지금 증여와 10년 뒤 상속의 차이를 직접 비교해볼 수 있었던 게 가장 도움이 됐습니다.</p>
+        <div class="review-meta">
+          <div class="review-avatar">제</div>
+          <div class="review-author">
+            <div class="review-author-name">제조업 대표 · 50대</div>
+            <div class="review-author-meta">상속·증여 통합 상담 (2024)</div>
+          </div>
+        </div>
+      </div>
+      <div class="review-card rev rev-d1">
+        <div class="review-rating">★★★★★</div>
+        <p class="review-text">다른 곳에서는 "그냥 증여하세요"라는 조언만 받았는데, 여기서는 가족법인 설립부터 자녀 승계 시나리오까지 통합적으로 설계해주셨습니다. 막연하게 느꼈던 승계 문제가 실행 가능한 계획으로 바뀌는 경험이었습니다.</p>
+        <div class="review-meta">
+          <div class="review-avatar">부</div>
+          <div class="review-author">
+            <div class="review-author-name">부동산 자산가 · 60대</div>
+            <div class="review-author-meta">가족법인 설계 (2023)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 언론 속 이종헌 센터장 -->
+<section class="press-sec" id="press">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">ON THE MEDIA</div>
+      <h2 class="sec-h2">언론이 먼저 찾는<br><em>이종헌 센터장</em></h2>
+      <p class="sec-sub">주요 경제·시사 프로그램에 출연하여 상속·증여 이슈를 해설했습니다</p>
+    </div>
+    <div class="press-grid">
+      <div class="press-card rev">
+        <div class="press-thumb">
+          <img src="press-lg-inheritance.png" alt="LG家 상속세 해설">
+        </div>
+        <div class="press-body">
+          <div class="press-outlet">SBS 머니쇼</div>
+          <div class="press-title">LG家 상속인들, 세금 9,900억<br>— 상속재산 절반을 세금으로</div>
+          <div class="press-date">재테크 노하우</div>
+        </div>
+      </div>
+      <div class="press-card rev rev-d1">
+        <div class="press-thumb">
+          <img src="press-golf-industry.png" alt="국내 골프산업 분석">
+        </div>
+        <div class="press-body">
+          <div class="press-outlet">경제 방송 출연</div>
+          <div class="press-title">국내 골프산업의 위기<br>— 과시 문화와 소비 트렌드</div>
+          <div class="press-date">전문가 패널</div>
+        </div>
+      </div>
+      <div class="press-card rev rev-d2">
+        <div class="press-thumb">
+          <img src="press-lotte-crisis.png" alt="롯데그룹 위기 분석">
+        </div>
+        <div class="press-body">
+          <div class="press-outlet">경제 방송 출연</div>
+          <div class="press-title">롯데그룹, 정말 위기일까?<br>— 분기 실적과 재무 진단</div>
+          <div class="press-date">기업 분석</div>
+        </div>
+      </div>
+      <div class="press-card rev rev-d3">
+        <div class="press-thumb">
+          <img src="press-compose-coffee.png" alt="컴포즈커피 매각 분석">
+        </div>
+        <div class="press-body">
+          <div class="press-outlet">경제 방송 출연</div>
+          <div class="press-title">컴포즈커피 3,300억에 매각<br>— 프랜차이즈 M&A 이슈</div>
+          <div class="press-date">M&A 해설</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. 대표 메시지 -->
+<section class="message-sec">
+  <div class="message-inner">
+    <div class="message-mark rev">“</div>
+    <p class="message-body rev rev-d1">가업승계는 단순히 세금을 줄이는 문제가 아니라,<br><em>가족과 기업의 미래를 함께 설계하는 일</em>입니다.</p>
+    <div class="message-sig rev rev-d2">
+      <div class="message-sig-name">이종헌 · 공인회계사</div>
+      <div class="message-sig-role">미래CEO플랜 상속증여센터장</div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. FAQ (자주 묻는 질문) -->
+<section class="faq-sec" id="faq">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">FREQUENTLY ASKED</div>
+      <h2 class="sec-h2">자주 묻는<br><em>질문</em></h2>
+      <p class="sec-sub">상속·증여 상담을 앞두고 대표님들이 가장 많이 궁금해하시는 내용입니다</p>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">상담을 받기 전에 준비해야 할 자료가 있나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">별도로 준비하실 자료는 없습니다. 편하게 상담 신청만 주시면, 사전 안내 전화를 통해 필요한 자료(가족관계증명서·부동산 등기부·재무제표 등)를 상황에 맞게 알려드립니다. <strong>가족 구성과 대략적인 자산 규모만 알려주셔도 초기 상담은 충분히 가능</strong>합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">상담은 어떤 방식으로 진행되나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner"><strong>1:1 비공개 상담</strong>으로 진행됩니다. 대면 상담은 서울 사무실에서, 원거리 고객은 화상 상담도 가능합니다. 초기 상담은 완전 무료이며, 본격적인 설계 단계부터는 별도의 자문 계약이 진행됩니다. 상담 내용은 100% 비밀이 유지됩니다.</div>
+        </div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">증여는 언제부터 시작하는 것이 좋은가요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">상속세법상 <strong>10년 합산 배제</strong> 기간이 핵심입니다. 즉, 증여 후 10년이 지나야 상속재산에서 완전히 분리됩니다. 따라서 <strong>50대부터 준비를 시작하는 것이 가장 이상적</strong>이며, 60대 후반 이후에는 연부연납 등 납세 재원 확보 전략으로 중심이 이동합니다. 자산 가치 상승 속도가 빠른 부동산·비상장주식일수록 일찍 시작할수록 절세 효과가 큽니다.</div>
+        </div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">자녀가 여러 명이면 어떻게 배분해야 유리한가요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">자녀별로 <strong>증여재산공제(5천만 원, 10년 단위)</strong>가 각각 적용되므로 분산 증여가 일반적으로 유리합니다. 다만 가업승계의 경우에는 <strong>후계자 1인에게 집중해야 공제 혜택을 받을 수 있는 구조</strong>가 많아, 사전에 "누가 경영을 맡고 누가 재산적 지분만 받을지"를 가족 합의로 정리하는 것이 중요합니다. 이 과정에서 가족 분쟁 예방 설계도 함께 진행합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">가업상속공제와 가업증여특례 중 어느 쪽이 유리한가요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">두 제도는 <strong>적용 시점과 요건이 다릅니다</strong>. 가업상속공제는 사망 시점 기준, 가업증여특례는 생전 증여 기준입니다. 대체로 <strong>경영 자신감이 있고 후계자가 준비된 경우에는 증여특례가</strong>, 피상속인이 건강 유지 기간이 확실치 않은 경우에는 상속공제가 유리합니다. 양쪽 모두 "사후관리 요건(7년 이상 경영 유지 등)"이 까다로우니 반드시 전문가와 구조를 검토하셔야 합니다.</div>
+        </div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">상담 후 바로 실행해야 하나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a">
+          <div class="faq-a-inner">전혀 그렇지 않습니다. 초기 상담은 <strong>"우리 집 상황에서 어떤 선택지가 있는지 파악"</strong>하는 자리입니다. 시뮬레이션 결과를 보신 후 가족과 충분히 논의하시고, 필요하실 때 다시 연락 주셔도 됩니다. 다만 <strong>매년 1월 1일 기준 자산 가치가 평가</strong>되므로, 결심이 서셨다면 연 단위로 시기를 조율하는 것이 좋습니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. CTA -->
+<section class="cta-sec" id="final-cta">
+  <div class="cta-wrap">
+    <div class="sec-head rev">
+      <div class="sec-eye">START YOUR GOLDEN TIME</div>
+    </div>
+    <h2 class="cta-h2 rev">10년 뒤의 세금,<br><em>오늘 예측해 보세요</em></h2>
+    <p class="cta-sub rev rev-d1">상속이 발생하기 전에 끝내는 절세 설계<br>전문 회계사가 1:1로 상담해 드립니다</p>
+    <form class="cta-form rev rev-d2" onsubmit="submitForm(event)">
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">회사명/성함 <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="(주)미래CEO 또는 홍길동" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">담당자 성함 <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="홍길동" required>
+        </div>
+      </div>
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">연락처 <span class="req">*</span></label>
+          <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">이메일 <span class="req">*</span></label>
+          <input type="email" class="form-input" placeholder="email@company.com" required>
+        </div>
+      </div>
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">자산 규모 <span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="">선택해 주세요</option>
+            <option>30억 미만</option>
+            <option>30억 ~ 100억</option>
+            <option>100억 ~ 300억</option>
+            <option>300억 ~ 1,000억</option>
+            <option>1,000억 이상</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">상담 분야 <span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="">선택해 주세요</option>
+            <option>상속·증여 플래닝</option>
+            <option>사전 증여 시뮬레이션</option>
+            <option>가족법인 설계</option>
+            <option>부동산 자산 승계</option>
+            <option>비상장주식 가치 설계</option>
+            <option>기타</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">간단한 문의 사항 (선택)</label>
+        <input type="text" class="form-input" placeholder="자산 현황, 가족 구성, 궁금하신 점 등">
+      </div>
+      <div class="consent-block">
+        <label class="consent-row">
+          <input type="checkbox" required>
+          <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 목적 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+        </label>
+        <label class="consent-row">
+          <input type="checkbox">
+          <span><b class="optional">[선택]</b>마케팅 정보 수신 동의<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+        </label>
+        <div class="consent-note">
+          <span class="consent-note-ico">💡</span>
+          <span>협력 파트너 연결이 필요한 경우, 1차 상담 시 구체적 파트너 정보를 안내드린 후 별도 동의를 받습니다.</span>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">무료 상담 신청하기 →</button>
+    </form>
+    <div class="cta-trust rev rev-d3">
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 상담 내용 100% 비밀 유지</div>
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 초기 상담 완전 무료</div>
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 1영업일 안에 연락드립니다</div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY 플로팅 폼 -->
+<aside class="sticky-form" id="stickyForm">
+  <div class="sticky-form-title">무료 상담 신청</div>
+  <div class="sticky-form-sub">1영업일 이내 전문가가 연락드립니다</div>
+  <form onsubmit="submitStickyForm(event)">
+    <div class="form-row">
+      <label class="form-label">성함 <span class="req">*</span></label>
+      <input type="text" class="form-input" placeholder="홍길동" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">연락처 <span class="req">*</span></label>
+      <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">이메일 <span class="req">*</span></label>
+      <input type="email" class="form-input" placeholder="email@company.com" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">자산 규모 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>30억 미만</option>
+        <option>30억 ~ 100억</option>
+        <option>100억 ~ 300억</option>
+        <option>300억 이상</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">상담 분야 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>상속·증여 플래닝</option>
+        <option>사전 증여 시뮬레이션</option>
+        <option>가족법인 설계</option>
+        <option>부동산 자산 승계</option>
+        <option>기타</option>
+      </select>
+    </div>
+    <div class="consent-block compact">
+      <label class="consent-row">
+        <input type="checkbox" required>
+        <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+      <label class="consent-row">
+        <input type="checkbox">
+        <span><b class="optional">[선택]</b>마케팅 수신<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+    </div>
+    <button type="submit" class="sticky-form-submit">상담 신청하기 →</button>
+  </form>
+  <div class="sticky-form-trust">
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 100% 비밀 유지</div>
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 초기 상담 완전 무료</div>
+  </div>
+</aside>
+
+<!-- ═══ 성공 사례 상세 모달 ═══ -->
+<div class="case-modal-backdrop" id="caseModalBackdrop"></div>
+
+<!-- CASE 1: 5,000억 순환출자 해소 -->
+<div class="case-modal" id="modal-case-1">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 01</div>
+    <h3 class="case-modal-title">30년 묵은 '순환출자 고리' 해소와 '3세 승계' 재원 마련, 한 번의 설계로 끝내다</h3>
+    <p class="case-modal-subtitle">Client: 중견 제조 및 부동산 그룹 A사 (자산규모 5,000억 원 대) · Project: 지배구조 재편 및 초장기 승계 플랜 수립</p>
+  </div>
+  <div class="case-modal-body">
+    <h4>고객의 고민 (The Problem)</h4>
+    <p>창업 1세대인 A그룹 회장님은 30여 년간 회사를 일구며 수천억 원대의 자산을 축적하셨습니다. 하지만 회사가 성장할수록 <strong>세금과 지배구조</strong> 문제는 복잡한 실타래처럼 꼬여 있었습니다.</p>
+    <ol>
+      <li><strong>거품 낀 주식 가치 (순환출자):</strong> 과거 계열사 확장을 위해 불가피하게 선택했던 '순환출자(A사→B사→A사)' 구조가 현재는 <em>기업 가치를 실제보다 수백억 원 이상 부풀려(Double Counting)</em>, 상속세 과표를 불필요하게 높이고 있었습니다.</li>
+      <li><strong>이중 과세의 함정:</strong> 승계 시점에 상속세 납부 재원을 마련하려면 법인에서 급여나 배당을 받아야 하는데, 이때 <em>최고 세율의 소득세(약 49.5%)를 먼저 내고, 남은 돈으로 다시 상속세(50%)를 내야 하는 악순환</em>이 예상되었습니다.</li>
+      <li><strong>3세(손주)를 위한 미래:</strong> 이제 막 성년이 된 손주 세대까지 안정적으로 자산이 이전될 수 있도록, 30년 후를 내다보는 영속적인 플랜을 원하셨습니다.</li>
+    </ol>
+
+    <h4>우리의 솔루션 (Our Solution)</h4>
+    <p>단순히 세금을 계산하는 것을 넘어, <strong>법인의 자산을 '가장 저렴한 비용'으로 '가족의 자산'으로 치환</strong>하는 4단계 마스터플랜을 실행했습니다.</p>
+
+    <h5>1. 지배구조 다이어트: 공동근로복지기금을 통한 순환출자 해소</h5>
+    <p>주식을 매각하여 정리할 경우 막대한 양도세가 발생합니다. 대신 그룹사 공동으로 <strong>[공동근로복지기금]</strong>을 설립하여 문제가 되는 상호 보유 주식을 '출연'하는 방식을 제안했습니다.</p>
+    <div class="case-modal-box">
+      <div class="case-modal-box-title">Result</div>
+      주식 출연액 전액을 법인세법상 비용(손금)으로 인정받아 <strong>법인세를 절감</strong>하는 동시에, 세금 발생 없이 순환출자 고리를 끊어 <em>기업 가치 평가액(상속세 과표)을 약 30% 이상 낮췄습니다.</em> 기금에 출연된 주식은 우호 지분으로 남아 경영권 방어 기능도 유지했습니다.
+    </div>
+
+    <h5>2. 상속 재원 조달의 혁신: '상속 감자(Capital Reduction)' 전략</h5>
+    <p>"세금을 내기 위해 또 세금을 내지 않는다"는 원칙 하에, 상속 발생 직후 실행할 <strong>[이익 소각 플랜]</strong>을 설계했습니다.</p>
+    <ul>
+      <li><strong>Mechanism:</strong> 상속 개시 시점에 주식 취득가액이 시가로 현실화되는 점을 활용, 후계자가 상속받은 주식을 법인에 양도하여 소각합니다.</li>
+      <li><strong>Result:</strong> 이 과정에서 의제배당소득세는 '0원'이 되며, 법인의 풍부한 잉여금을 오직 상속세 납부 재원으로만 온전하게 사용할 수 있는 루트를 확보했습니다.</li>
+    </ul>
+
+    <h5>3. 유동성 확보: 리스크 헷지형 금융 솔루션</h5>
+    <p>법인의 자산이 부동산과 비상장 주식에 묶여 있을 경우, 막상 세금을 낼 현금이 부족해 헐값에 자산을 매각하는 '흑자 도산'의 위험이 있습니다.</p>
+    <p>법인 자산 포트폴리오의 일부를 <strong>[달러 기반 유동성 금융 상품]</strong>으로 재배치했습니다. 이는 평소에는 법인의 자산으로 운용되다가, CEO 유고 시 즉각적인 현금 유동성(Tax Fund)으로 전환되어 상속 감자의 확실한 재원이 됩니다. 원화 가치 하락에 대비한 통화 분산 효과까지 거두었습니다.</p>
+
+    <h5>4. 100년 기업을 위한 준비: 3세 승계형 '특정 법인' 설립</h5>
+    <p>개인 간 증여의 높은 세율 한계를 극복하기 위해, 손주가 주주로 참여하는 <strong>[가족 법인]</strong>을 설립했습니다.</p>
+    <p>조부(회장)가 손주에게 현금을 주는 대신, 손주 법인에 사업 기회와 자금을 대여하여 법인 스스로 자산을 불리게 했습니다. 법인세율(약 19%)만 부담하며 자산이 눈덩이처럼 불어나는 <em>복리 투자 구조</em>를 완성했습니다.</p>
+
+    <h4>컨설팅 결과 (Key Outcomes)</h4>
+    <div class="case-modal-box highlight">
+      <ul style="margin:0; padding-left:20px;">
+        <li><strong>예상 상속세 절감:</strong> 순환출자 해소 및 주식 가치 정상화를 통해 <em>총 예상 세액의 약 40% 절감</em></li>
+        <li><strong>유동성 확보:</strong> 외부 차입이나 부동산 급매 없이, <em>법인 내부 자금만으로 상속세 납부 재원 100% 확보</em> 플랜 완료</li>
+        <li><strong>가업 승계:</strong> 아들의 지배력 강화는 물론, 손주 세대까지 이어지는 <em>'세금 없는 부의 이전 시스템'</em> 구축</li>
+      </ul>
+    </div>
+    <p style="margin-top:24px;"><strong>"기업의 이익은 지키고, 가족의 세금은 덜어드립니다."</strong> 복잡한 지분 구조와 막막한 상속세 문제, 회계사와 금융 전문가가 결합된 통합 솔루션으로 가장 안전한 출구 전략을 제시해 드립니다.</p>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<!-- CASE 2: 60억 Two-Track -->
+<div class="case-modal" id="modal-case-2">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 02</div>
+    <h3 class="case-modal-title">현금 없는 60억 원 상속세, '기업의 잉여금'으로 0원에 해결한 30년 제조기업의 승계 비밀</h3>
+    <p class="case-modal-subtitle">관계사 지분 구조조정과 기업가치 조정을 결합한 Two-Track 솔루션</p>
+  </div>
+  <div class="case-modal-body">
+    <div class="case-modal-quote">
+      <div class="case-modal-quote-inner">
+        아들 회사 키워주느라 넣었던 자금이, 이제 와서 상속세 효자 노릇을 할 줄 몰랐습니다.
+      </div>
+    </div>
+    <p>30년간 금속 가공업 외길을 걸어오며 연 매출 400억 원의 알짜 기업을 일궜지만, 높은 주가와 유동성 부족으로 승계 위기에 처했던 K사(제조업)의 실제 컨설팅 사례를 소개합니다.</p>
+
+    <h4>1. Client: 고객의 상황 및 고민</h4>
+    <p><strong>경기 소재 금속가공 법인 K사 (업력 30년, 매출 400억 원대)</strong></p>
+    <p>K사의 박 대표님(60대 후반)은 평생을 바쳐 회사를 무차입 경영의 우량 기업으로 키우셨습니다. 하지만 회계 장부에 차곡차곡 쌓인 이익잉여금이 승계의 가장 큰 걸림돌이 되었습니다.</p>
+    <ul>
+      <li><strong>치솟은 주식 가치:</strong> 매년 흑자가 누적되다 보니 비상장주식 평가액이 액면가의 <em>76배(주당 38만 원)</em>까지 상승</li>
+      <li><strong>상속세 부담:</strong> 대표님 유고 시 예상되는 상속세만 <em>약 60억 원</em></li>
+      <li><strong>유동성 경색:</strong> 자산의 대부분이 기계장치와 공장 부지라 '흑자 도산' 위기</li>
+      <li><strong>복잡한 지분 구조:</strong> 과거 아들이 독립할 때 설립해 준 관계사(유통법인 S사)의 지분 문제</li>
+    </ul>
+
+    <h4>2. Diagnosis: 회계사의 진단</h4>
+    <p>단순한 세무 신고로는 해결할 수 없는 문제였습니다. <strong>'흩어진 가족 법인의 자산'을 재배치하여 세금 낼 돈을 만들고, 본사의 몸집을 줄이는 구조조정</strong>이 필요했습니다.</p>
+    <ol>
+      <li><strong>숨겨진 재원 발견:</strong> 아들이 운영하는 S사의 실적이 좋아져, 어머니가 보유한 <em>지분 15%의 가치가 약 30억 원</em>에 달했습니다.</li>
+      <li><strong>가치 조정 여력:</strong> 아버지 법인(K사)은 현금 흐름이 매우 우수했고, 이 현금을 전략적 비용으로 전환한다면 <em>주가를 떨어뜨릴 여력</em>이 충분했습니다.</li>
+    </ol>
+
+    <h4>3. Solution: 이원화(Two-Track) 마스터플랜</h4>
+
+    <h5>Track 1. [Cash Plan] 관계사 지분을 활용한 '30억 지갑' 만들기</h5>
+    <p>아들 법인(S사)에 묶여 있던 어머니의 지분을 세금 없이 현금화하는 출구(Exit) 전략입니다.</p>
+    <ol>
+      <li><strong>상속:</strong> 아버지 유고 시, 어머니가 아들 법인(S사) 지분 15%(30억 상당)를 전량 상속받습니다. (배우자 공제 활용 → 상속세 0원)</li>
+      <li><strong>이익 소각(Redemption):</strong> 상속 직후 S사가 어머니의 주식을 30억 원에 매입하여 소각합니다. (취득가=양도가 → 소득세 0원)</li>
+      <li><strong>대납:</strong> 어머니가 확보한 현금 30억 원으로 자녀들의 K사 상속세를 연대 납부합니다.</li>
+    </ol>
+
+    <h5>Track 2. [Tax Plan] 3년 단기 기업가치 조정 (Valuation Management)</h5>
+    <p>30억 원으로도 부족한 나머지 세금을 없애기 위해, 아버지 법인(K사)의 주가를 떨어뜨려 <strong>가업승계 특례(10%)</strong> 구간으로 진입시키는 전략입니다.</p>
+    <ul>
+      <li><strong>비용 처리를 통한 가치 인하:</strong> 매년 약 6억 원 규모의 금융 비용을 발생시켜 당기순이익을 계획적으로 낮춤</li>
+      <li><strong>주가 하락 유도:</strong> 3년간 순이익이 감소하자, 세법상 <em>주식 평가액이 약 15% 하락</em>하는 효과</li>
+      <li><strong>승계 타이밍 포착:</strong> 3년 뒤 사전 증여를 실행하여 세율을 50% → 10%로 확정</li>
+    </ul>
+
+    <h4>4. Result: 세금 반토막 & 현금 부담 Zero</h4>
+    <table class="case-modal-table">
+      <thead>
+        <tr><th>구분</th><th>일반적인 상속 (Before)</th><th>전문가 솔루션 (After)</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>예상 세금</strong></td><td>약 60억 원</td><td><strong>약 30억 원</strong></td></tr>
+        <tr><td><strong>납부 재원</strong></td><td>공장 담보 대출 (이자 부담)</td><td><strong>관계사 이익 소각 대금 (30억)</strong></td></tr>
+        <tr><td><strong>자녀 현금 부담</strong></td><td>약 60억 원 (불가능)</td><td><strong>0원 (완벽 해결)</strong></td></tr>
+        <tr><td><strong>부수 효과</strong></td><td>—</td><td>법인 달러 자산 확보 (유동성)</td></tr>
+      </tbody>
+    </table>
+
+    <div class="case-modal-quote">
+      <div class="case-modal-quote-inner">
+        처음엔 월 5천만 원이나 되는 금융 비용이 부담스러웠습니다. 하지만 그게 비용으로 처리되어 주가를 낮춰 세금을 줄여주고, 나중엔 회사에 <strong>달러 비상금</strong>으로 돌아온다는 설명을 듣고 결심했죠. 무엇보다 아들 회사에 있던 집사람 지분을 정리해서 제 상속세를 낼 수 있다는 건 상상도 못 했습니다. 공장을 지켜주셔서 감사합니다.
+        <span class="case-modal-quote-author">— K사 박 대표님</span>
+      </div>
+    </div>
+
+    <h4>Expert Insight</h4>
+    <p>많은 CEO분들이 "세금 낼 돈이 없다"고 걱정하시지만, 전문가의 눈으로 보면 회사 곳곳에 숨겨진 재원(Hidden Asset)이 보입니다.</p>
+    <p><strong>관계사에 흩어진 지분, 매년 발생하는 잉여금</strong>… 이것들을 방치하면 세금 폭탄이 되지만, 「전략적 금융 솔루션」과 「이익 소각」이라는 도구로 재설계하면 기업을 지키는 가장 강력한 방패가 됩니다.</p>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<!-- CASE 3: 180억 100년 기업 -->
+<div class="case-modal" id="modal-case-3">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 03</div>
+    <h3 class="case-modal-title">180억 상속세 리스크를 100년 기업의 자부심으로</h3>
+    <p class="case-modal-subtitle">가족법인과 전략적 금융 포트폴리오를 활용한 가업 승계 솔루션</p>
+  </div>
+  <div class="case-modal-body">
+    <p><strong>"대표님, 드릴 말씀이 있습니다."</strong> 회사가 가장 바쁜 시기, 직원의 이 한마디에 가슴이 철렁 내려앉던 경영자. 30년간 앞만 보고 달려와 수백억 대 가치를 지닌 중견기업을 일궜지만, 정작 대표님 개인의 수중에는 세금을 낼 현금이 부족했습니다. 성격이 다른 두 자녀에게 어떻게 회사를 공평하게 물려줄지 고민하던 김 대표님의 실제 성공 사례를 소개합니다.</p>
+
+    <h4>1. 고객의 상황 및 핵심 고민 (Challenge)</h4>
+    <ul>
+      <li><strong>기업 가치:</strong> 약 <em>350억 원</em> 규모 (영업 법인 및 부동산 임대 법인 합산)</li>
+      <li><strong>가족 관계:</strong> 경영 승계를 희망하는 아들과 본인 커리어 활동에 전념하는 딸</li>
+      <li><strong>현금 부족:</strong> 기업 가치는 높으나 가용 현금이 부족하여 상속세 재원 마련 막막</li>
+      <li><strong>형평성 이슈:</strong> 아들에게 경영권을 주더라도 딸이 소외되지 않도록 공평 배분 필요</li>
+      <li><strong>세금 폭탄:</strong> 아무 준비 없이 상속 발생 시 약 <em>180억 원 이상</em>의 세금 예상</li>
+    </ul>
+
+    <h4>2. 맞춤형 솔루션 (Strategy)</h4>
+
+    <h5>① '아들 법인' 설립을 통한 자산 승계 엔진 장착</h5>
+    <p>자녀들이 주주인 가족법인(지주사)을 설립. 어머니가 보유하고 있던 지분 20%를 전략적으로 자녀 법인에 증여하여 법인의 덩치를 키웠습니다.</p>
+    <ul>
+      <li><strong>차등 배당 전략:</strong> 대표님 배당을 포기하고 자녀 법인에 배당을 집중하여, 자녀들이 스스로 승계 세금을 낼 수 있는 '현금 주머니'를 합법적으로 마련</li>
+      <li><strong>절세 효과:</strong> 개인 소득세(최대 49.5%) 대신 낮은 법인세율을 적용받아 <em>자산 이전 속도를 3배 이상</em> 증가</li>
+    </ul>
+
+    <h5>② 토지·건물 소유권 분리를 통한 수익권 이전</h5>
+    <p>부동산 법인이 보유한 강남 사옥의 <strong>건물 소유권만 자녀 법인으로 이전</strong>. 매달 발생하는 수천만 원의 임대료 수익이 자녀 법인의 매출이 되어, 자녀들이 부모의 도움 없이 자립할 수 있는 강력한 캐시카우를 확보했습니다.</p>
+
+    <h5>③ 기업 맞춤형 금융 상품을 활용한 '가치 조절'</h5>
+    <p>가업 승계 특례를 적용받기 전, <strong>특수 설계된 금융 상품</strong>에 법인 자금을 예치.</p>
+    <ul>
+      <li><strong>유동성 확보:</strong> 향후 상속 발생 시 즉시 현금화하여 세금을 납부할 수 있는 재원 마련</li>
+      <li><strong>주식 가치 최적화:</strong> 금융 상품의 초기 장부상 평가 원리를 활용해 주식 가치를 일시적으로 낮춤으로써, 증여 시점 세금을 <em>약 25% 추가 절감</em></li>
+    </ul>
+
+    <h4>3. 최종 결과 (Result)</h4>
+    <div class="case-modal-box highlight">
+      <ul style="margin:0; padding-left:20px;">
+        <li><strong>세무 리스크 완벽 차단:</strong> 약 180억 원의 예상 상속세를 가업 승계 특례와 가족법인 활용을 통해 <em>60% 이상 절감</em> 로드맵 확정</li>
+        <li><strong>자녀 간 화합:</strong> 아들은 경영권을, 딸은 가족법인 지분을 통해 동일한 자산 가치를 향유함으로써 형제간 분쟁 소지 원천 차단</li>
+        <li><strong>경영 집중:</strong> 사내 근로복지 제도 정비 병행으로 직원 이탈 방지 및 충성도 제고</li>
+      </ul>
+    </div>
+
+    <div class="case-modal-quote">
+      <div class="case-modal-quote-inner">
+        가업 승계는 단순히 주식을 넘기는 '이벤트'가 아니라, 세대 간 부의 이동을 설계하는 '시스템 구축'입니다. 특히 어머니의 지분이나 가족법인을 어떻게 배치하느냐에 따라 승계의 성패가 갈립니다.
+        <span class="case-modal-quote-author">— 이종헌 센터장</span>
+      </div>
+    </div>
+    <p style="margin-top:20px;"><strong>우리 가문의 100년 대계를 위한 첫걸음, 미래CEO플랜 상속증여센터가 함께하겠습니다.</strong></p>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="w">
+    <div class="footer-inner">
+      <div class="footer-logo">미래<em>CEO</em>플랜</div>
+      <a class="footer-back" href="index.html#corp">← 전체 솔루션 보러가기</a>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      ㈜프로그레스미디어 · 대표 구동엽 · 사업자등록번호 113-86-27124<br>
+      TEL 02-6261-5102 | FAX 02-6261-5104 | esoyeon@my-progress.co.kr<br>
+      © 2026 프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+window.addEventListener('scroll', () => {
+  document.getElementById('gnb').classList.toggle('scrolled', window.scrollY > 60);
+});
+document.getElementById('gnb').classList.add('scrolled');
+
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+function scrollToForm() {
+  const target = document.getElementById('final-cta');
+  if (!target) return;
+  const endY = target.getBoundingClientRect().top + window.scrollY - 40;
+  const startY = window.scrollY;
+  const duration = 800;
+  const startTime = performance.now();
+  const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    window.scrollTo(0, startY + (endY - startY) * easeInOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(step);
+    else {
+      const firstInput = target.querySelector('input, select');
+      if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 200);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+/* Sticky 플로팅 폼 노출 제어 */
+const stickyForm = document.getElementById('stickyForm');
+const heroSec = document.querySelector('.hero');
+const finalCta = document.getElementById('final-cta');
+function toggleStickyForm() {
+  const heroBottom = heroSec.getBoundingClientRect().bottom;
+  const ctaTop = finalCta.getBoundingClientRect().top;
+  const viewportH = window.innerHeight;
+  if (heroBottom < 0 && ctaTop > viewportH * 0.5) {
+    stickyForm.classList.add('show');
+  } else {
+    stickyForm.classList.remove('show');
+  }
+}
+window.addEventListener('scroll', toggleStickyForm);
+toggleStickyForm();
+
+/* 21건 필터 */
+const worksTabs = document.querySelectorAll('#worksTabs .works-tab');
+const worksCards = document.querySelectorAll('#worksList .work-card');
+
+function applyWorksFilter(filter) {
+  worksCards.forEach(card => {
+    if (filter === 'all' || card.dataset.category === filter) {
+      card.classList.remove('hidden');
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+}
+
+worksTabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    worksTabs.forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    applyWorksFilter(tab.dataset.filter);
+  });
+});
+
+/* 초기 상태: 활성 탭 기준으로 필터 적용 (제조업) */
+const initActiveTab = document.querySelector('#worksTabs .works-tab.active');
+if (initActiveTab) applyWorksFilter(initActiveTab.dataset.filter);
+
+worksCards.forEach(card => {
+  card.addEventListener('click', () => card.classList.toggle('expanded'));
+});
+
+/* FAQ 아코디언 */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+/* 성공 사례 모달 */
+const caseBackdrop = document.getElementById('caseModalBackdrop');
+const caseModals = document.querySelectorAll('.case-modal');
+
+function openCaseModal(caseId) {
+  const modal = document.getElementById('modal-' + caseId);
+  if (!modal) return;
+  caseBackdrop.classList.add('show');
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCaseModal() {
+  caseBackdrop.classList.remove('show');
+  caseModals.forEach(m => m.classList.remove('show'));
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.case-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const caseId = card.dataset.case;
+    if (caseId) openCaseModal(caseId);
+  });
+});
+caseBackdrop.addEventListener('click', closeCaseModal);
+document.querySelectorAll('.case-modal-close').forEach(btn => {
+  btn.addEventListener('click', closeCaseModal);
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeCaseModal();
+});
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+function submitForm(e) { e.preventDefault(); showToast('상담 신청이 접수되었습니다. 1영업일 내 연락드립니다.'); e.target.reset(); }
+function submitStickyForm(e) { e.preventDefault(); showToast('상담 신청이 접수되었습니다. 1영업일 내 연락드립니다.'); e.target.reset(); }
+</script>
+
+</body>
+</html>

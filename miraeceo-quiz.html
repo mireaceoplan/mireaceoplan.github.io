@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+  // iframe 안이면 즉시 html에 클래스 추가 (배경 투명 처리)
+  if (window.parent && window.parent !== window) {
+    document.documentElement.classList.add('in-iframe');
+  }
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>미래CEO플랜 | 솔루션 진단</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+* { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif !important; }
+</style>
+<style>
+  :root {
+    --primary: #3182F6;
+    --primary-dark: #1a6ee0;
+    --primary-light: #EBF3FF;
+    --bg: #F7F9FC;
+    --surface: #ffffff;
+    --text: #111827;
+    --text-sub: #6B7280;
+    --text-light: #9CA3AF;
+    --border: #E5E7EB;
+    --accent: #0F172A;
+    --success: #10B981;
+    --radius: 16px;
+    --shadow: 0 4px 24px rgba(49,130,246,0.08);
+    --shadow-card: 0 2px 12px rgba(0,0,0,0.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Pretendard', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+
+  /* iframe 내부일 때 — 모달 카드 배경이 그대로 보이도록 투명 처리 */
+  html.in-iframe, html.in-iframe body { background: transparent; }
+
+  /* INTRO SCREEN */
+  .intro-screen {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .intro-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--primary-light);
+    color: var(--primary);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 28px;
+    letter-spacing: 0.02em;
+  }
+
+  .intro-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--primary);
+    border-radius: 50%;
+  }
+
+  .intro-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(26px, 5vw, 38px);
+    font-weight: 700;
+    line-height: 1.35;
+    color: var(--accent);
+    margin-bottom: 16px;
+    letter-spacing: -0.02em;
+  }
+
+  .intro-title span {
+    color: var(--primary);
+  }
+
+  .intro-desc {
+    font-size: 15px;
+    color: var(--text-sub);
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+
+  .intro-meta {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 40px;
+  }
+
+  .intro-meta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .intro-meta-num {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .intro-meta-label {
+    font-size: 12px;
+    color: var(--text-light);
+  }
+
+  .btn-start {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 16px 40px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 16px rgba(49,130,246,0.3);
+  }
+
+  .btn-start:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(49,130,246,0.35);
+  }
+
+  .btn-start svg {
+    transition: transform 0.2s;
+  }
+
+  .btn-start:hover svg {
+    transform: translateX(3px);
+  }
+
+  /* QUIZ SCREEN */
+  .quiz-screen {
+    max-width: 600px;
+    width: 100%;
+    display: none;
+    animation: fadeUp 0.5s ease both;
+  }
+
+  .quiz-header {
+    margin-bottom: 32px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  .progress-track {
+    font-size: 13px;
+    color: var(--text-sub);
+    font-weight: 500;
+  }
+
+  .progress-pct {
+    font-size: 13px;
+    color: var(--primary);
+    font-weight: 600;
+  }
+
+  .progress-bar {
+    width: 100%;
+    height: 4px;
+    background: var(--border);
+    border-radius: 100px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--primary);
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+
+  .quiz-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    padding: 36px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--border);
+  }
+
+  .quiz-step-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .quiz-question {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(18px, 3vw, 22px);
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.5;
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+
+  .options-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .options-grid.single-col {
+    grid-template-columns: 1fr;
+  }
+
+  .option-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--bg);
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text);
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  .option-btn:hover {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+    transform: translateY(-1px);
+  }
+
+  .option-btn.selected {
+    border-color: var(--primary);
+    background: var(--primary-light);
+    color: var(--primary);
+  }
+
+  .option-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    flex-shrink: 0;
+    transition: all 0.18s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .option-btn.selected .option-dot {
+    border-color: var(--primary);
+    background: var(--primary);
+  }
+
+  .option-btn.selected .option-dot::after {
+    content: '';
+    width: 6px; height: 6px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  .quiz-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 28px;
+  }
+
+  .btn-back {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: none;
+    border: none;
+    color: var(--text-sub);
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 0;
+    transition: color 0.2s;
+  }
+
+  .btn-back:hover { color: var(--text); }
+  .btn-back:disabled { opacity: 0.3; cursor: default; }
+
+  .btn-next {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--primary);
+    color: white;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 28px;
+    border-radius: 100px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 2px 10px rgba(49,130,246,0.25);
+  }
+
+  .btn-next:hover:not(:disabled) {
+    background: var(--primary-dark);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px rgba(49,130,246,0.3);
+  }
+
+  .btn-next:disabled {
+    background: var(--border);
+    color: var(--text-light);
+    cursor: default;
+    box-shadow: none;
+  }
+
+  /* RESULT SCREEN */
+  .result-screen {
+    max-width: 600px;
+    width: 100%;
+    display: none;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .result-card {
+    background: var(--surface);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+  }
+
+  .result-header {
+    background: linear-gradient(135deg, #0F172A 0%, #1e3a5f 100%);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .result-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 180px; height: 180px;
+    background: radial-gradient(circle, rgba(49,130,246,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .result-track-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.12);
+    color: rgba(255,255,255,0.8);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    letter-spacing: 0.04em;
+  }
+
+  .result-type-title {
+    font-family: 'Pretendard', sans-serif;
+    font-size: clamp(22px, 4vw, 30px);
+    font-weight: 700;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+
+  .result-subtitle {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.6;
+  }
+
+  .result-body {
+    padding: 32px 36px;
+  }
+
+  .result-insight {
+    background: var(--primary-light);
+    border-left: 3px solid var(--primary);
+    border-radius: 0 8px 8px 0;
+    padding: 16px 20px;
+    margin-bottom: 28px;
+  }
+
+  .result-insight-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--primary);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .result-insight-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--accent);
+    line-height: 1.5;
+  }
+
+  .result-solutions {
+    margin-bottom: 28px;
+  }
+
+  .result-solutions-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--text-sub);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+
+  .solution-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .solution-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 500;
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  .solution-tag.primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+  }
+
+  .result-desc {
+    font-size: 14px;
+    color: var(--text-sub);
+    line-height: 1.75;
+    margin-bottom: 32px;
+  }
+
+  .btn-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    background: var(--primary);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 18px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 16px rgba(49,130,246,0.3);
+    margin-bottom: 12px;
+  }
+
+  .btn-cta:hover {
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(49,130,246,0.35);
+  }
+
+  .btn-retry {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 100%;
+    background: none;
+    border: 1.5px solid var(--border);
+    color: var(--text-sub);
+    font-size: 14px;
+    font-weight: 500;
+    padding: 13px;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .btn-retry:hover {
+    border-color: var(--text-sub);
+    color: var(--text);
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .screen-transition {
+    animation: fadeUp 0.4s ease both;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 480px) {
+    .quiz-card { padding: 24px 20px; }
+    .options-grid { grid-template-columns: 1fr; }
+    .result-header { padding: 28px 24px; }
+    .result-body { padding: 24px; }
+    .intro-meta { gap: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- INTRO -->
+<div class="intro-screen" id="introScreen">
+  <div class="intro-badge">미래CEO플랜 솔루션 진단</div>
+  <h1 class="intro-title">
+    어떤 솔루션이<br>
+    <span>필요한지 모르겠다면?</span>
+  </h1>
+  <p class="intro-desc">
+    몇 가지 질문에 답하면<br>
+    지금 대표님께 가장 필요한 솔루션을 찾아드립니다.
+  </p>
+  <div class="intro-meta">
+    <div class="intro-meta-item">
+      <span class="intro-meta-num">1~2분</span>
+      <span class="intro-meta-label">소요시간</span>
+    </div>
+    <div class="intro-meta-item">
+      <span class="intro-meta-num">5~6개</span>
+      <span class="intro-meta-label">질문 수</span>
+    </div>
+    <div class="intro-meta-item">
+      <span class="intro-meta-num">맞춤형</span>
+      <span class="intro-meta-label">솔루션 추천</span>
+    </div>
+  </div>
+  <button class="btn-start" onclick="startQuiz()">
+    진단 시작하기
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+  </button>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz-screen" id="quizScreen">
+  <div class="quiz-header">
+    <div class="progress-info">
+      <span class="progress-track" id="progressTrack">질문 1 / 6</span>
+      <span class="progress-pct" id="progressPct">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width:0%"></div>
+    </div>
+  </div>
+  <div class="quiz-card">
+    <div class="quiz-step-label" id="stepLabel">STEP 01</div>
+    <div class="quiz-question" id="questionText"></div>
+    <div class="options-grid" id="optionsGrid"></div>
+  </div>
+  <div class="quiz-nav">
+    <button class="btn-back" id="btnBack" onclick="prevStep()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      이전
+    </button>
+    <button class="btn-next" id="btnNext" onclick="nextStep()" disabled>
+      다음
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- RESULT -->
+<div class="result-screen" id="resultScreen">
+  <div class="result-card">
+    <div class="result-header">
+      <div class="result-track-badge" id="resultTrackBadge"></div>
+      <div class="result-type-title" id="resultTypeTitle"></div>
+      <div class="result-subtitle" id="resultSubtitle"></div>
+    </div>
+    <div class="result-body">
+      <div class="result-insight">
+        <div class="result-insight-label">지금 가장 시급한 것</div>
+        <div class="result-insight-text" id="resultInsight"></div>
+      </div>
+      <div class="result-solutions">
+        <div class="result-solutions-title">추천 솔루션</div>
+        <div class="solution-tags" id="solutionTags"></div>
+      </div>
+      <p class="result-desc" id="resultDesc"></p>
+      <button class="btn-cta" id="btnCta">
+        <span id="ctaText">솔루션 보러가기</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+      <button class="btn-retry" onclick="resetQuiz()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+        처음부터 다시하기
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+// =====================
+// QUIZ DATA
+// =====================
+
+const TRACKS = {
+  corp: '법인',
+  sole: '자영업자·소상공인',
+  seller: '셀러·벤더'
+};
+
+// Q0: 공통 분기 질문
+const Q0 = {
+  step: 0,
+  label: 'STEP 01',
+  question: '대표님은 어떤 사업자이신가요?',
+  options: [
+    { text: '법인 운영 중', value: 'corp' },
+    { text: '개인사업자 (자영업·소상공인)', value: 'sole' },
+    { text: '온라인 셀러·벤더', value: 'seller' }
+  ],
+  singleCol: true
+};
+
+const CORP_QUESTIONS = [
+  {
+    step: 1,
+    label: 'STEP 02',
+    question: '법인의 주된 업종은 무엇인가요?',
+    options: [
+      { text: '제조·생산', value: 'mfg' },
+      { text: '도소매·유통', value: 'trade' },
+      { text: '건설·부동산', value: 'const' },
+      { text: 'IT·소프트웨어', value: 'it' },
+      { text: '서비스·컨설팅', value: 'svc' },
+      { text: '기타', value: 'etc' }
+    ]
+  },
+  {
+    step: 2,
+    label: 'STEP 03',
+    question: '지난해 법인 연매출은 어느 정도인가요?',
+    options: [
+      { text: '5억 미만', value: 'rev1' },
+      { text: '5억~30억', value: 'rev2' },
+      { text: '30억~100억', value: 'rev3' },
+      { text: '100억 이상', value: 'rev4' }
+    ]
+  },
+  {
+    step: 3,
+    label: 'STEP 04',
+    question: '법인 설립한 지 얼마나 됐나요?',
+    options: [
+      { text: '3년 미만', value: 'age1' },
+      { text: '3~7년', value: 'age2' },
+      { text: '7~15년', value: 'age3' },
+      { text: '15년 이상', value: 'age4' }
+    ]
+  },
+  {
+    step: 4,
+    label: 'STEP 05',
+    question: '현재 직원 수는 어느 정도인가요?',
+    options: [
+      { text: '5인 미만', value: 'emp1' },
+      { text: '5~20인', value: 'emp2' },
+      { text: '20~50인', value: 'emp3' },
+      { text: '50인 이상', value: 'emp4' }
+    ]
+  },
+  {
+    step: 5,
+    label: 'STEP 06',
+    question: '지금 법인 운영에서 가장 신경 쓰이는 부분은?',
+    options: [
+      { text: '세금이 너무 많이 나온다', value: 'concern_tax', category: '세무·절세' },
+      { text: '자금 조달·운용이 어렵다', value: 'concern_fin', category: '기업금융·재무' },
+      { text: '인력 채용·관리가 힘들다', value: 'concern_hr', category: 'HR·채용' },
+      { text: '승계·상속 준비가 안 돼 있다', value: 'concern_succ', category: '경영관리' },
+      { text: '정부 지원금을 제대로 못 받고 있다', value: 'concern_gov', category: '정책자금·정부지원사업' },
+      { text: '정관·명의신탁 등 경영 리스크가 걱정된다', value: 'concern_law', category: '경영관리' },
+      { text: '마케팅·매출 성장이 필요하다', value: 'concern_mkt', category: '마케팅' }
+    ],
+    singleCol: true
+  }
+];
+
+const SOLE_QUESTIONS = [
+  {
+    step: 1,
+    label: 'STEP 02',
+    question: '주된 업종은 무엇인가요?',
+    options: [
+      { text: '음식점·카페', value: 'food' },
+      { text: '소매점·편의점', value: 'retail' },
+      { text: '서비스업 (미용·세탁·교육 등)', value: 'service' },
+      { text: '온라인 병행 운영 중', value: 'online' },
+      { text: '기타', value: 'etc' }
+    ]
+  },
+  {
+    step: 2,
+    label: 'STEP 03',
+    question: '사업한 지 얼마나 됐나요?',
+    options: [
+      { text: '1년 미만', value: 'age1' },
+      { text: '1~3년', value: 'age2' },
+      { text: '3~7년', value: 'age3' },
+      { text: '7년 이상', value: 'age4' }
+    ]
+  },
+  {
+    step: 3,
+    label: 'STEP 04',
+    question: '연매출은 어느 정도인가요?',
+    options: [
+      { text: '3천만원 미만', value: 'rev1' },
+      { text: '3천만원~1억', value: 'rev2' },
+      { text: '1억~3억', value: 'rev3' },
+      { text: '3억 이상', value: 'rev4' }
+    ]
+  },
+  {
+    step: 4,
+    label: 'STEP 05',
+    question: '현재 직원이 있나요?',
+    options: [
+      { text: '혼자 운영 중', value: 'emp1' },
+      { text: '가족·지인과 함께', value: 'emp2' },
+      { text: '직원 1~3명', value: 'emp3' },
+      { text: '직원 4명 이상', value: 'emp4' }
+    ]
+  },
+  {
+    step: 5,
+    label: 'STEP 06',
+    question: '지금 가장 힘든 부분은?',
+    options: [
+      { text: '세금·장부 처리가 복잡하다', value: 'concern_tax', category: '세무·절세' },
+      { text: '자금이 부족하거나 대출이 필요하다', value: 'concern_fin', category: '금융·자금' },
+      { text: '매출이 정체되거나 줄고 있다', value: 'concern_sales', category: '마케팅·매출관리' },
+      { text: '매장 운영·재고 관리가 힘들다', value: 'concern_ops', category: '매장운영' },
+      { text: '정부 지원금을 받고 싶다', value: 'concern_gov', category: '정책자금·정부지원사업' },
+      { text: '직원 문제가 골치 아프다', value: 'concern_law', category: '법률서비스' }
+    ],
+    singleCol: true
+  }
+];
+
+const SELLER_QUESTIONS = [
+  {
+    step: 1,
+    label: 'STEP 02',
+    question: '주로 어디서 판매하시나요?',
+    options: [
+      { text: '쿠팡·네이버·11번가 등 국내 플랫폼', value: 'ch_dom' },
+      { text: '아마존·이베이 등 해외 플랫폼', value: 'ch_global' },
+      { text: '자사몰 운영 중', value: 'ch_own' },
+      { text: '도매·벤더 납품 위주', value: 'ch_b2b' }
+    ]
+  },
+  {
+    step: 2,
+    label: 'STEP 03',
+    question: '한 달 평균 주문 건수는?',
+    options: [
+      { text: '100건 미만', value: 'ord1' },
+      { text: '100~500건', value: 'ord2' },
+      { text: '500~2,000건', value: 'ord3' },
+      { text: '2,000건 이상', value: 'ord4' }
+    ]
+  },
+  {
+    step: 3,
+    label: 'STEP 04',
+    question: '지금 어떻게 운영하고 있나요?',
+    options: [
+      { text: '혼자 다 처리하고 있다', value: 'op1' },
+      { text: '직원 1~2명과 함께', value: 'op2' },
+      { text: '물류·CS 일부 외주 중', value: 'op3' },
+      { text: '어느 정도 자동화되어 있다', value: 'op4' }
+    ]
+  },
+  {
+    step: 4,
+    label: 'STEP 05',
+    question: '주로 어떤 상품을 판매하나요?',
+    options: [
+      { text: '자체 제작·브랜드 상품', value: 'prod1' },
+      { text: '소싱해서 판매', value: 'prod2' },
+      { text: 'OEM·ODM 생산', value: 'prod3' },
+      { text: '다양하게 혼합 운영', value: 'prod4' }
+    ]
+  },
+  {
+    step: 5,
+    label: 'STEP 06',
+    question: '지금 가장 해결하고 싶은 것은?',
+    options: [
+      { text: '주문·재고 관리가 너무 수작업이다', value: 'concern_inv', category: '주문·재고관리' },
+      { text: '배송·반품 처리가 힘들다', value: 'concern_ship', category: '물류·배송' },
+      { text: '좋은 상품을 못 찾고 있다', value: 'concern_src', category: '상품소싱·도매플랫폼' },
+      { text: '매출 자동화·수익 구조를 만들고 싶다', value: 'concern_auto', category: '매출 및 수익 자동화' },
+      { text: '해외 진출을 고민 중이다', value: 'concern_global', category: '해외진출' },
+      { text: '세금·정산이 복잡하다', value: 'concern_tax', category: '법률서비스' }
+    ],
+    singleCol: true
+  }
+];
+
+// =====================
+// RESULT LOGIC
+// =====================
+
+function getResult(track, answers) {
+  const lastAnswer = answers[answers.length - 1];
+  const lastQ = getCurrentQuestions(track);
+  const lastQData = lastQ[lastQ.length - 1];
+  const selectedOption = lastQData.options.find(o => o.value === lastAnswer);
+  const primaryCategory = selectedOption?.category || '';
+
+  if (track === 'corp') {
+    const concern = answers[answers.length - 1]; // 마지막 질문 = 고민
+
+    if (concern === 'concern_succ') {
+      return {
+        type: '가업승계 설계가 필요한 대표님',
+        subtitle: '승계 준비 없이 시간이 지나면 세금 부담이 급격히 커질 수 있습니다.',
+        insight: '지금 바로 가업승계 로드맵을 설계해야 할 시점입니다.',
+        solutions: ['경영관리', '세무·절세', '기업보험'],
+        primarySolution: '경영관리',
+        desc: '가업승계는 준비 시점이 빠를수록 절세 효과가 커집니다. 주식 가치 평가부터 증여 설계, 가업상속공제 활용까지 단계별 로드맵이 필요합니다.',
+        ctaText: '상속·증여 솔루션 보러가기',
+        ctaLink: 'solution-inheritance.html'
+      };
+    }
+    if (concern === 'concern_tax') {
+      return {
+        type: '절세 최적화가 필요한 대표님',
+        subtitle: '중소기업 공제·감면 항목 중 활용 못 하고 있는 것들이 있을 수 있습니다.',
+        insight: '놓친 절세 항목부터 체계적으로 점검이 필요합니다.',
+        solutions: ['세무·절세', '경리·재무관리', '기업보험'],
+        primarySolution: '세무·절세',
+        desc: '법인세 절세는 단순 신고 최적화를 넘어 대표 급여 설계, 퇴직금 재원 확보, R&D 세액공제 활용 등 종합적인 전략이 필요합니다.',
+        ctaText: '상속·증여 절세 솔루션 보러가기',
+        ctaLink: 'solution-inheritance.html'
+      };
+    }
+    if (concern === 'concern_fin') {
+      return {
+        type: '기업 자금 설계가 필요한 대표님',
+        subtitle: '성장 단계에서 자금 구조가 불안정하면 기회를 놓칠 수 있습니다.',
+        insight: '법인 신용과 자금 조달 구조를 지금 점검해야 합니다.',
+        solutions: ['기업금융·재무', '정책자금·정부지원사업', '경리·재무관리'],
+        primarySolution: '기업금융·재무',
+        desc: '정책자금, 기업 대출, 투자 유치까지 다양한 자금 조달 방법 중 법인 상황에 맞는 최적 구조를 찾는 것이 중요합니다.',
+        ctaText: '자산증식 솔루션 보러가기',
+        ctaLink: 'solution-wealth.html'
+      };
+    }
+    if (concern === 'concern_hr') {
+      return {
+        type: '인사·조직 관리가 필요한 대표님',
+        subtitle: '성장하는 법인일수록 HR 체계가 없으면 리스크가 커집니다.',
+        insight: '채용부터 노무 관리까지 체계적인 HR 시스템이 필요합니다.',
+        solutions: ['HR·채용', '법률서비스', '기업복지'],
+        primarySolution: 'HR·채용',
+        desc: '채용 공고 최적화부터 근로계약서 관리, 퇴직금 적립, 직원 복지 설계까지 HR 전반을 정비할 시점입니다.',
+        ctaText: 'HR·채용 솔루션 보러가기',
+        ctaLink: 'index.html#prod-section'
+      };
+    }
+    if (concern === 'concern_gov') {
+      return {
+        type: '정부 지원 활용이 필요한 대표님',
+        subtitle: '많은 법인들이 받을 수 있는 지원금을 모르고 놓치고 있습니다.',
+        insight: '우리 법인이 신청 가능한 정책자금부터 먼저 파악해야 합니다.',
+        solutions: ['정책자금·정부지원사업', '기업금융·재무', '세무·절세'],
+        primarySolution: '정책자금·정부지원사업',
+        desc: '업종·규모·지역에 따라 받을 수 있는 정부 지원사업이 다릅니다. 중소벤처기업부, 기술보증기금, 지자체 지원까지 빠짐없이 확인하세요.',
+        ctaText: '정책자금 솔루션 보러가기',
+        ctaLink: 'index.html#prod-section'
+      };
+    }
+    if (concern === 'concern_law') {
+      return {
+        type: '경영 리스크 관리가 필요한 대표님',
+        subtitle: '정관·명의신탁·가지급금 같은 숨은 리스크가 회사의 미래를 흔들 수 있습니다.',
+        insight: '법인 정관·자산 구조·경영권을 사전에 정비하는 체계가 필요합니다.',
+        solutions: ['정관 정비', '명의신탁 정리', '경영권 방어'],
+        primarySolution: '경영관리',
+        desc: '정관 정비부터 명의신탁 정리, 가지급금 관리, 경영권 방어까지 법인 운영 전반의 리스크를 선제적으로 관리하세요.',
+        ctaText: '경영 리스크 관리 솔루션 보러가기',
+        ctaLink: 'solution-risk.html'
+      };
+    }
+    // 마케팅 또는 기타
+    return {
+      type: '매출 성장 전략이 필요한 대표님',
+      subtitle: '좋은 제품·서비스가 있어도 마케팅 없이는 성장이 멈춥니다.',
+      insight: '법인 규모에 맞는 마케팅 전략 수립이 필요합니다.',
+      solutions: ['마케팅', 'AI솔루션', '이커머스 운영'],
+      primarySolution: '마케팅',
+      desc: 'B2B·B2C 마케팅 채널 최적화부터 디지털 전환, AI 활용 업무 자동화까지 성장을 위한 다양한 솔루션을 확인하세요.',
+      ctaText: '마케팅 솔루션 보러가기',
+      ctaLink: 'index.html#prod-section'
+    };
+  }
+
+  if (track === 'sole') {
+    const rev = answers[3];  // Q1업종, Q2업력, Q3매출 → index 3
+    const concern = answers[answers.length - 1];
+
+    // 3천만 미만: 매출 자체가 우선이지만 concern은 항상 반영
+    if (rev === 'rev1') {
+      if (concern === 'concern_law') {
+        return {
+          type: '초기 노무 리스크를 잡아야 할 사장님',
+          subtitle: '매출이 작아도 직원 문제는 초기에 잡지 않으면 큰 분쟁으로 번집니다.',
+          insight: '근로계약서·4대보험부터 지금 바로 정비하세요.',
+          solutions: ['법률서비스', '세무·절세'],
+          primarySolution: '법률서비스',
+          desc: '초기 사업자일수록 구두 약속으로 직원을 쓰다 분쟁이 나는 경우가 많습니다. 근로계약서 작성, 최저임금 준수, 4대보험 가입 여부부터 확인하세요.',
+          ctaText: '법률서비스 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_fin') {
+        return {
+          type: '초기 자금 확보가 급한 사장님',
+          subtitle: '사업 초기 자금 부족은 성장 전에 발목을 잡을 수 있습니다.',
+          insight: '소상공인 창업 지원금·정책자금부터 빠르게 확인하세요.',
+          solutions: ['정책자금·정부지원사업', '금융·자금'],
+          primarySolution: '정책자금·정부지원사업',
+          desc: '소상공인시장진흥공단 창업자금, 지자체 초기 지원사업 등 매출 규모와 무관하게 신청 가능한 지원금부터 챙기세요.',
+          ctaText: '정책자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_tax') {
+        return {
+          type: '세금 기초부터 잡아야 할 사장님',
+          subtitle: '매출이 작을수록 세금 실수 하나가 타격이 큽니다.',
+          insight: '간이과세·일반과세 구분과 경비 처리부터 제대로 알아두세요.',
+          solutions: ['세무·절세', '금융·자금'],
+          primarySolution: '세무·절세',
+          desc: '간이과세자 기준, 부가세 신고, 적격증빙 관리 등 초기 사업자가 자주 놓치는 세금 기초 항목을 먼저 점검하세요.',
+          ctaText: '세무·절세 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_gov') {
+        return {
+          type: '초기 지원금을 챙겨야 할 사장님',
+          subtitle: '창업 초기에만 받을 수 있는 지원금이 따로 있습니다.',
+          insight: '창업 연차가 지나면 신청 자격이 사라지는 지원사업부터 먼저 확인하세요.',
+          solutions: ['정책자금·정부지원사업', '금융·자금'],
+          primarySolution: '정책자금·정부지원사업',
+          desc: '소상공인 창업 패키지, 지역 창업 지원사업 등 초기 사업자에게 유리한 정책자금을 놓치지 마세요.',
+          ctaText: '정책자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_ops') {
+        return {
+          type: '운영 기반을 다져야 할 사장님',
+          subtitle: '초기에 운영 체계를 잡아두면 나중에 훨씬 수월해집니다.',
+          insight: '지금 당장 필요한 최소한의 운영 도구부터 세팅하세요.',
+          solutions: ['매장운영', '노코드', '매출관리'],
+          primarySolution: '매장운영',
+          desc: '무료 또는 저비용 POS, 예약 시스템, 재고 관리 도구 등 초기 사업자도 부담 없이 쓸 수 있는 운영 솔루션을 확인하세요.',
+          ctaText: '매장운영 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      // concern_sales 또는 기타 → 매출 구축 우선
+      return {
+        type: '매출 기반 구축이 우선인 사장님',
+        subtitle: '지금 단계에서는 절세보다 매출을 만드는 것이 먼저입니다.',
+        insight: '고객 유입 채널 확보와 매출 구조 만들기가 가장 시급합니다.',
+        solutions: ['마케팅', '매출관리', '노코드'],
+        primarySolution: '마케팅',
+        desc: 'SNS 홍보, 지역 마케팅, 온라인 채널 확장 등 지금 규모에 맞는 저비용 고효율 마케팅 방법부터 시작하세요.',
+        ctaText: '마케팅·매출관리 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+
+    // 3천만~1억: 성장 초입, 세금 기초 세팅
+    if (rev === 'rev2') {
+      if (concern === 'concern_tax') {
+        return {
+          type: '세금 기초 세팅이 필요한 사장님',
+          subtitle: '이 매출 구간부터 장부와 세금 관리를 제대로 잡아야 합니다.',
+          insight: '부가세·소득세 신고 체계와 경비 처리부터 정비하세요.',
+          solutions: ['세무·절세', '금융·자금'],
+          primarySolution: '세무·절세',
+          desc: '부가세 환급, 적격증빙 관리, 경비 처리 최적화 등 이 단계에서 놓치기 쉬운 세금 기초를 지금 잡아두세요.',
+          ctaText: '세무·절세 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_fin') {
+        return {
+          type: '운영 자금 확보가 필요한 사장님',
+          subtitle: '성장 직전 자금이 막히면 기회를 놓칩니다.',
+          insight: '소상공인 정책자금과 보증 대출을 지금 확인하세요.',
+          solutions: ['금융·자금', '정책자금·정부지원사업'],
+          primarySolution: '금융·자금',
+          desc: '신용보증기금 소상공인 보증, 지역신보, 소진공 정책자금 등 매출 규모에 맞는 자금 조달 방법을 찾아드립니다.',
+          ctaText: '금융·자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_law') {
+        return {
+          type: '노무 기초를 잡아야 할 사장님',
+          subtitle: '직원을 쓰기 시작했다면 노무 문제는 미룰수록 리스크가 커집니다.',
+          insight: '근로계약서·최저임금·4대보험을 지금 점검하세요.',
+          solutions: ['법률서비스', '세무·절세'],
+          primarySolution: '법률서비스',
+          desc: '구두 고용, 주휴수당 미지급, 4대보험 미가입 등 소규모 사업장에서 자주 발생하는 노무 리스크를 선제적으로 차단하세요.',
+          ctaText: '법률서비스 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_ops') {
+        return {
+          type: '운영 체계가 필요한 사장님',
+          subtitle: '혼자 모든 걸 처리하다 보면 정작 중요한 일을 못 하게 됩니다.',
+          insight: '저비용으로 운영 부담을 줄이는 도구부터 도입하세요.',
+          solutions: ['매장운영', '노코드', '매출관리'],
+          primarySolution: '매장운영',
+          desc: '포스 시스템, 예약 자동화, 재고 관리 앱 등 이 매출 규모에서 바로 도입 가능한 운영 효율화 도구를 확인하세요.',
+          ctaText: '매장운영 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_gov') {
+        return {
+          type: '정책자금을 활용해야 할 사장님',
+          subtitle: '이 매출 구간에서 신청 가능한 소상공인 지원사업이 많습니다.',
+          insight: '업종·지역에 맞는 지원사업부터 빠르게 확인하세요.',
+          solutions: ['정책자금·정부지원사업', '금융·자금'],
+          primarySolution: '정책자금·정부지원사업',
+          desc: '소상공인진흥공단, 지자체 지원사업, 중기부 정책자금까지 지금 신청 가능한 지원을 놓치지 않도록 챙기세요.',
+          ctaText: '정책자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      // concern_sales 또는 기타
+      return {
+        type: '매출 성장 궤도 진입이 필요한 사장님',
+        subtitle: '이 구간에서 멈추면 고정비만 늘어날 수 있습니다.',
+        insight: '매출 채널을 다변화하고 단골 고객을 만드는 전략이 필요합니다.',
+        solutions: ['마케팅', '매출관리', '노코드'],
+        primarySolution: '마케팅',
+        desc: '온라인 채널 확장, 단골 재방문 전략, 간단한 자동화 도구 도입 등 이 단계에서 매출을 키우는 방법을 확인하세요.',
+        ctaText: '마케팅·매출관리 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+
+    // 1억~3억: 운영 효율화 + 절세 본격 필요
+    if (rev === 'rev3') {
+      if (concern === 'concern_tax') {
+        return {
+          type: '절세 최적화가 필요한 사장님',
+          subtitle: '이 매출 구간부터 세금 전략이 실질 수익을 좌우합니다.',
+          insight: '종합소득세 절세 전략과 경비 최적화를 지금 점검하세요.',
+          solutions: ['세무·절세', '금융·자금'],
+          primarySolution: '세무·절세',
+          desc: '인건비·임차료·감가상각 경비 처리부터 노란우산공제 활용, 법인 전환 검토까지 수익을 지키는 절세 전략을 찾아보세요.',
+          ctaText: '세무·절세 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_fin') {
+        return {
+          type: '성장 자금 구조가 필요한 사장님',
+          subtitle: '안정적인 매출이 있다면 더 좋은 조건으로 자금을 조달할 수 있습니다.',
+          insight: '매출 실적을 바탕으로 정책자금과 기업 대출을 적극 활용하세요.',
+          solutions: ['금융·자금', '정책자금·정부지원사업'],
+          primarySolution: '금융·자금',
+          desc: '소상공인 성장 촉진자금, 신용보증기금 보증, 중기부 지원 융자 등 이 매출 구간에서 유리한 자금 조달 방법을 확인하세요.',
+          ctaText: '금융·자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_ops') {
+        return {
+          type: '운영 효율화가 필요한 사장님',
+          subtitle: '매출이 늘수록 수작업 운영은 한계가 빠르게 옵니다.',
+          insight: '반복 업무를 자동화해서 사장님 시간을 되찾아야 합니다.',
+          solutions: ['매장운영', '매출관리', '노코드'],
+          primarySolution: '매장운영',
+          desc: 'POS 연동, 재고 자동화, 예약·주문 관리 시스템 도입으로 운영 부담을 줄이고 고객 경험을 높이세요.',
+          ctaText: '매장운영 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_law') {
+        return {
+          type: '노무·법률 관리가 필요한 사장님',
+          subtitle: '직원이 생기는 순간 노무 리스크도 함께 생깁니다.',
+          insight: '근로계약서부터 4대보험까지 지금 정비하지 않으면 분쟁이 납니다.',
+          solutions: ['법률서비스', '세무·절세'],
+          primarySolution: '법률서비스',
+          desc: '근로계약서 작성, 퇴직금 적립, 산재·고용보험 관리까지 직원 관련 법적 리스크를 선제적으로 관리하세요.',
+          ctaText: '법률서비스 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      if (concern === 'concern_gov') {
+        return {
+          type: '정부 지원 혜택을 챙겨야 할 사장님',
+          subtitle: '이 매출 구간에서 받을 수 있는 지원금이 생각보다 많습니다.',
+          insight: '업종·규모에 맞는 지원 사업을 지금 신청하세요.',
+          solutions: ['정책자금·정부지원사업', '금융·자금'],
+          primarySolution: '정책자금·정부지원사업',
+          desc: '소상공인진흥공단, 지자체, 중기부 지원 사업까지 놓치지 않도록 맞춤형 지원 사업을 찾아드립니다.',
+          ctaText: '정책자금 솔루션 보러가기',
+          ctaLink: './index.html'
+        };
+      }
+      // concern_sales 또는 기타
+      return {
+        type: '매출 채널 확장이 필요한 사장님',
+        subtitle: '안정된 매출 기반 위에 성장 채널을 추가할 시점입니다.',
+        insight: '온라인 진출이나 신규 채널 확장으로 매출 천장을 높이세요.',
+        solutions: ['마케팅', '매출관리', '노코드'],
+        primarySolution: '마케팅',
+        desc: '배달 플랫폼, SNS 마케팅, 온라인 판매 채널 추가 등 기존 오프라인 매출을 온라인으로 확장하는 방법을 확인하세요.',
+        ctaText: '마케팅·매출관리 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+
+    // 3억 이상: 법인 전환 검토 + 본격 세금·HR 관리
+    if (concern === 'concern_tax') {
+      return {
+        type: '법인 전환·절세 설계가 필요한 사장님',
+        subtitle: '이 매출 구간에서는 개인사업자보다 법인이 유리할 수 있습니다.',
+        insight: '법인 전환 시뮬레이션과 종합소득세 절세 전략을 동시에 검토하세요.',
+        solutions: ['세무·절세', '금융·자금'],
+        primarySolution: '세무·절세',
+        desc: '법인 전환 시 절세 효과 시뮬레이션, 대표 퇴직금 설계, 가업상속 준비까지 이 단계에서 반드시 점검해야 할 세금 전략을 확인하세요.',
+        ctaText: '세무·절세 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_fin') {
+      return {
+        type: '기업 자금 구조 설계가 필요한 사장님',
+        subtitle: '매출 규모에 맞는 자금 조달 구조를 갖춰야 할 시점입니다.',
+        insight: '정책자금 한도를 최대로 활용하고 신용 등급을 관리하세요.',
+        solutions: ['금융·자금', '정책자금·정부지원사업'],
+        primarySolution: '금융·자금',
+        desc: '중소기업 정책자금, 기술보증기금, 신용보증기금 등 이 매출 구간에서 접근 가능한 자금 조달 방법을 폭넓게 확인하세요.',
+        ctaText: '금융·자금 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_law') {
+      return {
+        type: '노무·법률 체계화가 필요한 사장님',
+        subtitle: '이 규모에서 노무 관리가 안 되면 법적 분쟁 리스크가 매우 높습니다.',
+        insight: '취업규칙 작성, 퇴직금 적립, 노무 체계 전반을 지금 정비하세요.',
+        solutions: ['법률서비스', '세무·절세'],
+        primarySolution: '법률서비스',
+        desc: '취업규칙, 연장근무 수당, 퇴직금 정산, 직원 계약 갱신까지 이 매출 규모에서 반드시 갖춰야 할 노무 체계를 구축하세요.',
+        ctaText: '법률서비스 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_ops') {
+      return {
+        type: '운영 시스템화가 필요한 사장님',
+        subtitle: '이 매출에서 수작업으로 운영하면 사장님이 항상 가장 바쁜 직원이 됩니다.',
+        insight: '운영 자동화와 인력 구조 재편이 동시에 필요한 시점입니다.',
+        solutions: ['매장운영', '노코드', '매출관리'],
+        primarySolution: '매장운영',
+        desc: '통합 POS, 자동 발주, 직원 근태 관리, 매출 대시보드 등 이 규모에 맞는 운영 시스템 전반을 점검하세요.',
+        ctaText: '매장운영 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_gov') {
+      return {
+        type: '중기 지원사업을 노려야 할 사장님',
+        subtitle: '이 매출 구간부터는 소상공인보다 중소기업 지원사업이 더 유리합니다.',
+        insight: '중기부·기보·신보 지원사업으로 더 큰 자금을 확보하세요.',
+        solutions: ['정책자금·정부지원사업', '금융·자금'],
+        primarySolution: '정책자금·정부지원사업',
+        desc: '중소벤처기업부 정책자금, 기술보증기금, 수출 지원사업 등 매출 3억 이상 사업자가 신청 가능한 지원사업을 확인하세요.',
+        ctaText: '정책자금 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    // concern_sales 또는 기타
+    return {
+      type: '사업 확장 전략이 필요한 사장님',
+      subtitle: '이 단계에서는 운영 시스템화와 성장 전략이 동시에 필요합니다.',
+      insight: '법인 전환 검토와 함께 사업 확장 로드맵을 설계할 시점입니다.',
+      solutions: ['마케팅', '매출관리', '세무·절세'],
+      primarySolution: '마케팅',
+      desc: '신규 매장·채널 확장, 프랜차이즈 가능성 검토, 온라인 사업 병행까지 다음 성장 단계로 넘어가는 전략을 찾아보세요.',
+      ctaText: '마케팅·매출관리 솔루션 보러가기',
+      ctaLink: './index.html'
+    };
+  }
+
+  if (track === 'seller') {
+    const concern = answers[answers.length - 1];
+    if (concern === 'concern_inv') {
+      return {
+        type: '운영 자동화가 필요한 셀러',
+        subtitle: '수작업 재고·주문 관리는 매출이 늘수록 한계가 옵니다.',
+        insight: '주문·재고 자동화 시스템 도입이 시급합니다.',
+        solutions: ['주문·재고관리', '매출 및 수익 자동화'],
+        primarySolution: '주문·재고관리',
+        desc: '멀티채널 주문 통합 관리부터 재고 자동 연동, 정산 자동화까지 셀러 운영의 핵심 병목을 해결하세요.',
+        ctaText: '주문·재고관리 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_ship') {
+      return {
+        type: '물류 효율화가 필요한 셀러',
+        subtitle: '배송 지연과 반품 처리는 평점과 재구매율에 직접 영향을 줍니다.',
+        insight: '물류 프로세스를 최적화할 파트너가 필요합니다.',
+        solutions: ['물류·배송', '주문·재고관리'],
+        primarySolution: '물류·배송',
+        desc: '3PL 풀필먼트 서비스부터 반품 자동화, 배송 추적 시스템까지 물류 전반을 효율화하는 방법을 찾아보세요.',
+        ctaText: '물류·배송 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_src') {
+      return {
+        type: '상품 소싱 경쟁력이 필요한 셀러',
+        subtitle: '좋은 상품을 먼저 찾는 셀러가 시장을 선점합니다.',
+        insight: '검증된 소싱 채널과 도매 플랫폼을 지금 연결하세요.',
+        solutions: ['상품소싱·도매플랫폼', 'OEC·ODM'],
+        primarySolution: '상품소싱·도매플랫폼',
+        desc: '국내외 도매 플랫폼 연결부터 OEM·ODM 제조사 매칭, 트렌드 상품 발굴까지 소싱 경쟁력을 높이세요.',
+        ctaText: '상품소싱 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_auto') {
+      return {
+        type: '수익 자동화 구조가 필요한 셀러',
+        subtitle: '일하는 시간을 줄이면서 매출을 늘리는 구조가 목표입니다.',
+        insight: '매출 자동화·시스템화로 레버리지를 만들어야 합니다.',
+        solutions: ['매출 및 수익 자동화', '주문·재고관리'],
+        primarySolution: '매출 및 수익 자동화',
+        desc: '광고 자동 최적화, 가격 자동 조정, 리뷰 관리 자동화까지 셀러 비즈니스를 시스템화하는 방법을 확인하세요.',
+        ctaText: '매출 자동화 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    if (concern === 'concern_global') {
+      return {
+        type: '해외 진출을 준비 중인 셀러',
+        subtitle: '국내 시장의 한계를 넘어 글로벌 매출을 만들 수 있습니다.',
+        insight: '아마존·이베이 입점부터 현지화 전략까지 준비가 필요합니다.',
+        solutions: ['해외진출', 'OEC·ODM', '물류·배송'],
+        primarySolution: '해외진출',
+        desc: '해외 플랫폼 입점 대행부터 현지 물류 파트너 연결, 통관·세금 처리까지 해외 진출 전 과정을 지원합니다.',
+        ctaText: '해외진출 솔루션 보러가기',
+        ctaLink: './index.html'
+      };
+    }
+    return {
+      type: '정산·세금 관리가 필요한 셀러',
+      subtitle: '플랫폼별 정산과 세금 신고를 따로 관리하면 실수가 생깁니다.',
+      insight: '멀티채널 정산 통합과 세금 신고 체계를 먼저 정비하세요.',
+      solutions: ['법률서비스', '주문·재고관리'],
+      primarySolution: '법률서비스',
+      desc: '플랫폼별 수수료·정산 내역 통합 관리부터 부가세 신고, 소득 신고까지 셀러에 특화된 세금 관리 방법을 확인하세요.',
+      ctaText: '법률서비스 솔루션 보러가기',
+      ctaLink: './index.html'
+    };
+  }
+}
+
+// =====================
+// STATE
+// =====================
+
+let currentTrack = null;
+let currentStepIndex = 0; // 0 = Q0 (공통), 1~ = 트랙별
+let answers = [];
+let isOnQ0 = true;
+
+function getCurrentQuestions(track) {
+  if (track === 'corp') return CORP_QUESTIONS;
+  if (track === 'sole') return SOLE_QUESTIONS;
+  if (track === 'seller') return SELLER_QUESTIONS;
+  return [];
+}
+
+function getCurrentQuestion() {
+  if (isOnQ0) return Q0;
+  const questions = getCurrentQuestions(currentTrack);
+  return questions[currentStepIndex];
+}
+
+function getTotalSteps() {
+  if (!currentTrack) return 1;
+  return 1 + getCurrentQuestions(currentTrack).length;
+}
+
+function getCurrentGlobalStep() {
+  if (isOnQ0) return 1;
+  return 2 + currentStepIndex;
+}
+
+// =====================
+// RENDER
+// =====================
+
+function renderQuestion() {
+  const q = getCurrentQuestion();
+  const total = getTotalSteps();
+  const current = getCurrentGlobalStep();
+  const pct = Math.round(((current - 1) / total) * 100);
+
+  document.getElementById('progressTrack').textContent = `질문 ${current} / ${total}`;
+  document.getElementById('progressPct').textContent = `${pct}%`;
+  document.getElementById('progressFill').style.width = `${pct}%`;
+  document.getElementById('stepLabel').textContent = q.label;
+  document.getElementById('questionText').textContent = q.question;
+
+  const grid = document.getElementById('optionsGrid');
+  grid.className = 'options-grid' + (q.singleCol ? ' single-col' : '');
+  grid.innerHTML = '';
+
+  // 현재 답변 인덱스
+  const answerIdx = isOnQ0 ? -1 : currentStepIndex;
+  const currentAnswer = isOnQ0 ? answers[0] : answers[answerIdx + 1];
+
+  q.options.forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'option-btn' + (currentAnswer === opt.value ? ' selected' : '');
+    btn.innerHTML = `<span class="option-dot"></span>${opt.text}`;
+    btn.onclick = () => selectOption(opt.value);
+    grid.appendChild(btn);
+  });
+
+  document.getElementById('btnBack').disabled = (isOnQ0);
+
+  const isLast = !isOnQ0 && currentStepIndex === getCurrentQuestions(currentTrack).length - 1;
+  const nextBtn = document.getElementById('btnNext');
+
+  if (isLast) {
+    // 마지막 질문: 결과 보기 버튼 표시
+    nextBtn.style.display = 'flex';
+    nextBtn.disabled = !currentAnswer;
+    nextBtn.innerHTML = '결과 보기 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>';
+  } else {
+    // 중간 질문: 다음 버튼 숨김 (선택 즉시 자동 이동)
+    nextBtn.style.display = 'none';
+  }
+}
+
+function selectOption(value) {
+  if (isOnQ0) {
+    answers[0] = value;
+  } else {
+    answers[currentStepIndex + 1] = value;
+  }
+
+  const isLast = !isOnQ0 && currentStepIndex === getCurrentQuestions(currentTrack).length - 1;
+
+  if (isLast) {
+    // 마지막 질문: 선택 표시 후 결과 보기 버튼 활성화
+    renderQuestion();
+  } else {
+    // 중간 질문: 즉시 다음으로 이동
+    nextStep();
+  }
+}
+
+// =====================
+// NAVIGATION
+// =====================
+
+function nextStep() {
+  const answerIdx = isOnQ0 ? 0 : currentStepIndex + 1;
+  if (!answers[answerIdx]) return;
+
+  if (isOnQ0) {
+    currentTrack = answers[0];
+    isOnQ0 = false;
+    currentStepIndex = 0;
+    // 트랙 전환시 이후 answers 초기화
+    answers = [answers[0]];
+    renderQuestion();
+    return;
+  }
+
+  const questions = getCurrentQuestions(currentTrack);
+  if (currentStepIndex < questions.length - 1) {
+    currentStepIndex++;
+    renderQuestion();
+  } else {
+    showResult();
+  }
+}
+
+function prevStep() {
+  if (isOnQ0) return;
+  if (currentStepIndex === 0) {
+    isOnQ0 = true;
+    currentTrack = null;
+    renderQuestion();
+    return;
+  }
+  currentStepIndex--;
+  renderQuestion();
+}
+
+// =====================
+// RESULT
+// =====================
+
+function showResult() {
+  const trackAnswers = answers.slice(1); // Q0 제외
+  const result = getResult(currentTrack, trackAnswers);
+
+  document.getElementById('resultTrackBadge').textContent = TRACKS[currentTrack] + ' 트랙';
+  document.getElementById('resultTypeTitle').textContent = result.type;
+  document.getElementById('resultSubtitle').textContent = result.subtitle;
+  document.getElementById('resultInsight').textContent = result.insight;
+  document.getElementById('resultDesc').textContent = result.desc;
+  document.getElementById('ctaText').textContent = result.ctaText;
+  document.getElementById('btnCta').onclick = () => {
+    const targetUrl = result.ctaLink;
+    // iframe 내부면 부모 창을 이동, 아니면 현재 창
+    if (window.parent && window.parent !== window) {
+      try {
+        window.parent.location.href = targetUrl;
+      } catch (e) {
+        window.location.href = targetUrl;
+      }
+    } else {
+      window.location.href = targetUrl;
+    }
+  };
+
+  const tagsEl = document.getElementById('solutionTags');
+  tagsEl.innerHTML = '';
+  result.solutions.forEach((sol, i) => {
+    const tag = document.createElement('span');
+    tag.className = 'solution-tag' + (i === 0 ? ' primary' : '');
+    tag.textContent = (i === 0 ? '✦ ' : '') + sol;
+    tagsEl.appendChild(tag);
+  });
+
+  document.getElementById('quizScreen').style.display = 'none';
+  const resultEl = document.getElementById('resultScreen');
+  resultEl.style.display = 'block';
+  resultEl.classList.add('screen-transition');
+}
+
+// =====================
+// CONTROLS
+// =====================
+
+function startQuiz() {
+  answers = [];
+  currentTrack = null;
+  currentStepIndex = 0;
+  isOnQ0 = true;
+
+  document.getElementById('introScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'block';
+  renderQuestion();
+}
+
+function resetQuiz() {
+  answers = [];
+  currentTrack = null;
+  currentStepIndex = 0;
+  isOnQ0 = true;
+
+  document.getElementById('resultScreen').style.display = 'none';
+  document.getElementById('introScreen').style.display = 'block';
+}
+</script>
+</body>
+</html>

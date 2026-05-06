@@ -1,0 +1,1542 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>회사는 부자가 됐는데, 왜 제 통장은 그대로일까요? | 미래CEO플랜</title>
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="미래CEO플랜">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="회사는 부자가 됐는데, 왜 제 통장은 그대로일까요?">
+<meta property="og:description" content="법인 대표님이 반드시 알아야 할 자산·세무·승계 설계의 시작점.">
+<meta name="description" content="법인 대표님들이 은퇴·승계 시점에 가장 많이 후회하는 한 가지. 지금 바로 확인해 보세요.">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+
+<style>
+/* ═══════════════════════════════
+   TOKENS — 기존 사이트와 완전 동기화
+═══════════════════════════════ */
+:root {
+  --blue:      #3182F6;
+  --blue-d:    #1B64DA;
+  --blue-v:    #0052FF;
+  --blue-l:    #EFF6FF;
+  --blue-mid:  #BFDBFF;
+
+  --seg-corp:   #3182F6;
+  --seg-small:  #0284C7;
+  --seg-seller: #6366F1;
+
+  --gold:     #D4A853;
+  --gold-d:   #B8913E;
+  --gold-l:   #FAF5E6;
+
+  --cream:    #FAF7F2;
+
+  --navy:      #0D1120;
+  --navy2:     #131829;
+  --navy3:     #1C2235;
+
+  --text:      #191F28;
+  --mid:       #4A5462;
+  --muted:     #8B95A1;
+  --bg:        #F7F9FC;
+  --white:     #FFFFFF;
+  --border:    #E5E8EF;
+  --border-l:  #F0F3F8;
+
+  --red:       #F04452;
+  --green:     #10B981;
+  --amber:     #F59E0B;
+
+  --max:       1100px;
+  --pad:       40px;
+
+  /* Typography tokens */
+  --fs-display-1: 60px; --fs-display-2: 40px;
+  --fs-h2: 36px; --fs-h2-sm: 26px;
+  --fs-quote: 28px; --fs-stat: 48px; --fs-stat-lg: 56px;
+  --fs-title-lg: 20px; --fs-body-xl: 18px;
+  --fs-title: 17px; --fs-title-sm: 16px;
+  --fs-body-lg: 16px; --fs-body: 15px; --fs-body-sm: 14px;
+  --fs-caption: 12px; --fs-caption-sm: 11px; --fs-micro: 10px;
+
+  /* FAQ narrow content width */
+  --faq-max: 760px;
+  --faq-inner: 520px;
+}
+
+/* ═══════════════════════════════
+   BASE
+═══════════════════════════════ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Pretendard', -apple-system, sans-serif;
+  background: var(--bg); color: var(--text);
+  line-height: 1.6; -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+button, a { font-family: inherit; cursor: pointer; border: none; background: none; text-decoration: none; color: inherit; }
+.w { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
+
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.6)} }
+
+/* ═══════════════════════════════
+   GNB — 기존 사이트와 동일 (sub-page 패턴)
+═══════════════════════════════ */
+.gnb {
+  position: fixed; top:0; left:0; right:0; z-index:600;
+  background: rgba(255,255,255,.97);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,.06);
+  transition: background .3s, border-color .3s, box-shadow .3s;
+}
+.gnb-inner {
+  max-width: var(--max); margin:0 auto; padding:0 var(--pad);
+  display:flex; align-items:center;
+  height: 64px;
+}
+.gnb-row-top {
+  flex-shrink: 0;
+  margin-right: 28px;
+}
+.gnb-row-bottom {
+  flex: 1;
+  display:flex; align-items:center; gap:8px;
+  height: 64px;
+}
+.gnb-logo {
+  font-size:21px; font-weight:800; letter-spacing:-.4px;
+  cursor:pointer; flex-shrink:0;
+  color:var(--text);
+}
+.gnb-logo em { color:var(--blue); font-style:normal; }
+
+.gnb-label { display: none; }
+
+.gnb-targets { display:flex; gap:2px; margin-right:auto; }
+
+.gnb-t {
+  display:inline-flex; align-items:center; gap:7px;
+  font-size:var(--fs-title-sm); font-weight:600;
+  color:var(--mid);
+  padding:0 14px; height:64px;
+  border-bottom: 2px solid transparent;
+  transition:all .2s; white-space:nowrap;
+}
+.gnb-t:hover { color:var(--text); }
+.gnb-t.active { color:var(--text); }
+
+.gnb-t[data-target="corp"].active  { border-bottom-color: #3182F6; }
+.gnb-t[data-target="small"].active { border-bottom-color: #0284C7; }
+.gnb-t[data-target="seller"].active{ border-bottom-color: #6366F1; }
+
+.gnb-t-text { font-size:var(--fs-title-sm); font-weight:600; }
+
+.gnb-btn {
+  background:var(--blue); color:#fff;
+  border: none;
+  padding:11px 22px; border-radius:999px;
+  font-size:var(--fs-title-sm); font-weight:700;
+  display:inline-flex; align-items:center; gap:8px;
+  transition:all .18s; flex-shrink:0;
+  letter-spacing:-.01em;
+  box-shadow: 0 2px 8px rgba(49,130,246,.25);
+}
+.gnb-btn:hover {
+  background:var(--blue-d);
+  transform:translateY(-1px);
+  box-shadow: 0 6px 16px rgba(49,130,246,.35);
+}
+.gnb-btn-dot {
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,.85);
+  animation:pulse 1.8s infinite;
+}
+
+/* ═══════════════════════════════
+   FAQ MAIN CONTENT — 삼쩜삼 벤치마킹 풀스크린 레이아웃
+═══════════════════════════════ */
+.faq-page {
+  padding-top: 64px; /* GNB 높이만큼 오프셋 */
+  background: var(--white);
+}
+
+/* 컨테이너는 더 이상 너비 제한 없음 — 섹션이 풀스크린 */
+.faq-container {
+  width: 100%;
+}
+
+/* 브레드크럼 — 페이지 상단에 옅게 */
+.breadcrumb {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 40px 0;
+  font-size: var(--fs-body-sm);
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.breadcrumb a {
+  color: var(--muted);
+  transition: color .15s;
+}
+.breadcrumb a:hover { color: var(--blue); }
+.breadcrumb-sep { opacity: .4; }
+
+/* 섹션 공통 — 풀스크린 컬러 블록 + 적절한 패딩 */
+.section {
+  padding: clamp(64px, 7vw, 100px) 24px;
+  position: relative;
+  width: 100%;
+}
+
+.section-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section.align-left .section-inner {
+  text-align: left;
+}
+
+/* 섹션별 배경 — 풀스크린 확장 */
+.section-gray { background: #F2F4F7; }
+.section-white { background: var(--white); }
+.section-light-blue { background: var(--blue-l); }
+.section-cream { background: var(--cream); }
+.section-blue {
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* 섹션 라벨 — 모든 섹션 공통 통일 */
+.section-label {
+  display: inline-block;
+  font-size: clamp(15px, 1.4vw, 18px);
+  font-weight: 700;
+  color: var(--blue);
+  letter-spacing: -.005em;
+  margin-bottom: 36px;
+  padding: 11px 24px;
+  background: var(--white);
+  border-radius: 999px;
+  box-shadow: 0 4px 16px rgba(49,130,246,.18);
+}
+
+.section-blue .section-label {
+  color: var(--blue-d);
+  background: var(--white);
+}
+
+.section-light-blue .section-label {
+  background: var(--white);
+  color: var(--blue);
+}
+
+/* 타이틀 — 풀스크린 대형 타이포그래피 */
+.faq-page h1 {
+  font-size: clamp(34px, 6vw, 60px);
+  font-weight: 900;
+  line-height: 1.3;
+  color: var(--navy);
+  letter-spacing: -.04em;
+  margin-bottom: 28px;
+  word-break: keep-all;
+}
+
+.faq-page h2 {
+  font-size: clamp(28px, 4.8vw, 46px);
+  font-weight: 900;
+  line-height: 1.32;
+  color: var(--navy);
+  letter-spacing: -.035em;
+  margin-bottom: 28px;
+  word-break: keep-all;
+}
+
+.section-blue h2 { color: var(--white); }
+
+.section-description {
+  font-size: clamp(17px, 1.7vw, 22px);
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 28px;
+  word-break: keep-all;
+}
+
+.section-blue .section-description {
+  color: rgba(255, 255, 255, 0.94);
+}
+
+.highlight-blue {
+  color: var(--blue);
+  font-weight: 800;
+}
+
+.section-blue .highlight-blue {
+  color: #FFE27A;
+  text-shadow: 0 1px 2px rgba(0,0,0,.1);
+}
+
+.faq-page strong {
+  font-weight: 800;
+  color: var(--navy);
+}
+
+.section-blue strong { color: var(--white); }
+
+/* 블루 섹션 안의 흰색 카드 내부 strong은 다시 navy로 (가독성) */
+.section-blue .case-card strong,
+.section-blue .checklist-card strong,
+.section-blue .solution-card strong {
+  color: var(--navy);
+}
+
+/* 바운싱 화살표 */
+.bounce-arrow {
+  margin: 48px auto 0;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: bounceDown 1.6s infinite;
+}
+.bounce-arrow svg {
+  width: 40px;
+  height: 40px;
+  color: var(--blue);
+}
+.section-blue .bounce-arrow svg {
+  color: #FFE27A;
+}
+
+@keyframes bounceDown {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-12px); }
+  60% { transform: translateY(-6px); }
+}
+
+/* 방법 3가지 카드 */
+.method-cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 32px 0 8px;
+}
+.method-card {
+  background: var(--blue-l);
+  border: 1px solid #E0EBFC;
+  border-radius: 16px;
+  padding: 28px 32px;
+  text-align: left;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.method-num {
+  font-weight: 900;
+  font-size: 42px;
+  color: var(--blue);
+  line-height: 1;
+  flex-shrink: 0;
+  min-width: 54px;
+}
+.method-text { flex: 1; }
+.method-title {
+  font-weight: 800;
+  font-size: clamp(19px, 1.7vw, 23px);
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.method-desc {
+  font-size: clamp(15px, 1.3vw, 17px);
+  color: var(--mid);
+}
+
+/* 사례 카드 */
+.case-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: clamp(32px, 4vw, 44px) clamp(28px, 3vw, 36px);
+  margin: 36px 0 8px;
+  text-align: left;
+  box-shadow: 0 4px 32px rgba(13,17,32,.08);
+  border: 1px solid var(--border);
+}
+.case-card-badge {
+  display: inline-block;
+  font-size: clamp(13px, 1.1vw, 15px);
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-l);
+  padding: 6px 14px;
+  border-radius: 6px;
+  margin-bottom: 18px;
+  letter-spacing: .02em;
+}
+.case-card-title {
+  font-size: clamp(20px, 2.2vw, 28px);
+  font-weight: 900;
+  color: var(--navy);
+  line-height: 1.45;
+  margin-bottom: 22px;
+  letter-spacing: -.025em;
+  word-break: keep-all;
+}
+.case-card-body {
+  font-size: clamp(16px, 1.5vw, 20px);
+  line-height: 1.85;
+  color: var(--text);
+  margin-bottom: 20px;
+  word-break: keep-all;
+}
+.case-card-list {
+  list-style: none;
+  margin: 24px 0;
+  padding: 0;
+}
+.case-card-list li {
+  padding: 14px 0;
+  border-bottom: 1px dashed var(--border);
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.75;
+  color: var(--text);
+  word-break: keep-all;
+  position: relative;
+  padding-left: 24px;
+}
+.case-card-list li:last-child {
+  border-bottom: none;
+}
+.case-card-list li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+.case-card-quote {
+  background: var(--navy);
+  color: var(--white);
+  padding: clamp(28px, 3vw, 40px);
+  border-radius: 14px;
+  margin-top: 28px;
+  text-align: center;
+  font-size: clamp(20px, 1.9vw, 26px);
+  font-weight: 800;
+  line-height: 1.55;
+  letter-spacing: -.025em;
+  word-break: keep-all;
+}
+.case-card-quote::before {
+  content: '"';
+  display: block;
+  font-size: 36px;
+  color: #FFE27A;
+  margin-bottom: 6px;
+  line-height: 1;
+}
+
+/* 체크리스트 */
+.checklist-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: clamp(28px, 3vw, 40px) clamp(24px, 2.5vw, 32px);
+  margin: 36px 0 0;
+  text-align: left;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+.checklist-card-header {
+  text-align: center;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 8px;
+}
+.checklist-card-title {
+  font-size: clamp(19px, 1.7vw, 23px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.checklist-card-subtitle {
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--muted);
+}
+.checklist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.checklist-items li {
+  display: flex;
+  gap: 18px;
+  padding: 22px 4px;
+  border-bottom: 1px solid var(--border);
+  word-break: keep-all;
+}
+.checklist-items li:last-child {
+  border-bottom: none;
+}
+.checklist-check {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--blue);
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--blue);
+  font-weight: 900;
+  font-size: 14px;
+  margin-top: 2px;
+}
+.checklist-text { flex: 1; }
+.checklist-q {
+  font-size: clamp(15px, 1.3vw, 17px);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.checklist-note {
+  font-size: clamp(14px, 1.2vw, 15px);
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+/* ═══ 드래그 투 리빌 답변 박스 ═══ */
+.answer-area {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.answer-label {
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 700;
+  color: var(--blue);
+  background: var(--blue-l);
+  padding: 5px 12px;
+  border-radius: 5px;
+  letter-spacing: .04em;
+  flex-shrink: 0;
+}
+.answer-box {
+  flex: 1;
+  min-width: 0;
+  background: #EEF2F7;
+  border: 1px dashed #CBD5E0;
+  border-radius: 8px;
+  padding: 12px 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: border-color .2s, background .2s;
+  min-height: 46px;
+}
+.answer-box::before {
+  content: '[';
+  color: #A0AEC0;
+  font-weight: 700;
+  font-family: 'Pretendard', monospace;
+  flex-shrink: 0;
+  font-size: 20px;
+}
+.answer-box::after {
+  content: ']';
+  color: #A0AEC0;
+  font-weight: 700;
+  font-family: 'Pretendard', monospace;
+  flex-shrink: 0;
+  margin-left: auto;
+  font-size: 20px;
+}
+.answer-box:hover {
+  border-color: var(--blue);
+  background: #E5EEF8;
+}
+.hidden-answer {
+  color: #EEF2F7;
+  font-size: clamp(14px, 1.2vw, 16px);
+  line-height: 1.6;
+  user-select: all;
+  -webkit-user-select: all;
+  -moz-user-select: all;
+  cursor: text;
+  flex: 1;
+  text-align: left;
+  padding: 0 6px;
+  transition: color .2s;
+}
+.answer-box:hover .hidden-answer {
+  color: #DEE5ED;
+}
+.hidden-answer::selection {
+  background: var(--blue);
+  color: var(--white);
+}
+.hidden-answer::-moz-selection {
+  background: var(--blue);
+  color: var(--white);
+}
+
+/* 체크리스트 가이드 안내 박스 */
+.checklist-guide {
+  background: linear-gradient(135deg, #FFF9E6, #FEF3C7);
+  border: 1px solid #FCD34D;
+  border-radius: 12px;
+  padding: 16px 22px;
+  margin-bottom: 28px;
+  text-align: center;
+  font-size: clamp(14px, 1.2vw, 16px);
+  font-weight: 600;
+  color: #92400E;
+  line-height: 1.6;
+  letter-spacing: -.01em;
+}
+.checklist-guide strong {
+  color: #78350F;
+}
+
+/* 전문가 비교 카드 */
+.expert-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 36px 0 24px;
+}
+.expert-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 14px;
+  padding: 26px 30px;
+  text-align: left;
+  backdrop-filter: blur(10px);
+}
+.expert-card-title {
+  font-size: clamp(17px, 1.7vw, 22px);
+  font-weight: 900;
+  color: #FFE27A;
+  margin-bottom: 10px;
+  letter-spacing: .02em;
+}
+.expert-card-text {
+  font-size: clamp(14px, 1.4vw, 18px);
+  color: rgba(255, 255, 255, 0.92);
+  line-height: 1.7;
+  word-break: keep-all;
+}
+
+/* 솔루션 박스 */
+.solution-card {
+  background: var(--white);
+  border-radius: 20px;
+  padding: clamp(32px, 3.5vw, 44px) clamp(28px, 3vw, 36px);
+  margin-top: 36px;
+  box-shadow: 0 4px 32px rgba(13,17,32,.08);
+  text-align: left;
+}
+.solution-intro {
+  font-size: clamp(17px, 1.6vw, 20px);
+  color: var(--text);
+  line-height: 1.85;
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 2px solid var(--blue-l);
+  word-break: keep-all;
+  text-align: center;
+}
+.solution-features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 28px;
+}
+.solution-features li {
+  display: flex;
+  gap: 16px;
+  padding: 16px 0;
+  align-items: flex-start;
+  word-break: keep-all;
+}
+.solution-check {
+  flex-shrink: 0;
+  width: 30px;
+  height: 30px;
+  background: var(--blue);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  font-weight: 900;
+  margin-top: 2px;
+}
+.solution-text {
+  flex: 1;
+  font-size: clamp(16px, 1.5vw, 19px);
+  line-height: 1.75;
+  color: var(--text);
+}
+.solution-tagline {
+  text-align: center;
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 900;
+  color: var(--blue);
+  padding: 28px 0 4px;
+  border-top: 2px solid var(--blue-l);
+  letter-spacing: -.025em;
+  line-height: 1.55;
+}
+
+/* 다음 주제 */
+.next-topics {
+  list-style: none;
+  padding: 0;
+  margin: 36px auto 0;
+  max-width: 560px;
+}
+.next-topics li {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 20px 26px;
+  margin-bottom: 12px;
+  text-align: left;
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--text);
+  line-height: 1.6;
+  border: 1px solid var(--border);
+  word-break: keep-all;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.next-topics li::before {
+  content: '✓';
+  color: var(--blue);
+  font-weight: 900;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* 최종 CTA */
+.final-cta-desc {
+  font-size: clamp(16px, 1.5vw, 20px);
+  color: var(--mid);
+  margin-bottom: 40px;
+  line-height: 1.85;
+}
+.final-cta-btn {
+  display: inline-block;
+  background: var(--blue);
+  color: var(--white);
+  padding: 24px 60px;
+  border-radius: 999px;
+  font-size: clamp(17px, 1.6vw, 22px);
+  font-weight: 800;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: -.015em;
+  box-shadow: 0 6px 20px rgba(49, 130, 246, 0.32);
+}
+.final-cta-btn:hover {
+  background: var(--blue-d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(49, 130, 246, 0.42);
+}
+.final-cta-sub {
+  display: inline-block;
+  margin-top: 28px;
+  font-size: clamp(14px, 1.2vw, 16px);
+  color: var(--mid);
+  text-decoration: underline;
+  text-decoration-color: var(--border);
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  padding: 4px 2px;
+  transition: color 0.2s, text-decoration-color 0.2s;
+}
+.final-cta-sub:hover {
+  color: var(--blue);
+  text-decoration-color: var(--blue);
+}
+
+/* 관련 FAQ */
+.related-section {
+  padding: clamp(56px, 6vw, 80px) 24px clamp(72px, 8vw, 100px);
+  background: #FAFBFC;
+  border-top: 8px solid var(--bg);
+}
+.related-title {
+  font-size: clamp(22px, 2vw, 28px);
+  font-weight: 900;
+  color: var(--navy);
+  margin-bottom: 32px;
+  letter-spacing: -.035em;
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.related-cards {
+  max-width: 680px;
+  margin: 0 auto;
+  display: grid;
+  gap: 12px;
+}
+.related-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 28px 32px;
+  text-decoration: none;
+  color: var(--navy);
+  transition: all 0.2s;
+  word-break: keep-all;
+  gap: 16px;
+}
+.related-card:hover {
+  border-color: var(--blue);
+  background: var(--blue-l);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(49, 130, 246, 0.12);
+}
+.related-card-text {
+  font-size: clamp(16px, 1.5vw, 19px);
+  font-weight: 700;
+  line-height: 1.55;
+  flex: 1;
+}
+.related-arrow {
+  color: var(--blue);
+  font-weight: 900;
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════
+   FOOTER — 기존 사이트와 동일
+═══════════════════════════════ */
+/* ═══════════════════════════════
+   FOOTER — 라이트 그레이 풀버전
+═══════════════════════════════ */
+footer { background:#E8EBF0; color:#4A5462; padding:0 0 40px; font-size:13px; line-height:1.7; }
+footer .w { max-width:1500px; margin:0 auto; padding:0 32px; }
+
+/* CTA 영역 — 카카오채널 구독 유도 */
+.footer-cta {
+  background: linear-gradient(135deg, #EFF6FF, #F8FAFC);
+  border-bottom: 1px solid #DCE0E5;
+  padding: 36px 0;
+  margin-bottom: 56px;
+}
+.footer-cta-inner {
+  max-width: 1500px;
+  margin: 0 auto;
+  padding: 0 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer-cta-text { flex: 1; min-width: 260px; }
+.footer-cta-title {
+  font-size: 19px; font-weight: 700; color: #0D1120;
+  margin-bottom: 6px; letter-spacing: -0.4px;
+}
+.footer-cta-sub {
+  font-size: 14px; font-weight: 400; color: #4A5462; letter-spacing: -0.2px;
+}
+.footer-cta-btn {
+  background: #FEE500; color: #181600;
+  padding: 13px 24px; border-radius: 999px;
+  font-size: 14px; font-weight: 700;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: -0.3px; flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.25);
+}
+.footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(254, 229, 0, 0.4);
+}
+.footer-cta-icon { font-size: 16px; line-height: 1; }
+@media (max-width: 768px) {
+  .footer-cta { padding: 28px 0; margin-bottom: 40px; }
+  .footer-cta-inner { flex-direction: column; align-items: flex-start; gap: 18px; }
+  .footer-cta-btn { width: 100%; justify-content: center; padding: 14px 24px; }
+  .footer-cta-title { font-size: 17px; }
+}
+
+/* 회사 정보 + 지점 그리드 */
+.footer-logo { font-size:18px; font-weight:800; color:#0D1120; margin-bottom:24px; letter-spacing:-.03em; }
+.footer-logo em { color:#3182F6; font-style:normal; }
+.footer-grid {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.footer-info {
+  flex: 0 0 300px; word-break: keep-all; line-height: 1.8; color: #4A5462; font-size: 13px;
+}
+.footer-branches {
+  flex: 0 1 auto; display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px 40px; min-width: 0;
+}
+.footer-col { word-break:keep-all; line-height:1.8; }
+.footer-addr { margin-bottom:14px; }
+.footer-addr:last-child { margin-bottom:0; }
+.footer-addr strong { display:block; color:#191F28; font-weight:700; font-size:13px; letter-spacing:-.01em; margin-bottom:3px; }
+.footer-addr span { display:block; font-size:12px; color:#6B7684; line-height:1.55; letter-spacing:-.005em; }
+.footer-sep { display:inline-block; margin:0 8px; color:#B0B8C1; font-weight:400; }
+@media (max-width: 1080px) {
+  .footer-grid { flex-direction: column; justify-content: flex-start; gap: 48px; }
+  .footer-info { flex: 0 0 auto; }
+  .footer-branches { width: 100%; grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width:760px) { .footer-branches { grid-template-columns:1fr 1fr; gap:40px 28px; } }
+@media (max-width:520px) { .footer-branches { grid-template-columns:1fr; gap:32px; } }
+
+/* SNS 아이콘 */
+.footer-sns {
+  display: flex; align-items: center; gap: 10px; margin-top: 20px;
+}
+.footer-sns-link {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: #fff; border: 1px solid #DCE0E5;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: #4A5462; text-decoration: none;
+  transition: background 0.2s, color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+.footer-sns-link:hover {
+  color: #0D1120; border-color: #3182F6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(49, 130, 246, 0.12);
+}
+.footer-sns-link svg { width: 18px; height: 18px; }
+.footer-sns-link.kakao {
+  background: #FEE500; border-color: #FEE500; color: #181600;
+  box-shadow: 0 2px 6px rgba(254, 229, 0, 0.25);
+}
+.footer-sns-link.kakao:hover {
+  background: #FEE500; border-color: #FEE500; color: #181600;
+  box-shadow: 0 4px 12px rgba(254, 229, 0, 0.4);
+}
+
+/* 법적 고지 영역 */
+.footer-legal {
+  margin-top:28px; padding:14px 0;
+  border-top:1px solid #DCE0E5; border-bottom:1px solid #DCE0E5;
+  display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+}
+.footer-legal-links {
+  display:flex; gap:12px; align-items:center;
+  flex-shrink:0; font-size:13px;
+}
+.footer-legal-links a {
+  color:#4A5462; font-weight:500; text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-legal-links a.emphasize { color:#0D1120; font-weight:600; }
+.footer-legal-links a:hover { color:#0D1120; text-decoration:underline; }
+.footer-legal-sep { color:#B0B8C1; font-size:11px; }
+.footer-legal-notice {
+  font-size:12px; color:#6B7684;
+  line-height:1.5; word-break:keep-all;
+}
+@media (max-width: 768px) {
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+}
+.footer-company-info {
+  margin-top:14px; font-size:12px;
+  color:#8B95A1; line-height:1.7;
+}
+
+/* ═══════════════════════════════
+   MOBILE OPTIMIZATION — 풀스크린 + 큰 타이포 유지
+═══════════════════════════════ */
+@media (max-width: 1080px) {
+  .footer-grid { flex-direction: column; justify-content: flex-start; gap: 48px; }
+  .footer-info { flex: 0 0 auto; }
+  .footer-branches { width: 100%; grid-template-columns: repeat(3, 1fr); }
+  /* 모바일 GNB: 카테고리 탭 숨김, 로고 + CTA만 */
+  .gnb-targets, .gnb-label { display:none; }
+  .gnb-inner { justify-content: space-between; height:60px; }
+  .gnb-row-top { margin-right: 0; }
+  .gnb-row-bottom { justify-content:flex-end; gap:0; flex:0 0 auto; }
+  :root { --pad: 20px; }
+  .faq-page { padding-top: 60px; }
+  .breadcrumb { padding: 20px 24px 0; }
+}
+
+@media (max-width:760px) {
+  .footer-branches { grid-template-columns:1fr 1fr; gap:40px 28px; }
+  .section { padding: clamp(56px, 10vw, 80px) 20px; }
+  .gnb-logo { font-size:19px; }
+  .gnb-btn { padding:9px 16px; font-size:var(--fs-body); }
+}
+
+@media (max-width:520px) {
+  .footer-branches { grid-template-columns:1fr; gap:32px; }
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+}
+
+/* 애니메이션 */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════
+   GNB — 기존 사이트와 완전 동일
+═══════════════════════════════ -->
+<header class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <div class="gnb-row-top">
+      <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    </div>
+    <div class="gnb-row-bottom">
+      <span class="gnb-label">나는</span>
+      <nav class="gnb-targets">
+        <a class="gnb-t active" data-target="corp" href="index.html#corp">
+          <span class="gnb-t-text">법인 대표입니다</span>
+        </a>
+        <a class="gnb-t" data-target="small" href="index.html#small">
+          <span class="gnb-t-text">소상공인입니다</span>
+        </a>
+        <a class="gnb-t" data-target="seller" href="index.html#seller">
+          <span class="gnb-t-text">셀러·벤더입니다</span>
+        </a>
+      </nav>
+      <a class="gnb-btn" href="index.html#quiz-master">
+        <span class="gnb-btn-dot"></span>1분 경영 스코어
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════
+   FAQ PAGE CONTENT
+═══════════════════════════════ -->
+<div class="faq-page">
+
+    <!-- 브레드크럼 -->
+    <nav class="breadcrumb">
+      <a href="index.html">홈</a>
+      <span class="breadcrumb-sep">›</span>
+      <a href="#">자주 묻는 질문</a>
+    </nav>
+
+    <!-- SECTION 1: 히어로 -->
+    <section class="section section-gray">
+      <div class="section-inner">
+        <span class="section-label">대표님만 모르시는 이야기</span>
+        <h1>
+          회사는 부자가 됐는데,<br>
+          왜 <span class="highlight-blue">제 통장은 그대로</span>일까요?
+        </h1>
+        <p class="section-description">
+          30년 일해 회사를 키웠는데, 막상 은퇴를 앞두고 보니<br>
+          통장이 비어 있다면.
+        </p>
+        <p class="section-description">
+          대표님만 겪는 일이 아닙니다.<br>
+          지금도 수많은 법인 대표님들이 같은 후회를 하고 계세요.
+        </p>
+        <div class="bounce-arrow">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: 3가지 경로 -->
+    <section class="section section-white">
+      <div class="section-inner">
+        <span class="section-label" style="background: var(--blue-l);">먼저 이것부터</span>
+        <h2>
+          사업이 잘 되면<br>
+          <span class="highlight-blue">"회사"</span>가 돈을 벌어요.<br>
+          그 돈은 누구 돈일까요?
+        </h2>
+        <p class="section-description">
+          회사 통장에 쌓이는 돈은 <strong>법인의 돈</strong>입니다.<br>
+          대표님 개인 돈이 아니에요.
+        </p>
+        <p class="section-description">
+          회사가 번 돈을 대표님이 개인화할 수 있는 방법은<br>
+          딱 <strong>3가지</strong> 뿐입니다.
+        </p>
+        <div class="method-cards">
+          <div class="method-card">
+            <div class="method-num">01</div>
+            <div class="method-text">
+              <div class="method-title">급여</div>
+              <div class="method-desc">매달 받는 월급</div>
+            </div>
+          </div>
+          <div class="method-card">
+            <div class="method-num">02</div>
+            <div class="method-text">
+              <div class="method-title">배당</div>
+              <div class="method-desc">지분 보유 시 받는 이익 분배</div>
+            </div>
+          </div>
+          <div class="method-card">
+            <div class="method-num">03</div>
+            <div class="method-text">
+              <div class="method-title">퇴직금</div>
+              <div class="method-desc">퇴임 시 받는 보상</div>
+            </div>
+          </div>
+        </div>
+        <p class="section-description" style="margin-top: 28px;">
+          그런데 대부분의 대표님들은<br>
+          이 중 <strong>한 가지에만 의존</strong>하고 계세요.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 3: 이 대표님 사례 -->
+    <section class="section section-light-blue">
+      <div class="section-inner">
+        <span class="section-label">사례 하나</span>
+        <h2>
+          이 대표님(62세),<br>
+          30년 키운 회사를 정리하며<br>
+          뒤늦게 깨달으신 것
+        </h2>
+        <div class="case-card">
+          <span class="case-card-badge">실제 상담 사례</span>
+          <p class="case-card-body">
+            30년간 유통회사를 일구셨습니다.<br>은퇴를 결심하고 장부를 정리해 보니
+            법인에 쌓인 이익잉여금만 <strong>30억.</strong>
+          </p>
+          <p class="case-card-body">
+            당연히 본인 통장에도 그만큼은 있을 거라 생각하셨습니다.
+            <br>그런데 실제로 확인해 보니,
+          </p>
+          <ul class="case-card-list">
+            <li><strong>월급</strong>은 30년간 500만원. 세무사가 "이 정도면 된다"고 해서 그대로 두셨죠.</li>
+            <li><strong>배당</strong>은 금융소득종합과세가 부담스러워 한 번도 받지 못하셨습니다.</li>
+            <li><strong>퇴직금</strong>? 정관에 규정이 없어, 기대하신 금액의 <strong>3분의 1 수준</strong>밖에 받지 못하셨습니다.</li>
+          </ul>
+          <div class="case-card-quote">
+            30년을 일했더니,<br>
+            나는 내가 만든 회사의 월급쟁이였구나.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: 유고 사례 -->
+    <section class="section section-white">
+      <div class="section-inner">
+        <span class="section-label" style="background: var(--blue-l);">그리고 또 하나</span>
+        <h2>
+          만약<br>
+          내일 대표님께<br>
+          <span class="highlight-blue">무슨 일이 생긴다면?</span>
+        </h2>
+        <div class="case-card">
+          <span class="case-card-badge">사례 둘</span>
+          <p class="case-card-title">
+            연매출 80억 제조업체의 CEO, 김 대표님(58세)<br>
+            어느 월요일 아침
+          </p>
+          <p class="case-card-body">출근길에 갑작스럽게 쓰러지셨습니다. 그날 오후부터 벌어진 일들은?</p>
+          <ul class="case-card-list">
+            <li>회사 주요 결재 <strong>전면 중단</strong></li>
+            <li>주거래은행·원자재 공급업체에서 계속 오는 "안부전화"<br>(속내는 "빌려준 돈부터 빨리 돌려받자"는 <strong>채권 회수 분위기</strong>)</li>
+            <li>매출처의 그달 수금 대금 <strong>3억 원</strong>은 "상황 정리되면"이라며 지연</li>
+            <li>배우자는 <strong>법인 인감이 어디 있는지조차 모르는</strong> 상황</li>
+            <li>대표 개인 보증이 걸린 회사 대출 때문에<strong>가족 거주 아파트까지 위협</strong></li>
+          </ul>
+        </div>
+        <p class="section-description" style="margin-top: 28px;">
+          대표님께 여쭙겠습니다.
+        </p>
+        <p class="section-description">
+          <strong>이런 상황에서 법인 자금을 가족분께<br>
+          합법적으로 이전할 수 있는 근거가,<br>
+          지금 대표님 회사에 마련되어 있나요?</strong>
+        </p>
+        <div class="bounce-arrow">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+          </svg>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: 각성 + 함정 -->
+    <section class="section section-blue">
+      <div class="section-inner">
+        <span class="section-label">지금 바로 확인</span>
+        <h2>
+          <span style="color: #FFE27A; text-shadow: 0 1px 2px rgba(0,0,0,.1);">지금 이 중 몇 가지</span>를<br>
+          준비하고 계신가요?
+        </h2>
+
+        <div class="checklist-card">
+          <div class="checklist-card-header">
+            <div class="checklist-card-title">5가지 자가 체크리스트</div>
+            <div class="checklist-card-subtitle">하나라도 망설이셨다면, 꼭 끝까지 읽어주세요</div>
+          </div>
+          <div class="checklist-guide">
+            👆 <strong>[  ] 박스를 클릭</strong>하면 답이 보입니다
+          </div>
+          <ul class="checklist-items">
+            <li>
+              <span class="checklist-check">01</span>
+              <div class="checklist-text">
+                <div class="checklist-q">정관에 <strong>임원 퇴직금 규정</strong>, 마련되어 있으신가요?</div>
+                <div class="answer-area">
+                  <span class="answer-label">답</span>
+                  <span class="answer-box"><span class="hidden-answer">있으면 기본한도의 2배까지 퇴직금을 가져가실 수 있습니다.</span></span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="checklist-check">02</span>
+              <div class="checklist-text">
+                <div class="checklist-q">정관에 <strong>유족보상금 규정</strong>, 있으신가요?</div>
+                <div class="answer-area">
+                  <span class="answer-label">답</span>
+                  <span class="answer-box"><span class="hidden-answer">없으면 유고 시 법인 돈을 가족에게 지급할 근거가 없습니다.</span></span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="checklist-check">03</span>
+              <div class="checklist-text">
+                <div class="checklist-q">우리 회사 <strong>비상장주식 가치</strong>가 지금 얼마인지 아세요?</div>
+                <div class="answer-area">
+                  <span class="answer-label">답</span>
+                  <span class="answer-box"><span class="hidden-answer">승계·매각 시점에 상속·증여세의 크기가 여기서 정해집니다.</span></span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="checklist-check">04</span>
+              <div class="checklist-text">
+                <div class="checklist-q">지금 실행하고 있는 <strong>법인세 절감 방법</strong>, 법적 요건을 정확히 충족하고 있나요?</div>
+                <div class="answer-area">
+                  <span class="answer-label">답</span>
+                  <span class="answer-box"><span class="hidden-answer">요건 하나만 어긋나도 세무조사에서 수억 원 추징으로 이어질 수 있습니다.</span></span>
+                </div>
+              </div>
+            </li>
+            <li>
+              <span class="checklist-check">05</span>
+              <div class="checklist-text">
+                <div class="checklist-q">이 모든 걸 <strong>대표님 혼자</strong> 챙기실 수 있으신가요?</div>
+                <div class="answer-area">
+                  <span class="answer-label">답</span>
+                  <span class="answer-box"><span class="hidden-answer">한 영역만 놓쳐도 수억 원 단위의 손해가 발생합니다. 전문가 팀의 통합 설계가 필요합니다.</span></span>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <h2 style="margin-top: 56px;">
+          "세무사에게 물어보면 되지 않나요?"<br>
+          <span style="color: #FFE27A; text-shadow: 0 1px 2px rgba(0,0,0,.1);">사실은, 그걸로는 부족합니다.</span>
+        </h2>
+
+        <p class="section-description">
+          대표님 법인의 재무는<br>
+          <strong>한 사람이 풀 수 있는 문제가 아닙니다.</strong>
+        </p>
+
+        <div class="expert-grid">
+          <div class="expert-card">
+            <div class="expert-card-title">세무사</div>
+            <div class="expert-card-text">세금 신고는 해드려도, 정관·상속·승계 설계는 영역 밖입니다.</div>
+          </div>
+          <div class="expert-card">
+            <div class="expert-card-title">변호사</div>
+            <div class="expert-card-text">정관은 봐드리지만, 재무·세무 통합 설계는 하지 않습니다.</div>
+          </div>
+          <div class="expert-card">
+            <div class="expert-card-title">재무자문</div>
+            <div class="expert-card-text">자산 운용은 도와드려도, 법인 전체 구조를 진단하진 못합니다.</div>
+          </div>
+        </div>
+
+        <p class="section-description" style="margin-top: 28px;">
+          그래서 <strong>실제로 사고가 납니다.</strong>
+        </p>
+
+        <div class="case-card">
+          <span class="case-card-badge" style="background: #FFF4E5; color: #D97706;">⚠ 실제 사례</span>
+          <p class="case-card-title">세무조사에서 10억 원을 추징당한 건설사 대표님.</p>
+          <p class="case-card-body">
+            제주도의 한 건설사 대표님은 법인세 절감을 위해 전문가의 권유로
+            <strong>월 2,000만 원짜리 절세 스킴</strong>을 실행하셨습니다. 전액 비용처리가 된다고 들으셨죠.
+          </p>
+          <p class="case-card-body">
+            그런데 구조 설정의 <strong>단 하나의 조건</strong>이 법적 요건에 어긋나
+            세무조사에서 <strong>10억 원을 추징</strong>당하셨습니다.
+          </p>
+          <div class="case-card-quote">
+            한 명의 전문가 조언만 믿었을 때<br>
+            벌어질 수도 있는 일입니다.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: 솔루션 + 앞으로의 이야기 -->
+    <section class="section section-light-blue">
+      <div class="section-inner">
+        <span class="section-label">해답</span>
+        <h2>
+          대표님 회사의 전체를 바라보는<br>
+          <span class="highlight-blue">통합 설계</span>가 필요합니다.
+        </h2>
+
+        <div class="solution-card">
+          <p class="solution-intro">
+            <strong>미래CEO플랜</strong>은
+            대한민국의 모든 대표님이 마주하는 빈틈을
+            보완할 수 있도록 검증된 솔루션을 한곳에 모은 <strong>큐레이션 플랫폼</strong>입니다.
+          </p>
+          <ul class="solution-features">
+            <li>
+              <span class="solution-check">✓</span>
+              <span class="solution-text"><strong>1분 경영 스코어</strong>로 우리 회사 상태부터 진단하고 정비합니다.</span>
+            </li>
+            <li>
+              <span class="solution-check">✓</span>
+              <span class="solution-text">진단 결과에 맞는 <strong>단품 솔루션 부터 결합 패키지</strong>를 큐레이션해 드립니다.</span>
+            </li>
+            <li>
+              <span class="solution-check">✓</span>
+              <span class="solution-text">정관·승계·절세·자산·유고 대비까지, <strong>영역별로 검증된 협력 파트너</strong>가 직접 자문·실행합니다.</span>
+            </li>
+            <li>
+              <span class="solution-check">✓</span>
+              <span class="solution-text">대표님은 흩어진 정보를 찾아다닐 필요 없이, <strong>비교하고 선택</strong>만 하시면 됩니다.</span>
+            </li>
+          </ul>
+          <div class="solution-tagline">
+            모든 해답을 한 곳에서,<br>
+            대표님 상황에 딱 맞게!
+          </div>
+        </div>
+
+        <h2 style="margin-top: 64px; font-size: clamp(20px, 3.5vw, 26px);">
+          앞으로 이런 이야기도<br>
+          차근차근 풀어드립니다.
+        </h2>
+
+        <ul class="next-topics">
+          <li>법인 돈을 대표 개인에게 <strong>합법적으로 이전</strong>하는 3가지 방법</li>
+          <li>정관 <strong>한 줄 바꿨을 뿐인데</strong>, 퇴직금이 2배가 됩니다</li>
+          <li>비상장주식 가치를 낮추면 <strong>상속세가 얼마나 줄어들까요?</strong></li>
+          <li>세무조사에서 <strong>10억 추징</strong>당한 대표님의 결정적 실수</li>
+          <li>우리 회사도 <strong>자산·승계 설계</strong>가 필요한지, 30초 자가진단</li>
+        </ul>
+
+        <p class="section-description" style="margin-top: 28px;">
+          <strong>미래CEO플랜 카카오채널</strong>을 구독하시면<br>
+          새로운 이야기를 가장 먼저 받아보실 수 있습니다.
+        </p>
+      </div>
+    </section>
+
+    <!-- SECTION 7: 최종 CTA -->
+    <section class="section section-white" id="cta">
+      <div class="section-inner">
+        <span class="section-label" style="background: var(--blue-l);">1분이면 충분합니다</span>
+        <h2>
+          대표님 회사,<br>
+          <span class="highlight-blue">지금 몇 점일까요?</span>
+        </h2>
+        <p class="final-cta-desc">
+          대표님이 모르는 법인의 빈틈,<br>
+          <strong>1분이면 점수로 보입니다.</strong><br><br>
+          정관 · 승계 · 절세 · 자산 · 유고 대비까지<br>
+          5개 영역을 한 번에 진단해 드립니다.
+        </p>
+        <a href="index.html#quiz-master" class="final-cta-btn">1분 경영 스코어 받아보기 →</a>
+        <div><a href="http://pf.kakao.com/_ATSjX" target="_blank" rel="noopener noreferrer" class="final-cta-sub">카카오채널 구독하고 새 글 받아보기</a></div>
+      </div>
+    </section>
+
+    <!-- 관련 FAQ -->
+    <section class="related-section">
+      <div class="related-title">💡 이런 질문도 자주 하세요</div>
+      <div class="related-cards">
+        <a href="#" class="related-card">
+          <span class="related-card-text">정관에 '임원 퇴직금 규정'이 꼭 있어야 하나요? 없으면 어떻게 되나요?</span>
+          <span class="related-arrow">→</span>
+        </a>
+        <a href="#" class="related-card">
+          <span class="related-card-text">우리 회사 비상장주식 가치, 지금 얼마인지 어떻게 확인할 수 있나요?</span>
+          <span class="related-arrow">→</span>
+        </a>
+        <a href="#" class="related-card">
+          <span class="related-card-text">법인세를 합법적으로 이연하는 가장 확실한 방법은 무엇인가요?</span>
+          <span class="related-arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+</div>
+
+<!-- ═══════════════════════════════
+   FOOTER — 기존 사이트와 완전 동일
+═══════════════════════════════ -->
+<footer>
+  <!-- 카카오채널 구독 유도 CTA -->
+  <div class="footer-cta">
+    <div class="footer-cta-inner">
+      <div class="footer-cta-text">
+        <div class="footer-cta-title">대표님이 모르시던 이야기</div>
+        <div class="footer-cta-sub">매주 새로운 인사이트를 보내드립니다.</div>
+      </div>
+      <a href="http://pf.kakao.com/_ATSjX" target="_blank" rel="noopener noreferrer" class="footer-cta-btn">
+        <span class="footer-cta-icon">💬</span>
+        카카오채널 구독하기
+      </a>
+    </div>
+  </div>
+
+  <div class="w">
+    <div class="footer-logo">미래<em>CEO</em>플랜 | ㈜프로그레스미디어</div>
+    <div class="footer-grid">
+      <div class="footer-info">
+        상호명 : ㈜프로그레스미디어<br>
+        대표자 : 구동엽<br>
+        사업자등록번호 : 113-86-27124<br>
+        TEL : 02-6261-5102 <span class="footer-sep">|</span> FAX : 02-6261-5104<br>
+        이메일 : esoyeon@my-progress.co.kr
+
+        <!-- SNS 아이콘 -->
+        <div class="footer-sns">
+          <a href="http://pf.kakao.com/_ATSjX" target="_blank" rel="noopener noreferrer" class="footer-sns-link kakao" aria-label="카카오채널">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C6.48 3 2 6.62 2 11.06c0 2.86 1.84 5.36 4.6 6.78l-1.16 4.27c-.1.37.31.66.63.45l5.07-3.36c.28.02.56.04.86.04 5.52 0 10-3.62 10-8.18C22 6.62 17.52 3 12 3z"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="footer-sns-link" aria-label="인스타그램">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="footer-sns-link" aria-label="블로그">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-branches">
+        <div class="footer-col">
+          <div class="footer-addr">
+            <strong>서울통합퍼포먼스센터</strong>
+            <span>서울특별시 구로구 디지털로26길 43. L동 1901호 부터 1905호<br>(구로동, 대륭포스트타워 8차)</span>
+          </div>
+          <div class="footer-addr">
+            <strong>서울 퍼포먼스2센터</strong>
+            <span>서울 구로구 디지털로26길 43. R동 1811-1812호<br>(구로동, 대륭포스트타워 8차)</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-addr">
+            <strong>대전 퍼포먼스센터</strong>
+            <span>대전 서구 둔산서로 15, 7층 (둔산동, 새천년빌딩)</span>
+          </div>
+          <div class="footer-addr">
+            <strong>대전 퍼포먼스2센터</strong>
+            <span>대전시 서구 대덕대로162번길 11. 3층 3-2호 (갈마동, 우리에셋빌딩)</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <div class="footer-addr">
+            <strong>대구 퍼포먼스센터</strong>
+            <span>대구시 서구 달구벌대로 1911, 4층 (내당동, 천일빌딩)</span>
+          </div>
+          <div class="footer-addr">
+            <strong>부산 퍼포먼스센터</strong>
+            <span>부산시 연제구 중앙대로 1081, 10층 (연산동, 재능빌딩)</span>
+          </div>
+          <div class="footer-addr">
+            <strong>제주지점</strong>
+            <span>제주시 중앙로23 탑빌딩 501호 (성산빌딩, 건입동 1421-1)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./mirae-ceo-faq-01-final.html">자주 묻는 질문</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      © 2026 ㈜프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+  document.querySelectorAll('.section > .section-inner, .related-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(16px)';
+    el.style.transition = 'opacity 0.7s ease, transform 0.7s ease';
+    observer.observe(el);
+  });
+
+  // Smooth scroll to CTA
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href.length > 1) {
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    });
+  });
+</script>
+
+</body>
+</html>

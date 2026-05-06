@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<script>
+  // iframe 안이면 즉시 html에 클래스 추가 (배경 투명 처리)
+  if (window.parent && window.parent !== window) {
+    document.documentElement.classList.add('in-iframe');
+  }
+  // 솔루션 페이지로 이동 (iframe 안이면 부모 창 이동)
+  function goToSolution(url) {
+    if (window.parent && window.parent !== window) {
+      try {
+        window.parent.location.href = url;
+      } catch (e) {
+        window.location.href = url;
+      }
+    } else {
+      window.location.href = url;
+    }
+  }
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비용처리 적정성 진단 | 미래CEO플랜</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+<style>
+* { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif !important; }
+</style>
+<style>
+:root{
+  --ac:#3182F6; --ac-dark:#1b64da; --ac-light:#EBF3FF;
+  --bg:#F2F4F8; --surface:#fff; --text:#111827; --text-sub:#6B7280;
+  --border:#E5E7EB; --dark:#0F172A;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family: 'Pretendard', sans-serif;background:var(--bg);color:var(--text);min-height:100vh;}
+  /* iframe 내부일 때 — 모달 카드 배경이 그대로 보이도록 투명 처리 */
+  html.in-iframe, html.in-iframe body { background: transparent; }
+
+.page{display:none;} .page.active{display:block;}
+.wrap{max-width:580px;margin:0 auto;padding:32px 20px 80px;}
+.top-nav{display:flex;align-items:center;justify-content:flex-end;margin-bottom:28px;}
+.btn-back{display:flex;align-items:center;gap:6px;background:var(--surface);border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:500;padding:8px 14px;border-radius:100px;cursor:pointer;transition:all .2s;text-decoration:none;}
+.btn-back:hover{border-color:var(--text-sub);color:var(--text);}
+.quiz-cat{font-size:11px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;}
+.progress-wrap{margin-bottom:28px;}
+.progress-info{display:flex;justify-content:space-between;margin-bottom:8px;}
+.progress-label{font-size:12px;color:var(--text-sub);font-weight:500;}
+.progress-pct{font-size:12px;color:var(--ac);font-weight:700;}
+.progress-bar{height:3px;background:var(--border);border-radius:100px;overflow:hidden;}
+.progress-fill{height:100%;background:var(--ac);border-radius:100px;transition:width .35s ease;}
+.q-card{background:var(--surface);border-radius:18px;padding:36px;border:1px solid var(--border);box-shadow:0 2px 12px rgba(0,0,0,.05);margin-bottom:20px;animation:fadeUp .35s ease both;}
+.q-step{font-size:11px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;}
+.q-text{font-family:'Pretendard',sans-serif;font-size:clamp(17px,3vw,21px);font-weight:600;color:var(--dark);line-height:1.5;margin-bottom:8px;letter-spacing:-.01em;}
+.q-hint{font-size:12px;color:var(--text-sub);line-height:1.6;margin-bottom:24px;}
+.options{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.options.single{grid-template-columns:1fr;}
+.opt{display:flex;align-items:flex-start;gap:10px;background:var(--bg);border:1.5px solid var(--border);border-radius:12px;padding:13px 15px;font-size:14px;font-weight:500;color:var(--text);cursor:pointer;transition:all .15s;text-align:left;line-height:1.45;}
+.opt:hover,.opt.selected{border-color:var(--ac);background:var(--ac-light);color:var(--ac-dark);}
+.opt-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--border);flex-shrink:0;transition:all .15s;display:flex;align-items:center;justify-content:center;margin-top:1px;}
+.opt.selected .opt-dot{border-color:var(--ac);background:var(--ac);}
+.opt.selected .opt-dot::after{content:'';width:5px;height:5px;background:#fff;border-radius:50%;}
+.bottom-nav{display:flex;justify-content:space-between;align-items:center;}
+.btn-prev{display:flex;align-items:center;gap:6px;background:none;border:none;color:var(--text-sub);font-size:13px;font-weight:500;cursor:pointer;padding:8px 0;transition:color .2s;}
+.btn-prev:hover{color:var(--text);} .btn-prev:disabled{opacity:.3;cursor:default;}
+.btn-result{display:none;align-items:center;gap:8px;background:var(--ac);color:#fff;font-size:14px;font-weight:600;padding:12px 28px;border-radius:100px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(49,130,246,.3);}
+.btn-result.show{display:flex;} .btn-result:hover{background:var(--ac-dark);transform:translateY(-1px);}
+/* 결과 */
+.result-card{border-radius:20px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.1);animation:fadeUp .5s ease both;}
+.result-header{background:linear-gradient(135deg,#0f172a 0%,#1e3a5f 100%);padding:36px;position:relative;overflow:hidden;}
+.result-header::before{content:'';position:absolute;top:-50px;right:-50px;width:180px;height:180px;background:radial-gradient(circle,rgba(49,130,246,.2) 0%,transparent 70%);border-radius:50%;}
+.result-cat-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.12);color:rgba(255,255,255,.7);font-size:11px;font-weight:700;padding:4px 12px;border-radius:100px;margin-bottom:20px;letter-spacing:.06em;text-transform:uppercase;}
+.score-display{display:flex;align-items:flex-end;gap:10px;margin-bottom:16px;position:relative;}
+.score-num{font-family:'Pretendard',sans-serif;font-size:72px;font-weight:900;color:#fff;line-height:1;}
+.score-denom{font-size:22px;font-weight:600;color:rgba(255,255,255,.45);padding-bottom:10px;}
+.score-bar-wrap{margin-bottom:20px;position:relative;}
+.score-bar-bg{height:6px;background:rgba(255,255,255,.15);border-radius:100px;overflow:hidden;}
+.score-bar-fill{height:100%;background:linear-gradient(90deg,#60a5fa,#93c5fd);border-radius:100px;transition:width 1s ease;}
+.result-type{font-family:'Pretendard',sans-serif;font-size:clamp(18px,3vw,24px);font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4;position:relative;}
+.result-sub{font-size:13px;color:rgba(255,255,255,.55);line-height:1.65;position:relative;}
+.result-body{background:var(--surface);padding:32px 36px;}
+.axes-title{font-size:11px;font-weight:700;color:var(--text-sub);letter-spacing:.06em;text-transform:uppercase;margin-bottom:14px;}
+.axis-row{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border);}
+.axis-row:last-child{border-bottom:none;}
+.axis-label{font-size:13px;color:var(--text-sub);width:120px;flex-shrink:0;}
+.axis-bar-wrap{flex:1;height:5px;background:var(--border);border-radius:100px;overflow:hidden;}
+.axis-bar-fill{height:100%;border-radius:100px;transition:width .8s ease;}
+.axis-score-txt{font-size:12px;font-weight:700;width:28px;text-align:right;flex-shrink:0;}
+.axis-high .axis-bar-fill{background:#10b981;} .axis-mid .axis-bar-fill{background:#f59e0b;} .axis-low .axis-bar-fill{background:#f43f5e;}
+.axis-high .axis-score-txt{color:#10b981;} .axis-mid .axis-score-txt{color:#f59e0b;} .axis-low .axis-score-txt{color:#f43f5e;}
+.insight-box{background:var(--ac-light);border-left:3px solid var(--ac);border-radius:0 10px 10px 0;padding:16px 20px;margin:24px 0;}
+.insight-label{font-size:10px;font-weight:700;color:var(--ac);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px;}
+.insight-text{font-size:15px;font-weight:600;color:var(--dark);line-height:1.5;}
+.result-desc{font-size:14px;color:var(--text-sub);line-height:1.75;margin-bottom:28px;}
+.btn-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--ac);color:#fff;font-size:15px;font-weight:600;padding:17px;border-radius:12px;border:none;cursor:pointer;transition:all .2s;box-shadow:0 4px 16px rgba(49,130,246,.3);margin-bottom:12px;}
+.btn-cta:hover{background:var(--ac-dark);transform:translateY(-2px);}
+.btn-retry{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;background:none;border:1.5px solid var(--border);color:var(--text-sub);font-size:13px;font-weight:500;padding:12px;border-radius:12px;cursor:pointer;transition:all .2s;}
+.btn-retry:hover{border-color:var(--text-sub);color:var(--text);}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+@media(max-width:480px){.q-card{padding:24px 20px;}.options{grid-template-columns:1fr;}.result-body{padding:24px;}.result-header{padding:28px 24px;}}
+</style>
+</head>
+<body>
+
+<div id="quizPage" class="page active">
+  <div class="wrap">
+    <div class="top-nav">
+      <span class="quiz-cat">절세 진단</span>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-info">
+        <span class="progress-label" id="progLabel"></span>
+        <span class="progress-pct" id="progPct"></span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill" id="progFill" style="width:0%"></div></div>
+    </div>
+    <div class="q-card">
+      <div class="q-step" id="qStep"></div>
+      <div class="q-text" id="qText"></div>
+      <div class="q-hint" id="qHint"></div>
+      <div class="options" id="qOpts"></div>
+    </div>
+    <div class="bottom-nav">
+      <button class="btn-prev" id="btnPrev" onclick="prevQ()" disabled>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        이전
+      </button>
+      <button class="btn-result" id="btnResult" onclick="showResult()">
+        결과 보기
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div id="resultPage" class="page">
+  <div class="wrap">
+    <div style="margin-bottom:20px;">
+      <button class="btn-back" onclick="restartQuiz()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        다시 진단하기
+      </button>
+    </div>
+    <div class="result-card">
+      <div class="result-header">
+        <div class="result-cat-badge">절세 진단</div>
+        <div class="score-display">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-denom">/ 100점</div>
+        </div>
+        <div class="score-bar-wrap">
+          <div class="score-bar-bg"><div class="score-bar-fill" id="scoreBar" style="width:0%"></div></div>
+        </div>
+        <div class="result-type" id="resultType"></div>
+        <div class="result-sub" id="resultSub"></div>
+      </div>
+      <div class="result-body">
+        <div class="axes-title">5가지 항목별 현황</div>
+        <div id="axesWrap"></div>
+        <div class="insight-box">
+          <div class="insight-label">핵심 인사이트</div>
+          <div class="insight-text" id="insightText"></div>
+        </div>
+        <p class="result-desc" id="resultDesc"></p>
+        <button class="btn-cta" onclick="goToSolution('index.html')">
+          세무·절세 솔루션 보러가기
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+        <button class="btn-retry" onclick="restartQuiz()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+          처음부터 다시하기
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const QUESTIONS = [
+  {
+    step:'Q1', axis:'비용 처리 인식',
+    text:'법인 비용으로 처리할 수 있는 항목을 얼마나 알고 계신가요?',
+    hint:'접대비, 복리후생비, 교육훈련비 등 항목별로 한도와 기준이 다릅니다.',
+    options:[
+      {text:'잘 모른다', score:1},
+      {text:'몇 가지 알고 있다', score:1},
+      {text:'주요 항목은 파악하고 있다', score:2},
+      {text:'세부 한도까지 알고 관리한다', score:4},
+    ]
+  },
+  {
+    step:'Q2', axis:'접대비·경조사비',
+    text:'거래처 접대비, 경조사비를 법인 비용으로 처리하고 있나요?',
+    hint:'접대비는 연간 한도(중소기업 3600만원+수입금액 0.3%)를 초과하면 손금 불인정됩니다.',
+    options:[
+      {text:'처리하지 않는다', score:1},
+      {text:'일부만 처리한다', score:1},
+      {text:'대부분 처리하지만 한도는 모른다', score:2},
+      {text:'한도 내에서 적극 활용한다', score:4},
+    ]
+  },
+  {
+    step:'Q3', axis:'복리후생비 활용',
+    text:'임직원 식대, 교통비, 건강검진 등 복리후생비를 얼마나 활용하나요?',
+    hint:'직원 1인당 월 20만원 식대 비과세, 건강검진비 전액 법인 비용 처리 등 놓치기 쉬운 혜택이 많습니다.',
+    singleCol:true,
+    options:[
+      {text:'거의 활용하지 않는다', score:1},
+      {text:'식대·교통비 정도만 처리한다', score:1},
+      {text:'주요 항목은 챙기고 있다', score:3},
+      {text:'항목별 한도까지 꽉 채워 활용한다', score:4},
+    ]
+  },
+  {
+    step:'Q4', axis:'업무용 차량 관리',
+    text:'대표님 또는 임직원 차량 비용을 법인으로 처리하고 있나요?',
+    hint:'업무용 승용차는 운행일지 작성 시 전액 경비 처리 가능합니다. 미작성 시 연 1500만원 한도.',
+    singleCol:true,
+    options:[
+      {text:'처리하지 않는다', score:1},
+      {text:'처리하지만 운행일지는 없다', score:1},
+      {text:'운행일지를 작성하고 있다', score:3},
+      {text:'운행일지+리스·렌트 활용까지 최적화됐다', score:4},
+    ]
+  },
+  {
+    step:'Q5', axis:'세무사 검토 여부',
+    text:'법인카드 지출에 대해 세무사가 주기적으로 검토해주나요?',
+    hint:'비용 처리 오류는 세무조사 시 가산세 부담으로 직결됩니다. 정기 검토가 리스크를 줄여줍니다.',
+    singleCol:true,
+    options:[
+      {text:'전혀 없다', score:1},
+      {text:'신고 시즌에만 한번 본다', score:1},
+      {text:'분기마다 확인한다', score:3},
+      {text:'매월 정기 검토한다', score:4},
+    ]
+  }
+];
+
+const axisMax = [4,4,4,4,4];
+let currentIdx = 0;
+let answers = new Array(QUESTIONS.length).fill(null);
+
+function render(){
+  const q = QUESTIONS[currentIdx];
+  const total = QUESTIONS.length;
+  const pct = Math.round((currentIdx/total)*100);
+  document.getElementById('progLabel').textContent=`질문 ${currentIdx+1} / ${total}`;
+  document.getElementById('progPct').textContent=`${pct}%`;
+  document.getElementById('progFill').style.width=`${pct}%`;
+  document.getElementById('qStep').textContent=q.step;
+  document.getElementById('qText').textContent=q.text;
+  document.getElementById('qHint').textContent=q.hint;
+  const optsEl=document.getElementById('qOpts');
+  optsEl.className='options'+(q.singleCol?' single':'');
+  optsEl.innerHTML='';
+  const saved=answers[currentIdx];
+  q.options.forEach((opt,i)=>{
+    const btn=document.createElement('button');
+    btn.className='opt'+(saved?.optIdx===i?' selected':'');
+    btn.innerHTML=`<span class="opt-dot"></span>${opt.text}`;
+    btn.onclick=()=>selectOpt(i,opt.score);
+    optsEl.appendChild(btn);
+  });
+  document.getElementById('btnPrev').disabled=(currentIdx===0);
+  const isLast=currentIdx===QUESTIONS.length-1;
+  const btnResult=document.getElementById('btnResult');
+  btnResult.className='btn-result'+(isLast&&saved!==null?' show':'');
+}
+
+function selectOpt(optIdx,score){
+  answers[currentIdx]={optIdx,score};
+  const isLast=currentIdx===QUESTIONS.length-1;
+  if(isLast){render();}
+  else{currentIdx++;render();}
+}
+
+function prevQ(){if(currentIdx>0){currentIdx--;render();}}
+
+function showResult(){
+  const maxRaw=axisMax.reduce((a,b)=>a+b,0);
+  const rawScore=answers.reduce((s,a)=>s+(a?.score||0),0);
+  const score=Math.round((rawScore/maxRaw)*100);
+  const axisScores=answers.map((a,i)=>({
+    label:QUESTIONS[i].axis, raw:a?.score||0, max:axisMax[i],
+    pct:Math.round(((a?.score||0)/axisMax[i])*100)
+  }));
+  let type,sub,insight,desc;
+  if(score>=75){
+    type='비용 처리를 잘 관리하는 대표님';
+    sub='체계적으로 절세를 실천하고 있습니다. 더 세밀한 최적화가 남아있어요.';
+    insight='지금도 잘 하고 있지만, 차량·접대비 한도 최적화로 추가 절세 여지가 있습니다.';
+    desc='현재 법인카드 비용 관리 수준이 우수합니다. 업무용 차량 운행일지 작성 여부, 접대비 한도 잔여 금액 등을 분기마다 점검하면 연간 수백만 원의 추가 절세 효과를 기대할 수 있어요.';
+  }else if(score>=45){
+    type='절세 여지가 남은 대표님';
+    sub='알고는 있지만 실행이 아직 부족합니다.';
+    insight='복리후생비·차량 운행일지 등 놓친 항목부터 점검하세요.';
+    desc='비용 처리에 대한 인식은 있으나 실제로 챙기지 못한 항목이 적지 않습니다. 특히 임직원 식대·건강검진비, 업무용 차량 운행일지 작성 등을 정비하면 상당한 절세가 가능합니다.';
+  }else{
+    type='비용 처리 정비가 시급한 대표님';
+    sub='지금 바로 세무사와 함께 비용 항목을 점검해야 합니다.';
+    insight='매년 놓치고 있는 절세 금액이 수백만 원 이상일 수 있습니다.';
+    desc='법인 비용 처리가 제대로 이루어지지 않으면 불필요하게 많은 세금을 내게 됩니다. 접대비, 복리후생비, 차량비 등 주요 항목별 한도와 증빙 방법을 세무사와 함께 점검하는 것을 추천드립니다.';
+  }
+  document.getElementById('scoreNum').textContent=score;
+  document.getElementById('scoreBar').style.width='0%';
+  setTimeout(()=>{document.getElementById('scoreBar').style.width=`${score}%`;},100);
+  document.getElementById('resultType').textContent=type;
+  document.getElementById('resultSub').textContent=sub;
+  document.getElementById('insightText').textContent=insight;
+  document.getElementById('resultDesc').textContent=desc;
+  const axesWrap=document.getElementById('axesWrap');
+  axesWrap.innerHTML='';
+  axisScores.forEach(ax=>{
+    const cls=ax.pct>=70?'axis-high':ax.pct>=35?'axis-mid':'axis-low';
+    const label=ax.pct>=70?'양호':ax.pct>=35?'보통':'미흡';
+    axesWrap.innerHTML+=`<div class="axis-row ${cls}"><span class="axis-label">${ax.label}</span><div class="axis-bar-wrap"><div class="axis-bar-fill" style="width:${ax.pct}%"></div></div><span class="axis-score-txt">${label}</span></div>`;
+  });
+  document.getElementById('quizPage').classList.remove('active');
+  document.getElementById('resultPage').classList.add('active');
+  window.scrollTo(0,0);
+}
+
+function restartQuiz(){
+  currentIdx=0;answers=new Array(QUESTIONS.length).fill(null);
+  document.getElementById('resultPage').classList.remove('active');
+  document.getElementById('quizPage').classList.add('active');
+  render();window.scrollTo(0,0);
+}
+render();
+</script>
+</body>
+</html>

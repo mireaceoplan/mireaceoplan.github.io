@@ -1,0 +1,1351 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO 자산 증식 전략 — 미래CEO플랜</title>
+<!-- ═══ Open Graph (카카오톡·페이스북·슬랙 미리보기) ═══ -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="미래CEO플랜">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="CEO 자산 증식 전략 | 미래CEO플랜">
+<meta property="og:description" content="법인에 쌓인 이익, 대표님 자산으로 만드는 법. 월급·배당·퇴직금 중 세후 실수령액을 좌우하는 선택은?">
+<meta property="og:url" content="https://ceoplan.netlify.app/solution-wealth.html">
+<meta property="og:image" content="https://ceoplan.netlify.app/og-solution-wealth.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="CEO 자산 증식 전략 | 미래CEO플랜">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="CEO 자산 증식 전략 | 미래CEO플랜">
+<meta name="twitter:description" content="법인에 쌓인 이익, 대표님 자산으로 만드는 법. 월급·배당·퇴직금 중 세후 실수령액을 좌우하는 선택은?">
+<meta name="twitter:image" content="https://ceoplan.netlify.app/og-solution-wealth.png">
+
+<!-- SEO description (이미 있으면 중복되지만 해롭지 않음) -->
+<meta name="description" content="법인에 쌓인 이익, 대표님 자산으로 만드는 법. 월급·배당·퇴직금 중 세후 실수령액을 좌우하는 선택은?">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<style>
+:root {
+  --blue:#3182F6; --blue-d:#1B64DA; --blue-l:#EFF6FF; --blue-soft:#EEF5FF;
+  --navy:#0D1120; --navy2:#131829; --navy3:#1C2235;
+  --text:#191F28; --mid:#4A5462; --muted:#8B95A1;
+  --bg:#F7F9FC; --white:#FFFFFF; --border:#E5E8EF; --border-l:#F0F3F8;
+  --red:#F04452;
+
+  /* 🆕 프리미엄 웰스 톤 (리파인드/한화와 명확 구분) */
+  --ivory:#FAF8F3;          /* 메인 섹션 배경 */
+  --ivory-card:#FFFDF8;     /* 카드 배경 */
+  --ivory-hover:#F5F1E8;    /* 호버 */
+
+  --gold:#C9A961;           /* 골드 포인트 (프리미엄 시그니처) */
+  --gold-d:#A8862F;
+  --gold-l:#E8D79B;
+  --gold-soft:#FEF9E7;
+
+  --gray-soft:#F4F6FA;
+  --gray-card:#F7F8FA;
+  --gray-hover:#EEF0F5;
+  --green:#10B981; --green-d:#059669; --green-l:#D1FAE5;
+  --max:1100px; --pad:40px;
+
+  /* 타이포 토큰 (3페이지 공통 표준) */
+  --fs-display-1: 60px; --fs-display-2: 40px;
+  --fs-h2: 36px; --fs-h2-sm: 26px;
+  --fs-quote: 28px; --fs-stat: 48px; --fs-stat-lg: 56px;
+  --fs-title-lg: 20px; --fs-body-xl: 18px;
+  --fs-title: 17px; --fs-title-sm: 16px;
+  --fs-body-lg: 16px; --fs-body: 15px; --fs-body-sm: 14px;
+  --fs-caption: 12px; --fs-caption-sm: 11px; --fs-micro: 10px;
+}
+
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html { scroll-behavior:smooth; }
+body { font-family:'Pretendard',-apple-system,sans-serif; background:#fff; color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+button,a { font-family:inherit; cursor:pointer; border:none; background:none; text-decoration:none; color:inherit; }
+img { max-width:100%; display:block; }
+.w { max-width:var(--max); margin:0 auto; padding:0 var(--pad); }
+
+@keyframes fadeUp { from{opacity:0;transform:translateY(28px)} to{opacity:1;transform:translateY(0)} }
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.4;transform:scale(.6)} }
+
+.rev { opacity:0; transform:translateY(28px); transition:opacity .7s cubic-bezier(.4,0,.2,1), transform .7s cubic-bezier(.4,0,.2,1); }
+.rev.on { opacity:1; transform:translateY(0); }
+.rev-d1{transition-delay:.1s}.rev-d2{transition-delay:.2s}.rev-d3{transition-delay:.3s}
+.rev-d4{transition-delay:.4s}.rev-d5{transition-delay:.5s}
+
+/* GNB */
+.gnb { position:fixed; top:0; left:0; right:0; z-index:600; background:rgba(255,255,255,.97); backdrop-filter:blur(16px); border-bottom:1px solid var(--border); box-shadow:0 2px 16px rgba(0,0,0,.04); }
+.gnb-inner { max-width:var(--max); margin:0 auto; padding:0 var(--pad); display:flex; align-items:center; height:64px; gap:28px; }
+.gnb-logo { font-size:21px; font-weight:800; letter-spacing:-.4px; color:var(--text); text-decoration:none; flex-shrink:0; }
+.gnb-logo em { color:var(--blue); font-style:normal; }
+.gnb-targets { display:flex; gap:2px; flex:1; }
+.gnb-t { display:inline-flex; align-items:center; gap:7px; font-size:16px; font-weight:600; color:var(--mid); padding:0 14px; height:64px; border-bottom:2px solid transparent; transition:all .2s; white-space:nowrap; text-decoration:none; }
+.gnb-t:hover { color:var(--text); }
+.gnb-t.active { color:var(--text); border-bottom-color:var(--blue); }
+.gnb-btn { background:var(--blue); color:#fff; padding:11px 22px; border-radius:999px; font-size:16px; font-weight:700; display:inline-flex; align-items:center; gap:8px; transition:all .18s; flex-shrink:0; letter-spacing:-.01em; box-shadow:0 2px 8px rgba(49,130,246,.25); cursor:pointer; border:none; font-family:inherit; }
+.gnb-btn:hover { background:var(--blue-d); transform:translateY(-1px); box-shadow:0 6px 16px rgba(49,130,246,.35); }
+.gnb-btn-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.85); animation:pulse 1.8s infinite; }
+
+/* HERO */
+.hero { position:relative; min-height:85vh; display:flex; align-items:center; overflow:hidden; padding:120px var(--pad) 100px; background:#fff; }
+.hero::before { content:''; position:absolute; inset:0; z-index:0; background:radial-gradient(circle at 85% 15%, rgba(49,130,246,.06) 0%, transparent 45%), radial-gradient(circle at 15% 85%, rgba(201,169,97,.04) 0%, transparent 45%); }
+.hero-inner { position:relative; z-index:2; max-width:var(--max); width:100%; margin:0 auto; display:grid; grid-template-columns:1.1fr 1fr; gap:72px; align-items:center; }
+.hero-copy { animation:fadeUp .8s ease both; }
+.hero-eyebrow { display:inline-flex; align-items:center; gap:8px; font-size:var(--fs-caption); font-weight:700; color:var(--gold-d); letter-spacing:.15em; text-transform:uppercase; padding:7px 14px; border-radius:100px; background:var(--gold-soft); margin-bottom:24px; border:1px solid rgba(201,169,97,.2); }
+.hero-eyebrow::before { content:''; width:6px; height:6px; border-radius:50%; background:var(--gold); animation:pulse 1.8s infinite; }
+.hero-title { font-size:48px; font-weight:700; line-height:1.2; letter-spacing:-.035em; word-break:keep-all; margin-bottom:32px; color:var(--text); }
+.hero-title em { color:var(--text); font-style:normal; font-weight:900; border-bottom:4px solid var(--gold); padding-bottom:2px; }
+.hero-sub { font-size:18px; line-height:1.65; letter-spacing:-.015em; color:var(--mid); word-break:keep-all; margin-bottom:48px; }
+.hero-cta-row { display:flex; gap:14px; flex-wrap:wrap; }
+.btn { display:inline-flex; align-items:center; gap:10px; font-size:var(--fs-title-sm); font-weight:700; padding:16px 32px; border-radius:100px; transition:all .2s; letter-spacing:-.01em; cursor:pointer; }
+.btn-primary { background:var(--blue); color:#fff; box-shadow:0 8px 28px rgba(49,130,246,.3); }
+.btn-primary:hover { background:var(--blue-d); transform:translateY(-2px); }
+.btn-ghost { background:#fff; color:var(--text); border:1.5px solid var(--border); }
+.btn-ghost:hover { border-color:var(--text); }
+
+.hero-visual { position:relative; animation:containerEntry 1s cubic-bezier(.25,.46,.45,.94) both; aspect-ratio:4/5; border-radius:24px; overflow:hidden; background:linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%); box-shadow:0 30px 80px rgba(10,22,40,.18); display:flex; align-items:center; justify-content:center; padding:48px 32px; }
+.hero-visual::before { content:''; position:absolute; inset:0; z-index:2; pointer-events:none; background:radial-gradient(ellipse at top right, rgba(201,169,97,.15) 0%, transparent 50%), radial-gradient(ellipse at bottom left, rgba(49,130,246,.1) 0%, transparent 50%); }
+.hero-visual-bg { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; animation:heroEntry 1.8s cubic-bezier(.25,.46,.45,.94) both, kenBurns 14s ease-in-out 1.8s infinite alternate; transform-origin:center center; will-change:transform; }
+.hero-visual-overlay { position:absolute; inset:0; z-index:1; pointer-events:none; background:radial-gradient(ellipse at 50% 50%, transparent 25%, rgba(10,22,40,.55) 90%); }
+@keyframes kenBurns { from { transform:scale(1) translate(0%, 0%); } to { transform:scale(1.18) translate(-3%, 2%); } }
+@keyframes goldPulse { 0%, 100% { filter:drop-shadow(0 0 20px rgba(201,169,97,.35)); } 50% { filter:drop-shadow(0 0 42px rgba(201,169,97,.7)); } }
+@keyframes heroEntry { from { transform:scale(1.3); opacity:.4; } to { transform:scale(1); opacity:1; } }
+@keyframes containerEntry { from { opacity:0; transform:scale(.96) translateY(20px); } to { opacity:1; transform:scale(1) translateY(0); } }
+@keyframes fadeSlideUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+@keyframes iconPop { 0% { opacity:0; transform:scale(.3) rotate(-15deg); } 60% { opacity:1; transform:scale(1.1) rotate(5deg); } 100% { opacity:1; transform:scale(1) rotate(0deg); } }
+@keyframes barExpand { from { opacity:0; transform:scaleX(0); } to { opacity:.6; transform:scaleX(1); } }
+.hero-stat { position:relative; z-index:3; text-align:center; display:flex; flex-direction:column; align-items:center; gap:24px; width:100%; }
+.hero-stat-label { font-size:var(--fs-caption); font-weight:700; color:var(--gold); letter-spacing:.3em; text-transform:uppercase; padding:7px 18px; border:1px solid rgba(201,169,97,.3); border-radius:100px; background:rgba(201,169,97,.08); animation:fadeSlideUp .7s cubic-bezier(.25,.46,.45,.94) .4s both; }
+.hero-stat-icon { font-size:72px; line-height:1; color:var(--gold); letter-spacing:0; font-family:Georgia,serif; background:linear-gradient(180deg, var(--gold-l) 0%, var(--gold) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; margin:8px 0; animation:iconPop .9s cubic-bezier(.34,1.4,.64,1) .6s both, goldPulse 4s ease-in-out 2.4s infinite; }
+.hero-stat-title { font-size:30px; font-weight:800; color:#fff; letter-spacing:-.025em; line-height:1.35; word-break:keep-all; animation:fadeSlideUp .7s cubic-bezier(.25,.46,.45,.94) .9s both; }
+.hero-stat-bar { width:60px; height:2px; background:var(--gold); opacity:.6; margin:4px 0; transform-origin:center; animation:barExpand .6s cubic-bezier(.25,.46,.45,.94) 1.2s both; }
+.hero-stat-desc { font-size:15px; color:rgba(255,255,255,.75); line-height:1.7; max-width:320px; letter-spacing:-.01em; word-break:keep-all; animation:fadeSlideUp .7s cubic-bezier(.25,.46,.45,.94) 1.4s both; }
+
+/* PAIN */
+.pain-sec { padding:140px 0; background:var(--ivory); }
+.sec-head { text-align:center; margin-bottom:64px; }
+.sec-eye { display:inline-block; font-size:var(--fs-caption); font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--gold-d); margin-bottom:16px; padding:6px 16px; border-radius:100px; background:var(--gold-soft); border:1px solid rgba(201,169,97,.2); }
+.sec-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:20px; word-break:keep-all; }
+.sec-h2 em { color:var(--text); font-style:normal; font-weight:900; border-bottom:3px solid var(--gold); padding-bottom:2px; }
+.sec-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; word-break:keep-all; max-width:680px; margin:0 auto; }
+
+.pain-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.pain-card { background:#fff; border-radius:20px; padding:40px 32px 36px; border:1px solid var(--border-l); display:flex; flex-direction:column; gap:20px; transition:all .3s; position:relative; overflow:hidden; }
+.pain-card::before { content:''; position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--gold) 0%, var(--gold-l) 100%); opacity:0; transition:opacity .3s; }
+.pain-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 16px 40px rgba(201,169,97,.15); }
+.pain-card:hover::before { opacity:1; }
+.pain-num { display:inline-flex; align-items:center; justify-content:center; width:48px; height:48px; border-radius:12px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); color:var(--gold); font-size:16px; font-weight:800; letter-spacing:-.02em; font-family:Georgia,serif; }
+.pain-title { font-size:var(--fs-title-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; line-height:1.4; word-break:keep-all; }
+.pain-desc { font-size:var(--fs-body); color:var(--mid); line-height:1.7; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.pain-footer { display:inline-flex; align-items:center; gap:8px; font-size:var(--fs-caption); font-weight:700; color:var(--red); letter-spacing:-.01em; padding-top:16px; border-top:1px solid var(--border-l); }
+
+/* 🆕 초대형 숫자 스포트라이트 (삼쩜삼식) */
+.spotlight-sec { padding:140px 0; background:linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%); position:relative; overflow:hidden; }
+.spotlight-sec::before { content:''; position:absolute; top:-200px; right:-200px; width:600px; height:600px; border-radius:50%; background:radial-gradient(circle, rgba(201,169,97,.12) 0%, transparent 65%); }
+.spotlight-sec::after { content:''; position:absolute; bottom:-200px; left:-200px; width:500px; height:500px; border-radius:50%; background:radial-gradient(circle, rgba(49,130,246,.08) 0%, transparent 65%); }
+.spotlight-inner { max-width:900px; margin:0 auto; padding:0 var(--pad); text-align:center; position:relative; z-index:2; }
+.spotlight-eye { display:inline-block; font-size:var(--fs-caption); font-weight:700; letter-spacing:.25em; text-transform:uppercase; color:var(--gold); padding:8px 20px; border:1px solid rgba(201,169,97,.3); border-radius:100px; background:rgba(201,169,97,.08); margin-bottom:40px; }
+.spotlight-symbol { font-size:80px; font-family:Georgia,serif; color:var(--gold); opacity:.5; line-height:1; margin-bottom:20px; }
+.spotlight-subtitle { font-size:36px; font-weight:700; color:#fff; letter-spacing:-.03em; line-height:1.45; word-break:keep-all; margin-bottom:28px; }
+.spotlight-subtitle em { font-style:normal; color:var(--gold); font-weight:800; }
+.spotlight-desc { font-size:var(--fs-body-lg); color:rgba(255,255,255,.65); line-height:1.85; letter-spacing:-.01em; word-break:keep-all; max-width:640px; margin:0 auto 48px; }
+.spotlight-keywords { display:flex; justify-content:center; align-items:center; gap:14px; flex-wrap:wrap; padding-top:40px; border-top:1px solid rgba(255,255,255,.1); }
+.spotlight-kw { font-size:var(--fs-body-sm); font-weight:700; color:var(--gold); letter-spacing:.04em; }
+.spotlight-kw-sep { color:rgba(201,169,97,.3); font-size:var(--fs-caption); }
+
+/* 핵심 약속 (인용구) */
+.promise-sec { padding:140px 0; background:#fff; }
+.promise-inner { max-width:860px; margin:0 auto; padding:0 var(--pad); text-align:center; }
+.promise-mark { font-size:64px; line-height:1; color:var(--gold); font-family:Georgia, serif; margin-bottom:-20px; opacity:.7; }
+.promise-quote { font-size:var(--fs-quote); font-weight:700; color:var(--text); letter-spacing:-.025em; line-height:1.45; word-break:keep-all; margin-bottom:40px; }
+.promise-quote em { font-style:normal; color:var(--text); font-weight:900; border-bottom:3px solid var(--gold); padding-bottom:2px; }
+.promise-divider { display:block; width:60px; height:2px; background:var(--gold); margin:0 auto 20px; }
+.promise-sig { font-size:var(--fs-body); color:var(--muted); font-weight:600; letter-spacing:.02em; }
+
+/* 6대 자산 영역 */
+.areas-sec { padding:140px 0; background:var(--ivory); }
+.areas-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1000px; margin:0 auto; }
+.area-card { background:#fff; border-radius:20px; padding:40px 28px 32px; border:1px solid var(--border-l); display:flex; flex-direction:column; gap:16px; transition:all .3s; position:relative; overflow:hidden; }
+.area-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--gold) 0%, transparent 100%); }
+.area-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 16px 36px rgba(201,169,97,.15); }
+.area-icon { width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); display:flex; align-items:center; justify-content:center; font-size:26px; color:var(--gold); }
+.area-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; line-height:1.35; word-break:keep-all; }
+.area-desc { font-size:var(--fs-body-sm); color:var(--mid); line-height:1.65; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.area-tags { display:flex; flex-wrap:wrap; gap:6px; padding-top:12px; border-top:1px solid var(--border-l); }
+.area-tag { font-size:var(--fs-caption-sm); font-weight:700; color:var(--gold-d); padding:4px 10px; border-radius:100px; background:var(--gold-soft); letter-spacing:-.01em; }
+
+/* 4단계 프로세스 (네이비 챕터) */
+.process-sec { padding:140px 0; background:linear-gradient(180deg, var(--navy) 0%, var(--navy2) 100%); position:relative; overflow:hidden; color:#fff; }
+.process-sec::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background:linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%); opacity:.4; }
+.process-sec .sec-eye { color:var(--gold); background:rgba(201,169,97,.12); border:1px solid rgba(201,169,97,.2); }
+.process-sec .sec-h2 { color:#fff; }
+.process-sec .sec-h2 em { color:var(--gold); }
+.process-sec .sec-sub { color:rgba(255,255,255,.65); }
+.process-list { display:grid; grid-template-columns:1fr; gap:0; max-width:900px; margin:0 auto; position:relative; }
+.process-item { display:grid; grid-template-columns:120px 1fr auto; gap:32px; align-items:center; padding:36px 0; border-bottom:1px solid rgba(255,255,255,.1); position:relative; }
+.process-item:last-child { border-bottom:none; }
+.process-num { font-size:88px; font-weight:800; color:var(--gold); letter-spacing:-.05em; line-height:1; opacity:.95; font-family:Georgia,serif; }
+.process-body { display:flex; flex-direction:column; gap:10px; }
+.process-title { font-size:var(--fs-title-lg); font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1.35; }
+.process-desc { font-size:var(--fs-body); color:rgba(255,255,255,.65); line-height:1.7; letter-spacing:-.01em; word-break:keep-all; }
+.process-time { display:inline-flex; align-items:center; gap:6px; padding:7px 16px; border-radius:100px; background:rgba(201,169,97,.12); border:1px solid rgba(201,169,97,.25); font-size:var(--fs-caption); font-weight:700; color:var(--gold); letter-spacing:-.01em; white-space:nowrap; }
+
+/* 전문가 팀 6명 */
+.experts-sec { padding:140px 0; background:var(--ivory); }
+.experts-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; max-width:1000px; margin:0 auto; }
+.expert-card { background:#fff; border-radius:20px; padding:36px 28px 32px; border:1px solid var(--border-l); display:flex; flex-direction:column; gap:18px; transition:all .3s; position:relative; overflow:hidden; }
+.expert-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, var(--gold) 0%, transparent 100%); }
+.expert-card:hover { border-color:var(--gold); transform:translateY(-4px); box-shadow:0 14px 32px rgba(201,169,97,.12); }
+.expert-avatar { width:72px; height:72px; border-radius:50%; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); display:flex; align-items:center; justify-content:center; font-size:30px; font-weight:800; color:var(--gold); letter-spacing:-.03em; font-family:Georgia,serif; border:2px solid var(--gold-l); }
+.expert-name-wrap { display:flex; flex-direction:column; gap:4px; }
+.expert-name { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.expert-role { font-size:var(--fs-caption); color:var(--gold-d); font-weight:700; letter-spacing:-.01em; }
+.expert-specs { display:flex; flex-direction:column; gap:6px; padding-top:14px; border-top:1px solid var(--border-l); margin-top:auto; }
+.expert-spec { display:flex; align-items:flex-start; gap:8px; font-size:var(--fs-caption); color:var(--mid); line-height:1.5; letter-spacing:-.01em; }
+.expert-spec::before { content:'·'; color:var(--gold); font-weight:800; flex-shrink:0; }
+
+/* 설계 사례 (모달 연결) */
+.cases-sec { padding:140px 0; background:#fff; }
+.cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+.case-card { background:#fff; border-radius:24px; border:1px solid var(--border-l); overflow:hidden; cursor:pointer; display:flex; flex-direction:column; transition:all .3s; }
+.case-card:hover { transform:translateY(-6px); border-color:var(--gold); box-shadow:0 20px 48px rgba(201,169,97,.15); }
+.case-img { aspect-ratio:16/10; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden; padding:28px; }
+.case-img::before { content:''; position:absolute; inset:0; background:radial-gradient(circle at 70% 30%, rgba(201,169,97,.18) 0%, transparent 55%); }
+.case-img::after { content:''; position:absolute; top:0; left:0; right:0; height:2px; background:linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%); opacity:.6; }
+.case-keyword { position:relative; z-index:2; display:flex; flex-direction:column; align-items:center; gap:10px; text-align:center; padding:0 16px; }
+.case-keyword-symbol { font-size:40px; line-height:1; color:var(--gold); font-family:Georgia,serif; opacity:.85; margin-bottom:4px; }
+.case-keyword-text { font-size:20px; font-weight:800; color:#fff; letter-spacing:-.02em; line-height:1.35; word-break:keep-all; }
+.case-keyword-sub { font-size:12px; color:rgba(201,169,97,.75); letter-spacing:.02em; margin-top:4px; font-weight:600; }
+.case-tag { position:absolute; top:16px; left:16px; z-index:3; padding:6px 12px; border-radius:100px; background:rgba(255,255,255,.95); backdrop-filter:blur(8px); font-size:var(--fs-caption-sm); font-weight:700; color:var(--text); letter-spacing:-.01em; }
+.case-body { padding:28px; flex:1; display:flex; flex-direction:column; gap:16px; }
+.case-title { font-size:var(--fs-title-lg); font-weight:800; color:var(--text); letter-spacing:-.02em; line-height:1.4; word-break:keep-all; }
+.case-desc { font-size:var(--fs-body); color:var(--mid); line-height:1.65; letter-spacing:-.01em; word-break:keep-all; flex:1; }
+.case-meta { display:flex; align-items:center; gap:10px; padding-top:16px; border-top:1px solid var(--border-l); font-size:var(--fs-caption); color:var(--muted); letter-spacing:-.01em; }
+.case-meta strong { color:var(--gold-d); font-weight:700; }
+
+/* 모달 (리파인드와 동일) */
+.case-modal-backdrop { position:fixed; inset:0; z-index:900; background:rgba(13,17,32,.7); backdrop-filter:blur(4px); opacity:0; pointer-events:none; transition:opacity .25s ease; }
+.case-modal-backdrop.show { opacity:1; pointer-events:auto; }
+.case-modal { position:fixed; top:50%; left:50%; transform:translate(-50%, -50%) scale(.96); z-index:901; width:min(920px, calc(100vw - 40px)); max-height:calc(100vh - 60px); background:#fff; border-radius:24px; box-shadow:0 30px 80px rgba(0,0,0,.3); opacity:0; pointer-events:none; transition:all .3s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column; overflow:hidden; }
+.case-modal.show { opacity:1; transform:translate(-50%, -50%) scale(1); pointer-events:auto; }
+.case-modal-close { position:absolute; top:20px; right:20px; z-index:10; width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,.95); display:flex; align-items:center; justify-content:center; font-size:20px; color:var(--text); cursor:pointer; transition:all .15s; box-shadow:0 4px 12px rgba(0,0,0,.1); border:none; }
+.case-modal-close:hover { background:var(--text); color:#fff; transform:rotate(90deg); }
+.case-modal-header { padding:40px 48px 28px; border-bottom:1px solid var(--border-l); background:linear-gradient(180deg, var(--gray-soft) 0%, #fff 100%); }
+.case-modal-tag { display:inline-block; font-size:var(--fs-caption-sm); font-weight:700; color:var(--gold-d); letter-spacing:.12em; text-transform:uppercase; padding:5px 12px; border-radius:100px; background:var(--gold-soft); border:1px solid rgba(201,169,97,.2); margin-bottom:14px; }
+.case-modal-title { font-size:24px; font-weight:800; color:var(--text); letter-spacing:-.025em; line-height:1.35; word-break:keep-all; margin-bottom:14px; }
+.case-modal-subtitle { font-size:var(--fs-body); color:var(--mid); line-height:1.6; letter-spacing:-.01em; word-break:keep-all; font-style:italic; }
+.case-modal-body { flex:1; overflow-y:auto; padding:36px 48px; scroll-behavior:smooth; }
+.case-modal-body::-webkit-scrollbar { width:6px; }
+.case-modal-body::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
+.case-modal-body h4 { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; margin:28px 0 14px; line-height:1.4; display:flex; align-items:center; gap:10px; }
+.case-modal-body h4:first-child { margin-top:0; }
+.case-modal-body h4::before { content:''; width:4px; height:20px; background:var(--gold); border-radius:2px; }
+.case-modal-body p { font-size:var(--fs-body); color:var(--mid); line-height:1.8; letter-spacing:-.01em; word-break:keep-all; margin-bottom:12px; }
+.case-modal-body ul, .case-modal-body ol { margin:10px 0 16px; padding-left:22px; }
+.case-modal-body li { font-size:var(--fs-body); color:var(--mid); line-height:1.75; letter-spacing:-.01em; word-break:keep-all; margin-bottom:8px; }
+.case-modal-body strong { color:var(--text); font-weight:700; }
+.case-modal-body em { color:var(--gold-d); font-style:normal; font-weight:700; }
+.case-modal-box { background:var(--ivory); border-radius:14px; padding:22px 26px; margin:18px 0; }
+.case-modal-box.highlight { background:var(--gold-soft); border-left:4px solid var(--gold); padding:18px 22px; }
+.case-modal-box-title { font-size:var(--fs-caption); font-weight:800; color:var(--gold-d); letter-spacing:.08em; text-transform:uppercase; margin-bottom:8px; }
+.case-modal-table { width:100%; border-collapse:collapse; margin:18px 0; font-size:var(--fs-body-sm); border-radius:12px; overflow:hidden; border:1px solid var(--border-l); }
+.case-modal-table th, .case-modal-table td { padding:12px 14px; text-align:left; border-bottom:1px solid var(--border-l); letter-spacing:-.01em; }
+.case-modal-table th { background:var(--ivory); font-weight:800; color:var(--text); font-size:var(--fs-caption); }
+.case-modal-table td strong { color:var(--gold-d); }
+.case-modal-table tr:last-child td { border-bottom:none; }
+.case-modal-footer { padding:22px 48px; border-top:1px solid var(--border-l); background:var(--ivory); display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+.case-modal-footer-text { font-size:var(--fs-body-sm); color:var(--mid); letter-spacing:-.01em; }
+.case-modal-cta { background:var(--blue); color:#fff; padding:12px 24px; border-radius:100px; font-size:var(--fs-body-sm); font-weight:800; letter-spacing:-.01em; transition:all .15s; display:inline-flex; align-items:center; gap:8px; border:none; font-family:inherit; cursor:pointer; }
+.case-modal-cta:hover { background:var(--blue-d); transform:translateY(-1px); }
+
+/* 특별 서비스 */
+.service-sec { padding:140px 0; background:var(--ivory); }
+.service-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; max-width:900px; margin:0 auto; }
+.service-card { background:#fff; border-radius:20px; padding:36px 32px; border:1px solid var(--border-l); display:flex; gap:20px; align-items:flex-start; transition:all .3s; }
+.service-card:hover { transform:translateY(-3px); box-shadow:0 14px 32px rgba(201,169,97,.1); border-color:var(--gold); }
+.service-icon { flex-shrink:0; width:56px; height:56px; border-radius:14px; background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); display:flex; align-items:center; justify-content:center; font-size:26px; color:var(--gold); }
+.service-body { flex:1; display:flex; flex-direction:column; gap:8px; }
+.service-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; }
+.service-desc { font-size:var(--fs-body-sm); color:var(--mid); line-height:1.65; letter-spacing:-.01em; word-break:keep-all; }
+
+/* 신뢰 수치 (프리미엄 강화) */
+.metrics-sec { padding:140px 0; background:#fff; }
+.metrics-wrap { background:linear-gradient(135deg, var(--navy) 0%, var(--navy2) 50%, var(--navy3) 100%); border-radius:28px; padding:80px 48px; position:relative; overflow:hidden; border:1px solid rgba(201,169,97,.15); }
+.metrics-wrap::before { content:''; position:absolute; top:-120px; right:-120px; width:420px; height:420px; border-radius:50%; background:radial-gradient(circle, rgba(201,169,97,.2) 0%, transparent 70%); }
+.metrics-wrap::after { content:''; position:absolute; bottom:-80px; left:-80px; width:320px; height:320px; border-radius:50%; background:radial-gradient(circle, rgba(49,130,246,.12) 0%, transparent 70%); }
+.metrics-head { text-align:center; margin-bottom:64px; position:relative; z-index:2; }
+.metrics-eye { display:inline-block; font-size:var(--fs-caption); font-weight:700; color:var(--gold); letter-spacing:.2em; text-transform:uppercase; padding:7px 18px; border-radius:100px; background:rgba(201,169,97,.12); border:1px solid rgba(201,169,97,.25); margin-bottom:20px; }
+.metrics-title { font-size:var(--fs-h2); font-weight:800; color:#fff; letter-spacing:-.03em; line-height:1.3; word-break:keep-all; }
+.metrics-title em { color:var(--gold); font-style:normal; }
+.metrics-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; position:relative; z-index:2; }
+.metric-item { text-align:center; padding:24px 12px; display:flex; flex-direction:column; align-items:center; gap:12px; }
+.metric-symbol { font-size:44px; line-height:1; color:var(--gold); font-family:Georgia,serif; margin-bottom:4px; }
+.metric-title { font-size:var(--fs-title); font-weight:800; color:#fff; letter-spacing:-.02em; }
+.metric-lbl { font-size:var(--fs-caption); color:rgba(255,255,255,.65); font-weight:500; letter-spacing:-.01em; line-height:1.6; word-break:keep-all; }
+
+/* FAQ */
+.faq-sec { padding:140px 0; background:var(--ivory); }
+.faq-list { max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
+.faq-item { background:#fff; border-radius:16px; overflow:hidden; transition:all .2s; border:1px solid var(--border-l); }
+.faq-item.open { border-color:var(--gold); box-shadow:0 8px 24px rgba(201,169,97,.1); }
+.faq-q { display:flex; justify-content:space-between; align-items:center; gap:16px; padding:22px 26px; cursor:pointer; }
+.faq-q-text { font-size:var(--fs-body-lg); font-weight:700; color:var(--text); letter-spacing:-.015em; line-height:1.5; word-break:keep-all; flex:1; }
+.faq-q-text::before { content:'Q'; display:inline-block; width:24px; height:24px; border-radius:50%; background:var(--navy); color:var(--gold); font-size:12px; font-weight:800; text-align:center; line-height:24px; margin-right:10px; vertical-align:1px; }
+.faq-toggle { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:var(--ivory); color:var(--mid); display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; transition:all .2s; }
+.faq-item.open .faq-toggle { background:var(--gold); color:#fff; transform:rotate(180deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.faq-item.open .faq-a { max-height:500px; }
+.faq-a-inner { padding:0 26px 24px; font-size:var(--fs-body); color:var(--mid); line-height:1.75; letter-spacing:-.01em; word-break:keep-all; border-top:1px solid var(--border-l); padding-top:20px; margin-top:4px; }
+.faq-a-inner::before { content:'A'; display:inline-block; width:24px; height:24px; border-radius:50%; background:var(--gold-soft); color:var(--gold-d); font-size:12px; font-weight:800; text-align:center; line-height:24px; margin-right:10px; vertical-align:1px; }
+.faq-a-inner strong { color:var(--text); font-weight:700; }
+
+/* CTA */
+.cta-sec { padding:140px 0; background:#fff; }
+.cta-wrap { max-width:720px; margin:0 auto; padding:0 var(--pad); text-align:center; }
+.cta-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:16px; word-break:keep-all; }
+.cta-h2 em { color:var(--text); font-style:normal; font-weight:900; border-bottom:3px solid var(--gold); padding-bottom:2px; }
+.cta-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; margin-bottom:48px; }
+.cta-form { background:var(--ivory); padding:40px; border-radius:24px; text-align:left; border:1px solid var(--border-l); }
+.form-row { display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
+.form-row.two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+.form-label { font-size:var(--fs-caption); font-weight:700; color:var(--mid); letter-spacing:-.01em; }
+.form-label .req { color:var(--red); }
+.form-input, .form-select { width:100%; padding:14px 16px; border:1.5px solid var(--border); border-radius:12px; font-size:var(--fs-body); font-family:inherit; background:#fff; color:var(--text); transition:all .15s; letter-spacing:-.01em; }
+.form-input:focus, .form-select:focus { outline:none; border-color:var(--blue); }
+.form-submit { width:100%; background:var(--blue); color:#fff; padding:20px; border-radius:16px; font-size:var(--fs-title); font-weight:800; letter-spacing:-.02em; transition:all .2s; box-shadow:0 8px 28px rgba(49,130,246,.3); display:flex; align-items:center; justify-content:center; gap:8px; margin-top:8px; cursor:pointer; border:none; font-family:inherit; }
+.form-submit:hover { background:var(--blue-d); transform:translateY(-2px); }
+.cta-trust { display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:36px; font-size:var(--fs-body-sm); color:var(--mid); }
+.cta-trust-item { display:inline-flex; align-items:center; gap:8px; }
+.cta-trust-chk { width:22px; height:22px; border-radius:50%; background:var(--green-l); color:var(--green-d); display:inline-flex; align-items:center; justify-content:center; font-weight:800; font-size:12px; }
+
+/* STICKY 플로팅 폼 */
+.sticky-form { position:fixed; top:140px; right:24px; z-index:500; width:320px; background:#fff; border-radius:20px; box-shadow:0 20px 60px rgba(10,22,40,.12); padding:24px; border:1px solid var(--border-l); transition:opacity .3s, transform .3s; opacity:0; transform:translateX(20px); pointer-events:none; }
+.sticky-form.show { opacity:1; transform:translateX(0); pointer-events:auto; }
+.sticky-form-title { font-size:var(--fs-title); font-weight:800; color:var(--text); letter-spacing:-.02em; margin-bottom:6px; }
+.sticky-form-sub { font-size:var(--fs-caption); color:var(--mid); margin-bottom:20px; letter-spacing:-.01em; }
+.sticky-form .form-row { margin-bottom:12px; }
+.sticky-form .form-input, .sticky-form .form-select { padding:11px 14px; font-size:var(--fs-body-sm); background:var(--ivory); }
+.sticky-form .form-label { font-size:var(--fs-caption-sm); }
+.sticky-form-submit { width:100%; background:var(--blue); color:#fff; padding:14px; border-radius:12px; font-size:var(--fs-body); font-weight:800; letter-spacing:-.01em; transition:all .15s; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:4px; cursor:pointer; border:none; font-family:inherit; }
+
+/* ═══ 동의 체크박스 (개인정보처리방침 연결) ═══ */
+.consent-block { margin-top:8px; padding-top:16px; border-top:1px dashed #E5E8EB; display:flex; flex-direction:column; gap:10px; }
+.consent-row { display:flex; align-items:flex-start; gap:8px; cursor:pointer; font-size:13px; line-height:1.55; color:#4E5968; user-select:none; }
+.consent-row input[type="checkbox"] { flex-shrink:0; margin-top:3px; width:15px; height:15px; cursor:pointer; accent-color:#3182F6; }
+.consent-row b { font-weight:700; color:#1A1F27; margin-right:3px; }
+.consent-row b.optional { color:#8B95A1; }
+.consent-row a { color:#3182F6; text-decoration:underline; margin-left:6px; font-size:12.5px; font-weight:500; }
+.consent-row a:hover { color:#1B64DA; }
+.consent-block.compact { padding-top:12px; gap:7px; }
+.consent-block.compact .consent-row { font-size:11.5px; line-height:1.45; }
+.consent-block.compact .consent-row input[type="checkbox"] { width:13px; height:13px; margin-top:2px; }
+.consent-block.compact .consent-row a { font-size:11px; margin-left:4px; }
+.consent-note { margin-top:4px; padding:10px 12px; background:#F7F9FC; border-radius:8px; font-size:12px; line-height:1.55; color:#4E5968; display:flex; gap:6px; align-items:flex-start; }
+.consent-note-ico { flex-shrink:0; font-size:13px; line-height:1.4; }
+.sticky-form-submit:hover { background:var(--blue-d); }
+.sticky-form-trust { margin-top:16px; padding-top:14px; border-top:1px solid var(--border-l); display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.sticky-form-trust-item { display:flex; align-items:center; gap:6px; font-size:var(--fs-caption-sm); color:var(--mid); letter-spacing:-.01em; }
+.sticky-form-trust-chk { color:var(--green-d); font-weight:800; font-size:11px; }
+
+/* FOOTER */
+.footer { background:#E8EBF0; color:#4A5462; padding:56px 0 40px; }
+.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.footer-logo { font-size:var(--fs-title); font-weight:800; color:#0D1120; }
+.footer-logo em { color:var(--blue); font-style:normal; }
+.footer-back { font-size:var(--fs-caption); color:#4A5462; display:inline-flex; align-items:center; gap:6px; transition:color .15s; }
+.footer-back:hover { color:#0D1120; }
+.footer-copy { margin-top:28px; padding-top:24px; border-top:1px solid #DCE0E5; font-size:var(--fs-micro); color:#8B95A1; line-height:1.7; }
+/* ═══ 법적 고지 영역 (개인정보보호법 가이드라인 준수) ═══ */
+.footer-legal {
+  margin-top:28px;
+  padding:14px 0;
+  border-top:1px solid #DCE0E5;
+  border-bottom:1px solid #DCE0E5;
+  display:flex;
+  align-items:center;
+  gap:48px;
+  flex-wrap:wrap;
+}
+.footer-legal-links {
+  display:flex; gap:12px; align-items:center;
+  flex-shrink:0;
+  font-size:13px;
+}
+.footer-legal-links a {
+  color:#4A5462;
+  font-weight:500;
+  text-decoration:none;
+  transition:color 0.15s;
+}
+.footer-legal-links a.emphasize {
+  color:#0D1120;
+  font-weight:600;
+}
+.footer-legal-links a:hover {
+  color:#0D1120; text-decoration:underline;
+}
+.footer-legal-sep {
+  color:#B0B8C1;
+  font-size:11px;
+}
+.footer-legal-notice {
+  font-size:12px;
+  color:#6B7684;
+  line-height:1.5;
+  word-break:keep-all;
+}
+@media (max-width: 768px) {
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+}
+.footer-company-info {
+  margin-top:14px;
+  font-size:12px;
+  color:#8B95A1;
+  line-height:1.7;
+}
+
+
+/* TOAST */
+.toast { position:fixed; bottom:32px; left:50%; transform:translateX(-50%) translateY(14px); z-index:1100; background:var(--text); color:#fff; padding:14px 28px; border-radius:100px; font-size:var(--fs-body-sm); font-weight:600; opacity:0; white-space:nowrap; transition:all .28s; pointer-events:none; box-shadow:0 8px 32px rgba(0,0,0,.25); }
+.toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+/* RESPONSIVE */
+@media (max-width:1280px) { .sticky-form { display:none; } }
+@media (max-width:960px) {
+  :root { --pad:20px; }
+  .gnb-targets { display:none; }
+  .gnb-inner { justify-content:space-between; }
+  .hero { padding:100px var(--pad) 80px; }
+  .hero-inner { grid-template-columns:1fr; gap:40px; }
+  .hero-visual { aspect-ratio:4/3; max-width:480px; margin:0 auto; padding:36px 24px; }
+  .hero-stat-num { font-size:72px; }
+  .hero-stat-num em { font-size:24px; margin-bottom:12px; }
+  .hero-stat-sub-num { font-size:22px; }
+  .hero-title { font-size:32px; }
+  .hero-sub { font-size:16px; }
+  .pain-sec, .spotlight-sec, .promise-sec, .areas-sec, .process-sec, .experts-sec, .cases-sec, .service-sec, .metrics-sec, .faq-sec, .cta-sec { padding:90px 0; }
+  .promise-quote { font-size:22px; }
+  .sec-h2, .cta-h2, .metrics-title { font-size:26px; }
+  .pain-grid, .areas-grid, .experts-grid, .cases-grid, .service-grid { grid-template-columns:1fr; }
+  .spotlight-big-num { font-size:100px; }
+  .spotlight-big-num em { font-size:40px; margin-bottom:14px; }
+  .spotlight-subtitle { font-size:22px; }
+  .spotlight-desc { font-size:15px; }
+  .spotlight-note { gap:28px; }
+  .spotlight-note-num { font-size:26px; }
+  .metrics-wrap { padding:48px 28px; }
+  .metrics-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+  .metric-num { font-size:52px; }
+  .metric-num em { font-size:20px; }
+  .process-item { grid-template-columns:72px 1fr; gap:20px; padding:28px 0; }
+  .process-num { font-size:56px; }
+  .process-time { grid-column:2; justify-self:start; margin-top:4px; }
+  .form-row.two { grid-template-columns:1fr; }
+  .cta-form { padding:28px 22px; }
+  .faq-q { padding:18px 20px; }
+  .faq-q-text { font-size:15px; }
+  .faq-a-inner { padding:16px 20px 20px; font-size:14px; }
+  .case-modal { width:calc(100vw - 24px); max-height:calc(100vh - 40px); border-radius:20px; }
+  .case-modal-header { padding:28px 24px 20px; }
+  .case-modal-title { font-size:20px; }
+  .case-modal-body { padding:24px 24px 32px; }
+  .case-modal-footer { padding:20px 24px; }
+  .case-modal-table { font-size:13px; }
+  .case-modal-table th, .case-modal-table td { padding:10px 12px; }
+  .case-keyword-text { font-size:18px; }
+  .spotlight-subtitle { font-size:22px; }
+}
+@media (max-width:640px) {
+  .hero-title { font-size:28px; }
+  .hero-sub { font-size:15px; }
+  .hero-stat-title { font-size:24px; }
+  .hero-stat-icon { font-size:56px; }
+  .sec-h2, .cta-h2, .metrics-title { font-size:24px; }
+  .promise-quote { font-size:20px; }
+  .spotlight-subtitle { font-size:20px; }
+  .spotlight-symbol { font-size:60px; }
+  .btn { font-size:15px; padding:14px 24px; }
+  .metric-symbol { font-size:36px; }
+  .case-keyword-text { font-size:17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- GNB -->
+<header class="gnb" id="gnb">
+  <div class="gnb-inner">
+    <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    <nav class="gnb-targets">
+      <a class="gnb-t active" href="index.html#corp">법인 대표</a>
+      <a class="gnb-t" href="index.html#small">소상공인</a>
+      <a class="gnb-t" href="index.html#seller">셀러·벤더</a>
+    </nav>
+    <a class="gnb-btn" href="index.html#quiz-master"><span class="gnb-btn-dot"></span>1분 경영 스코어</a>
+  </div>
+</header>
+
+<!-- 1. HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <div class="hero-eyebrow">CEO 자산 증식 전략</div>
+      <h1 class="hero-title">
+        법인에 쌓인 이익,<br>
+        <em>대표님 자산으로 만드는 법</em>
+      </h1>
+      <p class="hero-sub">
+        월급·배당·퇴직금 — 3가지 경로 중<br>
+        세후 실수령액을 2배 가까이 좌우하는 선택이 있습니다.
+      </p>
+      <div class="hero-cta-row">
+        <button class="btn btn-primary" onclick="scrollToForm()">무료 자산 진단 받기 →</button>
+        <a class="btn btn-ghost" href="#experts">전문가 팀 만나기</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <img class="hero-visual-bg" src="./wealth-design-hero.jpg" alt="" loading="lazy" />
+      <div class="hero-visual-overlay"></div>
+      <div class="hero-stat">
+        <div class="hero-stat-label">WEALTH DESIGN</div>
+        <div class="hero-stat-icon">◆</div>
+        <div class="hero-stat-title">세금은 최소화,<br>자산은 최대화</div>
+        <div class="hero-stat-bar"></div>
+        <div class="hero-stat-desc">
+          월급·배당·퇴직금을 조합한<br>
+          <strong style="color:var(--gold);">CEO 보상 구조 재설계</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. PAIN (법인 자금 이전 3가지 경로) -->
+<section class="pain-sec">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">3 PATHS</div>
+      <h2 class="sec-h2">법인 자금을 대표님께 이전하는<br><em>3가지 경로</em></h2>
+      <p class="sec-sub">어떤 경로를 선택하느냐에 따라 세후 실수령액이 크게 달라집니다. 같은 금액이라도 설계에 따라 수천만원 차이가 납니다</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card rev">
+        <div class="pain-num">01</div>
+        <h3 class="pain-title">월급<br>매월 꺼내는 가장 익숙한 방법</h3>
+        <p class="pain-desc">통상 월 500만원 수준에서 제약됩니다. 4대보험·소득세 합산 부담이 크고, 법인 이익을 실질적으로 이전하기에는 한계가 명확합니다.</p>
+        <div class="pain-footer">⚠️ 한계 — 4대보험·소득세 이중 부담</div>
+      </div>
+      <div class="pain-card rev rev-d1">
+        <div class="pain-num">02</div>
+        <h3 class="pain-title">배당<br>주주 이익을 나누는 방법</h3>
+        <p class="pain-desc">2천만원 초과 시 금융소득종합과세에 포함됩니다. 세율 부담도 있지만, 국세청 관심 대상이 되는 실질적 부담이 더 큽니다.</p>
+        <div class="pain-footer">⚠️ 제약 — 종합과세 + 세무 리스크</div>
+      </div>
+      <div class="pain-card rev rev-d2">
+        <div class="pain-num">03</div>
+        <h3 class="pain-title">퇴직금<br>가장 유리한 세제 구조</h3>
+        <p class="pain-desc">큰 공제 항목 + 연분연승 방식의 저율 과세. 정관 정비와 장기 설계가 전제되면, 같은 금액을 세후 기준 가장 많이 남길 수 있는 경로입니다.</p>
+        <div class="pain-footer">✅ 최적 — 공제 + 분리과세 이중 혜택</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2.5 프리미엄 카피 스포트라이트 -->
+<section class="spotlight-sec">
+  <div class="spotlight-inner">
+    <div class="spotlight-eye rev">✦ THE APPROACH</div>
+    <div class="spotlight-symbol rev rev-d1">❝</div>
+    <h2 class="spotlight-subtitle rev rev-d2">
+      법인에 쌓인 돈,<br>
+      <em>가장 유리한 방법으로</em><br>
+      <em>대표님께 이전합니다</em>
+    </h2>
+    <p class="spotlight-desc rev rev-d3">
+      세금을 최소화하면서 합법적으로 법인 자산을 CEO 개인에게 이전하는 설계.<br>
+      과세이연 효과 + 유사시 보장 + 은퇴자금 마련 — 3중 기능을 동시에 구축합니다.
+    </p>
+    <div class="spotlight-keywords rev rev-d3">
+      <span class="spotlight-kw">과세이연</span>
+      <span class="spotlight-kw-sep">·</span>
+      <span class="spotlight-kw">유사시 보장</span>
+      <span class="spotlight-kw-sep">·</span>
+      <span class="spotlight-kw">은퇴자금 마련</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 핵심 약속 -->
+<section class="promise-sec">
+  <div class="promise-inner">
+    <div class="promise-mark rev">"</div>
+    <h2 class="promise-quote rev rev-d1">
+      법인에 쌓인 이익은 법인의 것이지만,<br>
+      <em>제대로 설계하면 대표님의 자산이 됩니다</em>
+    </h2>
+    <div class="promise-divider rev rev-d2"></div>
+    <p class="promise-sig rev rev-d2">미래CEO플랜 · CEO 자산전략 센터</p>
+  </div>
+</section>
+
+<!-- 4. 6대 자산 영역 -->
+<section class="areas-sec" id="areas">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">SIX AREAS</div>
+      <h2 class="sec-h2">법인→개인 이전을 완성하는<br><em>6대 설계 영역</em></h2>
+      <p class="sec-sub">분야별 독립 자문이 아닌, 6개 영역을 하나의 전략으로 연결합니다. 퇴직금 설계가 가장 효과적이지만, 각 영역이 맞물려야 완성됩니다</p>
+    </div>
+    <div class="areas-grid">
+      <div class="area-card rev">
+        <div class="area-icon">🎯</div>
+        <h3 class="area-title">은퇴·연금 포트폴리오 설계</h3>
+        <p class="area-desc">기업 매각·은퇴 이후 30년의 현금흐름을 역산하여, 연금·저축 상품 구성을 설계합니다.</p>
+        <div class="area-tags"><span class="area-tag">연금 설계</span><span class="area-tag">현금흐름 역산</span></div>
+      </div>
+      <div class="area-card rev rev-d1">
+        <div class="area-icon">🏢</div>
+        <h3 class="area-title">법인 자금 운용 전략</h3>
+        <p class="area-desc">법인 잉여금을 사내 유보가 아닌 전략적 금융상품으로 운용하여, 개인 자산 이전의 징검다리로 활용합니다.</p>
+        <div class="area-tags"><span class="area-tag">잉여금 운용</span><span class="area-tag">법인 포트폴리오</span></div>
+      </div>
+      <div class="area-card rev rev-d2">
+        <div class="area-icon">💵</div>
+        <h3 class="area-title">달러·외화 자산 분산</h3>
+        <p class="area-desc">원화 집중 리스크를 분산하기 위해 달러·해외 주식·외화 채권 포트폴리오를 구성합니다.</p>
+        <div class="area-tags"><span class="area-tag">달러 자산</span><span class="area-tag">환 리스크 분산</span></div>
+      </div>
+      <div class="area-card rev rev-d1">
+        <div class="area-icon">🏡</div>
+        <h3 class="area-title">부동산 투자·자문</h3>
+        <p class="area-desc">보유 부동산의 평가·재배치를 진단하고, 법인·개인 명의 구조를 최적화합니다.</p>
+        <div class="area-tags"><span class="area-tag">부동산 평가</span><span class="area-tag">명의 구조</span></div>
+      </div>
+      <div class="area-card rev rev-d2">
+        <div class="area-icon">🛡️</div>
+        <h3 class="area-title">개인 위험 관리</h3>
+        <p class="area-desc">CEO 유고·질병 시 기업과 가족에 미칠 영향을 시뮬레이션하고, 보장 포트폴리오를 설계합니다.</p>
+        <div class="area-tags"><span class="area-tag">보장 설계</span><span class="area-tag">리스크 헷지</span></div>
+      </div>
+      <div class="area-card rev rev-d3">
+        <div class="area-icon">📊</div>
+        <h3 class="area-title">투자 자산 리밸런싱</h3>
+        <p class="area-desc">기존 보유 중인 변액·펀드·주식 포트폴리오를 정기 진단하고, 시장 전망에 따라 리밸런싱 자문을 제공합니다.</p>
+        <div class="area-tags"><span class="area-tag">변액 운용</span><span class="area-tag">정기 리뷰</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. 4단계 프로세스 -->
+<section class="process-sec" id="process">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">HOW WE WORK</div>
+      <h2 class="sec-h2">진단부터 실행·리뷰까지<br><em>4단계 자산 이전 설계</em></h2>
+      <p class="sec-sub">한 번의 상담이 아닌, 10년·20년의 동반자로서 정관 정비부터 퇴직금 수령 시점까지 끝까지 함께합니다</p>
+    </div>
+    <div class="process-list">
+      <div class="process-item rev">
+        <div class="process-num">01</div>
+        <div class="process-body">
+          <div class="process-title">종합 자산 진단</div>
+          <div class="process-desc">법인·개인·부동산·금융자산을 통합 분석하고, 현재 대표님이 놓인 자산 구조의 강점과 취약점을 한눈에 파악합니다.</div>
+        </div>
+        <div class="process-time">1~2주</div>
+      </div>
+      <div class="process-item rev rev-d1">
+        <div class="process-num">02</div>
+        <div class="process-body">
+          <div class="process-title">맞춤형 전략 설계</div>
+          <div class="process-desc">진단 결과를 바탕으로 6개 영역에 걸친 통합 포트폴리오를 설계합니다. 5·10·30년의 현금흐름 시뮬레이션을 포함합니다.</div>
+        </div>
+        <div class="process-time">3~4주</div>
+      </div>
+      <div class="process-item rev rev-d2">
+        <div class="process-num">03</div>
+        <div class="process-body">
+          <div class="process-title">단계별 실행 지원</div>
+          <div class="process-desc">설계한 전략을 현실에서 집행할 수 있도록 상품 선정·계약·실무 절차를 전담 컨설턴트가 끝까지 함께합니다.</div>
+        </div>
+        <div class="process-time">지속</div>
+      </div>
+      <div class="process-item rev rev-d3">
+        <div class="process-num">04</div>
+        <div class="process-body">
+          <div class="process-title">정기 리뷰·리밸런싱</div>
+          <div class="process-desc">연 1회 이상 자산 포트폴리오 리뷰와 시장 변동 대응 리밸런싱을 제공합니다. 세법 개정·가족 구성 변화 반영.</div>
+        </div>
+        <div class="process-time">연 1회+</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. 전문가 팀 6명 -->
+<section class="experts-sec" id="experts">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">EXPERT TEAM</div>
+      <h2 class="sec-h2">분야별 전문가가<br><em>팀으로 함께합니다</em></h2>
+      <p class="sec-sub">CFP·CFA·세무사·감정평가사 6인의 전문가 그룹이 대표님의 자산을 통합 설계합니다</p>
+    </div>
+    <div class="experts-grid">
+      <div class="expert-card rev">
+        <div class="expert-avatar">C</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">최○○ · 재무 전문위원</div>
+          <div class="expert-role">센터장 · 수석 컨설턴트</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">CFP 국제공인재무설계사</div>
+          <div class="expert-spec">법인·개인 통합 포트폴리오 전문</div>
+          <div class="expert-spec">VIP 자산가 설계 다수</div>
+        </div>
+      </div>
+      <div class="expert-card rev rev-d1">
+        <div class="expert-avatar">K</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">김○○ · 투자 전문위원</div>
+          <div class="expert-role">시니어 컨설턴트</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">CFA 국제재무분석사</div>
+          <div class="expert-spec">변액·펀드 포트폴리오 전문</div>
+          <div class="expert-spec">정기 리밸런싱 자문 경험</div>
+        </div>
+      </div>
+      <div class="expert-card rev rev-d2">
+        <div class="expert-avatar">P</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">박○○ · 세무 전문위원</div>
+          <div class="expert-role">세무사</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">법인 자금 운용 세무 자문</div>
+          <div class="expert-spec">배당·급여 소득 설계 전문</div>
+          <div class="expert-spec">CEO 개인 소득세 최적화</div>
+        </div>
+      </div>
+      <div class="expert-card rev rev-d1">
+        <div class="expert-avatar">L</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">이○○ · 부동산 전문위원</div>
+          <div class="expert-role">부동산 감정평가사</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">법인·개인 명의 구조 설계</div>
+          <div class="expert-spec">상속·증여 감정평가 전문</div>
+          <div class="expert-spec">CEO 부동산 포트폴리오 자문</div>
+        </div>
+      </div>
+      <div class="expert-card rev rev-d2">
+        <div class="expert-avatar">J</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">정○○ · 해외투자 전문위원</div>
+          <div class="expert-role">시니어 컨설턴트</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">달러 자산·해외 주식 자문</div>
+          <div class="expert-spec">외화 분산 포트폴리오 설계</div>
+          <div class="expert-spec">국제 자산 이전 구조 자문</div>
+        </div>
+      </div>
+      <div class="expert-card rev rev-d3">
+        <div class="expert-avatar">Y</div>
+        <div class="expert-name-wrap">
+          <div class="expert-name">윤○○ · 리스크 전문위원</div>
+          <div class="expert-role">수석 보장설계사</div>
+        </div>
+        <div class="expert-specs">
+          <div class="expert-spec">CEO 유고 시뮬레이션 전문</div>
+          <div class="expert-spec">기업·가족 통합 보장 설계</div>
+          <div class="expert-spec">Key-Man 보험 실행 경험</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 실제 설계 사례 3건 -->
+<section class="cases-sec" id="cases">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">SUCCESS CASES</div>
+      <h2 class="sec-h2">실제 설계로 이어진<br><em>CEO 자산 전략 사례</em></h2>
+      <p class="sec-sub">숫자로 증명되는 자산 설계 역량<br>※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</p>
+    </div>
+    <div class="cases-grid">
+      <div class="case-card rev" data-case="case-1">
+        <div class="case-img">
+          <div class="case-tag">제조업 CEO · 50대</div>
+          <div class="case-keyword">
+            <div class="case-keyword-symbol">◆</div>
+            <div class="case-keyword-text">법인 자산을<br>개인 자산으로</div>
+            <div class="case-keyword-sub">잉여금 운용 + 배당 설계</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">법인 잉여금을<br>CEO 개인 자산으로 이전하는 설계</h3>
+          <p class="case-desc">매출 중견 제조기업 박 대표, 단계적 자산 이전 설계로 법인·개인 양쪽의 자산 구조를 재배치한 장기 프로젝트</p>
+          <div class="case-meta"><strong>통합 포트폴리오</strong> · 잉여금 + 배당 전략</div>
+        </div>
+      </div>
+      <div class="case-card rev rev-d1" data-case="case-2">
+        <div class="case-img">
+          <div class="case-tag">유통업 CEO · 60대</div>
+          <div class="case-keyword">
+            <div class="case-keyword-symbol">◇</div>
+            <div class="case-keyword-text">원화 집중에서<br>글로벌 분산으로</div>
+            <div class="case-keyword-sub">달러 + 해외 채권 포트폴리오</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">원화 집중 자산을<br>달러·해외 자산으로 분산</h3>
+          <p class="case-desc">환율 변동·인플레이션에 취약했던 원화 중심 포트폴리오를 점진적으로 글로벌 자산으로 재배치한 리밸런싱 사례</p>
+          <div class="case-meta"><strong>리스크 분산</strong> · 달러 + 해외 채권</div>
+        </div>
+      </div>
+      <div class="case-card rev rev-d2" data-case="case-3">
+        <div class="case-img">
+          <div class="case-tag">서비스업 CEO · 58세</div>
+          <div class="case-keyword">
+            <div class="case-keyword-symbol">◈</div>
+            <div class="case-keyword-text">현역에서<br>은퇴까지의 다리</div>
+            <div class="case-keyword-sub">연금 + 달러 + 변액 통합</div>
+          </div>
+        </div>
+        <div class="case-body">
+          <h3 class="case-title">기업 매각 이후 30년을<br>설계한 은퇴 포트폴리오</h3>
+          <p class="case-desc">"은퇴는 먼 일"이라 여기던 최 대표, 장기 설계로 은퇴 후 현금흐름을 완전히 재구성한 사례</p>
+          <div class="case-meta"><strong>은퇴 설계</strong> · 연금 + 달러 + 변액</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 특별 서비스 -->
+<section class="service-sec" id="service">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">SPECIAL SERVICES</div>
+      <h2 class="sec-h2">상담 한 번으로 끝나지 않는<br><em>CEO 전용 특별 서비스</em></h2>
+    </div>
+    <div class="service-grid">
+      <div class="service-card rev">
+        <div class="service-icon">🚗</div>
+        <div class="service-body">
+          <div class="service-title">찾아가는 프라이빗 상담</div>
+          <div class="service-desc">대표님이 원하시는 장소(사무실·자택 등)로 전문위원이 직접 방문합니다. 시간과 공간의 제약 없이 편안한 환경에서 상담을 진행하실 수 있습니다.</div>
+        </div>
+      </div>
+      <div class="service-card rev rev-d1">
+        <div class="service-icon">🏙️</div>
+        <div class="service-body">
+          <div class="service-title">전국 5대 도시 상담 네트워크</div>
+          <div class="service-desc">서울·경기·충청·전라·경상 권역별 전담 컨설턴트가 배정됩니다. 지역을 옮기셔도 동일한 수준의 상담 품질을 보장합니다.</div>
+        </div>
+      </div>
+      <div class="service-card rev rev-d2">
+        <div class="service-icon">📊</div>
+        <div class="service-body">
+          <div class="service-title">연 1회 포트폴리오 리뷰</div>
+          <div class="service-desc">설계 이후에도 매년 시장 변동·세법 개정·가족 구성 변화를 반영한 종합 리뷰를 제공합니다. 자산 구조는 '살아있는 설계'입니다.</div>
+        </div>
+      </div>
+      <div class="service-card rev rev-d3">
+        <div class="service-icon">🔒</div>
+        <div class="service-body">
+          <div class="service-title">100% 비밀 상담·보안 관리</div>
+          <div class="service-desc">모든 상담 내용과 자산 데이터는 NDA 계약 하에 엄격히 보안 관리됩니다. 가족에게도 알리지 못한 고민을 안심하고 털어놓을 수 있습니다.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. 핵심 가치 -->
+<section class="metrics-sec">
+  <div class="w">
+    <div class="metrics-wrap">
+      <div class="metrics-head rev">
+        <div class="metrics-eye">OUR COMMITMENT</div>
+        <h2 class="metrics-title">자산전략 센터의<br><em>네 가지 약속</em></h2>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-item rev">
+          <div class="metric-symbol">◆</div>
+          <div class="metric-title">통합 설계</div>
+          <div class="metric-lbl">법인·개인·부동산·금융자산을 하나의 포트폴리오로</div>
+        </div>
+        <div class="metric-item rev rev-d1">
+          <div class="metric-symbol">◇</div>
+          <div class="metric-title">장기 동반</div>
+          <div class="metric-lbl">연 1회 이상 정기 리뷰와 리밸런싱 자문 지속</div>
+        </div>
+        <div class="metric-item rev rev-d2">
+          <div class="metric-symbol">◈</div>
+          <div class="metric-title">비밀 유지</div>
+          <div class="metric-lbl">NDA 계약 기반 100% 보안 · 가족에게도 공개 선택</div>
+        </div>
+        <div class="metric-item rev rev-d3">
+          <div class="metric-symbol">◉</div>
+          <div class="metric-title">전문가 팀</div>
+          <div class="metric-lbl">CFP·CFA·세무사·감정평가사가 한 팀으로 협력</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="w">
+    <div class="sec-head rev">
+      <div class="sec-eye">FREQUENTLY ASKED</div>
+      <h2 class="sec-h2">대표님들이 가장 많이 묻는<br><em>자주 묻는 질문</em></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">꼭 자산 규모가 커야 상담이 가능한가요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">아닙니다. 현재 자산 규모보다 <strong>앞으로의 설계 가능성</strong>이 중요합니다. 법인 매출 30억 이상 또는 개인 금융자산 5억 이상의 대표님부터 실효성 있는 설계가 가능하며, 규모가 더 작아도 초기 단계 컨설팅은 받아보실 수 있습니다.</div></div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">세무·상속 컨설팅과는 어떻게 다른가요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">세무·상속 컨설팅이 <strong>"세금을 줄이는 설계"</strong>에 집중한다면, CEO 자산 증식 전략은 <strong>"자산을 키우고 지키는 통합 설계"</strong>에 집중합니다. 다만 실제 설계 과정에서는 세무·상속 전문가와도 연계되어 한 팀처럼 움직입니다.</div></div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">상담 비용이 있나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner"><strong>초기 상담과 진단은 100% 무료</strong>입니다. 이후 본격적인 설계 단계부터는 자문 계약이 진행되며, 자산 규모와 설계 복잡도에 따라 비용이 다르게 책정됩니다. 상담 단계에서 명확한 비용 구조를 안내받으실 수 있습니다.</div></div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">상담은 어디서 진행되나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">전국 5대 권역별 전담 컨설턴트가 있어, 서울 사무실 방문 상담뿐 아니라 <strong>대표님이 원하시는 장소로 직접 찾아가는 상담</strong>도 가능합니다. 원거리 상담 시 화상 회의도 지원됩니다.</div></div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">설계만 받고 바로 실행하지 않아도 되나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">전혀 문제 없습니다. 많은 대표님들이 진단·설계까지만 받고 <strong>가족과 충분히 논의한 후 실행 시점을 결정</strong>하십니다. 설계 후 몇 년이 지난 시점에 실행을 재검토하시는 경우도 흔하며, 언제든 재상담 가능합니다.</div></div>
+      </div>
+      <div class="faq-item rev">
+        <div class="faq-q">
+          <div class="faq-q-text">개인 자산 정보가 외부에 노출되지 않나요?</div>
+          <div class="faq-toggle">▾</div>
+        </div>
+        <div class="faq-a"><div class="faq-a-inner">상담 시작 전 <strong>NDA(비밀유지계약)</strong>을 체결하며, 모든 상담 자료는 암호화된 내부 시스템에서만 관리됩니다. 담당 전문위원 외에는 대표님 정보에 접근할 수 없으며, 가족 중에도 대표님이 공개를 원치 않으시는 정보는 철저히 비공개로 유지됩니다.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. CTA -->
+<section class="cta-sec" id="final-cta">
+  <div class="cta-wrap">
+    <div class="sec-head rev">
+      <div class="sec-eye">START YOUR JOURNEY</div>
+    </div>
+    <h2 class="cta-h2 rev">법인에 쌓인 이익,<br><em>지금 세후 실수령액부터 진단받으세요</em></h2>
+    <p class="cta-sub rev rev-d1">초기 상담은 완전 무료입니다. 현재 보상 구조의 세금 부담을 먼저 진단받고,<br>설계 여부는 대표님이 결정하세요.</p>
+    <form class="cta-form rev rev-d2" onsubmit="submitForm(event)">
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">회사명 <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="(주)미래CEO" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">대표자 성함 <span class="req">*</span></label>
+          <input type="text" class="form-input" placeholder="홍길동" required>
+        </div>
+      </div>
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">연락처 <span class="req">*</span></label>
+          <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+        </div>
+        <div class="form-row">
+          <label class="form-label">이메일 <span class="req">*</span></label>
+          <input type="email" class="form-input" placeholder="email@company.com" required>
+        </div>
+      </div>
+      <div class="form-row two">
+        <div class="form-row">
+          <label class="form-label">개인 금융자산 규모 <span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="">선택해 주세요</option>
+            <option>5억 미만</option>
+            <option>5억 ~ 20억</option>
+            <option>20억 ~ 50억</option>
+            <option>50억 ~ 100억</option>
+            <option>100억 이상</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label class="form-label">상담 관심 분야 <span class="req">*</span></label>
+          <select class="form-select" required>
+            <option value="">선택해 주세요</option>
+            <option>은퇴·연금 포트폴리오</option>
+            <option>법인 자금 운용</option>
+            <option>달러·외화 자산 분산</option>
+            <option>부동산 투자·자문</option>
+            <option>개인 위험 관리</option>
+            <option>투자 자산 리밸런싱</option>
+            <option>통합 자산 설계</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <label class="form-label">간단한 문의 사항 (선택)</label>
+        <input type="text" class="form-input" placeholder="현재 고민, 궁금하신 점 등">
+      </div>
+      <div class="consent-block">
+        <label class="consent-row">
+          <input type="checkbox" required>
+          <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 목적 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+        </label>
+        <label class="consent-row">
+          <input type="checkbox">
+          <span><b class="optional">[선택]</b>마케팅 정보 수신 동의<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+        </label>
+        <div class="consent-note">
+          <span class="consent-note-ico">💡</span>
+          <span>협력 파트너 연결이 필요한 경우, 1차 상담 시 구체적 파트너 정보를 안내드린 후 별도 동의를 받습니다.</span>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">무료 자산 진단 신청하기 →</button>
+    </form>
+    <div class="cta-trust rev rev-d3">
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 상담 내용 100% 비밀 유지 (NDA)</div>
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 초기 상담 완전 무료</div>
+      <div class="cta-trust-item"><span class="cta-trust-chk">✓</span> 2영업일 내 연락드립니다</div>
+    </div>
+  </div>
+</section>
+
+<!-- STICKY 플로팅 폼 -->
+<aside class="sticky-form" id="stickyForm">
+  <div class="sticky-form-title">무료 자산 진단</div>
+  <div class="sticky-form-sub">2영업일 이내 전문가가 연락드립니다</div>
+  <form onsubmit="submitStickyForm(event)">
+    <div class="form-row"><label class="form-label">성함 <span class="req">*</span></label><input type="text" class="form-input" placeholder="홍길동" required></div>
+    <div class="form-row"><label class="form-label">연락처 <span class="req">*</span></label><input type="tel" class="form-input" placeholder="010-0000-0000" required></div>
+    <div class="form-row"><label class="form-label">이메일 <span class="req">*</span></label><input type="email" class="form-input" placeholder="email@company.com" required></div>
+    <div class="form-row">
+      <label class="form-label">자산 규모 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>5억 미만</option>
+        <option>5억 ~ 20억</option>
+        <option>20억 ~ 50억</option>
+        <option>50억 이상</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">상담 분야 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>은퇴·연금</option>
+        <option>법인 자금 운용</option>
+        <option>달러·외화 자산</option>
+        <option>부동산</option>
+        <option>통합 자산 설계</option>
+      </select>
+    </div>
+    <div class="consent-block compact">
+      <label class="consent-row">
+        <input type="checkbox" required>
+        <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+      <label class="consent-row">
+        <input type="checkbox">
+        <span><b class="optional">[선택]</b>마케팅 수신<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+    </div>
+    <button type="submit" class="sticky-form-submit">진단 신청하기 →</button>
+  </form>
+  <div class="sticky-form-trust">
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 100% 비밀 유지</div>
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 초기 상담 완전 무료</div>
+  </div>
+</aside>
+
+<!-- 사례 모달 3개 -->
+<div class="case-modal-backdrop" id="caseModalBackdrop"></div>
+
+<div class="case-modal" id="modal-case-1">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 01</div>
+    <h3 class="case-modal-title">법인 잉여금을 CEO 개인 자산으로 이전하는 설계 — 제조업 박 대표님 사례</h3>
+    <p class="case-modal-subtitle">단계적 자산 이전 설계로 법인과 개인 자산 구조를 재배치한 장기 프로젝트</p>
+  </div>
+  <div class="case-modal-body">
+    <h4>1. 고객의 상황 및 고민</h4>
+    <p><strong>중견 제조기업 박 대표 (50대 후반) · 자산 대부분이 법인 주식과 부동산에 집중</strong></p>
+    <p>박 대표는 오랜 기간 회사를 무차입 경영으로 우량 기업으로 키우셨습니다. 그 결과 법인에 잉여금이 상당액 쌓였지만, 정작 개인 계좌에는 여유 자금이 부족. <em>"회사가 내 돈인데, 정작 내가 쓸 돈은 없다"</em>는 아이러니한 상황.</p>
+    <ul>
+      <li>배당으로 꺼내려니 <strong>최고 세율 수준의 소득세</strong></li>
+      <li>급여 인상으로 꺼내려니 <strong>법인세+소득세 이중 과세</strong></li>
+      <li>은퇴가 가까워지는데 개인 포트폴리오 미비</li>
+    </ul>
+
+    <h4>2. 진단: 3가지 병목 발견</h4>
+    <div class="case-modal-box">
+      <div class="case-modal-box-title">Diagnosis</div>
+      <strong>① 잉여금이 사내 예치 상태로 방치</strong>되어 실효 수익률 저조 · <strong>② 배당 정책 부재</strong>로 정기적 자산 이전 루트 없음 · <strong>③ 개인 포트폴리오가 전혀 설계되지 않음</strong> — 은퇴 후 현금흐름 공백 예상
+    </div>
+
+    <h4>3. 솔루션: 단계적 자산 이전 플랜</h4>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Phase 1: 법인 자금 전략적 운용</h5>
+    <p>사내 유보된 잉여금 일부를 <strong>법인 명의 전략적 금융상품</strong>(달러 자산·장기 채권)에 배치. 원금 보존 기반 위에 안정적 운용 수익 창출.</p>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Phase 2: 합법적 배당 설계</h5>
+    <p>가족 구성원 주주 추가 + <strong>차등 배당 정책</strong> 수립으로 CEO 개인·가족에게 분산 배당. 분산 배당으로 세율 구간 낮추기.</p>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Phase 3: 개인 포트폴리오 구축</h5>
+    <p>이전된 개인 자산을 <strong>연금·달러·변액·부동산 4개 축으로 분산 배치</strong>. 은퇴 후 장기 현금흐름 시뮬레이션 완료.</p>
+
+    <h4>4. 설계 결과</h4>
+    <div class="case-modal-box highlight">
+      <div class="case-modal-box-title">KEY OUTCOMES</div>
+      <strong>① 법인 잉여금을 전략적 자산으로 전환</strong> — 운용 수익 발생 · <strong>② 개인 자산 포트폴리오 구축 완료</strong> — 4개 축 분산 배치 · <strong>③ 달러·해외 자산 비중 확보</strong> — 통화 분산 실현 · <strong>④ 은퇴 후 현금흐름 설계</strong> — 장기 시뮬레이션 완료
+    </div>
+
+    <div class="case-modal-box">
+      <div class="case-modal-box-title">KEY POINT</div>
+      법인 자산을 "급하게 꺼내는" 것이 아니라, <strong>법인과 개인의 이중 구조 위에서 함께 증식시키는 설계</strong>가 핵심이었습니다. <em>시간을 설계의 자원으로</em> 활용하는 것이 자산 증식 전략의 본질입니다.
+    </div>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<div class="case-modal" id="modal-case-2">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 02</div>
+    <h3 class="case-modal-title">원화 집중 자산을 달러·해외 자산으로 분산시킨 유통업 김 대표님 사례</h3>
+    <p class="case-modal-subtitle">환율 변동·인플레이션에 취약했던 원화 중심 포트폴리오 재배치</p>
+  </div>
+  <div class="case-modal-body">
+    <h4>1. 고객의 상황 및 고민</h4>
+    <p><strong>유통업 김 대표 (60대) · 자산 대부분이 원화 예금과 국내 부동산에 집중</strong></p>
+    <p>오랜 기간 근검절약으로 모은 자산이 <em>모두 원화와 국내 자산에 집중</em>되어 있었습니다. "안전하게 은행에 넣어뒀으니 괜찮다"고 생각하셨지만, 원-달러 환율 급변 시점을 겪으며 인식 변화.</p>
+    <ul>
+      <li>원화 현금 <strong>실질 가치 하락</strong> (인플레이션 · 환율 약세)</li>
+      <li>국내 부동산 <strong>단일 시장 리스크</strong></li>
+      <li>은퇴 이후 장기 현금흐름의 <strong>통화 분산 필요</strong></li>
+    </ul>
+
+    <h4>2. 솔루션: 점진적 달러·해외 자산 배치</h4>
+    <p>"원화를 버리고 달러로 간다"가 아니라, <strong>원화 비중은 유지하면서 달러·기타 자산을 점진적으로 늘려가는 방식</strong>. 환율 변동 리스크를 피하면서 시간 분산 매수.</p>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">구체 포트폴리오 구성</h5>
+    <ul>
+      <li><strong>달러 예금·채권</strong> (월평균 일정액 분할 매수)</li>
+      <li><strong>해외 ETF·주식</strong> (S&P500·나스닥 중심)</li>
+      <li><strong>글로벌 리츠</strong> (미국·싱가포르 리츠)</li>
+      <li><strong>원화 자산 유지</strong> (국내 부동산 + 원화 예금)</li>
+    </ul>
+
+    <h4>3. 설계 결과</h4>
+    <div class="case-modal-box highlight">
+      <div class="case-modal-box-title">KEY OUTCOMES</div>
+      <strong>① 원화 집중 리스크 완화</strong> — 글로벌 분산 구조 구축 · <strong>② 통화 분산</strong> — 환율 변동 방어 확보 · <strong>③ 장기 수익 기반</strong> — 해외 ETF·리츠 포트폴리오 안정화
+    </div>
+
+    <div class="case-modal-box">
+      <div class="case-modal-box-title">KEY POINT</div>
+      <em>"달러는 투기적 자산이 아닙니다. 글로벌 기축 통화로서의 분산 포지션입니다."</em> 김 대표님은 이제 환율 변동 뉴스에 불안해하시지 않습니다.
+    </div>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<div class="case-modal" id="modal-case-3">
+  <button class="case-modal-close" aria-label="닫기">✕</button>
+  <div class="case-modal-header">
+    <div class="case-modal-tag">SUCCESS CASE · 03</div>
+    <h3 class="case-modal-title">기업 매각 이후 30년을 설계한 은퇴 포트폴리오 — 서비스업 최 대표님 사례</h3>
+    <p class="case-modal-subtitle">"은퇴는 먼 일"이라 여기던 CEO의 장기 설계 여정</p>
+  </div>
+  <div class="case-modal-body">
+    <h4>1. 고객의 상황 및 고민</h4>
+    <p><strong>서비스업 최 대표 (50대 후반) · 회사를 일정 시점에 매각 계획</strong></p>
+    <p>"회사 팔면 되니까 은퇴 준비는 필요없다"던 최 대표. 하지만 진단 결과:</p>
+    <ul>
+      <li>매각 후 <strong>양도소득세 부담</strong>으로 순 수령액이 생각보다 줄어듦</li>
+      <li>은퇴 후 30년 현금흐름 필요 시 <strong>월 생활비가 결코 적지 않음</strong></li>
+      <li>매각 자금을 그대로 예금 시 <strong>시간이 흐를수록 실질 가치 하락</strong></li>
+      <li>개인 연금·국민연금만으로는 <strong>희망하는 생활 수준 유지 어려움</strong></li>
+    </ul>
+
+    <h4>2. 솔루션: 장기 은퇴 설계 로드맵</h4>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Track 1: 매각 전 · 연금 축적기</h5>
+    <p>법인 잉여금과 개인 소득을 활용해 <strong>개인 연금 + IRP + 퇴직연금</strong>을 체계적으로 적립. 매각 시점 이전에 기본 연금 구조를 완성.</p>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Track 2: 매각 시점 · 일시금 재배치</h5>
+    <p>매각 대금을 <strong>4개 버킷 전략</strong>으로 분산: 안전형 · 인컴형 · 성장형 · 유동성. 인컴형 버킷에서 매월 안정적 현금흐름 창출.</p>
+
+    <h5 style="margin:18px 0 10px; color:var(--text); font-size:var(--fs-body-lg); font-weight:800;">Track 3: 매각 후 · 장기 운영·리밸런싱</h5>
+    <p>연 1회 포트폴리오 리뷰 + 필요 시 자산 버킷 간 자금 이동. 기대수명·의료비·가족 상황 변화 반영.</p>
+
+    <h4>3. 설계 결과</h4>
+    <div class="case-modal-box highlight">
+      <div class="case-modal-box-title">KEY OUTCOMES</div>
+      <strong>① 현역 중 연금 구조 완성</strong> — 매각 전부터 안정적 축적 · <strong>② 매각 대금 분산 설계</strong> — 4버킷 전략으로 리스크 관리 · <strong>③ 장기 현금흐름 확보</strong> — 매월 인컴형 수익 기반
+    </div>
+
+    <div class="case-modal-box">
+      <div class="case-modal-box-title">최 대표님의 한 마디</div>
+      "매각 후 목돈이면 충분하다 생각했지만, 막상 30년을 나누면 다른 이야기였습니다. 일찍 설계를 시작한 것이 제 인생에서 가장 잘한 결정입니다."
+    </div>
+  </div>
+  <div class="case-modal-footer">
+    <div class="case-modal-footer-text">※ 기업 정보는 사례 소개 목적으로 비식별 처리되었습니다</div>
+    <button class="case-modal-cta" onclick="closeCaseModal(); scrollToForm();">무료 상담 신청 →</button>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="w">
+    <div class="footer-inner">
+      <div class="footer-logo">미래<em>CEO</em>플랜</div>
+      <a class="footer-back" href="index.html#corp">← 전체 솔루션 보러가기</a>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      ㈜프로그레스미디어 · 대표 구동엽 · 사업자등록번호 113-86-27124<br>
+      TEL 02-6261-5102 | FAX 02-6261-5104 | esoyeon@my-progress.co.kr<br>
+      © 2026 프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* GNB scroll */
+window.addEventListener('scroll', () => {
+  document.getElementById('gnb').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+/* Reveal */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
+}, { threshold: 0.12 });
+document.querySelectorAll('.rev').forEach(el => io.observe(el));
+
+/* Scroll to CTA form */
+function scrollToForm() {
+  const target = document.getElementById('final-cta');
+  if (!target) return;
+  const endY = target.getBoundingClientRect().top + window.scrollY - 40;
+  const startY = window.scrollY;
+  const duration = 800;
+  const startTime = performance.now();
+  const easeInOutCubic = t => t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+  function step(now) {
+    const progress = Math.min((now - startTime) / duration, 1);
+    window.scrollTo(0, startY + (endY - startY) * easeInOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(step);
+    else {
+      const firstInput = target.querySelector('input, select');
+      if (firstInput) setTimeout(() => firstInput.focus({ preventScroll: true }), 200);
+    }
+  }
+  requestAnimationFrame(step);
+}
+
+/* Sticky 플로팅 폼 */
+const stickyForm = document.getElementById('stickyForm');
+const heroSec = document.querySelector('.hero');
+const finalCta = document.getElementById('final-cta');
+function toggleStickyForm() {
+  const heroBottom = heroSec.getBoundingClientRect().bottom;
+  const ctaTop = finalCta.getBoundingClientRect().top;
+  const viewportH = window.innerHeight;
+  if (heroBottom < 0 && ctaTop > viewportH * 0.5) stickyForm.classList.add('show');
+  else stickyForm.classList.remove('show');
+}
+window.addEventListener('scroll', toggleStickyForm);
+toggleStickyForm();
+
+/* FAQ 아코디언 */
+document.querySelectorAll('.faq-item').forEach(item => {
+  item.querySelector('.faq-q').addEventListener('click', () => {
+    item.classList.toggle('open');
+  });
+});
+
+/* 사례 모달 */
+const caseBackdrop = document.getElementById('caseModalBackdrop');
+const caseModals = document.querySelectorAll('.case-modal');
+function openCaseModal(caseId) {
+  const modal = document.getElementById('modal-' + caseId);
+  if (!modal) return;
+  caseBackdrop.classList.add('show');
+  modal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeCaseModal() {
+  caseBackdrop.classList.remove('show');
+  caseModals.forEach(m => m.classList.remove('show'));
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.case-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const caseId = card.dataset.case;
+    if (caseId) openCaseModal(caseId);
+  });
+});
+caseBackdrop.addEventListener('click', closeCaseModal);
+document.querySelectorAll('.case-modal-close').forEach(btn => btn.addEventListener('click', closeCaseModal));
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCaseModal(); });
+
+/* 폼 제출 */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2600);
+}
+function submitForm(e) { e.preventDefault(); showToast('무료 자산 진단 신청이 접수되었습니다. 2영업일 내 연락드립니다.'); e.target.reset(); }
+function submitStickyForm(e) { e.preventDefault(); showToast('무료 자산 진단 신청이 접수되었습니다. 2영업일 내 연락드립니다.'); e.target.reset(); }
+</script>
+
+</body>
+</html>
