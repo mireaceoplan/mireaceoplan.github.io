@@ -2354,9 +2354,15 @@ footer .w { max-width:1500px; }
   
   function applyQuizHash() {
     if (typeof openQuizModal === 'function') {
-      openQuizModal(`quiz-${quizName}.html`);
+      // 외부 hash 진입 시 진단 섹션(#prod-section)으로 먼저 스크롤
+      const section = document.getElementById('prod-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+      requestAnimationFrame(() => {
+        openQuizModal(`quiz-${quizName}.html`);
+      });
     } else {
-      // openQuizModal이 아직 정의 안 됐으면 잠시 대기 후 재시도
       setTimeout(applyQuizHash, 100);
     }
   }
