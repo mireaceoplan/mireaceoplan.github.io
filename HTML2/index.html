@@ -2344,7 +2344,7 @@ footer .w { max-width:1500px; }
 // ============= 퀴즈 모달 Hash 라우팅 (외부 진입용) =============
 // URL의 #quiz-master, #quiz-mrisk 등으로 해당 퀴즈 모달 자동 열림
 // 메일·외부 광고에서 직접 특정 퀴즈로 진입 가능
-console.log('미래CEO플랜 v8 loaded');
+console.log('미래CEO플랜 v9 loaded');
 (function handleQuizHashOnLoad() {
   const validQuizzes = ['master', 'mrisk', 'succession', 'risk', 'asset', 'fund'];
   const hash = (window.location.hash || '').replace('#', '');
@@ -2453,7 +2453,24 @@ function nextSlide() { goSlide((curSlide + 1) % slides.length); }
 setInterval(nextSlide, 2000);
 
 
-function scrollTop(){ window.scrollTo({top:0,behavior:'smooth'}); }
+function scrollTop(){
+  // [v9] 로고 클릭 UX 개선
+  const modal = document.getElementById('quiz-modal');
+  const isModalOpen = modal && modal.classList.contains('show');
+  const isAtTop = window.scrollY < 10;
+  
+  if (isModalOpen) {
+    // 모달 열려 있으면: 모달 닫고 맨 위로 (가장 강한 시각 변화)
+    closeQuizModal();
+    window.scrollTo({top:0, behavior:'smooth'});
+  } else if (isAtTop) {
+    // 이미 맨 위 + 모달 없음: 페이지 새로고침 (확실한 시각 피드백)
+    location.reload();
+  } else {
+    // 일반 케이스: 맨 위로 부드럽게 스크롤
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+}
 function scrollToId(id){ document.getElementById(id)?.scrollIntoView({behavior:'smooth',block:'start'}); }
 function showToast(m){
   const t=document.getElementById('toast');
