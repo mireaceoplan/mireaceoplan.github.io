@@ -2354,9 +2354,15 @@ footer .w { max-width:1500px; }
   
   function applyQuizHash() {
     if (typeof openQuizModal === 'function') {
-      openQuizModal(`quiz-${quizName}.html`);
+      // 외부 hash 진입 시 진단 섹션(#prod-section)으로 먼저 스크롤
+      const section = document.getElementById('prod-section');
+      if (section) {
+        section.scrollIntoView({ behavior: 'auto', block: 'start' });
+      }
+      requestAnimationFrame(() => {
+        openQuizModal(`quiz-${quizName}.html`);
+      });
     } else {
-      // openQuizModal이 아직 정의 안 됐으면 잠시 대기 후 재시도
       setTimeout(applyQuizHash, 100);
     }
   }
@@ -2453,6 +2459,17 @@ function openQuizModal(src){
   iframe.style.height = '720px';
   iframe.src = src;
   modal.classList.add('show');
+
+  // ─ 양방향 hash 라우팅: URL hash를 현재 quiz로 동기화
+  try {
+    const quizName = src.replace(/^.*\//, '').replace('.html', '');
+    const targetHash = '#' + quizName;
+    if (window.location.hash !== targetHash) {
+      window._internalHashChange = true;
+      history.pushState({ quizModal: quizName }, '', targetHash);
+      setTimeout(() => { window._internalHashChange = false; }, 50);
+    }
+  } catch(err) { /* hash 동기화 실패 시 무시 */ }
 
   // ─ 스크롤 위치 보존 (모달 열릴 때 부모창이 위로 점프하지 않도록)
   const scrollY = window.scrollY;
@@ -2554,6 +2571,15 @@ function closeQuizModal(e){
   const iframe = document.getElementById('quiz-modal-iframe');
   modal.classList.remove('show');
 
+  // ─ 양방향 hash 라우팅: 모달 닫힘과 함께 URL hash 제거
+  try {
+    if (window.location.hash && window.location.hash.startsWith('#quiz-')) {
+      window._internalHashChange = true;
+      history.pushState(null, '', window.location.pathname + window.location.search);
+      setTimeout(() => { window._internalHashChange = false; }, 50);
+    }
+  } catch(err) { /* hash 제거 실패 시 무시 */ }
+
   // ─ 스크롤 위치 복원 (깜빡임 없이)
   const savedScroll = parseInt(document.body.dataset.savedScroll || '0', 10);
   // ① body 스타일 일괄 해제
@@ -2582,6 +2608,33 @@ function closeQuizModal(e){
 // ESC 키로 닫기
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape' && document.getElementById('quiz-modal').classList.contains('show')) {
+    closeQuizModal();
+  }
+});
+
+// ─ 브라우저 뒤로가기/앞으로가기 처리 (popstate)
+window.addEventListener('popstate', function(e) {
+  if (window._internalHashChange) return;
+  
+  const validQuizzes = ['master', 'mrisk', 'succession', 'risk', 'asset', 'fund'];
+  const hash = (window.location.hash || '').replace('#', '');
+  const modal = document.getElementById('quiz-modal');
+  const isModalOpen = modal && modal.classList.contains('show');
+  
+  if (hash.startsWith('quiz-')) {
+    const quizName = hash.replace('quiz-', '');
+    if (validQuizzes.includes(quizName)) {
+      const iframe = document.getElementById('quiz-modal-iframe');
+      const currentSrc = iframe ? iframe.src : '';
+      if (!isModalOpen || currentSrc.indexOf('quiz-' + quizName + '.html') === -1) {
+        openQuizModal('quiz-' + quizName + '.html');
+      }
+      return;
+    }
+  }
+  
+  // hash가 없거나 quiz hash가 아니면 → 모달 닫기 (열려 있을 때만)
+  if (isModalOpen) {
     closeQuizModal();
   }
 });
