@@ -221,7 +221,7 @@ img { max-width:100%; display:block; }
 .work-card.expanded .work-expand::after { transform:rotate(180deg); }
 
 /* 대표 메시지 */
-.message-sec { padding:140px 0; background:#fff; position:relative; overflow:hidden; }
+.message-sec { padding:140px 0 60px; background:#fff; position:relative; overflow:hidden; }
 .message-sec::before { content:''; position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse at center, rgba(49,130,246,.03) 0%, transparent 70%); }
 .message-inner { max-width:860px; margin:0 auto; padding:0 var(--pad); text-align:center; position:relative; z-index:1; }
 .message-mark { font-size:64px; line-height:1; color:var(--blue); font-family:Georgia, serif; margin-bottom:-10px; opacity:.4; }
@@ -234,9 +234,9 @@ img { max-width:100%; display:block; }
 /* CTA */
 .cta-sec { padding:140px 0; background:var(--gray-soft); }
 .cta-wrap { max-width:720px; margin:0 auto; padding:0 var(--pad); text-align:center; }
-.cta-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:16px; word-break:keep-all; }
+.cta-h2 { font-size:var(--fs-h2); font-weight:800; letter-spacing:-.03em; line-height:1.25; color:var(--text); margin-bottom:20px; word-break:keep-all; }
 .cta-h2 em { color:var(--blue); font-style:normal; }
-.cta-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; margin-bottom:48px; }
+.cta-sub { font-size:var(--fs-body-lg); color:var(--mid); line-height:1.7; letter-spacing:-.015em; margin:0 auto; max-width:680px; }
 .cta-form { background:#fff; padding:40px; border-radius:24px; box-shadow:0 12px 36px rgba(10,22,40,.06); text-align:left; border:1px solid var(--border-l); }
 .form-row { display:flex; flex-direction:column; gap:6px; margin-bottom:18px; }
 .form-row.two { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
@@ -258,9 +258,9 @@ img { max-width:100%; display:block; }
 .sticky-form .form-row { margin-bottom:12px; }
 .sticky-form .form-input, .sticky-form .form-select { padding:11px 14px; font-size:var(--fs-body-sm); background:var(--gray-soft); }
 .sticky-form .form-label { font-size:var(--fs-caption-sm); }
-.sticky-form-submit { width:100%; background:var(--blue); color:#fff; padding:14px; border-radius:12px; font-size:var(--fs-body); font-weight:800; letter-spacing:-.01em; transition:all .15s; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:4px; cursor:pointer; border:none; font-family:inherit; }
+.sticky-form-submit { width:100%; background:var(--blue); color:#fff; padding:14px; border-radius:12px; font-size:var(--fs-body); font-weight:800; letter-spacing:-.01em; transition:all .15s; display:flex; align-items:center; justify-content:center; gap:6px; margin-top:18px; cursor:pointer; border:none; font-family:inherit; }
 .sticky-form-submit:hover { background:var(--blue-d); }
-.sticky-form-trust { margin-top:16px; padding-top:14px; border-top:1px solid var(--border-l); display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
+.sticky-form-trust { margin-top:8px; padding-top:10px; border-top:1px solid var(--border-l); display:flex; justify-content:center; gap:16px; flex-wrap:wrap; }
 .sticky-form-trust-item { display:flex; align-items:center; gap:6px; font-size:var(--fs-caption-sm); color:var(--mid); letter-spacing:-.01em; }
 .sticky-form-trust-chk { color:var(--green-d); font-weight:800; font-size:11px; }
 
@@ -436,7 +436,7 @@ img { max-width:100%; display:block; }
 .press-date { font-size:var(--fs-caption); color:var(--muted); font-weight:600; margin-top:4px; }
 
 /* FAQ */
-.faq-sec { padding:140px 0; background:#fff; }
+.faq-sec { padding:60px 0 140px; background:#fff; }
 .faq-list { max-width:780px; margin:0 auto; display:flex; flex-direction:column; gap:12px; }
 .faq-item { background:var(--gray-soft); border-radius:16px; overflow:hidden; transition:all .2s; }
 .faq-item.open { background:#fff; border:1px solid var(--blue); box-shadow:0 8px 24px rgba(49,130,246,.08); }
@@ -640,6 +640,15 @@ img { max-width:100%; display:block; }
 .consent-block.compact .consent-row a { font-size:11px; margin-left:4px; }
 .consent-note { margin-top:4px; padding:10px 12px; background:#F7F9FC; border-radius:8px; font-size:12px; line-height:1.55; color:#4E5968; display:flex; gap:6px; align-items:flex-start; }
 .consent-note-ico { flex-shrink:0; font-size:13px; line-height:1.4; }
+
+
+/* 섹션 구분선 — message-sec ↔ faq-sec 분리감 */
+.section-divider {
+  width: 60px;
+  height: 1px;
+  background: #D6DDE4;
+  margin: 0 auto;
+}
 
 </style>
 </head>
@@ -1109,12 +1118,15 @@ img { max-width:100%; display:block; }
   </div>
 </section>
 
+<!-- 섹션 구분선 -->
+<div class="section-divider" aria-hidden="true"></div>
+
 <!-- 11. FAQ (자주 묻는 질문) -->
 <section class="faq-sec" id="faq">
   <div class="w">
     <div class="sec-head rev">
       <div class="sec-eye">FREQUENTLY ASKED</div>
-      <h2 class="sec-h2">자주 묻는<br><em>질문</em></h2>
+      <h2 class="sec-h2">자주 묻는 <em>질문</em></h2>
       <p class="sec-sub">상속·증여 상담을 앞두고 대표님들이 가장 많이 궁금해하시는 내용입니다</p>
     </div>
     <div class="faq-list">
@@ -1180,10 +1192,10 @@ img { max-width:100%; display:block; }
 <section class="cta-sec" id="final-cta">
   <div class="cta-wrap">
     <div class="sec-head rev">
-      <div class="sec-eye">START YOUR GOLDEN TIME</div>
-    </div>
-    <h2 class="cta-h2 rev">10년 뒤의 세금,<br><em>오늘 예측해 보세요</em></h2>
-    <p class="cta-sub rev rev-d1">상속이 발생하기 전에 끝내는 절세 설계<br>전문 회계사가 1:1로 상담해 드립니다</p>
+        <div class="sec-eye">START YOUR GOLDEN TIME</div>
+        <h2 class="cta-h2 rev">10년 뒤의 세금,<br><em>오늘 예측해 보세요</em></h2>
+        <p class="cta-sub rev rev-d1">상속이 발생하기 전에 끝내는 절세 설계<br>전문 회계사가 1:1로 상담해 드립니다</p>
+      </div>
     <form class="cta-form rev rev-d2" onsubmit="submitForm(event)">
       <div class="form-row two">
         <div class="form-row">
