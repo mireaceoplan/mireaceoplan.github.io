@@ -2352,25 +2352,34 @@ footer .w { max-width:1500px; }
   const quizName = hash.replace('quiz-', '');
   if (!validQuizzes.includes(quizName)) return;
   
-  function applyQuizHash() {
-    if (typeof openQuizModal === 'function') {
-      // 외부 hash 진입 시 진단 섹션(#prod-section)으로 먼저 스크롤
-      const section = document.getElementById('prod-section');
-      if (section) {
-        section.scrollIntoView({ behavior: 'auto', block: 'start' });
-      }
-      requestAnimationFrame(() => {
-        openQuizModal(`quiz-${quizName}.html`);
-      });
-    } else {
-      setTimeout(applyQuizHash, 100);
-    }
+  // 진단 섹션(#prod-section)으로 명시적 스크롤
+  function scrollToProdSection() {
+    const section = document.getElementById('prod-section');
+    if (!section) return false;
+    const targetY = section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, targetY);
+    return true;
   }
   
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyQuizHash);
-  } else {
+  function applyQuizHash() {
+    if (typeof openQuizModal !== 'function') {
+      setTimeout(applyQuizHash, 100);
+      return;
+    }
+    // 1차 스크롤 (즉시)
+    scrollToProdSection();
+    // 2차 스크롤 (layout 안정화 후) + 모달 열기
+    requestAnimationFrame(() => {
+      scrollToProdSection();
+      openQuizModal(`quiz-${quizName}.html`);
+    });
+  }
+  
+  // 모든 리소스(이미지/비디오) 로드 완료 후 실행
+  if (document.readyState === 'complete') {
     applyQuizHash();
+  } else {
+    window.addEventListener('load', applyQuizHash);
   }
 })();
 
