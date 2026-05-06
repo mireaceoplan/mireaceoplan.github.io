@@ -2344,6 +2344,7 @@ footer .w { max-width:1500px; }
 // ============= 퀴즈 모달 Hash 라우팅 (외부 진입용) =============
 // URL의 #quiz-master, #quiz-mrisk 등으로 해당 퀴즈 모달 자동 열림
 // 메일·외부 광고에서 직접 특정 퀴즈로 진입 가능
+console.log('미래CEO플랜 v7 loaded');
 (function handleQuizHashOnLoad() {
   const validQuizzes = ['master', 'mrisk', 'succession', 'risk', 'asset', 'fund'];
   const hash = (window.location.hash || '').replace('#', '');
@@ -2352,25 +2353,34 @@ footer .w { max-width:1500px; }
   const quizName = hash.replace('quiz-', '');
   if (!validQuizzes.includes(quizName)) return;
   
-  function applyQuizHash() {
-    if (typeof openQuizModal === 'function') {
-      // 외부 hash 진입 시 진단 섹션(#prod-section)으로 먼저 스크롤
-      const section = document.getElementById('prod-section');
-      if (section) {
-        section.scrollIntoView({ behavior: 'auto', block: 'start' });
-      }
-      requestAnimationFrame(() => {
-        openQuizModal(`quiz-${quizName}.html`);
-      });
-    } else {
-      setTimeout(applyQuizHash, 100);
-    }
+  // 진단 섹션(#prod-section)으로 명시적 스크롤
+  function scrollToProdSection() {
+    const section = document.getElementById('prod-section');
+    if (!section) return false;
+    const targetY = section.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo(0, targetY);
+    return true;
   }
   
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyQuizHash);
-  } else {
+  function applyQuizHash() {
+    if (typeof openQuizModal !== 'function') {
+      setTimeout(applyQuizHash, 100);
+      return;
+    }
+    // 1차 스크롤 (즉시)
+    scrollToProdSection();
+    // 2차 스크롤 (layout 안정화 후) + 모달 열기
+    requestAnimationFrame(() => {
+      scrollToProdSection();
+      openQuizModal(`quiz-${quizName}.html`);
+    });
+  }
+  
+  // 모든 리소스(이미지/비디오) 로드 완료 후 실행
+  if (document.readyState === 'complete') {
     applyQuizHash();
+  } else {
+    window.addEventListener('load', applyQuizHash);
   }
 })();
 
@@ -2455,6 +2465,22 @@ function showToast(m){
 function openQuizModal(src){
   const modal  = document.getElementById('quiz-modal');
   const iframe = document.getElementById('quiz-modal-iframe');
+  
+  // [v7] 외부 hash 진입 첫 호출 시 prod-section 좌표를 명시적으로 계산
+  let _v7TargetScrollY = null;
+  if (!window._quizFirstOpenDone) {
+    window._quizFirstOpenDone = true;
+    if (window.location.hash && window.location.hash.startsWith('#quiz-')) {
+      const _section = document.getElementById('prod-section');
+      if (_section) {
+        _v7TargetScrollY = _section.getBoundingClientRect().top + window.scrollY;
+        // 즉시 instant 스크롤
+        try { window.scrollTo({ top: _v7TargetScrollY, behavior: 'instant' }); }
+        catch(e) { window.scrollTo(0, _v7TargetScrollY); }
+      }
+    }
+  }
+  
   // 디폴트 height (측정 실패 시 폴백)
   iframe.style.height = '720px';
   iframe.src = src;
@@ -2472,7 +2498,8 @@ function openQuizModal(src){
   } catch(err) { /* hash 동기화 실패 시 무시 */ }
 
   // ─ 스크롤 위치 보존 (모달 열릴 때 부모창이 위로 점프하지 않도록)
-  const scrollY = window.scrollY;
+  // [v7] hash 진입 시 _v7TargetScrollY가 설정됐으면 그 좌표를 강제 사용 (window.scrollTo 실패 대비)
+  const scrollY = (_v7TargetScrollY !== null) ? _v7TargetScrollY : window.scrollY;
   document.body.dataset.savedScroll = String(scrollY);
   document.body.style.position = 'fixed';
   document.body.style.top = `-${scrollY}px`;
