@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CEO플랜 — 회사 자금을 대표님 자산으로 | 미래CEO플랜</title>
-<meta name="description" content="법인 통장의 돈은 아직 대표님 자산이 아닙니다. 합법적인 자산 이전 설계, 미래CEO플랜.">
-<meta property="og:title" content="CEO플랜 — 회사 자금을 대표님 자산으로">
-<meta property="og:description" content="법인 자금을 합법적으로 대표님 자산으로. 1분 진단으로 시작하세요.">
+<title>CEO플랜 — 회사 돈으로 끝낼 것인가, 대표님 자산으로 남길 것인가 | 미래CEO플랜</title>
+<meta name="description" content="법인 통장에 5억이 쌓여도 그건 아직 회사 돈입니다. 대표님 은퇴·승계·유고 리스크까지 함께 점검하는 CEO플랜, 1분 진단으로 시작하세요.">
+<meta property="og:title" content="CEO플랜 — 회사 돈으로 끝낼 것인가, 대표님 자산으로 남길 것인가">
+<meta property="og:description" content="법인 통장에 쌓인 돈, 그대로 두면 대표님 자산이 아닙니다. 1분 진단으로 가능성을 확인하세요.">
 <meta property="og:site_name" content="미래CEO플랜">
 
 <!-- Pretendard 폰트 (토스에서 사용) -->
@@ -59,6 +59,8 @@ body {
   background: var(--bg); 
   -webkit-font-smoothing: antialiased; 
   letter-spacing: -0.3px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
 }
 img { max-width: 100%; height: auto; display: block; }
 a { color: inherit; text-decoration: none; }
@@ -98,27 +100,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.6;
 }
 
-/* ━━━━ GNB ━━━━ */
-.gnb { 
-  position: sticky; top: 0; z-index: 100; 
-  background: rgba(255,255,255,0.96); 
-  backdrop-filter: blur(12px); 
-  border-bottom: 1px solid var(--line-soft); 
-}
-.gnb-inner { 
-  display: flex; align-items: center; justify-content: space-between; 
-  padding: 16px 24px; max-width: var(--maxw); margin: 0 auto; 
-}
-.gnb-logo { font-size: 20px; font-weight: 800; color: var(--text-strong); letter-spacing: -0.5px; }
-.gnb-cta { 
-  display: inline-flex; align-items: center; gap: 6px; 
-  padding: 10px 18px; 
-  background: var(--text-strong); color: var(--bg); 
-  font-size: 14px; font-weight: 700; 
-  border-radius: 8px; 
-  transition: all 0.15s; 
-}
-.gnb-cta:hover { background: var(--blue); }
 
 /* ━━━━ 공통 — 큰 텍스트 시스템 ━━━━ */
 .h1-mega { 
@@ -230,11 +211,11 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   letter-spacing: -0.2px; 
 }
 .hero h1 { 
-  font-size: 80px; 
+  font-size: 64px; 
   font-weight: 800; 
   color: var(--text-strong); 
-  line-height: 1.1; 
-  letter-spacing: -1.2px; 
+  line-height: 1.15; 
+  letter-spacing: -1.5px; 
   margin-bottom: 28px;
 }
 .hero h1 strong { color: var(--blue); font-weight: 800; }
@@ -250,6 +231,20 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .hero-img-wrap { 
   margin: 0 auto; 
   max-width: 720px; 
+  position: relative;
+}
+.hero-img-wrap img { 
+  border-radius: 32px !important; 
+  filter: drop-shadow(0 20px 40px rgba(49,130,246,0.08));
+}
+.hero-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 25%;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  pointer-events: none;
+  border-radius: 0 0 32px 32px;
 }
 
 /* ━━━━ 3 KEY VALUES ━━━━ */
@@ -351,7 +346,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-radius: 20px; 
   padding: 40px 36px; 
   display: flex; 
-  align-items: flex-start; 
+  align-items: center; 
   gap: 24px; 
 }
 .value-4-icon-wrap { flex-shrink: 0; width: 80px; }
@@ -422,23 +417,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 .case-result-box { 
   background: var(--bg); 
-  border-radius: 16px; 
-  padding: 24px 28px; 
-  margin-top: 20px; 
+  border-radius: 12px; 
+  padding: 20px 24px; 
+  margin: 24px 0 0 -24px; 
 }
 .case-result-box-label { 
-  font-size: 12px; 
-  font-weight: 700; 
-  color: var(--blue); 
-  letter-spacing: 0.5px; 
-  margin-bottom: 8px; 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: var(--text-mute); 
+  letter-spacing: -0.1px; 
+  margin-bottom: 10px; 
 }
 .case-result-box-value { 
-  font-size: 22px; 
-  font-weight: 800; 
-  color: var(--text-strong); 
-  line-height: 1.4; 
-  letter-spacing: -0.5px; 
+  font-size: 18px; 
+  font-weight: 700; 
+  color: var(--text-soft); 
+  line-height: 1.5; 
+  letter-spacing: -0.3px; 
 }
 .case-result-box-value strong { color: var(--blue); }
 .case-big-img .img-placeholder { 
@@ -457,11 +452,16 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 .testi-track { 
   display: flex; 
   gap: 16px; 
-  overflow-x: auto; 
   padding-bottom: 16px; 
-  scroll-snap-type: x mandatory; 
-  scrollbar-width: none; 
-  -ms-overflow-style: none; 
+  width: max-content; 
+  animation: testi-scroll 40s linear infinite; 
+}
+.testi-track:hover { 
+  animation-play-state: paused; 
+}
+@keyframes testi-scroll { 
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(calc(-50% - 8px)); } 
 }
 .testi-track::-webkit-scrollbar { display: none; }
 .testi-card { 
@@ -855,61 +855,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   color: var(--bg); 
 }
 
-/* ━━━━ FOOTER ━━━━ */
-.footer { 
-  background: var(--text-strong); 
-  color: rgba(255,255,255,0.65); 
-  padding: 56px 0 40px; 
-  border-top: 1px solid rgba(255,255,255,0.1); 
-}
-.footer-disclaimer { 
-  background: rgba(255,255,255,0.04); 
-  border-left: 3px solid var(--blue); 
-  padding: 18px 22px; 
-  border-radius: 0 8px 8px 0; 
-  margin-bottom: 32px; 
-}
-.footer-disclaimer p { 
-  font-size: 12px; 
-  color: rgba(255,255,255,0.7); 
-  line-height: 1.7; 
-  letter-spacing: -0.2px; 
-}
-.footer-disclaimer strong { color: var(--blue); }
-.footer-info p { 
-  font-size: 12px; 
-  line-height: 1.85; 
-  margin-bottom: 4px; 
-  letter-spacing: -0.2px; 
-}
-.footer-info strong { color: rgba(255,255,255,0.92); }
-.footer-trust { 
-  display: inline-block; 
-  margin-top: 12px; 
-  padding: 6px 12px; 
-  background: rgba(49,130,246,0.15); 
-  border: 1px solid rgba(49,130,246,0.3); 
-  border-radius: 100px; 
-  font-size: 11px; 
-  color: var(--blue); 
-}
-.footer-links { 
-  margin-top: 24px; 
-  display: flex; 
-  gap: 16px; 
-  flex-wrap: wrap; 
-}
-.footer-links a { 
-  font-size: 12px; 
-  color: rgba(255,255,255,0.5); 
-  transition: color 0.15s; 
-}
-.footer-links a:hover { color: var(--bg); }
-.footer-copy { 
-  margin-top: 20px; 
-  font-size: 11px; 
-  color: rgba(255,255,255,0.4); 
-}
 
 /* ━━━━ TOAST ━━━━ */
 .toast { 
@@ -1060,12 +1005,102 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .sticky-form { display: none; }
 }
 
+/* ━━━━ GNB (inheritance와 통일) ━━━━ */
+.gnb { 
+  position:fixed; top:0; left:0; right:0; z-index:600; 
+  background:rgba(255,255,255,.97); 
+  backdrop-filter:blur(16px); 
+  border-bottom:1px solid var(--line); 
+  box-shadow:0 2px 16px rgba(0,0,0,.04); 
+}
+.gnb-inner { 
+  max-width:var(--maxw); margin:0 auto; padding:0 24px; 
+  display:flex; flex-direction:row; align-items:center; height:64px; 
+}
+.gnb-row-top { height:auto; flex-shrink:0; margin-right:28px; }
+.gnb-row-bottom { height:auto; flex:1; display:flex; align-items:center; gap:8px; }
+.gnb-logo { 
+  font-size:21px; font-weight:800; letter-spacing:-.4px; 
+  cursor:pointer; flex-shrink:0; color:var(--text-strong); text-decoration:none; 
+}
+.gnb-logo em { color:var(--blue); font-style:normal; }
+.gnb-label { display:none; }
+.gnb-targets { display:flex; gap:2px; margin-right:auto; }
+.gnb-t { 
+  display:inline-flex; align-items:center; gap:7px; 
+  font-size:16px; font-weight:600; color:var(--text-soft); 
+  padding:0 14px; height:64px; 
+  border-bottom:2px solid transparent; transition:all .2s; 
+  white-space:nowrap; background:none; cursor:pointer; text-decoration:none; 
+}
+.gnb-t:hover { color:var(--text-strong); }
+.gnb-t.active { color:var(--text-strong); }
+.gnb-btn { 
+  background:var(--blue); color:#fff; padding:11px 22px; border-radius:999px; 
+  font-size:16px; font-weight:700; 
+  display:inline-flex; align-items:center; gap:8px; 
+  transition:all .18s; flex-shrink:0; letter-spacing:-.01em; 
+  box-shadow:0 2px 8px rgba(49,130,246,.25); cursor:pointer; text-decoration:none;
+}
+.gnb-btn:hover { background:var(--blue-deep); transform:translateY(-1px); box-shadow:0 6px 16px rgba(49,130,246,.35); }
+.gnb-btn-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.85); animation:pulse 1.8s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
+
+/* ━━━━ FOOTER (다크 톤 유지 + inheritance 구조 적용) ━━━━ */
+.footer { 
+  background: var(--text-strong); 
+  color: rgba(255,255,255,0.65); 
+  padding: 56px 0 40px; 
+  border-top: 1px solid rgba(255,255,255,0.1); 
+}
+.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.footer-logo { font-size:17px; font-weight:800; color:rgba(255,255,255,0.95); }
+.footer-logo em { color:var(--blue); font-style:normal; }
+.footer-back { 
+  font-size:12px; color:rgba(255,255,255,0.6); 
+  display:inline-flex; align-items:center; gap:6px; 
+  transition:color .15s; text-decoration:none; 
+}
+.footer-back:hover { color:rgba(255,255,255,0.95); }
+.footer-legal {
+  margin-top:28px; padding:14px 0;
+  border-top:1px solid rgba(255,255,255,0.1); 
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+}
+.footer-legal-links { display:flex; gap:12px; align-items:center; flex-shrink:0; font-size:13px; }
+.footer-legal-links a { 
+  color:rgba(255,255,255,0.6); font-weight:500; text-decoration:none; transition:color 0.15s; 
+}
+.footer-legal-links a.emphasize { color:rgba(255,255,255,0.92); font-weight:600; }
+.footer-legal-links a:hover { color:rgba(255,255,255,0.95); text-decoration:underline; }
+.footer-legal-sep { color:rgba(255,255,255,0.25); font-size:11px; }
+.footer-legal-notice { 
+  font-size:12px; color:rgba(255,255,255,0.5); 
+  line-height:1.5; word-break:keep-all; 
+}
+.footer-company-info { 
+  margin-top:14px; font-size:12px; 
+  color:rgba(255,255,255,0.4); line-height:1.7; 
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .gnb-targets { display:none; }
+  .gnb-inner { justify-content:space-between; padding:0 20px; }
+  .gnb-logo { font-size:18px; }
+  .gnb-btn { padding:9px 16px; font-size:14px; }
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:12px; }
+}
+
 /* ━━━━ MOBILE ━━━━ */
 @media (max-width: 768px) {
   .hero { padding: 64px 0 56px; }
-  .hero h1 { font-size: 38px; line-height: 1.2; letter-spacing: -0.6px; }
+  .hero h1 { font-size: 28px; line-height: 1.3; letter-spacing: -0.7px; }
   .hero-sub { font-size: 16px; }
-  .h2-large, .zigzag-text h2 { font-size: 30px; line-height: 1.25; letter-spacing: -1px; }
+  .h2-large, .zigzag-text h2 { font-size: 26px; line-height: 1.3; letter-spacing: -0.8px; }
   .h3-medium, .stats-head h2, .cta-form-head h2, .final-cta h2 { font-size: 26px; }
   .lead { font-size: 16px; }
   .values-3-grid, .values-4-grid, .partners-grid, .stats-grid { grid-template-columns: 1fr; gap: 12px; }
@@ -1076,7 +1111,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .case-big { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
   .case-big.reverse .case-big-text { order: 2; }
   .case-big.reverse .case-big-img { order: 1; }
-  .case-big-text h3 { font-size: 22px; }
+  .case-big-text h3 { font-size: 20px; line-height: 1.3; }
   .form-row { grid-template-columns: 1fr; }
   .value-3-card, .value-4-card, .partner-card, .process-step { padding: 28px 24px; }
   .value-4-card { flex-direction: column; gap: 16px; }
@@ -1086,32 +1121,46 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   .stat-num { font-size: 40px; }
   .hero, .values-3, .zigzag, .values-4, .cases, .testi, .partners, .stats, .process, .faq, .cta-form-sec, .final-cta { padding: 64px 0; }
   .testi-card { flex: 0 0 280px; }
-  .gnb-cta { padding: 9px 14px; font-size: 13px; }
   .btn-cta { padding: 16px 24px; font-size: 15px; }
   .btn-cta-large { padding: 18px 28px; font-size: 16px; }
 }
 </style>
 </head>
 <body>
-
-<!-- ═══ GNB ═══ -->
-<header class="gnb">
+<header class="gnb scrolled" id="gnb">
   <div class="gnb-inner">
-    <a class="gnb-logo" href="index.html">미래CEO플랜</a>
-    <a class="gnb-cta" href="index.html#quiz-master">1분 진단 →</a>
+    <div class="gnb-row-top">
+      <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    </div>
+    <div class="gnb-row-bottom">
+      <span class="gnb-label">나는</span>
+      <nav class="gnb-targets">
+        <a class="gnb-t active" data-target="corp" href="index.html#corp"><span>법인 대표입니다</span></a>
+        <a class="gnb-t" data-target="small" href="index.html#small"><span>소상공인입니다</span></a>
+        <a class="gnb-t" data-target="seller" href="index.html#seller"><span>셀러·벤더입니다</span></a>
+      </nav>
+      <a class="gnb-btn" href="index.html#quiz-master">
+        <span class="gnb-btn-dot"></span>1분 경영 스코어
+      </a>
+    </div>
   </div>
 </header>
+
+
+
+<!-- ═══ GNB ═══ -->
+
 
 <!-- ═══════════════════════════════════════════ -->
 <!-- 1. HERO                                     -->
 <!-- ═══════════════════════════════════════════ -->
 <section class="hero">
   <div class="w">
-    <span class="hero-eye">CEO PLAN · 자산 이전 설계</span>
+    <span class="hero-eye">CEO PLAN · 대표 전용 자산 전략</span>
     
-    <h1>회사 자금을<br><strong>대표님 자산으로</strong></h1>
+    <h1>회사 돈으로 끝낼 것인가,<br><strong>대표님 자산으로 남길 것인가</strong></h1>
     
-    <p class="hero-sub">법인 통장의 돈, 합법적으로 가져오는 정확한 방법을 설계해드려요</p>
+    <p class="hero-sub">법인에 쌓인 이익, 그건 아직 회사 돈입니다.<br>어떻게 가져오느냐에 따라 결과는 다릅니다.</p>
     
     <div class="hero-img-wrap">
       <img src="./hero-main.png" alt="회사 자금을 대표 자산으로" 
@@ -1126,8 +1175,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="values-3">
   <div class="w">
     <div class="values-3-head">
-      <span class="tag-blue">CEO PLAN의 3가지 약속</span>
-      <h2 class="h2-large">진짜 효과를<br>한 번에 만들어드려요</h2>
+      <span class="tag-blue">CEO PLAN의 핵심</span>
+      <h2 class="h2-large">CEO플랜은<br>단순 절세가 아닙니다</h2>
     </div>
     
     <div class="values-3-grid">
@@ -1136,8 +1185,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./coins-falling.png" alt="법인세 절감" 
             style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
         </div>
-        <h3>법인세 절감</h3>
-        <p>매년 빠지던 법인세를<br>당해년도부터 즉시 절감</p>
+        <h3>매년 내는 법인세,<br>그대로 두실 건가요?</h3>
+        <p>회사 구조에 따라 줄일 수 있는 여지가<br>있는지 사전에 점검합니다</p>
       </div>
       
       <div class="value-3-card blue">
@@ -1145,8 +1194,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./shield-glass.png" alt="합법적 자산 이전" 
             style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
         </div>
-        <h3>합법적 자산 이전</h3>
-        <p>회사 자금을 대표 자산으로<br>법적 근거에 따라 안전하게</p>
+        <h3>대표님 자산으로,<br>어떤 길이 맞을까요?</h3>
+        <p>급여·배당·퇴직재원에 따라 결과가<br>달라지는 구조를 함께 검토합니다</p>
       </div>
       
       <div class="value-3-card purple">
@@ -1154,8 +1203,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./expert.png" alt="전문가 매칭" 
             style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
         </div>
-        <h3>전문가 매칭</h3>
-        <p>회계·세무·법무 검증된<br>협력 파트너가 직접 진행</p>
+        <h3>세무·법무·재무를<br>한 자리에서</h3>
+        <p>각각 따로 듣지 마시고<br>통합 검토 한 번으로 정리하세요</p>
       </div>
     </div>
   </div>
@@ -1169,8 +1218,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="zigzag-row">
       <div class="zigzag-text">
         <span class="tag-blue">PROBLEM</span>
-        <h2>법인 통장의 돈은<br><strong>아직 대표님 돈이 아닙니다</strong></h2>
-        <p class="lead">매년 5억, 10억씩 벌어도 그건 회사 돈이지 대표님 자산이 아니에요. 합법적으로 가져오는 방법은 정해져 있고, 어떤 방법을 선택하느냐에 따라 세부담이 5배 차이 납니다.</p>
+        <h2>같은 회사를 키워도,<br><strong>대표님 손에 남는 결과는 다릅니다</strong></h2>
+        <p class="lead">법인 통장에 쌓인 이익은 회사의 돈입니다. 급여·배당·퇴직재원, 어떤 길로 가져오느냐에 따라 대표님 손에 남는 금액은 크게 달라집니다.</p>
       </div>
       <div class="zigzag-img">
         <img src="./bank-comparison.png" alt="법인 통장 vs 대표 통장" 
@@ -1188,8 +1237,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
     <div class="zigzag-row reverse">
       <div class="zigzag-text">
         <span class="tag-blue">SOLUTION</span>
-        <h2>회사 돈을 가져오는<br><strong>가장 효과적인 방법</strong></h2>
-        <p class="lead">월급도, 배당도 아닌 <strong style="color:var(--text-strong);">퇴직금</strong>이 답이에요. 공제 항목이 크고 연분연승 저율 과세로 같은 1억이라도 세금이 가장 적게 나옵니다. 정관 정비 + CEO플랜으로 효과는 극대화됩니다.</p>
+        <h2>같은 1억이라도<br><strong>어떻게 받느냐에 따라 달라집니다</strong></h2>
+        <p class="lead">급여·배당·<strong style="color:var(--text-strong);">퇴직재원</strong>은 세금 계산 방식이 모두 다릅니다. 우리 회사에 맞는 길은? CEO플랜은 그 답을 회사 구조에 맞춰 함께 찾습니다.</p>
       </div>
       <div class="zigzag-img">
         <img src="./arrow-flow.png" alt="자산 이전 효과 비교" 
@@ -1206,7 +1255,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="w">
     <div class="values-4-head">
       <span class="tag-blue">CEO PLAN VALUE</span>
-      <h2 class="h2-large">한 번의 설계로<br><strong style="color:var(--blue);">4가지가</strong> 동시에</h2>
+      <h2 class="h2-large">대표님 회사라면<br><strong style="color:var(--blue);">함께 봐야 할 4가지</strong></h2>
     </div>
     
     <div class="values-4-grid">
@@ -1215,8 +1264,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./tax-saving.png" alt="법인세 즉시 절감" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
         </div>
         <div class="value-4-content">
-          <h3>법인세 즉시 절감</h3>
-          <p>당해년도 손금 처리로 매년 수천만~억 단위 법인세 즉시 절감</p>
+          <h3>법인세 부담</h3>
+          <p>낮출 길이 있는지 회사 구조에 맞춰 함께 점검합니다</p>
         </div>
       </div>
       
@@ -1225,8 +1274,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./succession-saving.png" alt="승계세 절감" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
         </div>
         <div class="value-4-content">
-          <h3>승계세 절감</h3>
-          <p>비상장주식 가치 조정으로 자녀 승계 시 상속·증여세 부담 절감</p>
+          <h3>승계 리스크</h3>
+          <p>미리 준비할수록 선택지가 많아지는 구조를 점검합니다</p>
         </div>
       </div>
       
@@ -1235,8 +1284,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <img src="./protection.png" alt="유고 시 보호 재원" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
         </div>
         <div class="value-4-content">
-          <h3>유고 시 보호 재원</h3>
-          <p>대표 부재 시 즉시 법인 통장으로 입금되는 보호 재원 확보</p>
+          <h3>유고 리스크</h3>
+          <p>대표 부재 상황의 보호 재원 구조를 함께 설계합니다</p>
         </div>
       </div>
       
@@ -1246,7 +1295,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         </div>
         <div class="value-4-content">
           <h3>대표 퇴직재원</h3>
-          <p>중장기 환급금이 은퇴 시점 퇴직금 재원으로 자연스럽게 전환</p>
+          <p>은퇴 시점에 맞춰 퇴직재원을 미리 만들어둡니다</p>
         </div>
       </div>
     </div>
@@ -1260,70 +1309,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="w">
     <div class="cases-head">
       <span class="tag-blue">REAL CASE</span>
-      <h2 class="h2-large">실제 사례로<br>보여드릴게요</h2>
+      <h2 class="h2-large">이런 법인이라면<br>CEO플랜 검토가 필요합니다</h2>
     </div>
     
     <div class="case-big">
       <div class="case-big-text">
         <span class="case-big-eye">CASE 01 · 제조업 A법인</span>
-        <h3>비상장주식 100억 → 80억<br>승계세 약 10억 절감</h3>
+        <h3>이익은 쌓였지만<br>승계 준비가 늦어진 제조업 법인</h3>
         <div class="case-big-meta">자본금 1억 / 매출 50억 / 대표 55세 / 자녀 승계 계획</div>
         <div class="case-result-box">
-          <div class="case-result-box-label">10년 통합 효과</div>
-          <div class="case-result-box-value">법인세 7천만/년 × 10년 + <strong>승계세 약 10억 절감</strong></div>
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">비상장 가치 조정 + 정관 정비 + <strong>승계 사전 점검</strong></div>
         </div>
       </div>
       <div class="case-big-img">
-        <div class="img-placeholder">
-          <strong>[3D 이미지]</strong>
-          <div class="img-spec">
-            비포/애프터 화살표 인포그래픽<br>
-            100억 → 80억 시각화<br>
-            500×400px
-          </div>
-        </div>
+        <img src="./case1.png" alt="제조업 법인 - 승계 준비 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
       </div>
     </div>
     
     <div class="case-big reverse">
       <div class="case-big-text">
         <span class="case-big-eye">CASE 02 · 유통업 B법인</span>
-        <h3>법인 통장 묶인 15억<br>대표 자산화 + 보호 재원</h3>
+        <h3>통장에는 돈이 있지만<br>대표 자산화 계획이 없던 유통업 법인</h3>
         <div class="case-big-meta">매출 30억 / 법인 통장 누적 15억 / 대표 48세</div>
         <div class="case-result-box">
-          <div class="case-result-box-label">10년 통합 효과</div>
-          <div class="case-result-box-value">법인세 4천만/년 × 10년 + <strong>퇴직재원 약 7억</strong></div>
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">법인세 완화 + 퇴직재원 설계 + <strong>보호재원 점검</strong></div>
         </div>
       </div>
       <div class="case-big-img">
-        <div class="img-placeholder">
-          <strong>[3D 이미지]</strong>
-          <div class="img-spec">
-            법인 통장 자금이 단계적으로 흘러가는 일러스트<br>
-            500×400px
-          </div>
-        </div>
+        <img src="./case2.png" alt="유통업 법인 - 자산화 + 보호 재원 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
       </div>
     </div>
     
     <div class="case-big">
       <div class="case-big-text">
         <span class="case-big-eye">CASE 03 · 서비스업 C법인</span>
-        <h3>10년 골든타임 활용<br>승계세 5~7억 절감 예상</h3>
+        <h3>아직 젊다고 미뤘지만<br>지금이 준비 적기였던 서비스업 법인</h3>
         <div class="case-big-meta">매출 20억 / 비상장 가치 40억 / 대표 50세</div>
         <div class="case-result-box">
-          <div class="case-result-box-label">10년 누적 효과</div>
-          <div class="case-result-box-value">법인세 누적 5억 절감 + <strong>비상장 가치 25% 조정</strong></div>
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">10년 설계 + 비상장 가치 조정 + <strong>승계 리스크 점검</strong></div>
         </div>
       </div>
       <div class="case-big-img">
-        <div class="img-placeholder">
-          <strong>[3D 이미지]</strong>
-          <div class="img-spec">
-            10년 타임라인 누적 효과 그래프 3D<br>
-            500×400px
-          </div>
-        </div>
+        <img src="./case3.png" alt="서비스업 법인 - 10년 사전 설계 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
       </div>
     </div>
   </div>
@@ -1336,13 +1369,13 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="w">
     <div class="testi-head">
       <span class="tag-blue">REVIEW</span>
-      <h2 class="h2-large">대표님들의<br>'다른' 경험</h2>
+      <h2 class="h2-large">대표님들이 상담 후<br>가장 많이 하는 말</h2>
     </div>
     
     <div class="testi-track">
       <div class="testi-card">
-        <div class="testi-tag">명쾌한 답변</div>
-        <p class="testi-text">은행 PB센터에서도 답을 못 받았던 부분을 <mark>딱 정리해주셨어요.</mark> 우리 회사 우선순위가 명확해졌어요.</p>
+        <div class="testi-tag">시야의 전환</div>
+        <p class="testi-text">회사 매출만 보다가 <mark>대표 개인 자산을</mark> 처음으로 따로 보게 됐습니다. 우선순위가 완전히 바뀌었어요.</p>
         <div class="testi-meta">
           <div class="testi-avatar">김</div>
           <div class="testi-name">제조업 대표 · 50대</div>
@@ -1350,8 +1383,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       
       <div class="testi-card">
-        <div class="testi-tag">묘수 발견</div>
-        <p class="testi-text">다른 곳에선 '안 된다'고만 했는데, <mark>지주회사 설립을 통한 우회 증여</mark>라는 묘수를 찾아주셨어요.</p>
+        <div class="testi-tag">시점의 중요성</div>
+        <p class="testi-text"><mark>왜 지금 준비해야 하는지</mark> 이해됐습니다. 사전 점검이 왜 필요한지 알게 됐어요.</p>
         <div class="testi-meta">
           <div class="testi-avatar">박</div>
           <div class="testi-name">제조업 대표 · 60대</div>
@@ -1359,8 +1392,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       
       <div class="testi-card">
-        <div class="testi-tag">통합 설계</div>
-        <p class="testi-text">CEO플랜 + 정관 정비를 통합으로 진행하니 <mark>매년 법인세도 줄고 퇴직재원</mark>도 마련됐어요.</p>
+        <div class="testi-tag">구조 우선</div>
+        <p class="testi-text">상품 설명보다 <mark>회사 구조를 먼저</mark> 봐줘서 좋았습니다. 접근 방식이 달랐어요.</p>
         <div class="testi-meta">
           <div class="testi-avatar">이</div>
           <div class="testi-name">유통업 대표 · 48세</div>
@@ -1368,8 +1401,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       
       <div class="testi-card">
-        <div class="testi-tag">강압 영업 X</div>
-        <p class="testi-text">'우리 회사는 아직 시급하지 않다'고 <mark>솔직하게 말씀해주셨어요.</mark> 진짜 전문가의 모습이었어요.</p>
+        <div class="testi-tag">통합 정리</div>
+        <p class="testi-text">세무사, 법무사, 재무 담당을 따로 만나던 시간이 <mark>한 번에 정리됐습니다.</mark> 이게 진짜 통합 검토구나 싶었어요.</p>
         <div class="testi-meta">
           <div class="testi-avatar">정</div>
           <div class="testi-name">서비스업 대표 · 42세</div>
@@ -1377,8 +1410,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       
       <div class="testi-card">
-        <div class="testi-tag">전문성</div>
-        <p class="testi-text">설명이 어렵지 않았어요. <mark>제 입장에서 필요한 것만</mark> 콕 짚어주셨어요. 처음 받는 상담 같았어요.</p>
+        <div class="testi-tag">신뢰감</div>
+        <p class="testi-text">"우리 회사는 아직 시급하지 않다"고 <mark>솔직하게 말씀해주셨어요.</mark> 영업이 아니라 진짜 진단이었습니다.</p>
         <div class="testi-meta">
           <div class="testi-avatar">최</div>
           <div class="testi-name">법인 대표 · 55세</div>
@@ -1386,13 +1419,68 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
       </div>
       
       <div class="testi-card">
-        <div class="testi-tag">존중하는 상담</div>
-        <p class="testi-text">재촉하거나 계속 연락하지 않고 <mark>제 페이스에 맞춰 주셨어요.</mark> 부담 없이 결정할 수 있었어요.</p>
+        <div class="testi-tag">큰 그림</div>
+        <p class="testi-text">"절세"만 생각하고 갔는데, <mark>회사·승계·은퇴까지</mark> 한 번에 정리됐어요. 차원이 달랐습니다.</p>
         <div class="testi-meta">
           <div class="testi-avatar">윤</div>
           <div class="testi-name">유통업 대표 · 47세</div>
         </div>
       </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">시야의 전환</div>
+        <p class="testi-text">회사 매출만 보다가 <mark>대표 개인 자산을</mark> 처음으로 따로 보게 됐습니다. 우선순위가 완전히 바뀌었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">김</div>
+          <div class="testi-name">제조업 대표 · 50대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">시점의 중요성</div>
+        <p class="testi-text"><mark>왜 지금 준비해야 하는지</mark> 이해됐습니다. 사전 점검이 왜 필요한지 알게 됐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">박</div>
+          <div class="testi-name">제조업 대표 · 60대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">구조 우선</div>
+        <p class="testi-text">상품 설명보다 <mark>회사 구조를 먼저</mark> 봐줘서 좋았습니다. 접근 방식이 달랐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">이</div>
+          <div class="testi-name">유통업 대표 · 48세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">통합 정리</div>
+        <p class="testi-text">세무사, 법무사, 재무 담당을 따로 만나던 시간이 <mark>한 번에 정리됐습니다.</mark> 이게 진짜 통합 검토구나 싶었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">정</div>
+          <div class="testi-name">서비스업 대표 · 42세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">신뢰감</div>
+        <p class="testi-text">"우리 회사는 아직 시급하지 않다"고 <mark>솔직하게 말씀해주셨어요.</mark> 영업이 아니라 진짜 진단이었습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">최</div>
+          <div class="testi-name">법인 대표 · 55세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">큰 그림</div>
+        <p class="testi-text">"절세"만 생각하고 갔는데, <mark>회사·승계·은퇴까지</mark> 한 번에 정리됐어요. 차원이 달랐습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">윤</div>
+          <div class="testi-name">유통업 대표 · 47세</div>
+        </div>
+      </div>
+    
     </div>
   </div>
 </section>
@@ -1404,45 +1492,45 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="w">
     <div class="partners-head">
       <span class="tag-blue">EXPERT NETWORK</span>
-      <h2 class="h2-large">검증된 전문가가<br>직접 진행해요</h2>
-      <p class="body-text" style="margin-top:24px;">미래CEO플랜은 직접 자문하지 않습니다. 검증된 협력 파트너 중 대표님 상황에 가장 적합한 전문가를 매칭해드려요.</p>
+      <h2 class="h2-large">CEO플랜은<br>한 분야만 봐서는 완성되지 않습니다</h2>
+      <p class="body-text" style="margin-top:24px;">세무사는 절세를, 법무사는 정관을, 재무 담당은 자산을 봅니다. 각자의 답이 회사 전체에 맞는다는 보장은 없습니다. 6개 분야가 한 시선으로 회사를 분석하고, 한 방향으로 설계할 때 진짜 효과가 나옵니다.</p>
     </div>
     
     <div class="partners-grid">
       <div class="partner-card">
         <span class="partner-cat">회계법인</span>
-        <div class="partner-name">회계법인 리파인드</div>
-        <div class="partner-role">상속·증여 / 가업승계<br>법인전환 전문</div>
+        <div class="partner-name">상속·증여 / 가업승계</div>
+        <div class="partner-role">자산 이전 구조<br>법인전환 검토</div>
       </div>
       
       <div class="partner-card">
-        <span class="partner-cat">CEO 컨설팅</span>
-        <div class="partner-name">한화피플라이프</div>
-        <div class="partner-role">법인 컨설팅<br>리스크 관리 전문</div>
+        <span class="partner-cat">경영 컨설팅</span>
+        <div class="partner-name">법인 리스크 관리</div>
+        <div class="partner-role">CEO 자산 전략<br>리스크 사전 점검</div>
       </div>
       
       <div class="partner-card">
         <span class="partner-cat">세무법인</span>
-        <div class="partner-name">세무법인 협력</div>
-        <div class="partner-role">법인 세무 컨설팅<br>절세 전략</div>
+        <div class="partner-name">법인 세무 컨설팅</div>
+        <div class="partner-role">절세 전략<br>세무 구조 검토</div>
       </div>
       
       <div class="partner-card">
-        <span class="partner-cat">법무법인</span>
-        <div class="partner-name">가이우스 법률사무소</div>
-        <div class="partner-role">정관 정비<br>기업 법률 자문</div>
+        <span class="partner-cat">법률사무소</span>
+        <div class="partner-name">정관 정비 / 법률 자문</div>
+        <div class="partner-role">기업 법률 검토<br>임원 규정 정비</div>
       </div>
       
       <div class="partner-card">
         <span class="partner-cat">노무법인</span>
-        <div class="partner-name">노무 협력</div>
-        <div class="partner-role">인사·노무 컨설팅<br>임원 보수 규정</div>
+        <div class="partner-name">인사·노무 컨설팅</div>
+        <div class="partner-role">임원 보수 규정<br>인사 구조 검토</div>
       </div>
       
       <div class="partner-card">
         <span class="partner-cat">감정평가</span>
-        <div class="partner-name">감정평가 협력</div>
-        <div class="partner-role">비상장주식 평가<br>부동산 감정평가</div>
+        <div class="partner-name">비상장주식 평가</div>
+        <div class="partner-role">부동산·자산 감정<br>가치 평가 검토</div>
       </div>
     </div>
   </div>
@@ -1454,18 +1542,18 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="stats">
   <div class="w">
     <div class="stats-head">
-      <h2>숫자로 증명하는<br>미래CEO플랜</h2>
-      <p class="lead">신뢰는 숫자에서 시작돼요</p>
+      <h2>큰돈이 오가는 결정,<br>감으로 정하지 마세요</h2>
+      <p class="lead">미래CEO플랜이 검증한 협력 구조와 운영 기준</p>
     </div>
     
     <div class="stats-grid">
       <div class="stat-item">
-        <div class="stat-num"><em>2년</em><br>연속</div>
-        <div class="stat-label">NAVER Partner of the Year</div>
+        <div class="stat-num"><em>6</em>분야</div>
+        <div class="stat-label">통합 검토 영역</div>
       </div>
       <div class="stat-item">
-        <div class="stat-num"><em>7</em>+</div>
-        <div class="stat-label">검증된 협력 파트너</div>
+        <div class="stat-num"><em>1:1</em></div>
+        <div class="stat-label">회사별 맞춤 매칭</div>
       </div>
       <div class="stat-item">
         <div class="stat-num"><em>1영업일</em></div>
@@ -1486,29 +1574,29 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   <div class="w">
     <div class="process-head">
       <span class="tag-blue">PROCESS</span>
-      <h2 class="h2-large">진행은 간단해요</h2>
+      <h2 class="h2-large">복잡한 CEO플랜,<br>시작은 간단합니다</h2>
     </div>
     
     <div class="process-grid">
       <div class="process-step">
         <div class="process-num">STEP 01</div>
         <h3>1분 진단</h3>
-        <p>적합 여부와 우선순위를 자동 점검</p>
+        <p>회사 정보 5가지만 입력하면<br>우선순위가 자동 분석됩니다</p>
       </div>
       <div class="process-step">
         <div class="process-num">STEP 02</div>
-        <h3>항목 분류</h3>
-        <p>시급한 영역을 미래CEO플랜이 분류</p>
+        <h3>우선순위 확인</h3>
+        <p>회사 상황에 맞춰 우선순위를 정리합니다</p>
       </div>
       <div class="process-step">
         <div class="process-num">STEP 03</div>
-        <h3>1차 상담</h3>
-        <p>담당자가 직접 통화로 상황 확인</p>
+        <h3>1차 통화 상담</h3>
+        <p>1영업일 내 담당자가 연락드려<br>회사 상황을 30분 내로 확인합니다</p>
       </div>
       <div class="process-step">
         <div class="process-num">STEP 04</div>
-        <h3>전문가 매칭</h3>
-        <p>적합한 협력 파트너 직접 연결</p>
+        <h3>전문가 연결</h3>
+        <p>적합한 협력 파트너를 직접 연결합니다</p>
       </div>
     </div>
   </div>
@@ -1531,7 +1619,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>지분을 보유한 대표가 있는 중소 법인에서 가장 효과가 큽니다. 매출 10억 이상부터 의미 있는 절감 효과가 발생하며, 매출 30억 이상이면 적극 검토 단계입니다. 회사 매출·자산 구조에 따라 우선순위가 달라지므로 사전 진단이 필요해요.</p>
+          <p>지분을 보유한 대표가 있는 중소 법인에서 검토 가능성이 큽니다. 다만 회사 매출, 자산 구조, 정관 상태에 따라 우선순위가 크게 달라집니다.<br><br>"우리 회사도 가능한가?" — 이 질문의 답은 1분 진단으로 먼저 확인하실 수 있습니다.</p>
         </div>
       </div>
       
@@ -1541,7 +1629,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>정관에 임원 퇴직금 규정과 유족 보상금 규정이 없으면 비용 처리가 부인될 위험이 큽니다. 미래CEO플랜은 항상 정관 정비를 먼저 검토하고 협력 법무 파트너를 통해 정비를 진행한 뒤 CEO플랜을 설계해요.</p>
+          <p>정관에 임원 퇴직금 규정과 유족 보상금 규정이 없으면 비용 처리에 영향이 있을 수 있습니다. 미래CEO플랜은 정관 상태를 먼저 검토하고, 협력 법무 파트너를 통해 정비를 진행한 뒤 CEO플랜 구조를 함께 설계합니다.</p>
         </div>
       </div>
       
@@ -1551,7 +1639,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>1차 상담은 무료입니다. 상담 신청 후 1영업일 내 미래CEO플랜 담당자가 연락드려 회사 상황을 파악하고 적합 여부를 점검해드려요. 강압 영업이나 특정 상품 권유는 일절 없습니다.</p>
+          <p>1차 상담은 무료입니다. 신청 후 1영업일 내 담당자가 연락드려 회사 상황을 확인하고 검토 가능성을 안내드립니다. 강압 영업이나 특정 상품 권유는 없습니다.</p>
         </div>
       </div>
       
@@ -1561,7 +1649,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>미래CEO플랜은 상담 중개 / 솔루션 큐레이션 플랫폼이에요. 직접 자문은 하지 않고, 검증된 회계·세무·법무·금융 협력 파트너 중 대표님 상황에 가장 적합한 전문가를 매칭해드립니다. 모든 구체 자문과 설계는 협력 파트너가 직접 제공해요.</p>
+          <p>미래CEO플랜은 상담 중개 / 솔루션 큐레이션 플랫폼입니다. 직접 자문은 하지 않으며, 검증된 회계·세무·법무·재무 협력 파트너 중 대표님 상황에 맞는 전문가를 매칭해드립니다.</p>
         </div>
       </div>
       
@@ -1571,7 +1659,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>중도 해지 시 환급금은 법인의 익금(이익)으로 처리되어 법인세가 발생합니다. 단, 그 환급금을 대표 퇴직금으로 지급하면 비용으로 상계 처리되어 법인세가 상쇄돼요. 그래서 CEO플랜은 대표 퇴직 시점에 맞춰 장기 설계하는 것이 가장 효과적입니다.</p>
+          <p>중도 해지 시 환급금은 법인 익금으로 처리되어 법인세에 영향을 줄 수 있습니다. 환급금을 대표 퇴직재원으로 활용하면 비용으로 상계되는 구조를 검토할 수 있어, 장기 설계가 효과적입니다.</p>
         </div>
       </div>
       
@@ -1581,7 +1669,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
           <span class="faq-toggle">+</span>
         </button>
         <div class="faq-a">
-          <p>가장 빠른 때가 가장 좋은 때입니다. CEO플랜의 핵심 효과인 비상장주식 가치 조정과 승계세 절감은 10년 사전 설계가 가장 효과적이에요. 매년 누적되는 법인세 절감액을 고려하면 시작이 늦어질수록 잃는 금액이 커요.</p>
+          <p>빠를수록 선택지가 많아집니다. 비상장주식 가치 조정과 승계 준비는 사전 설계 기간이 길수록 효과가 누적되는 구조이기 때문입니다.<br><br>"5년 늦으면 어떻게 달라지는가?" — 회사 상황에 따른 시기별 비교도 1차 상담에서 함께 확인해드립니다.</p>
         </div>
       </div>
     </div>
@@ -1594,8 +1682,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="cta-form-sec" id="consult">
   <div class="w cta-form-inner">
     <div class="cta-form-head">
-      <h2>우리 회사<br><strong>무료로 점검받기</strong></h2>
-      <p>1영업일 내 담당자가 연락드려 무료로 점검해드려요</p>
+      <h2>우리 회사도<br><strong>CEO플랜이 가능할까요?</strong></h2>
+      <p>회사 정보 5가지만 알려주시면, 1영업일 내 담당자가 연락드려<br>편안하게 검토 가능성을 안내드립니다.</p>
     </div>
     
     <form class="cta-form" onsubmit="submitForm(event)">
@@ -1662,7 +1750,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
         </label>
       </div>
       
-      <button type="submit" class="form-submit">무료 상담 신청하기 →</button>
+      <button type="submit" class="form-submit">CEO플랜 가능성 확인하기 →</button>
       
       <div class="form-trust">
         <span>1영업일 내 연락</span>
@@ -1679,9 +1767,9 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <section class="final-cta">
   <div class="w">
     <div class="final-cta-logo">미래CEO플랜</div>
-    <h2>대표님 회사의 가능 여부,<br>지금 1분이면 확인할 수 있어요</h2>
+    <h2>대표님 회사가 가능한지,<br>1분이면 알 수 있습니다</h2>
     <div class="final-cta-row">
-      <a href="index.html#quiz-master" class="btn-cta">1분 진단 시작하기 →</a>
+      <a href="index.html#quiz-master" class="btn-cta">CEO플랜 가능성 확인하기 →</a>
       <a href="#consult" class="btn-line">상담 신청하기</a>
     </div>
   </div>
@@ -1690,33 +1778,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 <!-- ═══════════════════════════════════════════ -->
 <!-- FOOTER                                       -->
 <!-- ═══════════════════════════════════════════ -->
-<footer class="footer">
-  <div class="w">
-    <div class="footer-disclaimer">
-      <p>미래CEO플랜은 <strong>상담 중개 / 솔루션 큐레이션 플랫폼</strong>입니다. 본 페이지의 정보는 일반적인 시장 사례에 기반한 안내이며, 직접 자문이나 특정 상품 권유가 아닙니다. 모든 구체 자문과 설계는 검증된 회계법인·세무법인·법무법인 협력 파트너가 직접 제공합니다. 회사별 효과는 매출·자산 구조·정관 상태에 따라 달라질 수 있으며, 사전 진단으로 도입 적합 여부를 먼저 확인하시기 바랍니다.</p>
-    </div>
-    <div class="footer-info">
-      <p><strong>㈜프로그레스미디어</strong> · 미래CEO플랜 운영</p>
-      <p>대표자: 구동엽 · 사업자등록번호: 113-86-27124</p>
-      <p>서울특별시 구로구 디지털로26길 43, L동 1901-1905호 (대륭포스트타워 8차)</p>
-      <p>TEL: 02-6261-5102 · E-mail: esoyeon@my-progress.co.kr</p>
-      <span class="footer-trust">2024·2025 NAVER Partner of the Year · 2025 NAVER Premier Partner</span>
-    </div>
-    <div class="footer-links">
-      <a href="index.html">미래CEO플랜 메인</a>
-      <a href="index.html#quiz-master">1분 경영 스코어</a>
-      <a href="ceo-library.html">CEO 라이브러리</a>
-      <a href="mirae-ceo-faq-01-final.html">자주 묻는 질문</a>
-      <a href="privacy.html">개인정보처리방침</a>
-    </div>
-    <p class="footer-copy">© 2026 ㈜프로그레스미디어. All rights reserved.</p>
-  </div>
-</footer>
+
 
 <!-- ═══ 플로팅 상담 폼 (.sticky-form) ═══ -->
 <aside class="sticky-form" id="stickyForm">
-  <div class="sticky-form-title">무료 상담 신청</div>
-  <div class="sticky-form-sub">1영업일 이내 전문가가 연락드립니다</div>
+  <div class="sticky-form-title">우리 회사도 가능할까요?</div>
+  <div class="sticky-form-sub">1영업일 내 담당자가 연락드려 안내합니다</div>
   <form onsubmit="submitStickyForm(event)">
     <div class="form-row">
       <label class="form-label">담당자명 <span class="req">*</span></label>
@@ -1771,10 +1838,34 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   </div>
 </aside>
 
+<footer class="footer">
+  <div class="w">
+    <div class="footer-inner">
+      <div class="footer-logo">미래<em>CEO</em>플랜</div>
+      <a class="footer-back" href="index.html#corp">← 전체 솔루션 보러가기</a>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      ㈜프로그레스미디어 · 대표 구동엽 · 사업자등록번호 113-86-27124<br>
+      TEL 02-6261-5102 | FAX 02-6261-5104 | esoyeon@my-progress.co.kr<br>
+      © 2026 프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
 <div class="toast" id="toast"></div>
 
 <script>
-console.log('미래CEO플랜 - solution-ceoplan.html v9.5 (HERO h1 자간 조정) loaded');
+console.log('미래CEO플랜 - solution-ceoplan.html v29 (HERO 이미지 정사각형 끊김 해소 - 페이드+그림자) loaded');
 
 function toggleFaq(btn) {
   const item = btn.parentElement;
@@ -1783,7 +1874,7 @@ function toggleFaq(btn) {
 
 function submitForm(e) {
   e.preventDefault();
-  showToast('CEO플랜 점검 신청이 접수되었습니다. 1영업일 내 연락드려요.');
+  showToast('CEO플랜 가능성 확인 신청이 접수되었습니다. 1영업일 내 연락드립니다.');
   e.target.reset();
 }
 
