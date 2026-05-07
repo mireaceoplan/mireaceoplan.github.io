@@ -1,0 +1,1889 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CEO플랜 — 회사 돈으로 끝낼 것인가, 대표님 자산으로 남길 것인가 | 미래CEO플랜</title>
+<meta name="description" content="법인 통장에 5억이 쌓여도 그건 아직 회사 돈입니다. 대표님 은퇴·승계·유고 리스크까지 함께 점검하는 CEO플랜, 1분 진단으로 시작하세요.">
+<meta property="og:title" content="CEO플랜 — 회사 돈으로 끝낼 것인가, 대표님 자산으로 남길 것인가">
+<meta property="og:description" content="법인 통장에 쌓인 돈, 그대로 두면 대표님 자산이 아닙니다. 1분 진단으로 가능성을 확인하세요.">
+<meta property="og:site_name" content="미래CEO플랜">
+
+<!-- Pretendard 폰트 (토스에서 사용) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+
+<style>
+:root {
+  /* 토스 컬러 시스템 */
+  --bg: #FFFFFF;
+  --bg-section: #F9FAFB;
+  --bg-card: #F2F4F6;
+  --bg-blue: #F4F6F8;
+  
+  /* 텍스트 */
+  --text-strong: #191F28;
+  --text-default: #333D4B;
+  --text-soft: #4E5968;
+  --text-mute: #8B95A1;
+  --text-light: #B0B8C1;
+  
+  /* 라인 */
+  --line: #E5E8EB;
+  --line-soft: #F2F4F6;
+  
+  /* 토스 블루 (액센트) */
+  --blue: #3182F6;
+  --blue-deep: #1B64DA;
+  --blue-soft: #E8F3FF;
+  
+  /* 미래CEO플랜 브랜드 (액센트로만 유지) */
+  --navy: #1E2761;
+  --gold: #FFD966;
+  
+  /* 보조 컬러 (카드용) */
+  --yellow-bg: #FFF6D6;
+  --pink-bg: #FFE2E5;
+  --purple-bg: #EDE9FF;
+  --green-bg: #DEFBE6;
+  --orange-bg: #FFE5D6;
+  
+  --maxw: 1100px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { 
+  font-family: 'Pretendard', 'Pretendard Variable', -apple-system, BlinkMacSystemFont, system-ui, 'Apple SD Gothic Neo', sans-serif; 
+  color: var(--text-default); 
+  line-height: 1.6; 
+  background: var(--bg); 
+  -webkit-font-smoothing: antialiased; 
+  letter-spacing: -0.3px;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+.w { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+
+/* ━━━━ 이미지 플레이스홀더 (사용자 제공 시 교체) ━━━━ */
+.img-placeholder { 
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--line-soft) 100%);
+  border: 2px dashed var(--line); 
+  border-radius: 24px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  flex-direction: column;
+  gap: 12px;
+  color: var(--text-mute); 
+  font-size: 13px; 
+  font-weight: 500;
+  text-align: center;
+  padding: 40px 24px;
+  min-height: 280px;
+  letter-spacing: -0.2px;
+}
+.img-placeholder strong { 
+  color: var(--text-soft); 
+  font-size: 14px; 
+  font-weight: 700; 
+  display: block;
+  margin-bottom: 4px;
+}
+.img-placeholder .img-spec { 
+  font-size: 11px; 
+  color: var(--text-light); 
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+
+/* ━━━━ 공통 — 큰 텍스트 시스템 ━━━━ */
+.h1-mega { 
+  font-size: 72px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.1; 
+  letter-spacing: -2px; 
+}
+.h2-large { 
+  font-size: 52px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.18; 
+  letter-spacing: -1.5px; 
+  margin-bottom: 24px;
+}
+.h3-medium {
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text-strong);
+  line-height: 1.3;
+  letter-spacing: -0.8px;
+}
+.lead { 
+  font-size: 20px; 
+  color: var(--text-soft); 
+  line-height: 1.6; 
+  letter-spacing: -0.4px; 
+  font-weight: 500;
+}
+.body-text { 
+  font-size: 17px; 
+  color: var(--text-soft); 
+  line-height: 1.7; 
+  letter-spacing: -0.3px; 
+}
+.caption { 
+  font-size: 14px; 
+  color: var(--text-mute); 
+  font-weight: 500; 
+  letter-spacing: -0.2px; 
+}
+
+/* CTA 버튼 — 토스 스타일 */
+.btn-cta { 
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px; 
+  padding: 18px 32px; 
+  background: var(--text-strong); color: var(--bg); 
+  font-size: 16px; font-weight: 700; 
+  border-radius: 12px; 
+  transition: all 0.15s; 
+  letter-spacing: -0.3px; 
+}
+.btn-cta:hover { background: var(--blue); transform: translateY(-1px); }
+.btn-cta-blue { background: var(--blue); color: #fff; }
+.btn-cta-blue:hover { background: var(--blue-deep); }
+.btn-cta-large { padding: 22px 40px; font-size: 18px; border-radius: 14px; }
+.btn-line { 
+  display: inline-flex; align-items: center; gap: 6px; 
+  padding: 18px 28px; 
+  color: var(--text-strong); 
+  font-size: 15px; font-weight: 600; 
+  border: 1.5px solid var(--line); 
+  border-radius: 12px; 
+  transition: all 0.15s; 
+}
+.btn-line:hover { border-color: var(--text-strong); }
+
+/* 작은 라벨 */
+.tag-blue { 
+  display: inline-block; 
+  font-size: 13px; 
+  font-weight: 700; 
+  color: var(--blue); 
+  background: var(--blue-soft); 
+  padding: 6px 14px; 
+  border-radius: 100px; 
+  letter-spacing: -0.2px; 
+  margin-bottom: 20px;
+}
+.tag-dark { 
+  display: inline-block; 
+  font-size: 13px; 
+  font-weight: 700; 
+  color: var(--bg); 
+  background: var(--text-strong); 
+  padding: 6px 14px; 
+  border-radius: 100px; 
+  letter-spacing: -0.2px; 
+  margin-bottom: 20px;
+}
+
+/* ━━━━ HERO ━━━━ */
+.hero { 
+  padding: 120px 0 100px; 
+  background: var(--bg); 
+  text-align: center;
+}
+.hero-eye { 
+  display: inline-block; 
+  font-size: 14px; 
+  font-weight: 700; 
+  color: var(--blue); 
+  background: var(--blue-soft); 
+  padding: 8px 18px; 
+  border-radius: 100px; 
+  margin-bottom: 32px; 
+  letter-spacing: -0.2px; 
+}
+.hero h1 { 
+  font-size: 64px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.15; 
+  letter-spacing: -1.5px; 
+  margin-bottom: 28px;
+}
+.hero h1 strong { color: var(--blue); font-weight: 800; }
+.hero-sub { 
+  font-size: 22px; 
+  color: var(--text-soft); 
+  line-height: 1.55; 
+  margin-bottom: 48px; 
+  font-weight: 500; 
+  letter-spacing: -0.4px; 
+}
+
+.hero-img-wrap { 
+  margin: 0 auto; 
+  max-width: 720px; 
+  position: relative;
+}
+.hero-img-wrap img { 
+  border-radius: 32px !important; 
+  filter: drop-shadow(0 20px 40px rgba(49,130,246,0.08));
+}
+.hero-img-wrap::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 25%;
+  background: linear-gradient(to bottom, transparent 0%, var(--bg) 100%);
+  pointer-events: none;
+  border-radius: 0 0 32px 32px;
+}
+
+/* ━━━━ 3 KEY VALUES ━━━━ */
+.values-3 { 
+  padding: 100px 0; 
+  background: var(--bg); 
+}
+.values-3-head { 
+  text-align: center; 
+  max-width: 700px; 
+  margin: 0 auto 80px; 
+}
+.values-3-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 24px; 
+}
+.value-3-card { 
+  background: var(--bg-card); 
+  border-radius: 24px; 
+  padding: 48px 36px; 
+  text-align: center; 
+  transition: transform 0.2s; 
+}
+.value-3-card:hover { transform: translateY(-4px); }
+.value-3-card.yellow { background: var(--yellow-bg); }
+.value-3-card.blue { background: var(--blue-soft); }
+.value-3-card.purple { background: var(--purple-bg); }
+.value-3-img { 
+  margin-bottom: 28px; 
+}
+.value-3-img .img-placeholder { 
+  min-height: 160px; 
+  background: rgba(255,255,255,0.5); 
+  border-color: rgba(0,0,0,0.08); 
+}
+.value-3-card h3 { 
+  font-size: 24px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  margin-bottom: 12px; 
+  letter-spacing: -0.5px; 
+}
+.value-3-card p { 
+  font-size: 15px; 
+  color: var(--text-soft); 
+  line-height: 1.65; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ 좌-우 분할 메시지 (지그재그) ━━━━ */
+.zigzag { padding: 100px 0; background: var(--bg-section); }
+.zigzag.white { background: var(--bg); }
+.zigzag-row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 80px; 
+  align-items: center; 
+  margin-bottom: 0;
+}
+.zigzag-row.reverse .zigzag-text { order: 2; }
+.zigzag-row.reverse .zigzag-img { order: 1; }
+.zigzag-text { }
+.zigzag-text h2 { 
+  font-size: 48px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.2; 
+  letter-spacing: -1.4px; 
+  margin-bottom: 24px; 
+}
+.zigzag-text h2 strong { color: var(--blue); font-weight: 800; }
+.zigzag-text .lead { 
+  font-size: 19px; 
+  color: var(--text-soft); 
+  line-height: 1.65; 
+  letter-spacing: -0.3px; 
+}
+.zigzag-img { }
+.zigzag-img .img-placeholder { 
+  min-height: 360px; 
+  border-radius: 24px; 
+}
+
+/* ━━━━ 4가지 가치 (그리드) ━━━━ */
+.values-4 { padding: 100px 0; background: var(--bg-section); }
+.values-4-head { 
+  text-align: center; 
+  max-width: 700px; 
+  margin: 0 auto 64px; 
+}
+.values-4-grid { 
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px; 
+}
+.value-4-card { 
+  background: var(--bg); 
+  border-radius: 20px; 
+  padding: 40px 36px; 
+  display: flex; 
+  align-items: center; 
+  gap: 24px; 
+}
+.value-4-icon-wrap { flex-shrink: 0; width: 80px; }
+.value-4-icon-wrap .img-placeholder { 
+  min-height: 80px; width: 80px; 
+  border-radius: 20px; padding: 8px; 
+}
+.value-4-icon-wrap .img-placeholder strong { font-size: 11px; }
+.value-4-icon-wrap .img-placeholder .img-spec { display: none; }
+.value-4-content { flex: 1; }
+.value-4-content h3 { 
+  font-size: 22px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  margin-bottom: 10px; 
+  line-height: 1.3; 
+  letter-spacing: -0.5px; 
+}
+.value-4-content p { 
+  font-size: 15px; 
+  color: var(--text-soft); 
+  line-height: 1.6; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ CASE 사례 (큰 카드) ━━━━ */
+.cases { padding: 120px 0; background: var(--bg); }
+.cases-head { 
+  text-align: center; 
+  max-width: 700px; 
+  margin: 0 auto 64px; 
+}
+.case-big { 
+  background: var(--bg-section); 
+  border-radius: 24px; 
+  padding: 56px; 
+  margin-bottom: 24px; 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 48px; 
+  align-items: center; 
+}
+.case-big.reverse .case-big-text { order: 2; }
+.case-big.reverse .case-big-img { order: 1; }
+.case-big-eye { 
+  display: inline-block; 
+  font-size: 13px; 
+  font-weight: 700; 
+  color: var(--blue); 
+  background: var(--blue-soft); 
+  padding: 6px 14px; 
+  border-radius: 100px; 
+  margin-bottom: 16px; 
+}
+.case-big-text h3 { 
+  font-size: 32px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.25; 
+  letter-spacing: -0.8px; 
+  margin-bottom: 16px; 
+}
+.case-big-meta { 
+  font-size: 14px; 
+  color: var(--text-mute); 
+  margin-bottom: 24px; 
+  font-weight: 500; 
+}
+.case-result-box { 
+  background: var(--bg); 
+  border-radius: 12px; 
+  padding: 20px 24px; 
+  margin: 24px 0 0 -24px; 
+}
+.case-result-box-label { 
+  font-size: 13px; 
+  font-weight: 600; 
+  color: var(--text-mute); 
+  letter-spacing: -0.1px; 
+  margin-bottom: 10px; 
+}
+.case-result-box-value { 
+  font-size: 18px; 
+  font-weight: 700; 
+  color: var(--text-soft); 
+  line-height: 1.5; 
+  letter-spacing: -0.3px; 
+}
+.case-result-box-value strong { color: var(--blue); }
+.case-big-img .img-placeholder { 
+  min-height: 320px; 
+  background: var(--bg); 
+  border-color: var(--line-soft); 
+}
+
+/* ━━━━ TESTIMONIAL (후기 슬라이더) ━━━━ */
+.testi { padding: 120px 0; background: var(--bg-section); overflow: hidden; }
+.testi-head { 
+  text-align: center; 
+  max-width: 700px; 
+  margin: 0 auto 64px; 
+}
+.testi-track { 
+  display: flex; 
+  gap: 16px; 
+  padding-bottom: 16px; 
+  width: max-content; 
+  animation: testi-scroll 40s linear infinite; 
+}
+.testi-track:hover { 
+  animation-play-state: paused; 
+}
+@keyframes testi-scroll { 
+  0% { transform: translateX(0); } 
+  100% { transform: translateX(calc(-50% - 8px)); } 
+}
+.testi-track::-webkit-scrollbar { display: none; }
+.testi-card { 
+  flex: 0 0 320px; 
+  background: var(--bg); 
+  border-radius: 20px; 
+  padding: 32px 28px; 
+  scroll-snap-align: start; 
+}
+.testi-tag { 
+  font-size: 13px; 
+  font-weight: 700; 
+  color: var(--blue); 
+  margin-bottom: 14px; 
+  letter-spacing: -0.2px; 
+}
+.testi-text { 
+  font-size: 16px; 
+  color: var(--text-default); 
+  line-height: 1.65; 
+  letter-spacing: -0.3px; 
+  margin-bottom: 28px; 
+  font-weight: 500; 
+}
+.testi-text mark { 
+  background: var(--yellow-bg); 
+  padding: 2px 4px; 
+  border-radius: 3px; 
+  color: var(--text-strong); 
+  font-weight: 700; 
+}
+.testi-meta { 
+  display: flex; align-items: center; gap: 12px; 
+  padding-top: 20px; 
+  border-top: 1px solid var(--line-soft); 
+}
+.testi-avatar { 
+  width: 44px; height: 44px; 
+  border-radius: 50%; 
+  background: var(--bg-card); 
+  display: flex; align-items: center; justify-content: center; 
+  font-weight: 700; color: var(--text-soft); 
+  font-size: 14px; 
+}
+.testi-name { 
+  font-size: 13px; 
+  color: var(--text-mute); 
+  font-weight: 500; 
+}
+
+/* ━━━━ PARTNERS ━━━━ */
+.partners { padding: 120px 0; background: var(--bg); }
+.partners-head { 
+  text-align: center; 
+  max-width: 760px; 
+  margin: 0 auto 64px; 
+}
+.partners-grid { 
+  display: grid; 
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 16px; 
+}
+.partner-card { 
+  background: var(--bg-section); 
+  border-radius: 20px; 
+  padding: 36px 32px; 
+  transition: all 0.2s; 
+}
+.partner-card:hover { 
+  background: var(--bg-card); 
+  transform: translateY(-3px); 
+}
+.partner-cat { 
+  display: inline-block; 
+  font-size: 12px; 
+  font-weight: 700; 
+  color: var(--blue); 
+  background: var(--blue-soft); 
+  padding: 5px 12px; 
+  border-radius: 100px; 
+  margin-bottom: 16px; 
+  letter-spacing: -0.2px; 
+}
+.partner-name { 
+  font-size: 20px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  margin-bottom: 8px; 
+  letter-spacing: -0.4px; 
+}
+.partner-role { 
+  font-size: 14px; 
+  color: var(--text-soft); 
+  line-height: 1.55; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ STATS (숫자 카운트) ━━━━ */
+.stats { 
+  padding: 120px 0; 
+  background: var(--text-strong); 
+  color: var(--bg); 
+  text-align: center; 
+}
+.stats-head { 
+  max-width: 800px; 
+  margin: 0 auto 80px; 
+}
+.stats-head h2 { 
+  font-size: 48px; 
+  font-weight: 800; 
+  color: var(--bg); 
+  line-height: 1.2; 
+  letter-spacing: -1.4px; 
+  margin-bottom: 20px; 
+}
+.stats-head .lead { 
+  font-size: 19px; 
+  color: rgba(255,255,255,0.72); 
+  font-weight: 500; 
+}
+.stats-grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 32px; 
+}
+.stat-item { }
+.stat-num { 
+  font-size: 56px; 
+  font-weight: 800; 
+  color: var(--bg); 
+  line-height: 1; 
+  letter-spacing: -2px; 
+  margin-bottom: 12px; 
+}
+.stat-num em { color: var(--blue); font-style: normal; }
+.stat-label { 
+  font-size: 15px; 
+  color: rgba(255,255,255,0.7); 
+  font-weight: 500; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ PROCESS ━━━━ */
+.process { padding: 120px 0; background: var(--bg); }
+.process-head { 
+  text-align: center; 
+  max-width: 700px; 
+  margin: 0 auto 64px; 
+}
+.process-grid { 
+  display: grid; 
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 16px; 
+}
+.process-step { 
+  background: var(--bg-section); 
+  border-radius: 20px; 
+  padding: 36px 28px; 
+}
+.process-num { 
+  font-size: 14px; 
+  font-weight: 800; 
+  color: var(--blue); 
+  letter-spacing: 1px; 
+  margin-bottom: 14px; 
+}
+.process-step h3 { 
+  font-size: 19px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  margin-bottom: 10px; 
+  letter-spacing: -0.4px; 
+  line-height: 1.35; 
+}
+.process-step p { 
+  font-size: 14px; 
+  color: var(--text-soft); 
+  line-height: 1.6; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ FAQ ━━━━ */
+.faq { padding: 120px 0; background: var(--bg-section); }
+.faq-head { 
+  text-align: center; 
+  margin-bottom: 64px; 
+}
+.faq-list { max-width: 800px; margin: 0 auto; }
+.faq-item { 
+  background: var(--bg); 
+  border-radius: 16px; 
+  margin-bottom: 12px; 
+  overflow: hidden; 
+  transition: background 0.15s; 
+}
+.faq-q { 
+  width: 100%; 
+  padding: 24px 28px; 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  cursor: pointer; 
+  text-align: left; 
+}
+.faq-q-text { 
+  font-size: 17px; 
+  font-weight: 700; 
+  color: var(--text-strong); 
+  letter-spacing: -0.4px; 
+  flex: 1; 
+  padding-right: 20px; 
+}
+.faq-toggle { 
+  width: 24px; height: 24px; 
+  display: flex; align-items: center; justify-content: center; 
+  font-size: 20px; font-weight: 600; 
+  color: var(--text-mute); 
+  transition: all 0.2s; 
+  flex-shrink: 0; 
+}
+.faq-item.open .faq-toggle { transform: rotate(45deg); color: var(--blue); }
+.faq-a { 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: max-height 0.3s ease, padding 0.3s ease; 
+  padding: 0 28px; 
+}
+.faq-item.open .faq-a { 
+  max-height: 600px; 
+  padding: 0 28px 24px; 
+}
+.faq-a p { 
+  font-size: 15px; 
+  color: var(--text-soft); 
+  line-height: 1.7; 
+  letter-spacing: -0.2px; 
+}
+
+/* ━━━━ CTA + FORM ━━━━ */
+.cta-form-sec { padding: 120px 0; background: var(--bg); }
+.cta-form-inner { max-width: 720px; margin: 0 auto; }
+.cta-form-head { text-align: center; margin-bottom: 48px; }
+.cta-form-head h2 { 
+  font-size: 48px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  line-height: 1.18; 
+  letter-spacing: -1.4px; 
+  margin-bottom: 20px; 
+}
+.cta-form-head h2 strong { color: var(--blue); }
+.cta-form-head p { 
+  font-size: 18px; 
+  color: var(--text-soft); 
+  line-height: 1.6; 
+  letter-spacing: -0.3px; 
+  font-weight: 500; 
+}
+.cta-form { 
+  background: var(--bg-section); 
+  border-radius: 24px; 
+  padding: 48px 40px; 
+}
+.form-row { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
+  margin-bottom: 16px; 
+}
+.form-row.single { grid-template-columns: 1fr; }
+.form-group label { 
+  display: block; 
+  font-size: 14px; 
+  font-weight: 700; 
+  color: var(--text-strong); 
+  margin-bottom: 8px; 
+  letter-spacing: -0.2px; 
+}
+.form-input, .form-textarea, .form-select { 
+  width: 100%; 
+  padding: 16px 18px; 
+  border: 1.5px solid var(--line); 
+  border-radius: 12px; 
+  font-size: 15px; 
+  font-family: inherit; 
+  color: var(--text-strong); 
+  transition: border-color 0.15s; 
+  background: var(--bg); 
+  letter-spacing: -0.3px; 
+}
+.form-input:focus, .form-textarea:focus, .form-select:focus { 
+  outline: none; 
+  border-color: var(--blue); 
+}
+.form-input::placeholder { color: var(--text-light); }
+.form-textarea { min-height: 100px; resize: vertical; }
+.form-checks { 
+  background: var(--bg); 
+  border-radius: 12px; 
+  padding: 18px 20px; 
+  margin: 24px 0; 
+}
+.form-check { 
+  display: flex; align-items: flex-start; gap: 10px; 
+  margin-bottom: 10px; 
+  font-size: 14px; 
+  color: var(--text-soft); 
+  cursor: pointer; 
+  line-height: 1.5; 
+  letter-spacing: -0.2px; 
+}
+.form-check:last-child { margin-bottom: 0; }
+.form-check input { margin-top: 3px; flex-shrink: 0; accent-color: var(--blue); }
+.form-check strong { color: var(--text-strong); font-weight: 700; }
+.form-submit { 
+  width: 100%; 
+  padding: 20px; 
+  background: var(--text-strong); 
+  color: var(--bg); 
+  font-size: 17px; 
+  font-weight: 700; 
+  border-radius: 14px; 
+  transition: all 0.15s; 
+  letter-spacing: -0.3px; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 8px; 
+}
+.form-submit:hover { background: var(--blue); }
+.form-trust { 
+  display: flex; 
+  gap: 20px; 
+  flex-wrap: wrap; 
+  justify-content: center; 
+  margin-top: 24px; 
+  font-size: 13px; 
+  color: var(--text-mute); 
+  font-weight: 500; 
+}
+.form-trust span::before { 
+  content: '✓'; 
+  color: var(--blue); 
+  margin-right: 4px; 
+  font-weight: 700; 
+}
+
+/* ━━━━ FINAL CTA (토스 OUTRO 스타일) ━━━━ */
+.final-cta { 
+  padding: 140px 0; 
+  background: var(--text-strong); 
+  color: var(--bg); 
+  text-align: center; 
+}
+.final-cta-logo { 
+  font-size: 28px; 
+  font-weight: 800; 
+  color: var(--bg); 
+  margin-bottom: 32px; 
+  letter-spacing: -0.6px; 
+}
+.final-cta h2 { 
+  font-size: 44px; 
+  font-weight: 800; 
+  color: var(--bg); 
+  line-height: 1.25; 
+  letter-spacing: -1.2px; 
+  margin-bottom: 40px; 
+}
+.final-cta-row { 
+  display: flex; 
+  gap: 12px; 
+  justify-content: center; 
+  flex-wrap: wrap; 
+}
+.final-cta .btn-cta { 
+  background: var(--blue); 
+  font-size: 18px; 
+  padding: 22px 40px; 
+  border-radius: 14px; 
+}
+.final-cta .btn-cta:hover { background: var(--blue-deep); }
+.final-cta .btn-line { 
+  border-color: rgba(255,255,255,0.3); 
+  color: rgba(255,255,255,0.85); 
+  background: transparent; 
+}
+.final-cta .btn-line:hover { 
+  border-color: var(--bg); 
+  color: var(--bg); 
+}
+
+
+/* ━━━━ TOAST ━━━━ */
+.toast { 
+  position: fixed; 
+  bottom: 32px; 
+  left: 50%; 
+  transform: translateX(-50%) translateY(100px); 
+  background: var(--text-strong); 
+  color: var(--bg); 
+  padding: 18px 28px; 
+  border-radius: 100px; 
+  font-size: 14px; 
+  font-weight: 600; 
+  box-shadow: 0 16px 32px rgba(0,0,0,0.2); 
+  transition: all 0.3s; 
+  z-index: 200; 
+  opacity: 0; 
+  letter-spacing: -0.2px; 
+}
+.toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+
+
+/* ━━━━ 플로팅 상담 폼 (.sticky-form) — inheritance/wealth와 통일 ━━━━ */
+.sticky-form { 
+  position: fixed; 
+  top: 140px; right: 24px; 
+  z-index: 500; 
+  width: 320px; 
+  background: #fff; 
+  border-radius: 20px; 
+  box-shadow: 0 20px 60px rgba(10,22,40,.12); 
+  padding: 24px; 
+  border: 1px solid var(--line-soft); 
+}
+.sticky-form-title { 
+  font-size: 17px; 
+  font-weight: 800; 
+  color: var(--text-strong); 
+  letter-spacing: -.02em; 
+  margin-bottom: 6px; 
+}
+.sticky-form-sub { 
+  font-size: 12px; 
+  color: var(--text-soft); 
+  margin-bottom: 20px; 
+  letter-spacing: -.01em; 
+}
+.sticky-form .form-row { 
+  display: flex; flex-direction: column; gap: 6px; 
+  margin-bottom: 12px; 
+}
+.sticky-form .form-label { 
+  font-size: 11px; 
+  font-weight: 700; 
+  color: var(--text-soft); 
+  letter-spacing: -.01em; 
+}
+.sticky-form .form-label .req { color: #F04452; }
+.sticky-form .form-input,
+.sticky-form .form-select { 
+  width: 100%; 
+  padding: 11px 14px; 
+  border: 1.5px solid var(--line); 
+  border-radius: 12px; 
+  font-size: 14px; 
+  font-family: inherit; 
+  background: #F4F6FA; 
+  color: var(--text-strong); 
+  transition: all .15s; 
+  letter-spacing: -.01em; 
+}
+.sticky-form .form-input:focus,
+.sticky-form .form-select:focus { 
+  outline: none; 
+  border-color: var(--blue); 
+  background: #fff; 
+}
+.sticky-form .consent-block { 
+  margin-top: 8px; 
+  padding-top: 12px; 
+  border-top: 1px dashed #E5E8EB; 
+  display: flex; flex-direction: column; gap: 7px; 
+}
+.sticky-form .consent-row { 
+  display: flex; align-items: flex-start; gap: 8px; 
+  cursor: pointer; 
+  font-size: 11.5px; 
+  line-height: 1.45; 
+  color: #4E5968; 
+  user-select: none; 
+}
+.sticky-form .consent-row input[type="checkbox"] { 
+  flex-shrink: 0; margin-top: 2px; 
+  width: 13px; height: 13px; 
+  cursor: pointer; 
+  accent-color: #3182F6; 
+}
+.sticky-form .consent-row b { 
+  font-weight: 700; color: #1A1F27; margin-right: 3px; 
+}
+.sticky-form .consent-row b.optional { color: #8B95A1; }
+.sticky-form .consent-row a { 
+  color: #3182F6; 
+  text-decoration: underline; 
+  margin-left: 4px; 
+  font-size: 11px; 
+  font-weight: 500; 
+}
+.sticky-form .consent-row a:hover { color: #1B64DA; }
+.sticky-form-submit { 
+  width: 100%; 
+  background: var(--blue); 
+  color: #fff; 
+  padding: 14px; 
+  border-radius: 12px; 
+  font-size: 15px; 
+  font-weight: 800; 
+  letter-spacing: -.01em; 
+  transition: all .15s; 
+  display: flex; align-items: center; justify-content: center; gap: 6px; 
+  margin-top: 18px; 
+  cursor: pointer; 
+  border: none; 
+  font-family: inherit; 
+}
+.sticky-form-submit:hover { background: var(--blue-deep); }
+.sticky-form-trust { 
+  margin-top: 8px; 
+  padding-top: 10px; 
+  border-top: 1px solid var(--line-soft); 
+  display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; 
+}
+.sticky-form-trust-item { 
+  display: flex; align-items: center; gap: 6px; 
+  font-size: 11px; 
+  color: var(--text-soft); 
+  letter-spacing: -.01em; 
+}
+.sticky-form-trust-chk { 
+  color: #059669; 
+  font-weight: 800; 
+  font-size: 11px; 
+}
+
+/* 모바일 (1280px 이하)에서 숨김 */
+@media (max-width: 1280px) {
+  .sticky-form { display: none; }
+}
+
+/* ━━━━ GNB (inheritance와 통일) ━━━━ */
+.gnb { 
+  position:fixed; top:0; left:0; right:0; z-index:600; 
+  background:rgba(255,255,255,.97); 
+  backdrop-filter:blur(16px); 
+  border-bottom:1px solid var(--line); 
+  box-shadow:0 2px 16px rgba(0,0,0,.04); 
+}
+.gnb-inner { 
+  max-width:var(--maxw); margin:0 auto; padding:0 24px; 
+  display:flex; flex-direction:row; align-items:center; height:64px; 
+}
+.gnb-row-top { height:auto; flex-shrink:0; margin-right:28px; }
+.gnb-row-bottom { height:auto; flex:1; display:flex; align-items:center; gap:8px; }
+.gnb-logo { 
+  font-size:21px; font-weight:800; letter-spacing:-.4px; 
+  cursor:pointer; flex-shrink:0; color:var(--text-strong); text-decoration:none; 
+}
+.gnb-logo em { color:var(--blue); font-style:normal; }
+.gnb-label { display:none; }
+.gnb-targets { display:flex; gap:2px; margin-right:auto; }
+.gnb-t { 
+  display:inline-flex; align-items:center; gap:7px; 
+  font-size:16px; font-weight:600; color:var(--text-soft); 
+  padding:0 14px; height:64px; 
+  border-bottom:2px solid transparent; transition:all .2s; 
+  white-space:nowrap; background:none; cursor:pointer; text-decoration:none; 
+}
+.gnb-t:hover { color:var(--text-strong); }
+.gnb-t.active { color:var(--text-strong); }
+.gnb-btn { 
+  background:var(--blue); color:#fff; padding:11px 22px; border-radius:999px; 
+  font-size:16px; font-weight:700; 
+  display:inline-flex; align-items:center; gap:8px; 
+  transition:all .18s; flex-shrink:0; letter-spacing:-.01em; 
+  box-shadow:0 2px 8px rgba(49,130,246,.25); cursor:pointer; text-decoration:none;
+}
+.gnb-btn:hover { background:var(--blue-deep); transform:translateY(-1px); box-shadow:0 6px 16px rgba(49,130,246,.35); }
+.gnb-btn-dot { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,.85); animation:pulse 1.8s infinite; }
+@keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
+
+/* ━━━━ FOOTER (다크 톤 유지 + inheritance 구조 적용) ━━━━ */
+.footer { 
+  background: var(--text-strong); 
+  color: rgba(255,255,255,0.65); 
+  padding: 56px 0 40px; 
+  border-top: 1px solid rgba(255,255,255,0.1); 
+}
+.footer-inner { display:flex; justify-content:space-between; align-items:center; gap:20px; flex-wrap:wrap; }
+.footer-logo { font-size:17px; font-weight:800; color:rgba(255,255,255,0.95); }
+.footer-logo em { color:var(--blue); font-style:normal; }
+.footer-back { 
+  font-size:12px; color:rgba(255,255,255,0.6); 
+  display:inline-flex; align-items:center; gap:6px; 
+  transition:color .15s; text-decoration:none; 
+}
+.footer-back:hover { color:rgba(255,255,255,0.95); }
+.footer-legal {
+  margin-top:28px; padding:14px 0;
+  border-top:1px solid rgba(255,255,255,0.1); 
+  border-bottom:1px solid rgba(255,255,255,0.1);
+  display:flex; align-items:center; gap:48px; flex-wrap:wrap;
+}
+.footer-legal-links { display:flex; gap:12px; align-items:center; flex-shrink:0; font-size:13px; }
+.footer-legal-links a { 
+  color:rgba(255,255,255,0.6); font-weight:500; text-decoration:none; transition:color 0.15s; 
+}
+.footer-legal-links a.emphasize { color:rgba(255,255,255,0.92); font-weight:600; }
+.footer-legal-links a:hover { color:rgba(255,255,255,0.95); text-decoration:underline; }
+.footer-legal-sep { color:rgba(255,255,255,0.25); font-size:11px; }
+.footer-legal-notice { 
+  font-size:12px; color:rgba(255,255,255,0.5); 
+  line-height:1.5; word-break:keep-all; 
+}
+.footer-company-info { 
+  margin-top:14px; font-size:12px; 
+  color:rgba(255,255,255,0.4); line-height:1.7; 
+}
+
+/* 모바일 (768px 이하) */
+@media (max-width: 768px) {
+  .gnb-targets { display:none; }
+  .gnb-inner { justify-content:space-between; padding:0 20px; }
+  .gnb-logo { font-size:18px; }
+  .gnb-btn { padding:9px 16px; font-size:14px; }
+  .footer-legal { flex-direction:column; align-items:flex-start; gap:10px; }
+  .footer-legal-notice { text-align:left; font-size:11px; }
+  .footer-inner { flex-direction:column; align-items:flex-start; gap:12px; }
+}
+
+/* ━━━━ MOBILE ━━━━ */
+@media (max-width: 768px) {
+  .hero { padding: 64px 0 56px; }
+  .hero h1 { font-size: 28px; line-height: 1.3; letter-spacing: -0.7px; }
+  .hero-sub { font-size: 16px; }
+  .h2-large, .zigzag-text h2 { font-size: 26px; line-height: 1.3; letter-spacing: -0.8px; }
+  .h3-medium, .stats-head h2, .cta-form-head h2, .final-cta h2 { font-size: 26px; }
+  .lead { font-size: 16px; }
+  .values-3-grid, .values-4-grid, .partners-grid, .stats-grid { grid-template-columns: 1fr; gap: 12px; }
+  .process-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+  .zigzag-row { grid-template-columns: 1fr; gap: 32px; }
+  .zigzag-row.reverse .zigzag-text { order: 2; }
+  .zigzag-row.reverse .zigzag-img { order: 1; }
+  .case-big { grid-template-columns: 1fr; gap: 32px; padding: 36px 28px; }
+  .case-big.reverse .case-big-text { order: 2; }
+  .case-big.reverse .case-big-img { order: 1; }
+  .case-big-text h3 { font-size: 20px; line-height: 1.3; }
+  .form-row { grid-template-columns: 1fr; }
+  .value-3-card, .value-4-card, .partner-card, .process-step { padding: 28px 24px; }
+  .value-4-card { flex-direction: column; gap: 16px; }
+  .value-4-icon-wrap { width: 64px; }
+  .value-4-icon-wrap .img-placeholder { width: 64px; min-height: 64px; }
+  .cta-form { padding: 32px 24px; }
+  .stat-num { font-size: 40px; }
+  .hero, .values-3, .zigzag, .values-4, .cases, .testi, .partners, .stats, .process, .faq, .cta-form-sec, .final-cta { padding: 64px 0; }
+  .testi-card { flex: 0 0 280px; }
+  .btn-cta { padding: 16px 24px; font-size: 15px; }
+  .btn-cta-large { padding: 18px 28px; font-size: 16px; }
+}
+</style>
+</head>
+<body>
+<header class="gnb scrolled" id="gnb">
+  <div class="gnb-inner">
+    <div class="gnb-row-top">
+      <a class="gnb-logo" href="index.html">미래<em>CEO</em>플랜</a>
+    </div>
+    <div class="gnb-row-bottom">
+      <span class="gnb-label">나는</span>
+      <nav class="gnb-targets">
+        <a class="gnb-t active" data-target="corp" href="index.html#corp"><span>법인 대표입니다</span></a>
+        <a class="gnb-t" data-target="small" href="index.html#small"><span>소상공인입니다</span></a>
+        <a class="gnb-t" data-target="seller" href="index.html#seller"><span>셀러·벤더입니다</span></a>
+      </nav>
+      <a class="gnb-btn" href="index.html#quiz-master">
+        <span class="gnb-btn-dot"></span>1분 경영 스코어
+      </a>
+    </div>
+  </div>
+</header>
+
+
+
+<!-- ═══ GNB ═══ -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 1. HERO                                     -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="hero">
+  <div class="w">
+    <span class="hero-eye">CEO PLAN · 대표 전용 자산 전략</span>
+    
+    <h1>회사 돈으로 끝낼 것인가,<br><strong>대표님 자산으로 남길 것인가</strong></h1>
+    
+    <p class="hero-sub">법인에 쌓인 이익, 그건 아직 회사 돈입니다.<br>어떻게 가져오느냐에 따라 결과는 다릅니다.</p>
+    
+    <div class="hero-img-wrap">
+      <img src="./hero-main.png" alt="회사 자금을 대표 자산으로" 
+           style="width:100%; height:auto; border-radius:24px; display:block;">
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 2. 3 KEY VALUES                              -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="values-3">
+  <div class="w">
+    <div class="values-3-head">
+      <span class="tag-blue">CEO PLAN의 핵심</span>
+      <h2 class="h2-large">CEO플랜은<br>단순 절세가 아닙니다</h2>
+    </div>
+    
+    <div class="values-3-grid">
+      <div class="value-3-card yellow">
+        <div class="value-3-img">
+          <img src="./coins-falling.png" alt="법인세 절감" 
+            style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
+        </div>
+        <h3>매년 내는 법인세,<br>그대로 두실 건가요?</h3>
+        <p>회사 구조에 따라 줄일 수 있는 여지가<br>있는지 사전에 점검합니다</p>
+      </div>
+      
+      <div class="value-3-card blue">
+        <div class="value-3-img">
+          <img src="./shield-glass.png" alt="합법적 자산 이전" 
+            style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
+        </div>
+        <h3>대표님 자산으로,<br>어떤 길이 맞을까요?</h3>
+        <p>급여·배당·퇴직재원에 따라 결과가<br>달라지는 구조를 함께 검토합니다</p>
+      </div>
+      
+      <div class="value-3-card purple">
+        <div class="value-3-img">
+          <img src="./expert.png" alt="전문가 매칭" 
+            style="width:100%; max-width:200px; height:auto; margin:0 auto; display:block; border-radius:16px;">
+        </div>
+        <h3>세무·법무·재무를<br>한 자리에서</h3>
+        <p>각각 따로 듣지 마시고<br>통합 검토 한 번으로 정리하세요</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 3. 좌-우 메시지 ① — 문제 정의                  -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="zigzag">
+  <div class="w">
+    <div class="zigzag-row">
+      <div class="zigzag-text">
+        <span class="tag-blue">PROBLEM</span>
+        <h2>같은 회사를 키워도,<br><strong>대표님 손에 남는 결과는 다릅니다</strong></h2>
+        <p class="lead">법인 통장에 쌓인 이익은 회사의 돈입니다. 급여·배당·퇴직재원, 어떤 길로 가져오느냐에 따라 대표님 손에 남는 금액은 크게 달라집니다.</p>
+      </div>
+      <div class="zigzag-img">
+        <img src="./bank-comparison.png" alt="법인 통장 vs 대표 통장" 
+          style="width:100%; height:auto; border-radius:24px; display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 4. 좌-우 메시지 ② — 솔루션 (지그재그)           -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="zigzag white">
+  <div class="w">
+    <div class="zigzag-row reverse">
+      <div class="zigzag-text">
+        <span class="tag-blue">SOLUTION</span>
+        <h2>같은 1억이라도<br><strong>어떻게 받느냐에 따라 달라집니다</strong></h2>
+        <p class="lead">급여·배당·<strong style="color:var(--text-strong);">퇴직재원</strong>은 세금 계산 방식이 모두 다릅니다. 우리 회사에 맞는 길은? CEO플랜은 그 답을 회사 구조에 맞춰 함께 찾습니다.</p>
+      </div>
+      <div class="zigzag-img">
+        <img src="./arrow-flow.png" alt="자산 이전 효과 비교" 
+          style="width:100%; height:auto; border-radius:24px; display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 5. 4가지 가치                                 -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="values-4">
+  <div class="w">
+    <div class="values-4-head">
+      <span class="tag-blue">CEO PLAN VALUE</span>
+      <h2 class="h2-large">대표님 회사라면<br><strong style="color:var(--blue);">함께 봐야 할 4가지</strong></h2>
+    </div>
+    
+    <div class="values-4-grid">
+      <div class="value-4-card">
+        <div class="value-4-icon-wrap">
+          <img src="./tax-saving.png" alt="법인세 즉시 절감" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
+        </div>
+        <div class="value-4-content">
+          <h3>법인세 부담</h3>
+          <p>낮출 길이 있는지 회사 구조에 맞춰 함께 점검합니다</p>
+        </div>
+      </div>
+      
+      <div class="value-4-card">
+        <div class="value-4-icon-wrap">
+          <img src="./succession-saving.png" alt="승계세 절감" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
+        </div>
+        <div class="value-4-content">
+          <h3>승계 리스크</h3>
+          <p>미리 준비할수록 선택지가 많아지는 구조를 점검합니다</p>
+        </div>
+      </div>
+      
+      <div class="value-4-card">
+        <div class="value-4-icon-wrap">
+          <img src="./protection.png" alt="유고 시 보호 재원" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
+        </div>
+        <div class="value-4-content">
+          <h3>유고 리스크</h3>
+          <p>대표 부재 상황의 보호 재원 구조를 함께 설계합니다</p>
+        </div>
+      </div>
+      
+      <div class="value-4-card">
+        <div class="value-4-icon-wrap">
+          <img src="./retirement.png" alt="대표 퇴직재원" style="width:80px; height:80px; object-fit:contain; display:block; border-radius:16px;">
+        </div>
+        <div class="value-4-content">
+          <h3>대표 퇴직재원</h3>
+          <p>은퇴 시점에 맞춰 퇴직재원을 미리 만들어둡니다</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 6. 실제 사례 (큰 카드)                         -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="cases">
+  <div class="w">
+    <div class="cases-head">
+      <span class="tag-blue">REAL CASE</span>
+      <h2 class="h2-large">이런 법인이라면<br>CEO플랜 검토가 필요합니다</h2>
+    </div>
+    
+    <div class="case-big">
+      <div class="case-big-text">
+        <span class="case-big-eye">CASE 01 · 제조업 A법인</span>
+        <h3>이익은 쌓였지만<br>승계 준비가 늦어진 제조업 법인</h3>
+        <div class="case-big-meta">자본금 1억 / 매출 50억 / 대표 55세 / 자녀 승계 계획</div>
+        <div class="case-result-box">
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">비상장 가치 조정 + 정관 정비 + <strong>승계 사전 점검</strong></div>
+        </div>
+      </div>
+      <div class="case-big-img">
+        <img src="./case1.png" alt="제조업 법인 - 승계 준비 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
+      </div>
+    </div>
+    
+    <div class="case-big reverse">
+      <div class="case-big-text">
+        <span class="case-big-eye">CASE 02 · 유통업 B법인</span>
+        <h3>통장에는 돈이 있지만<br>대표 자산화 계획이 없던 유통업 법인</h3>
+        <div class="case-big-meta">매출 30억 / 법인 통장 누적 15억 / 대표 48세</div>
+        <div class="case-result-box">
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">법인세 완화 + 퇴직재원 설계 + <strong>보호재원 점검</strong></div>
+        </div>
+      </div>
+      <div class="case-big-img">
+        <img src="./case2.png" alt="유통업 법인 - 자산화 + 보호 재원 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
+      </div>
+    </div>
+    
+    <div class="case-big">
+      <div class="case-big-text">
+        <span class="case-big-eye">CASE 03 · 서비스업 C법인</span>
+        <h3>아직 젊다고 미뤘지만<br>지금이 준비 적기였던 서비스업 법인</h3>
+        <div class="case-big-meta">매출 20억 / 비상장 가치 40억 / 대표 50세</div>
+        <div class="case-result-box">
+          <div class="case-result-box-label">이 회사는 어떻게 풀었을까요?</div>
+          <div class="case-result-box-value">10년 설계 + 비상장 가치 조정 + <strong>승계 리스크 점검</strong></div>
+        </div>
+      </div>
+      <div class="case-big-img">
+        <img src="./case3.png" alt="서비스업 법인 - 10년 사전 설계 케이스" 
+          style="width:100%; height:auto; border-radius:16px; display:block;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 7. 후기 (토스 스타일 슬라이더)                  -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="testi">
+  <div class="w">
+    <div class="testi-head">
+      <span class="tag-blue">REVIEW</span>
+      <h2 class="h2-large">대표님들이 상담 후<br>가장 많이 하는 말</h2>
+    </div>
+    
+    <div class="testi-track">
+      <div class="testi-card">
+        <div class="testi-tag">시야의 전환</div>
+        <p class="testi-text">회사 매출만 보다가 <mark>대표 개인 자산을</mark> 처음으로 따로 보게 됐습니다. 우선순위가 완전히 바뀌었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">김</div>
+          <div class="testi-name">제조업 대표 · 50대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-tag">시점의 중요성</div>
+        <p class="testi-text"><mark>왜 지금 준비해야 하는지</mark> 이해됐습니다. 사전 점검이 왜 필요한지 알게 됐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">박</div>
+          <div class="testi-name">제조업 대표 · 60대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-tag">구조 우선</div>
+        <p class="testi-text">상품 설명보다 <mark>회사 구조를 먼저</mark> 봐줘서 좋았습니다. 접근 방식이 달랐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">이</div>
+          <div class="testi-name">유통업 대표 · 48세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-tag">통합 정리</div>
+        <p class="testi-text">세무사, 법무사, 재무 담당을 따로 만나던 시간이 <mark>한 번에 정리됐습니다.</mark> 이게 진짜 통합 검토구나 싶었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">정</div>
+          <div class="testi-name">서비스업 대표 · 42세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-tag">신뢰감</div>
+        <p class="testi-text">"우리 회사는 아직 시급하지 않다"고 <mark>솔직하게 말씀해주셨어요.</mark> 영업이 아니라 진짜 진단이었습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">최</div>
+          <div class="testi-name">법인 대표 · 55세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card">
+        <div class="testi-tag">큰 그림</div>
+        <p class="testi-text">"절세"만 생각하고 갔는데, <mark>회사·승계·은퇴까지</mark> 한 번에 정리됐어요. 차원이 달랐습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">윤</div>
+          <div class="testi-name">유통업 대표 · 47세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">시야의 전환</div>
+        <p class="testi-text">회사 매출만 보다가 <mark>대표 개인 자산을</mark> 처음으로 따로 보게 됐습니다. 우선순위가 완전히 바뀌었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">김</div>
+          <div class="testi-name">제조업 대표 · 50대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">시점의 중요성</div>
+        <p class="testi-text"><mark>왜 지금 준비해야 하는지</mark> 이해됐습니다. 사전 점검이 왜 필요한지 알게 됐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">박</div>
+          <div class="testi-name">제조업 대표 · 60대</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">구조 우선</div>
+        <p class="testi-text">상품 설명보다 <mark>회사 구조를 먼저</mark> 봐줘서 좋았습니다. 접근 방식이 달랐어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">이</div>
+          <div class="testi-name">유통업 대표 · 48세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">통합 정리</div>
+        <p class="testi-text">세무사, 법무사, 재무 담당을 따로 만나던 시간이 <mark>한 번에 정리됐습니다.</mark> 이게 진짜 통합 검토구나 싶었어요.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">정</div>
+          <div class="testi-name">서비스업 대표 · 42세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">신뢰감</div>
+        <p class="testi-text">"우리 회사는 아직 시급하지 않다"고 <mark>솔직하게 말씀해주셨어요.</mark> 영업이 아니라 진짜 진단이었습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">최</div>
+          <div class="testi-name">법인 대표 · 55세</div>
+        </div>
+      </div>
+      
+      <div class="testi-card" aria-hidden="true">
+        <div class="testi-tag">큰 그림</div>
+        <p class="testi-text">"절세"만 생각하고 갔는데, <mark>회사·승계·은퇴까지</mark> 한 번에 정리됐어요. 차원이 달랐습니다.</p>
+        <div class="testi-meta">
+          <div class="testi-avatar">윤</div>
+          <div class="testi-name">유통업 대표 · 47세</div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 8. 협력 파트너                                -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="partners">
+  <div class="w">
+    <div class="partners-head">
+      <span class="tag-blue">EXPERT NETWORK</span>
+      <h2 class="h2-large">CEO플랜은<br>한 분야만 봐서는 완성되지 않습니다</h2>
+      <p class="body-text" style="margin-top:24px;">세무사는 절세를, 법무사는 정관을, 재무 담당은 자산을 봅니다. 각자의 답이 회사 전체에 맞는다는 보장은 없습니다. 6개 분야가 한 시선으로 회사를 분석하고, 한 방향으로 설계할 때 진짜 효과가 나옵니다.</p>
+    </div>
+    
+    <div class="partners-grid">
+      <div class="partner-card">
+        <span class="partner-cat">회계법인</span>
+        <div class="partner-name">상속·증여 / 가업승계</div>
+        <div class="partner-role">자산 이전 구조<br>법인전환 검토</div>
+      </div>
+      
+      <div class="partner-card">
+        <span class="partner-cat">경영 컨설팅</span>
+        <div class="partner-name">법인 리스크 관리</div>
+        <div class="partner-role">CEO 자산 전략<br>리스크 사전 점검</div>
+      </div>
+      
+      <div class="partner-card">
+        <span class="partner-cat">세무법인</span>
+        <div class="partner-name">법인 세무 컨설팅</div>
+        <div class="partner-role">절세 전략<br>세무 구조 검토</div>
+      </div>
+      
+      <div class="partner-card">
+        <span class="partner-cat">법률사무소</span>
+        <div class="partner-name">정관 정비 / 법률 자문</div>
+        <div class="partner-role">기업 법률 검토<br>임원 규정 정비</div>
+      </div>
+      
+      <div class="partner-card">
+        <span class="partner-cat">노무법인</span>
+        <div class="partner-name">인사·노무 컨설팅</div>
+        <div class="partner-role">임원 보수 규정<br>인사 구조 검토</div>
+      </div>
+      
+      <div class="partner-card">
+        <span class="partner-cat">감정평가</span>
+        <div class="partner-name">비상장주식 평가</div>
+        <div class="partner-role">부동산·자산 감정<br>가치 평가 검토</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 9. STATS (숫자 카운트)                        -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="stats">
+  <div class="w">
+    <div class="stats-head">
+      <h2>큰돈이 오가는 결정,<br>감으로 정하지 마세요</h2>
+      <p class="lead">미래CEO플랜이 검증한 협력 구조와 운영 기준</p>
+    </div>
+    
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num"><em>6</em>분야</div>
+        <div class="stat-label">통합 검토 영역</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><em>1:1</em></div>
+        <div class="stat-label">회사별 맞춤 매칭</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><em>1영업일</em></div>
+        <div class="stat-label">상담 신청 후 연락</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num"><em>0원</em></div>
+        <div class="stat-label">1차 상담 비용</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 10. PROCESS                                  -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="process">
+  <div class="w">
+    <div class="process-head">
+      <span class="tag-blue">PROCESS</span>
+      <h2 class="h2-large">복잡한 CEO플랜?<br>매칭 한번이면 간단합니다</h2>
+    </div>
+    
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="process-num">STEP 01</div>
+        <h3>1분 진단</h3>
+        <p>회사 정보 5가지만 입력하면<br>우선순위가 자동 분석됩니다</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">STEP 02</div>
+        <h3>우선순위 확인</h3>
+        <p>회사 상황에 맞춰 우선순위를 정리합니다</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">STEP 03</div>
+        <h3>1차 통화 상담</h3>
+        <p>1영업일 내 담당자가 연락드려<br>회사 상황을 30분 내로 확인합니다</p>
+      </div>
+      <div class="process-step">
+        <div class="process-num">STEP 04</div>
+        <h3>전문가 연결</h3>
+        <p>적합한 협력 파트너를 직접 연결합니다</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 11. FAQ                                      -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="faq">
+  <div class="w">
+    <div class="faq-head">
+      <span class="tag-blue">FAQ</span>
+      <h2 class="h2-large">자주 묻는 질문</h2>
+    </div>
+    
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">모든 법인이 가능한가요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>지분을 보유한 대표가 있는 중소 법인에서 검토 가능성이 큽니다. 다만 회사 매출, 자산 구조, 정관 상태에 따라 우선순위가 크게 달라집니다.<br><br>"우리 회사도 가능한가?" — 이 질문의 답은 1분 진단으로 먼저 확인하실 수 있습니다.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">정관 정비 없이 시작해도 되나요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>정관에 임원 퇴직금 규정과 유족 보상금 규정이 없으면 비용 처리에 영향이 있을 수 있습니다. 미래CEO플랜은 정관 상태를 먼저 검토하고, 협력 법무 파트너를 통해 정비를 진행한 뒤 CEO플랜 구조를 함께 설계합니다.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">상담 비용이 발생하나요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>1차 상담은 무료입니다. 신청 후 1영업일 내 담당자가 연락드려 회사 상황을 확인하고 검토 가능성을 안내드립니다. 강압 영업이나 특정 상품 권유는 없습니다.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">미래CEO플랜에서 직접 설계하나요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>미래CEO플랜은 상담 중개 / 솔루션 큐레이션 플랫폼입니다. 직접 자문은 하지 않으며, 검증된 회계·세무·법무·재무 협력 파트너 중 대표님 상황에 맞는 전문가를 매칭해드립니다.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">중간에 해지하면 어떻게 되나요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>중도 해지 시 환급금은 법인 익금으로 처리되어 법인세에 영향을 줄 수 있습니다. 환급금을 대표 퇴직재원으로 활용하면 비용으로 상계되는 구조를 검토할 수 있어, 장기 설계가 효과적입니다.</p>
+        </div>
+      </div>
+      
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          <span class="faq-q-text">언제 시작하는 것이 좋나요?</span>
+          <span class="faq-toggle">+</span>
+        </button>
+        <div class="faq-a">
+          <p>빠를수록 선택지가 많아집니다. 비상장주식 가치 조정과 승계 준비는 사전 설계 기간이 길수록 효과가 누적되는 구조이기 때문입니다.<br><br>"5년 늦으면 어떻게 달라지는가?" — 회사 상황에 따른 시기별 비교도 1차 상담에서 함께 확인해드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 12. CTA + FORM                               -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="cta-form-sec" id="consult">
+  <div class="w cta-form-inner">
+    <div class="cta-form-head">
+      <h2>우리 회사도<br><strong>CEO플랜이 가능할까요?</strong></h2>
+      <p>회사 정보 5가지만 알려주시면, 1영업일 내 담당자가 연락드려<br>편안하게 검토 가능성을 안내드립니다.</p>
+    </div>
+    
+    <form class="cta-form" onsubmit="submitForm(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label>회사명</label>
+          <input type="text" class="form-input" placeholder="(주)미래CEO" required>
+        </div>
+        <div class="form-group">
+          <label>대표자명</label>
+          <input type="text" class="form-input" placeholder="홍길동" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>연락처</label>
+          <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+        </div>
+        <div class="form-group">
+          <label>이메일</label>
+          <input type="email" class="form-input" placeholder="email@company.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>매출 규모</label>
+          <select class="form-select">
+            <option value="">선택해주세요</option>
+            <option>10억 미만</option>
+            <option>10~30억</option>
+            <option>30~50억</option>
+            <option>50~100억</option>
+            <option>100억 이상</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>가장 시급한 영역</label>
+          <select class="form-select">
+            <option value="">선택해주세요</option>
+            <option>법인세 절감</option>
+            <option>대표 자산 이전</option>
+            <option>자녀 승계</option>
+            <option>정관 정비</option>
+            <option>유고 시 보호 재원</option>
+            <option>전체 진단</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row single">
+        <div class="form-group">
+          <label>상황·궁금하신 점 (선택)</label>
+          <textarea class="form-textarea" placeholder="자유롭게 적어주세요"></textarea>
+        </div>
+      </div>
+      
+      <div class="form-checks">
+        <label class="form-check">
+          <input type="checkbox" required>
+          <span><strong>(필수)</strong> 개인정보 수집·이용에 동의합니다.</span>
+        </label>
+        <label class="form-check">
+          <input type="checkbox">
+          <span>(선택) 콘텐츠·이벤트 안내 메일 수신에 동의합니다.</span>
+        </label>
+      </div>
+      
+      <button type="submit" class="form-submit">CEO플랜 가능성 확인하기</button>
+      
+      <div class="form-trust">
+        <span>1영업일 내 연락</span>
+        <span>1차 상담 무료</span>
+        <span>강압 영업 없음</span>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- 13. FINAL CTA                                -->
+<!-- ═══════════════════════════════════════════ -->
+<section class="final-cta">
+  <div class="w">
+    <div class="final-cta-logo">미래CEO플랜</div>
+    <h2>늦게 준비할수록,<br>선택지는 줄어듭니다</h2>
+    <div class="final-cta-row">
+      <a href="#consult" class="btn-line">상담 신청하기</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FOOTER                                       -->
+<!-- ═══════════════════════════════════════════ -->
+
+
+<!-- ═══ 플로팅 상담 폼 (.sticky-form) ═══ -->
+<aside class="sticky-form" id="stickyForm">
+  <div class="sticky-form-title">우리 회사도 가능할까요?</div>
+  <div class="sticky-form-sub">1영업일 내 담당자가 연락드려 안내합니다</div>
+  <form onsubmit="submitStickyForm(event)">
+    <div class="form-row">
+      <label class="form-label">담당자명 <span class="req">*</span></label>
+      <input type="text" class="form-input" placeholder="홍길동" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">연락처 <span class="req">*</span></label>
+      <input type="tel" class="form-input" placeholder="010-0000-0000" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">이메일 <span class="req">*</span></label>
+      <input type="email" class="form-input" placeholder="email@company.com" required>
+    </div>
+    <div class="form-row">
+      <label class="form-label">법인 매출 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>10억 미만</option>
+        <option>10억 ~ 30억</option>
+        <option>30억 ~ 50억</option>
+        <option>50억 ~ 100억</option>
+        <option>100억 이상</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label class="form-label">관심 영역 <span class="req">*</span></label>
+      <select class="form-select" required>
+        <option value="">선택해 주세요</option>
+        <option>법인세 절감</option>
+        <option>대표 자산 이전</option>
+        <option>자녀 승계 / 비상장주식</option>
+        <option>정관 정비</option>
+        <option>유고 시 보호 재원</option>
+        <option>전체 진단</option>
+      </select>
+    </div>
+    <div class="consent-block compact">
+      <label class="consent-row">
+        <input type="checkbox" required>
+        <span><b>[필수]</b>개인정보 수집·이용 및 1차 상담 동의<a href="./privacy.html#s2" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+      <label class="consent-row">
+        <input type="checkbox">
+        <span><b class="optional">[선택]</b>마케팅 수신<a href="./privacy.html#s3" target="_blank" rel="noopener">자세히</a></span>
+      </label>
+    </div>
+    <button type="submit" class="sticky-form-submit">상담 신청하기 →</button>
+  </form>
+  <div class="sticky-form-trust">
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 100% 비밀 유지</div>
+    <div class="sticky-form-trust-item"><span class="sticky-form-trust-chk">✓</span> 초기 상담 완전 무료</div>
+  </div>
+</aside>
+
+<footer class="footer">
+  <div class="w">
+    <div class="footer-inner">
+      <div class="footer-logo">미래<em>CEO</em>플랜</div>
+      <a class="footer-back" href="index.html#corp">← 전체 솔루션 보러가기</a>
+    </div>
+    <div class="footer-legal">
+      <div class="footer-legal-links">
+        <a href="./terms.html">이용약관</a>
+        <span class="footer-legal-sep">·</span>
+        <a href="./privacy.html" class="emphasize">개인정보처리방침</a>
+      </div>
+      <div class="footer-legal-notice">
+        미래CEO플랜은 상담 중개 플랫폼입니다. 구체적 자문·서비스는 협력 파트너가 직접 제공합니다.
+      </div>
+    </div>
+    <div class="footer-company-info">
+      ㈜프로그레스미디어 · 대표 구동엽 · 사업자등록번호 113-86-27124<br>
+      TEL 02-6261-5102 | FAX 02-6261-5104 | esoyeon@my-progress.co.kr<br>
+      © 2026 프로그레스미디어. All rights reserved.
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+console.log('미래CEO플랜 - solution-ceoplan.html v33 (FINAL CTA 단일 버튼 + 폼 제출 화살표 제거 + 깨진 HTML 정리) loaded');
+
+function toggleFaq(btn) {
+  const item = btn.parentElement;
+  item.classList.toggle('open');
+}
+
+function submitForm(e) {
+  e.preventDefault();
+  showToast('CEO플랜 가능성 확인 신청이 접수되었습니다. 1영업일 내 연락드립니다.');
+  e.target.reset();
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.classList.add('show');
+  setTimeout(() => toast.classList.remove('show'), 3500);
+}
+</script>
+
+</body>
+</html>
